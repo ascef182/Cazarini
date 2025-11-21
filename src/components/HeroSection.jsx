@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../context/LanguageContext";
 
 const navItems = [
   { label: "About", href: "#sobre-nos" },
@@ -27,7 +28,8 @@ export const HeroSection = () => {
   const heroRef = useRef(null);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const [currentLanguage, setCurrentLanguage] = useState("pt");
+  const { language, setLanguage } = useLanguage();
+  const currentLanguage = language === "pt-br" ? "pt" : "en";
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -113,7 +115,7 @@ export const HeroSection = () => {
   }, []);
 
   const toggleLanguage = (lang) => {
-    setCurrentLanguage(lang);
+    setLanguage(lang === "pt" ? "pt-br" : "en");
     setIsLanguageOpen(false);
   };
 
