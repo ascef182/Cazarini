@@ -1,7 +1,7 @@
 import React from "react";
 
 import { AboutUsSection } from "./components/AboutUsSection";
-import { ContactSection } from "./components/ContactSection";
+import ContactSection from "./components/ContactSection";
 import { FaqSection } from "./components/FaqSection";
 import { HeroSection } from "./components/HeroSection";
 import { ServicesSection } from "./components/ServicesSection";

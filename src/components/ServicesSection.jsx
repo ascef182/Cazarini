@@ -36,7 +36,7 @@ const trustedLogos = [
   { src: "/photos/wsj-logo.png", alt: "WSJ" },
   { src: "/photos/globo_rural-removebg-preview.png", alt: "Globo Rural" },
   { src: "/photos/valorecomnomico.png", alt: "Valor Econômico" },
-  { src: "/photos/image62.png", alt: "Reuters" },
+  { src: "/photos/reuters.png", alt: "Reuters" },
 ];
 
 export const ServicesSection = () => {

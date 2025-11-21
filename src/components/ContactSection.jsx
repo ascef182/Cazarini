@@ -1,38 +1,107 @@
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 
 const contactSchema = z.object({
   name: z.string().min(3, "Please enter your full name"),
-  company: z.string().min(2, "Please enter your company name"),
+  company: z.string().min(2, "Please enter your company/farm name"),
   email: z.string().email("Please enter a valid email"),
-  message: z.string().min(10, "Please provide more details"),
+  phone: z.string().min(10, "Please enter a valid phone number"),
+  buyerType: z.enum(
+    ["individual", "cooperative", "company", "trader", "exporter"],
+    {
+      required_error: "Please select buyer type",
+    }
+  ),
+  volume: z.enum(["1-50", "51-100", "101-500", "501-1000", "1000+"], {
+    required_error: "Please select volume",
+  }),
+  unit: z.enum(["bags", "containers"], {
+    required_error: "Please select unit",
+  }),
+  coffeeType: z.array(z.string()).min(1, "Select at least one coffee type"),
+  frequency: z.enum(["monthly", "quarterly", "biannual", "annual", "spot"], {
+    required_error: "Please select purchase frequency",
+  }),
+  message: z.string().min(20, "Please provide more details about your needs"),
 });
 
-export const ContactSection = () => {
+export default function ContactSection() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitStatus, setSubmitStatus] = useState(null);
+
   const form = useForm({
     resolver: zodResolver(contactSchema),
-    defaultValues: { name: "", company: "", email: "", message: "" },
+    defaultValues: {
+      name: "",
+      company: "",
+      email: "",
+      phone: "",
+      buyerType: undefined,
+      volume: undefined,
+      unit: "bags",
+      coffeeType: [],
+      frequency: undefined,
+      message: "",
+    },
   });
 
-  const onSubmit = (data) => {
-    console.table(data);
-    form.reset();
+  const onSubmit = async (data) => {
+    setIsSubmitting(true);
+    setSubmitStatus(null);
+
+    try {
+      // Replace YOUR_FORM_ID with your actual Formspree form ID
+      // Get it from https://formspree.io/forms after creating a form
+      const response = await fetch("https://formspree.io/f/xyzplwpb", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          ...data,
+          coffeeType: data.coffeeType.join(", "),
+          _subject: `New Lead: ${data.name} - ${data.buyerType} - ${data.volume} ${data.unit}`,
+        }),
+      });
+
+      if (response.ok) {
+        setSubmitStatus("success");
+        form.reset();
+        setTimeout(() => setSubmitStatus(null), 5000);
+      } else {
+        setSubmitStatus("error");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      setSubmitStatus("error");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  const toggleCoffeeType = (type) => {
+    const current = form.watch("coffeeType");
+    if (current.includes(type)) {
+      form.setValue(
+        "coffeeType",
+        current.filter((t) => t !== type)
+      );
+    } else {
+      form.setValue("coffeeType", [...current, type]);
+    }
   };
 
   return (
     <>
       <section className="bg-white py-16 lg:py-20">
-        <div className="mx-auto flex w-full max-w-[1440px] px-4 sm:px-6 lg:px-10">
+        <div className="mx-auto w-full max-w-[1600px] px-6 sm:px-8 lg:px-12">
           <div className="w-full overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 px-8 py-12 shadow-[0_18px_45px_rgba(1,2,5,0.14)] sm:px-12 lg:px-16 lg:py-16">
             <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
               <h2 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.5rem]">
-                Ready to work with us ?
+                Ready to work with us?
               </h2>
-              <button className="pill-button shrink-0 rounded-pill bg-white px-8 text-brand-900 hover:bg-gray-50">
-                Get Started
-              </button>
             </div>
           </div>
         </div>
@@ -40,81 +109,270 @@ export const ContactSection = () => {
 
       <section id="contato" className="bg-white py-16 lg:py-20">
         <div className="mx-auto flex w-full max-w-[1440px] px-4 sm:px-6 lg:px-10">
-          <div className="grid w-full gap-8 overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(0,0.8fr)]">
+          <div className="grid w-full gap-8 overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.2fr)]">
             <div className="relative overflow-hidden">
               <img
-                src="/photos/caffe-in-field.jpg"
+                src="./photos/caffe-in-field.jpg"
                 alt="Coffee field at sunset"
-                className="h-full min-h-[400px] w-full object-cover lg:min-h-[600px]"
+                className="h-full min-h-[400px] w-full object-cover lg:min-h-[700px]"
                 loading="lazy"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-brand-900/40 via-transparent to-transparent" />
+
+              <div className="absolute bottom-8 left-8 right-8 text-white">
+                <h3 className="text-2xl font-semibold mb-2">Connect with us</h3>
+                <p className="text-white/90">
+                  Quality coffee specialists for the global market
+                </p>
+              </div>
             </div>
 
             <form
               onSubmit={form.handleSubmit(onSubmit)}
               className="flex flex-col gap-6 p-8 lg:p-12"
             >
-              <div className="space-y-6">
+              <div className="mb-2">
+                <h3 className="text-2xl font-semibold text-brand-900 mb-2">
+                  Request a Quote
+                </h3>
+                <p className="text-sm text-gray-600">
+                  Fill in the details below and our team will contact you
+                </p>
+              </div>
+
+              {submitStatus === "success" && (
+                <div className="rounded-lg bg-green-50 border border-green-200 p-4 text-sm text-green-800">
+                  ✓ Message sent successfully! We will contact you soon.
+                </div>
+              )}
+
+              {submitStatus === "error" && (
+                <div className="rounded-lg bg-red-50 border border-red-200 p-4 text-sm text-red-800">
+                  ✗ Error sending message. Please try again.
+                </div>
+              )}
+
+              <div className="space-y-5">
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="name"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Full Name *
+                    </label>
+                    <input
+                      id="name"
+                      type="text"
+                      {...form.register("name")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      placeholder="Your name"
+                    />
+                    {form.formState.errors.name && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.name.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="company"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Company / Farm *
+                    </label>
+                    <input
+                      id="company"
+                      type="text"
+                      {...form.register("company")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      placeholder="Company name"
+                    />
+                    {form.formState.errors.company && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.company.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-2">
+                  <div>
+                    <label
+                      htmlFor="email"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Email *
+                    </label>
+                    <input
+                      id="email"
+                      type="email"
+                      {...form.register("email")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      placeholder="your@email.com"
+                    />
+                    {form.formState.errors.email && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.email.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="phone"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Phone / WhatsApp *
+                    </label>
+                    <input
+                      id="phone"
+                      type="tel"
+                      {...form.register("phone")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      placeholder="+55 (11) 99999-9999"
+                    />
+                    {form.formState.errors.phone && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.phone.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
                 <div>
                   <label
-                    htmlFor="name"
-                    className="block text-sm font-medium text-brand-900"
+                    htmlFor="buyerType"
+                    className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    Name
+                    Buyer Type *
                   </label>
-                  <input
-                    id="name"
-                    type="text"
-                    {...form.register("name")}
-                    className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-1 focus:ring-brand-900"
-                    placeholder="Write your name..."
-                  />
-                  {form.formState.errors.name && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {form.formState.errors.name.message}
+                  <select
+                    id="buyerType"
+                    {...form.register("buyerType")}
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                  >
+                    <option value="">Select...</option>
+                    <option value="individual">Individual</option>
+                    <option value="cooperative">Cooperative</option>
+                    <option value="company">Company / Roastery</option>
+                    <option value="trader">Trading Company</option>
+                    <option value="exporter">Exporter</option>
+                  </select>
+                  {form.formState.errors.buyerType && (
+                    <p className="mt-1.5 text-xs text-red-500">
+                      {form.formState.errors.buyerType.message}
+                    </p>
+                  )}
+                </div>
+
+                <div className="grid gap-5 sm:grid-cols-[1.5fr_1fr]">
+                  <div>
+                    <label
+                      htmlFor="volume"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Approximate Volume *
+                    </label>
+                    <select
+                      id="volume"
+                      {...form.register("volume")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                    >
+                      <option value="">Select...</option>
+                      <option value="1-50">1 - 50</option>
+                      <option value="51-100">51 - 100</option>
+                      <option value="101-500">101 - 500</option>
+                      <option value="501-1000">501 - 1,000</option>
+                      <option value="1000+">1,000+</option>
+                    </select>
+                    {form.formState.errors.volume && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.volume.message}
+                      </p>
+                    )}
+                  </div>
+
+                  <div>
+                    <label
+                      htmlFor="unit"
+                      className="block text-sm font-medium text-brand-900 mb-2"
+                    >
+                      Unit *
+                    </label>
+                    <select
+                      id="unit"
+                      {...form.register("unit")}
+                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                    >
+                      <option value="bags">Bags (60kg)</option>
+                      <option value="containers">Containers</option>
+                    </select>
+                    {form.formState.errors.unit && (
+                      <p className="mt-1.5 text-xs text-red-500">
+                        {form.formState.errors.unit.message}
+                      </p>
+                    )}
+                  </div>
+                </div>
+
+                <div>
+                  <label className="block text-sm font-medium text-brand-900 mb-3">
+                    Coffee Type of Interest *
+                  </label>
+                  <div className="grid grid-cols-2 gap-3">
+                    {[
+                      { id: "arabica", label: "Arabica" },
+                      { id: "robusta", label: "Robusta / Conilon" },
+                      { id: "specialty", label: "Specialty (80+)" },
+                      { id: "organic", label: "Organic" },
+                    ].map((type) => (
+                      <label
+                        key={type.id}
+                        className="flex items-center gap-2 cursor-pointer"
+                      >
+                        <input
+                          type="checkbox"
+                          checked={form.watch("coffeeType").includes(type.id)}
+                          onChange={() => toggleCoffeeType(type.id)}
+                          className="w-4 h-4 rounded border-gray-300 text-brand-900 focus:ring-2 focus:ring-brand-900/20"
+                        />
+                        <span className="text-sm text-gray-700">
+                          {type.label}
+                        </span>
+                      </label>
+                    ))}
+                  </div>
+                  {form.formState.errors.coffeeType && (
+                    <p className="mt-1.5 text-xs text-red-500">
+                      {form.formState.errors.coffeeType.message}
                     </p>
                   )}
                 </div>
 
                 <div>
                   <label
-                    htmlFor="company"
-                    className="block text-sm font-medium text-brand-900"
+                    htmlFor="frequency"
+                    className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    Company name
+                    Purchase Frequency *
                   </label>
-                  <input
-                    id="company"
-                    type="text"
-                    {...form.register("company")}
-                    className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-1 focus:ring-brand-900"
-                    placeholder="Write your Company name..."
-                  />
-                  {form.formState.errors.company && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {form.formState.errors.company.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="email"
-                    className="block text-sm font-medium text-brand-900"
+                  <select
+                    id="frequency"
+                    {...form.register("frequency")}
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
                   >
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    {...form.register("email")}
-                    className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-1 focus:ring-brand-900"
-                    placeholder="Write your email contact here..."
-                  />
-                  {form.formState.errors.email && (
-                    <p className="mt-1 text-xs text-red-500">
-                      {form.formState.errors.email.message}
+                    <option value="">Select...</option>
+                    <option value="monthly">Monthly</option>
+                    <option value="quarterly">Quarterly</option>
+                    <option value="biannual">Biannual</option>
+                    <option value="annual">Annual</option>
+                    <option value="spot">Spot (one-time purchase)</option>
+                  </select>
+                  {form.formState.errors.frequency && (
+                    <p className="mt-1.5 text-xs text-red-500">
+                      {form.formState.errors.frequency.message}
                     </p>
                   )}
                 </div>
@@ -122,19 +380,19 @@ export const ContactSection = () => {
                 <div>
                   <label
                     htmlFor="message"
-                    className="block text-sm font-medium text-brand-900"
+                    className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    How can we help?
+                    Additional Details *
                   </label>
                   <textarea
                     id="message"
                     rows={4}
                     {...form.register("message")}
-                    className="mt-2 w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-1 focus:ring-brand-900"
-                    placeholder="Write your message here..."
+                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                    placeholder="Tell us more about your needs, technical specifications, delivery destination, etc..."
                   />
                   {form.formState.errors.message && (
-                    <p className="mt-1 text-xs text-red-500">
+                    <p className="mt-1.5 text-xs text-red-500">
                       {form.formState.errors.message.message}
                     </p>
                   )}
@@ -143,15 +401,19 @@ export const ContactSection = () => {
 
               <button
                 type="submit"
-                className="pill-button w-full justify-center rounded-xl bg-brand-900 py-3.5 text-white hover:bg-brand-950 disabled:opacity-60"
-                disabled={form.formState.isSubmitting}
+                className="w-full justify-center rounded-xl bg-brand-900 py-3.5 px-6 font-medium text-white transition-all hover:bg-brand-950 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
+                disabled={isSubmitting}
               >
-                {form.formState.isSubmitting ? "Submitting..." : "Submit"}
+                {isSubmitting ? "Sending..." : "Submit Request"}
               </button>
+
+              <p className="text-xs text-center text-gray-500">
+                By submitting, you agree to be contacted by our sales team
+              </p>
             </form>
           </div>
         </div>
       </section>
     </>
   );
-};
+}

@@ -8,11 +8,6 @@ const filterButtons = [
   { id: "conilon", label: "Conilon" },
 ];
 
-const categoryLabels = filterButtons.reduce(
-  (map, filter) => ({ ...map, [filter.id]: filter.label }),
-  {}
-);
-
 const varietyGallery = [
   {
     id: 1,
@@ -165,16 +160,8 @@ export const AboutUsSection = () => {
     return varietyGallery.filter((item) => item.category === activeFilter);
   }, [activeFilter]);
 
-  // Reseta o scroll quando o filtro muda
-  useEffect(() => {
-    if (carouselRef.current) {
-      carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
-      checkScroll();
-    }
-  }, [activeFilter]);
-
   // Verifica se precisa mostrar os gradientes
-  const checkScroll = () => {
+  const checkScroll = React.useCallback(() => {
     if (!carouselRef.current) return;
 
     const { scrollLeft, scrollWidth, clientWidth } = carouselRef.current;
@@ -184,13 +171,21 @@ export const AboutUsSection = () => {
       left: hasOverflow && scrollLeft > 10,
       right: hasOverflow && scrollLeft < scrollWidth - clientWidth - 10,
     });
-  };
+  }, []);
+
+  // Reseta o scroll quando o filtro muda
+  useEffect(() => {
+    if (carouselRef.current) {
+      carouselRef.current.scrollTo({ left: 0, behavior: "smooth" });
+      requestAnimationFrame(() => checkScroll());
+    }
+  }, [activeFilter, checkScroll]);
 
   useEffect(() => {
     const carousel = carouselRef.current;
     if (carousel) {
       carousel.addEventListener("scroll", checkScroll);
-      checkScroll();
+      requestAnimationFrame(() => checkScroll());
 
       window.addEventListener("resize", checkScroll);
 
@@ -199,7 +194,7 @@ export const AboutUsSection = () => {
         window.removeEventListener("resize", checkScroll);
       };
     }
-  }, [filteredVarieties]);
+  }, [filteredVarieties, checkScroll]);
 
   const scrollCarousel = (direction) => {
     if (!carouselRef.current) return;
@@ -222,31 +217,33 @@ export const AboutUsSection = () => {
             Our Coffee Varieties Portfolio
           </h2>
           <p className="text-white/70 text-lg">
-            Explore our selection of premium Brazilian coffees, carefully
+            Explore our selection of Brazilian and Colombia coffees, carefully
             sourced and graded to meet international standards.
           </p>
         </div>
 
         {/* Filtros */}
-        <div className="flex flex-wrap items-center gap-3">
-          {filterButtons.map((filter) => {
-            const isActive = activeFilter === filter.id;
-            return (
-              <button
-                key={filter.id}
-                type="button"
-                onClick={() => setActiveFilter(filter.id)}
-                className={`rounded-full border px-6 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
-                  isActive
-                    ? "border-accent-green bg-accent-green text-brand-900 scale-105"
-                    : "border-white/20 text-white/80 hover:border-white hover:text-white"
-                }`}
-                aria-pressed={isActive}
-              >
-                {filter.label}
-              </button>
-            );
-          })}
+        <div className="relative -mx-4 px-4 sm:mx-0 sm:px-0">
+          <div className="flex items-center gap-3 overflow-x-auto pb-2 scrollbar-hide">
+            {filterButtons.map((filter) => {
+              const isActive = activeFilter === filter.id;
+              return (
+                <button
+                  key={filter.id}
+                  type="button"
+                  onClick={() => setActiveFilter(filter.id)}
+                  className={`shrink-0 rounded-full border px-6 py-2.5 text-sm font-semibold uppercase tracking-wider transition-all duration-200 ${
+                    isActive
+                      ? "border-accent-green bg-accent-green text-brand-900 scale-105"
+                      : "border-white/20 text-white/80 hover:border-white hover:text-white"
+                  }`}
+                  aria-pressed={isActive}
+                >
+                  {filter.label}
+                </button>
+              );
+            })}
+          </div>
         </div>
 
         {/* Contador de resultados */}

@@ -86,6 +86,27 @@ export const HeroSection = () => {
           },
         });
       });
+
+      // Chart bars animation
+      const chartBars = heroRef.current.querySelectorAll("[data-chart-bar]");
+      chartBars.forEach((bar, index) => {
+        const targetHeight = bar.getAttribute("data-height");
+        gsap.fromTo(
+          bar,
+          { height: 0 },
+          {
+            height: targetHeight,
+            duration: 0.8,
+            delay: 0.15 * index,
+            ease: "power2.out",
+            scrollTrigger: {
+              trigger: bar,
+              start: "top 90%",
+              once: true,
+            },
+          }
+        );
+      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -94,7 +115,6 @@ export const HeroSection = () => {
   const toggleLanguage = (lang) => {
     setCurrentLanguage(lang);
     setIsLanguageOpen(false);
-    // integração com contexto global de idioma será feita em passo posterior
   };
 
   return (
@@ -221,10 +241,12 @@ export const HeroSection = () => {
               type="button"
               className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-900 md:hidden"
               onClick={() => setIsMobileNavOpen((open) => !open)}
-              aria-label="Abrir navegação"
+              aria-label="Open navigation"
             >
-              <span className="block h-0.5 w-4 rounded-full bg-brand-900" />
-              <span className="mt-1 block h-0.5 w-4 rounded-full bg-brand-900" />
+              <div className="flex flex-col gap-1">
+                <span className="block h-0.5 w-4 rounded-full bg-brand-900" />
+                <span className="block h-0.5 w-4 rounded-full bg-brand-900" />
+              </div>
             </button>
           </div>
 
@@ -290,7 +312,7 @@ export const HeroSection = () => {
           )}
         </header>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
           <div className="space-y-10">
             <div className="space-y-6">
               <p
@@ -305,7 +327,7 @@ export const HeroSection = () => {
               >
                 Round the clock
                 <br />
-                <span className="text-accent-green">Coffe brokers</span>
+                <span className="text-accent-green">Coffee brokers</span>
               </h1>
               <p
                 data-hero="subtitle"
@@ -325,9 +347,12 @@ export const HeroSection = () => {
               </button>
               <a
                 href="#variedades"
-                className="flex items-center gap-2 text-brand-900 underline decoration-accent-green decoration-2 underline-offset-4"
+                className="group relative flex items-center gap-2 text-brand-900"
               >
-                View Varieties
+                <span className="relative">
+                  View Varieties
+                  <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent-green transition-all duration-300 ease-out group-hover:w-full" />
+                </span>
               </a>
             </div>
 
@@ -352,23 +377,26 @@ export const HeroSection = () => {
 
           <div
             data-hero="media"
-            className="relative mt-8 flex flex-col gap-6 lg:mt-0"
+            className="relative mt-8 min-h-[850px] lg:mt-0 lg:h-[540px] lg:min-h-0 lg:ml-20"
           >
-            {/* Figure 1 - Ship Image with Badge */}
-            <div className="relative h-[275px] w-full lg:absolute lg:left-0 lg:top-0 lg:h-[281px] lg:w-[303px]">
+            {/* Figure 1 - Ship Image (transparent background) */}
+            <div className="absolute left-0 top-0 h-[275px] w-full lg:h-[281px] lg:w-[303px]">
               <img
                 src="/photos/trend.png"
                 alt="Coffee container ship"
-                className="h-full w-full rounded-[32px] object-cover shadow-[0_18px_45px_rgba(1,2,5,0.14)]"
+                className="h-full w-full rounded-[32px] object-cover object-right"
                 loading="lazy"
               />
             </div>
 
             {/* Figure 2 - Light Stat Card (250+) */}
-            <div className="relative h-[281px] w-full overflow-hidden rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:absolute lg:left-[327px] lg:top-0 lg:h-[281px] lg:w-[261px]">
+            <div
+              data-hero="stat-card"
+              className="absolute left-0 top-[290px] h-[250px] w-full overflow-hidden rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:h-[281px] lg:w-[261px]"
+            >
               <p className="text-4xl font-bold tracking-[0.04em] lg:text-5xl">
                 <span data-counter data-target="250" data-suffix="+">
-                  250+
+                  0+
                 </span>
               </p>
               <p className="mt-3 text-sm leading-relaxed text-gray-500">
@@ -379,8 +407,8 @@ export const HeroSection = () => {
               </div>
             </div>
 
-            {/* Figure 3 - Dark Chart Card */}
-            <div className="relative h-[216px] w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 p-6 text-white shadow-[0_18px_45px_rgba(1,2,5,0.14)] lg:absolute lg:left-0 lg:top-[304px] lg:h-[216px] lg:w-[588px]">
+            {/* Figure 3 - Dark Chart Card (texto e charts lado a lado) */}
+            <div className="absolute left-0 top-[555px] h-[270px] w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 p-6 text-white shadow-[0_18px_45px_rgba(1,2,5,0.14)] lg:top-[304px] lg:h-[216px] lg:w-[588px]">
               {/* Shadow overlay image */}
               <img
                 src="/photos/image 60.png"
@@ -388,23 +416,31 @@ export const HeroSection = () => {
                 className="pointer-events-none absolute left-0 top-0 h-full w-auto opacity-60"
                 loading="lazy"
               />
-              <div className="relative z-10">
-                <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/60">
-                  Driving Global Coffee Trade
-                </p>
-                <p className="mt-3 text-lg font-semibold leading-snug lg:text-xl">
-                  Exporting Premium-Grade Coffee Worldwide
-                </p>
-                <div className="mt-6 flex items-end gap-2">
-                  {[0.45, 0.65, 0.85, 1].map((height) => (
-                    <div
-                      key={`bar-${height}`}
-                      className="flex-1 rounded-t-[10px] bg-accent-green"
-                      style={{ height: `${height * 80}px` }}
-                    />
-                  ))}
+              <div className="relative z-10 flex h-full items-center gap-6">
+                {/* Text side */}
+                <div className="flex-1">
+                  <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/60">
+                    Driving Global Coffee Trade
+                  </p>
+                  <p className="mt-3 text-lg font-semibold leading-snug lg:text-xl">
+                    Exporting Premium- <br /> Grade Coffee Worldwide
+                  </p>
                 </div>
-                <div className="mt-3 h-px w-full bg-white/10" />
+                {/* Chart side */}
+                <div className="flex flex-col items-end">
+                  <div className="flex items-end gap-2">
+                    {[36, 52, 68, 80].map((height, idx) => (
+                      <div
+                        key={`bar-${idx}`}
+                        data-chart-bar
+                        data-height={`${height}px`}
+                        className="w-10 rounded-t-[10px] bg-accent-green"
+                        style={{ height: 0 }}
+                      />
+                    ))}
+                  </div>
+                  <div className="mt-3 h-px w-full bg-white/10" />
+                </div>
               </div>
             </div>
           </div>

@@ -5,26 +5,26 @@ const testimonials = [
   {
     id: 1,
     quote:
-      "I am pleased to recommend Thiago Cazarini, a standout expert in the Brazilian coffee market. His deep knowledge and insights have made a significant impact on the industry, and his willingness to share information sets him apart as a true thought leader. Thiago's popular weekly report is a testament to his expertise, providing valuable analysis and updates that are highly regarded by professionals across the market",
+      "I am pleased to recommend Thiago Cazarini, a standout expert in the Brazilian coffee market. His deep knowledge and insights have made a significant impact on the industry, and his willingness to share information sets him apart as a true thought leader. Thiago’s popular weekly report is a testament to his expertise, providing valuable analysis and updates that are highly regarded by professionals across the market. ",
     name: "Dave Behrends",
     title: "Managing Partner and Head of Trading",
-    avatar: "/photos/brazil-flag.png",
+    avatar: "/photos/dave.jfif",
   },
   {
     id: 2,
     quote:
-      "Working with Cazarini Trading has transformed our procurement strategy. Their market intelligence and transparent pricing have helped us secure better contracts and build stronger relationships with producers.",
-    name: "Ana Luiza Ferreira",
-    title: "Head de Trading · Origens do Brasil",
-    avatar: "/photos/thiago-conteiner.jfif",
+      "Thiago, is a reliable and insightful commodities broker who not only handles transactions but also provides valuable market information, he has a very good reading of Brazilian Coffee Market, he brings a deep understanding of market dynamics to his current role as a broker. Thiago is not just focused on brokerage fees; he is dedicated to offering clients comprehensive market insights that help inform their trading decisions. His disciplined approach, honed through a commitment to sports, ensures he remains focused and strategic, providing clients with both expert advice and exceptional service.",
+    name: "Carlos Santana Jr",
+    title: "Commercial Director of Ecom Group (Brazil)",
+    avatar: "/photos/carlos.jfif",
   },
   {
     id: 3,
     quote:
-      "The sustainability reporting and regulatory support accelerated our entry into new premium markets in Europe and Asia. Cazarini's expertise is unmatched.",
-    name: "Claire Dubois",
-    title: "VP Procurement · Lumière Roasters (FR)",
-    avatar: "/photos/bandeira-cazarini.jpg",
+      "Thiago Cazarini is a brilliant green coffee broker in Brazil. His deep knowledge of the market and continuous sharing of important information is always very useful.",
+    name: "Felipe Feijó",
+    title: "Country Manager - Starbucks Farmer Support Center Brazil",
+    avatar: "/photos/felipe.jfif",
   },
 ];
 
