@@ -1,0 +1,111 @@
+@import url("https://fonts.googleapis.com/css2?family=Manrope:wght@600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --font-sans: "Plus Jakarta Sans", system-ui, -apple-system, BlinkMacSystemFont,
+      "Segoe UI", sans-serif;
+    --font-display: "Manrope", "Plus Jakarta Sans", system-ui, sans-serif;
+    --page-background: #f5f6f7;
+    --surface-dark: #020609;
+    --surface-light: #ffffff;
+    --text-primary: #010205;
+    --text-secondary: #878c91;
+    --text-muted: #b1b5ba;
+    --accent-green: #99cf62;
+    --accent-lime: #98e948;
+    --radius-panel: 20px;
+    --radius-layout: 30px;
+    --max-content-width: 1280px;
+  }
+
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    background-color: #ffffff;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    font-family: var(--font-sans);
+    color: var(--text-primary);
+    background-color: #ffffff;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  ::selection {
+    background-color: rgba(153, 207, 98, 0.35);
+    color: var(--surface-dark);
+  }
+
+  img,
+  video {
+    max-width: 100%;
+    display: block;
+  }
+
+  a {
+    color: inherit;
+    text-decoration-thickness: 1px;
+    text-decoration-color: rgba(153, 207, 98, 0.6);
+  }
+
+  button,
+  input,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+    background: transparent;
+  }
+}
+
+@layer components {
+  .section-wrapper {
+    width: 100%;
+    max-width: var(--max-content-width);
+    margin-inline: auto;
+    padding-inline: var(--spacing-inline, 1rem);
+  }
+
+  .section-padding {
+    padding-block: var(--section-padding, 5rem);
+  }
+
+  .glass-panel {
+    border-radius: var(--radius-panel);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    box-shadow: 0 32px 80px -40px rgba(1, 2, 5, 0.45);
+  }
+
+  .pill-button {
+    @apply inline-flex items-center gap-3 rounded-pill px-8 py-3 text-sm font-semibold transition-transform duration-300 ease-soft-spring;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+
+  .noise-surface {
+    background-image: radial-gradient(
+        circle at 10% 20%,
+        rgba(255, 255, 255, 0.08),
+        transparent 60%
+      ),
+      url("/photos/cazarini.jpg");
+    background-size: cover;
+    background-position: center;
+  }
+}
