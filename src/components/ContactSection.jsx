@@ -2,35 +2,40 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useTranslation } from "../hooks/useTranslation";
 
-const contactSchema = z.object({
-  name: z.string().min(3, "Please enter your full name"),
-  company: z.string().min(2, "Please enter your company/farm name"),
-  email: z.string().email("Please enter a valid email"),
-  phone: z.string().min(10, "Please enter a valid phone number"),
+// Schema will be created inside component to access translations
+const getContactSchema = (t) => z.object({
+  name: z.string().min(3, t("contact.errorName")),
+  company: z.string().min(2, t("contact.errorCompany")),
+  email: z.string().email(t("contact.errorEmail")),
+  phone: z.string().min(10, t("contact.errorPhone")),
   buyerType: z.enum(
     ["individual", "cooperative", "company", "trader", "exporter"],
     {
-      required_error: "Please select buyer type",
+      required_error: t("contact.errorBuyerType"),
     }
   ),
   volume: z.enum(["1-50", "51-100", "101-500", "501-1000", "1000+"], {
-    required_error: "Please select volume",
+    required_error: t("contact.errorVolume"),
   }),
   unit: z.enum(["bags", "containers"], {
-    required_error: "Please select unit",
+    required_error: t("contact.errorUnit"),
   }),
-  coffeeType: z.array(z.string()).min(1, "Select at least one coffee type"),
+  coffeeType: z.array(z.string()).min(1, t("contact.errorCoffeeType")),
   frequency: z.enum(["monthly", "quarterly", "biannual", "annual", "spot"], {
-    required_error: "Please select purchase frequency",
+    required_error: t("contact.errorFrequency"),
   }),
-  message: z.string().min(20, "Please provide more details about your needs"),
+  message: z.string().min(20, t("contact.errorMessage")),
 });
 
 export default function ContactSection() {
+  const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
 
+  const contactSchema = getContactSchema(t);
+  
   const form = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
@@ -100,7 +105,7 @@ export default function ContactSection() {
           <div className="w-full overflow-hidden rounded-[32px] bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 px-8 py-12 shadow-[0_18px_45px_rgba(1,2,5,0.14)] sm:px-12 lg:px-16 lg:py-16">
             <div className="flex flex-col items-center justify-between gap-8 text-center lg:flex-row lg:text-left">
               <h2 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.02em] text-white sm:text-4xl lg:text-[2.5rem]">
-                Ready to work with us?
+                {t("contact.ready")}
               </h2>
             </div>
           </div>
@@ -120,9 +125,9 @@ export default function ContactSection() {
               <div className="absolute inset-0 bg-gradient-to-t from-brand-900/40 via-transparent to-transparent" />
 
               <div className="absolute bottom-8 left-8 right-8 text-white">
-                <h3 className="text-2xl font-semibold mb-2">Connect with us</h3>
+                <h3 className="text-2xl font-semibold mb-2">{t("contact.connectTitle")}</h3>
                 <p className="text-white/90">
-                  Quality coffee specialists for the global market
+                  {t("contact.connectSubtitle")}
                 </p>
               </div>
             </div>
@@ -133,16 +138,16 @@ export default function ContactSection() {
             >
               <div className="mb-2">
                 <h3 className="text-2xl font-semibold text-brand-900 mb-2">
-                  Request a Quote
+                  {t("contact.formTitle")}
                 </h3>
                 <p className="text-sm text-gray-600">
-                  Fill in the details below and our team will contact you
+                  {t("contact.formDescription")}
                 </p>
               </div>
 
               {submitStatus === "success" && (
                 <div className="rounded-lg bg-green-50 border border-green-200 p-4 text-sm text-green-800">
-                  ✓ Message sent successfully! We will contact you soon.
+                  ✓ {t("contact.successMessage")}
                 </div>
               )}
 
@@ -159,14 +164,14 @@ export default function ContactSection() {
                       htmlFor="name"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Full Name *
+                      {t("contact.name")} {t("contact.required")}
                     </label>
                     <input
                       id="name"
                       type="text"
                       {...form.register("name")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                      placeholder="Your name"
+                      placeholder={t("contact.namePlaceholder")}
                     />
                     {form.formState.errors.name && (
                       <p className="mt-1.5 text-xs text-red-500">
@@ -180,14 +185,14 @@ export default function ContactSection() {
                       htmlFor="company"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Company / Farm *
+                      {t("contact.company")} {t("contact.required")}
                     </label>
                     <input
                       id="company"
                       type="text"
                       {...form.register("company")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                      placeholder="Company name"
+                      placeholder={t("contact.companyPlaceholder")}
                     />
                     {form.formState.errors.company && (
                       <p className="mt-1.5 text-xs text-red-500">
@@ -203,14 +208,14 @@ export default function ContactSection() {
                       htmlFor="email"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Email *
+                      {t("contact.email")} {t("contact.required")}
                     </label>
                     <input
                       id="email"
                       type="email"
                       {...form.register("email")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                      placeholder="your@email.com"
+                      placeholder={t("contact.emailPlaceholder")}
                     />
                     {form.formState.errors.email && (
                       <p className="mt-1.5 text-xs text-red-500">
@@ -224,14 +229,14 @@ export default function ContactSection() {
                       htmlFor="phone"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Phone / WhatsApp *
+                      {t("contact.phone")} {t("contact.required")}
                     </label>
                     <input
                       id="phone"
                       type="tel"
                       {...form.register("phone")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                      placeholder="+55 (11) 99999-9999"
+                      placeholder={t("contact.phonePlaceholder")}
                     />
                     {form.formState.errors.phone && (
                       <p className="mt-1.5 text-xs text-red-500">
@@ -246,19 +251,19 @@ export default function ContactSection() {
                     htmlFor="buyerType"
                     className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    Buyer Type *
+                    {t("contact.buyerType")} {t("contact.required")}
                   </label>
                   <select
                     id="buyerType"
                     {...form.register("buyerType")}
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
                   >
-                    <option value="">Select...</option>
-                    <option value="individual">Individual</option>
-                    <option value="cooperative">Cooperative</option>
-                    <option value="company">Company / Roastery</option>
-                    <option value="trader">Trading Company</option>
-                    <option value="exporter">Exporter</option>
+                    <option value="">{t("contact.selectPlaceholder")}</option>
+                    <option value="individual">{t("contact.buyerIndividual")}</option>
+                    <option value="cooperative">{t("contact.buyerCooperative")}</option>
+                    <option value="company">{t("contact.buyerCompany")}</option>
+                    <option value="trader">{t("contact.buyerTrader")}</option>
+                    <option value="exporter">{t("contact.buyerExporter")}</option>
                   </select>
                   {form.formState.errors.buyerType && (
                     <p className="mt-1.5 text-xs text-red-500">
@@ -273,14 +278,14 @@ export default function ContactSection() {
                       htmlFor="volume"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Approximate Volume *
+                      {t("contact.volume")} {t("contact.required")}
                     </label>
                     <select
                       id="volume"
                       {...form.register("volume")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
                     >
-                      <option value="">Select...</option>
+                      <option value="">{t("contact.selectPlaceholder")}</option>
                       <option value="1-50">1 - 50</option>
                       <option value="51-100">51 - 100</option>
                       <option value="101-500">101 - 500</option>
@@ -299,15 +304,15 @@ export default function ContactSection() {
                       htmlFor="unit"
                       className="block text-sm font-medium text-brand-900 mb-2"
                     >
-                      Unit *
+                      {t("contact.unit")} {t("contact.required")}
                     </label>
                     <select
                       id="unit"
                       {...form.register("unit")}
                       className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
                     >
-                      <option value="bags">Bags (60kg)</option>
-                      <option value="containers">Containers</option>
+                      <option value="bags">{t("contact.unitBags")}</option>
+                      <option value="containers">{t("contact.unitContainers")}</option>
                     </select>
                     {form.formState.errors.unit && (
                       <p className="mt-1.5 text-xs text-red-500">
@@ -319,14 +324,14 @@ export default function ContactSection() {
 
                 <div>
                   <label className="block text-sm font-medium text-brand-900 mb-3">
-                    Coffee Type of Interest *
+                    {t("contact.coffeeType")} {t("contact.required")}
                   </label>
                   <div className="grid grid-cols-2 gap-3">
                     {[
-                      { id: "arabica", label: "Arabica" },
-                      { id: "robusta", label: "Robusta / Conilon" },
-                      { id: "specialty", label: "Specialty (80+)" },
-                      { id: "organic", label: "Organic" },
+                      { id: "arabica", label: t("contact.coffeeArabica") },
+                      { id: "robusta", label: t("contact.coffeeRobusta") },
+                      { id: "specialty", label: t("contact.coffeeSpecialty") },
+                      { id: "organic", label: t("contact.coffeeOrganic") },
                     ].map((type) => (
                       <label
                         key={type.id}
@@ -356,19 +361,19 @@ export default function ContactSection() {
                     htmlFor="frequency"
                     className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    Purchase Frequency *
+                    {t("contact.frequency")} {t("contact.required")}
                   </label>
                   <select
                     id="frequency"
                     {...form.register("frequency")}
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
                   >
-                    <option value="">Select...</option>
-                    <option value="monthly">Monthly</option>
-                    <option value="quarterly">Quarterly</option>
-                    <option value="biannual">Biannual</option>
-                    <option value="annual">Annual</option>
-                    <option value="spot">Spot (one-time purchase)</option>
+                    <option value="">{t("contact.selectPlaceholder")}</option>
+                    <option value="monthly">{t("contact.freqMonthly")}</option>
+                    <option value="quarterly">{t("contact.freqQuarterly")}</option>
+                    <option value="biannual">{t("contact.freqBiannual")}</option>
+                    <option value="annual">{t("contact.freqAnnual")}</option>
+                    <option value="spot">{t("contact.freqSpot")}</option>
                   </select>
                   {form.formState.errors.frequency && (
                     <p className="mt-1.5 text-xs text-red-500">
@@ -382,14 +387,14 @@ export default function ContactSection() {
                     htmlFor="message"
                     className="block text-sm font-medium text-brand-900 mb-2"
                   >
-                    Additional Details *
+                    {t("contact.message")} {t("contact.required")}
                   </label>
                   <textarea
                     id="message"
                     rows={4}
                     {...form.register("message")}
                     className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                    placeholder="Tell us more about your needs, technical specifications, delivery destination, etc..."
+                    placeholder={t("contact.messagePlaceholder")}
                   />
                   {form.formState.errors.message && (
                     <p className="mt-1.5 text-xs text-red-500">
@@ -404,11 +409,11 @@ export default function ContactSection() {
                 className="w-full justify-center rounded-xl bg-brand-900 py-3.5 px-6 font-medium text-white transition-all hover:bg-brand-950 hover:shadow-lg disabled:opacity-60 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
-                {isSubmitting ? "Sending..." : "Submit Request"}
+                {isSubmitting ? t("contact.submitting") : t("contact.submit")}
               </button>
 
               <p className="text-xs text-center text-gray-500">
-                By submitting, you agree to be contacted by our sales team
+                {t("contact.agreement")}
               </p>
             </form>
           </div>
