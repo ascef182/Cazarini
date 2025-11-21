@@ -15,7 +15,11 @@
     "subtitleSecond": "from farm to roastery",
     "ctaSchedule": "Schedule Call",
     "ctaVarieties": "View Varieties",
-    "trusted": "Trusted by the world's biggest brands"
+    "trusted": "Trusted by the world's biggest brands",
+    "companiesTrust": "some big companies that we work with, and deeply trust us",
+    "drivingTrade": "Driving Global Coffee Trade",
+    "exportingPremium": "Exporting Premium-",
+    "exportingGrade": "Grade Coffee Worldwide"
   },
   "stats": {
     "title": "Provide the best service a reference in coffee trading",
@@ -42,42 +46,82 @@
     "next": "Next"
   },
   "testimonials": {
-    "quote1": "I am pleased to recommend Thiago Cazarini, a standout expert in the Brazilian coffee market. His deep knowledge and insights have made a significant impact on the industry, and his willingness to share information sets him apart as a true thought leader. Thiago's popular weekly report is a testament to his expertise, providing valuable analysis and updates that are highly regarded by professionals across the market",
-    "name1": "Dave Behrends",
-    "title1": "Managing Partner and Head of Trading",
-    "quote2": "Working with Cazarini Trading has transformed our procurement strategy. Their market intelligence and transparent pricing have helped us secure better contracts and build stronger relationships with producers.",
-    "name2": "Ana Luiza Ferreira",
-    "title2": "Head de Trading · Origens do Brasil",
-    "quote3": "The sustainability reporting and regulatory support accelerated our entry into new premium markets in Europe and Asia. Cazarini's expertise is unmatched.",
-    "name3": "Claire Dubois",
-    "title3": "VP Procurement · Lumière Roasters (FR)"
+    "title": "Testimonials from industry-leading clients",
+    "description": "Our clients highlight our expertise, transparency, and dedication to delivering exceptional results. Their testimonials reflect our commitment to excellence.",
+    "items": [
+      {
+        "quote": "I am pleased to recommend Thiago Cazarini, a standout expert in the Brazilian coffee market. His deep knowledge and insights have made a significant impact on the industry, and his willingness to share information sets him apart as a true thought leader. Thiago's popular weekly report is a testament to his expertise, providing valuable analysis and updates that are highly regarded by professionals across the market.",
+        "name": "Dave Behrends",
+        "title": "Managing Partner and Head of Trading"
+      },
+      {
+        "quote": "Thiago, is a reliable and insightful commodities broker who not only handles transactions but also provides valuable market information, he has a very good reading of Brazilian Coffee Market, he brings a deep understanding of market dynamics to his current role as a broker. Thiago is not just focused on brokerage fees; he is dedicated to offering clients comprehensive market insights that help inform their trading decisions. His disciplined approach, honed through a commitment to sports, ensures he remains focused and strategic, providing clients with both expert advice and exceptional service.",
+        "name": "Carlos Santana Jr",
+        "title": "Commercial Director of Ecom Group (Brazil)"
+      },
+      {
+        "quote": "Thiago Cazarini is a brilliant green coffee broker in Brazil. His deep knowledge of the market and continuous sharing of important information is always very useful.",
+        "name": "Felipe Feijó",
+        "title": "Country Manager - Starbucks Farmer Support Center Brazil"
+      }
+    ]
   },
   "faq": {
-    "title": "FAQs",
-    "description": "As a leading coffee marketing, we are dedicated to providing comprehensive educational resources and answering frequently asked questions to help our clients.",
+    "title": "Frequently Asked Questions",
+    "titleShort": "FAQs",
+    "description": "Learn more about our brokerage services, market expertise, and how we support your coffee business success.",
     "moreQuestions": "More Questions",
     "contactUs": "Contact Us",
-    "q1": "What does a Coffee Broker actually do?",
-    "a1": "A coffee broker connects coffee producers, exporters, and buyers to facilitate transparent, efficient, and secure transactions. By acting as intermediaries, brokers help negotiate contracts, ensure quality standards, and manage logistics. They act as intermediaries to secure the best prices and reduce operational risks.",
-    "q2": "How can working with a Coffee Broker benefit my coffee business?",
-    "a2": "Working with a coffee broker provides access to a wider network of buyers and sellers, expert market intelligence, and streamlined contract negotiation. Brokers help you secure better pricing, reduce risk, and save time by handling complex logistics and documentation.",
-    "q3": "What factors influence coffee prices in the global market?",
-    "a3": "Coffee prices are influenced by supply and demand dynamics, weather conditions affecting harvests, currency fluctuations, geopolitical events, and commodity market trends. Brokers monitor these factors to provide clients with timely insights and strategic advice.",
-    "q4": "What is the difference between a Coffee Broker and a Coffee Trader?",
-    "a4": "A coffee broker facilitates transactions between buyers and sellers without taking ownership of the coffee, earning a commission. A coffee trader, on the other hand, buys and sells coffee on their own account, taking on inventory risk and aiming to profit from price movements."
+    "items": [
+      {
+        "question": "What does a Coffee Broker actually do?",
+        "answer": "A coffee broker connects coffee producers, exporters, and buyers to facilitate transparent, efficient, and secure transactions. By acting as intermediaries, brokers help negotiate contracts, ensure quality standards, and manage logistics. They act as intermediaries to secure the best prices and reduce operational risks."
+      },
+      {
+        "question": "How can working with a Coffee Broker benefit my coffee business?",
+        "answer": "Working with a coffee broker provides access to a wider network of buyers and sellers, expert market intelligence, and streamlined contract negotiation. Brokers help you secure better pricing, reduce risk, and save time by handling complex logistics and documentation."
+      },
+      {
+        "question": "What factors influence coffee prices in the global market?",
+        "answer": "Coffee prices are influenced by supply and demand dynamics, weather conditions affecting harvests, currency fluctuations, geopolitical events, and commodity market trends. Brokers monitor these factors to provide clients with timely insights and strategic advice."
+      },
+      {
+        "question": "What is the difference between a Coffee Broker and a Coffee Trader?",
+        "answer": "A coffee broker facilitates transactions between buyers and sellers without taking ownership of the coffee, earning a commission. A coffee trader, on the other hand, buys and sells coffee on their own account, taking on inventory risk and aiming to profit from price movements."
+      }
+    ]
   },
   "services": {
     "title": "Coffee Brokerage & Market Insights That Drive Growth & Profitability",
     "description": "We are a leading coffee brokerage firm connecting producers, exporters, and buyers worldwide. Our mission is to help clients navigate global markets, optimize pricing, and strengthen their coffee trade strategy.",
     "seeMore": "See more",
-    "read1": "5 min read",
-    "title1": "How a Coffee Broker Can Boost Your Business",
-    "desc1": "We connect your coffee directly with trusted buyers and exporters, ensuring fast pricing, approvals, and execution.",
-    "title2": "The Latest Market Trends in Global Coffee Trading",
-    "desc2": "From specialty coffee demand to climate impacts on harvest, we analyze the key drivers shaping today's global coffee trade.",
-    "title3": "Maximizing Profitability with the Right Coffee Brokerage Partner",
-    "desc3": "Discover how strategic brokerage partnerships provide leverage, market intelligence, and negotiation power to drive better margins.",
-    "trustedBy": "Trusted by"
+    "trustedBy": "Trusted by",
+    "articles": [
+      {
+        "id": 1,
+        "accent": "bg-accent-blue",
+        "meta": "5 min read",
+        "title": "How a Coffee Broker Can Boost Your Business",
+        "description": "We connect your coffee directly with trusted buyers and exporters, ensuring fast pricing, approvals, and execution.",
+        "image": "/photos/experimento-cafe.jpg"
+      },
+      {
+        "id": 2,
+        "accent": "bg-accent-orange",
+        "meta": "5 min read",
+        "title": "The Latest Market Trends in Global Coffee Trading",
+        "description": "From specialty coffee demand to climate impacts on harvest, we analyze the key drivers shaping today's global coffee trade.",
+        "image": "/photos/seca-do-cafe.jpg"
+      },
+      {
+        "id": 3,
+        "accent": "bg-accent-purple",
+        "meta": "5 min read",
+        "title": "Maximizing Profitability with the Right Coffee Brokerage Partner",
+        "description": "Discover how strategic brokerage partnerships provide leverage, market intelligence, and negotiation power to drive better margins.",
+        "image": "/photos/ciclo-cafe.jpg"
+      }
+    ]
   },
   "contact": {
     "ready": "Ready to work with us?",

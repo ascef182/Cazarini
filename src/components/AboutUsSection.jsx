@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
+import { useTranslation } from "../hooks/useTranslation";
 
 const filterButtons = [
   { id: "all", label: "All" },
@@ -154,6 +155,7 @@ export const AboutUsSection = () => {
     left: false,
     right: false,
   });
+  const { t } = useTranslation();
 
   const filteredVarieties = useMemo(() => {
     if (activeFilter === "all") return varietyGallery;
@@ -214,11 +216,10 @@ export const AboutUsSection = () => {
         {/* Título */}
         <div className="max-w-3xl space-y-5">
           <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl lg:text-[2.5rem]">
-            Our Coffee Varieties Portfolio
+            {t("varieties.title")}
           </h2>
           <p className="text-white/70 text-lg">
-            Explore our selection of Brazilian and Colombia coffees, carefully
-            sourced and graded to meet international standards.
+            {t("varieties.description")}
           </p>
         </div>
 
@@ -248,8 +249,8 @@ export const AboutUsSection = () => {
 
         {/* Contador de resultados */}
         <div className="text-white/60 text-sm">
-          Showing {filteredVarieties.length}{" "}
-          {filteredVarieties.length === 1 ? "variety" : "varieties"}
+          {t("varieties.showing")} {filteredVarieties.length}{" "}
+          {filteredVarieties.length === 1 ? t("varieties.variety") : t("varieties.varieties")}
         </div>
       </div>
 
@@ -307,22 +308,22 @@ export const AboutUsSection = () => {
       {/* Botões de navegação */}
       <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 mt-6">
         <div className="flex gap-4 justify-center sm:justify-start">
-          <button
-            type="button"
-            aria-label="Previous"
-            onClick={() => scrollCarousel("prev")}
-            className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
-          >
-            ← Previous
-          </button>
-          <button
-            type="button"
-            aria-label="Next"
-            onClick={() => scrollCarousel("next")}
-            className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
-          >
-            Next →
-          </button>
+            <button
+              type="button"
+              aria-label="Previous"
+              onClick={() => scrollCarousel("prev")}
+              className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
+            >
+              ← {t("varieties.previous")}
+            </button>
+            <button
+              type="button"
+              aria-label="Next"
+              onClick={() => scrollCarousel("next")}
+              className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
+            >
+              {t("varieties.next")} →
+            </button>
         </div>
       </div>
 

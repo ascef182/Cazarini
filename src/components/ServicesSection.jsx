@@ -1,35 +1,6 @@
 import React from "react";
 import { useGsapFadeIn } from "../hooks/useGsapFadeIn";
-
-const articles = [
-  {
-    id: 1,
-    accent: "bg-accent-blue",
-    meta: "5 min read",
-    title: "How a Coffee Broker Can Boost Your Business",
-    description:
-      "We connect your coffee directly with trusted buyers and exporters, ensuring fast pricing, approvals, and execution.",
-    image: "/photos/experimento-cafe.jpg",
-  },
-  {
-    id: 2,
-    accent: "bg-accent-orange",
-    meta: "5 min read",
-    title: "The Latest Market Trends in Global Coffee Trading",
-    description:
-      "From specialty coffee demand to climate impacts on harvest, we analyze the key drivers shaping today's global coffee trade.",
-    image: "/photos/seca-do-cafe.jpg",
-  },
-  {
-    id: 3,
-    accent: "bg-accent-purple",
-    meta: "5 min read",
-    title: "Maximizing Profitability with the Right Coffee Brokerage Partner",
-    description:
-      "Discover how strategic brokerage partnerships provide leverage, market intelligence, and negotiation power to drive better margins.",
-    image: "/photos/ciclo-cafe.jpg",
-  },
-];
+import { useTranslation } from "../hooks/useTranslation";
 
 const trustedLogos = [
   { src: "/photos/bloomberg.png", alt: "Bloomberg" },
@@ -40,7 +11,10 @@ const trustedLogos = [
 ];
 
 export const ServicesSection = () => {
+  const { t } = useTranslation();
   useGsapFadeIn("[data-service-card]", { stagger: 0.1 });
+  
+  const articles = t("services.articles");
 
   return (
     <section id="servicos" className="bg-white py-20 lg:py-28">
@@ -48,19 +22,15 @@ export const ServicesSection = () => {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.4fr)] lg:items-end">
           <div className="space-y-4">
             <h2 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.25rem]">
-              Coffee Brokerage & Market Insights That Drive Growth &
-              Profitability
+              {t("services.title")}
             </h2>
             <p className="max-w-xl text-base text-gray-500">
-              We are a leading coffee brokerage firm connecting producers,
-              exporters, and buyers worldwide. Our mission is to help clients
-              navigate global markets, optimize pricing, and strengthen their
-              coffee trade strategy.
+              {t("services.description")}
             </p>
           </div>
           <div className="flex justify-start lg:justify-end">
             <button className="pill-button rounded-pill border border-brand-900 bg-white text-brand-900 hover:bg-brand-900 hover:text-white">
-              See more
+              {t("services.seeMore")}
             </button>
           </div>
         </div>
@@ -117,7 +87,7 @@ export const ServicesSection = () => {
         <div className="mt-8 space-y-6">
           <div className="flex items-center justify-center">
             <p className="text-xs font-medium uppercase tracking-[0.35em] text-gray-500">
-              Trusted by
+              {t("services.trustedBy")}
             </p>
           </div>
           <div className="flex flex-wrap items-center justify-center gap-8">

@@ -1,14 +1,17 @@
 import React, { useEffect, useRef, useState } from "react";
+import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 
-const navItems = [
-  { label: "About", href: "#sobre-nos" },
-  { label: "Varieties", href: "#variedades" },
-  { label: "Blog", href: "#servicos" },
-  { label: "Location", href: "#faq" },
-  { label: "Contact", href: "#contato" },
+// Dynamic nav items that change based on language
+const getNavItems = (lang) => [
+  { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
+  { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
+  { label: "Blog", href: "/blog", type: "link" },
+  { label: lang === "pt" ? "Localização" : "Location", href: "/#faq", type: "anchor" },
+  { label: lang === "pt" ? "Contato" : "Contact", href: "/#contato", type: "anchor" },
 ];
 
 const trustedLogos = [
@@ -28,8 +31,14 @@ export const HeroSection = () => {
   const heroRef = useRef(null);
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, isPortuguese } = useLanguage();
   const currentLanguage = language === "pt-br" ? "pt" : "en";
+  const lang = isPortuguese ? "pt" : "en";
+  const location = useLocation();
+  const navItems = getNavItems(lang);
+  
+  // Import translation hook
+  const { t } = useTranslation();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -130,24 +139,34 @@ export const HeroSection = () => {
           className="border-brand-50/60 sticky top-3 z-20 flex items-center justify-between gap-4 rounded-pill border bg-white/90 px-4 py-2.5 shadow-sm shadow-brand-900/5 backdrop-blur sm:px-5"
         >
           <div className="flex items-center gap-6">
-            <a href="#top" className="flex items-center gap-2">
+            <Link to="/" className="flex items-center gap-2">
               <img
                 src="/photos/Logomarca-Cazarini-12.09.13.svg"
                 alt="Cazarini logo"
                 className="h-12 w-auto rounded-sm object-contain"
               />
               <span className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-900"></span>
-            </a>
+            </Link>
 
             <nav className="hidden items-center gap-6 text-sm font-semibold text-brand-900 md:flex">
-              {navItems.map((item) => (
-                <a
-                  key={item.label}
-                  href={item.href}
-                  className="transition-colors hover:text-accent-green"
-                >
-                  {item.label}
-                </a>
+              {navItems.map((item, idx) => (
+                item.type === "link" ? (
+                  <Link
+                    key={`nav-${idx}-${item.label}`}
+                    to={item.href}
+                    className="transition-colors hover:text-accent-green"
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={`nav-${idx}-${item.label}`}
+                    href={location.pathname === "/" ? item.href : `/${item.href}`}
+                    className="transition-colors hover:text-accent-green"
+                  >
+                    {item.label}
+                  </a>
+                )
               ))}
             </nav>
           </div>
@@ -255,15 +274,26 @@ export const HeroSection = () => {
           {isMobileNavOpen && (
             <div className="absolute inset-x-0 top-full mt-3 rounded-3xl border border-gray-100 bg-white px-4 py-4 text-sm shadow-lg shadow-brand-900/10 md:hidden">
               <nav className="flex flex-col gap-3 text-brand-900">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="py-1"
-                    onClick={() => setIsMobileNavOpen(false)}
-                  >
-                    {item.label}
-                  </a>
+                {navItems.map((item, idx) => (
+                  item.type === "link" ? (
+                    <Link
+                      key={`mobile-${idx}-${item.label}`}
+                      to={item.href}
+                      className="py-1"
+                      onClick={() => setIsMobileNavOpen(false)}
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <a
+                      key={`mobile-${idx}-${item.label}`}
+                      href={location.pathname === "/" ? item.href : `/${item.href}`}
+                      className="py-1"
+                      onClick={() => setIsMobileNavOpen(false)}
+                    >
+                      {item.label}
+                    </a>
+                  )
                 ))}
               </nav>
               <div className="mt-4 flex flex-col gap-3">
@@ -321,22 +351,21 @@ export const HeroSection = () => {
                 data-hero="eyebrow"
                 className="text-sm font-semibold uppercase tracking-[0.3em] text-gray-500"
               >
-                Coffee Trading Company • since 2009
+                {t("hero.tagline")}
               </p>
               <h1
                 data-hero="title"
                 className="text-balance text-4xl font-semibold leading-[1.05] tracking-[-0.04em] text-brand-900 sm:text-5xl lg:text-[3.25rem]"
               >
-                Round the clock
+                {t("hero.title")}
                 <br />
-                <span className="text-accent-green">Coffee brokers</span>
+                <span className="text-accent-green">{t("hero.titleHighlight")}</span>
               </h1>
               <p
                 data-hero="subtitle"
                 className="max-w-xl text-lg text-gray-500"
               >
-                Helping coffee beans travel the world — <br /> from farm to
-                roastery
+                {t("hero.subtitle")} <br /> {t("hero.subtitleSecond")}
               </p>
             </div>
 
@@ -345,14 +374,14 @@ export const HeroSection = () => {
               className="flex flex-wrap items-center gap-6 text-sm font-semibold"
             >
               <button className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
-                Schedule Call <span aria-hidden>&rarr;</span>
+                {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
               </button>
               <a
                 href="#variedades"
                 className="group relative flex items-center gap-2 text-brand-900"
               >
                 <span className="relative">
-                  View Varieties
+                  {t("hero.ctaVarieties")}
                   <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent-green transition-all duration-300 ease-out group-hover:w-full" />
                 </span>
               </a>
@@ -360,7 +389,7 @@ export const HeroSection = () => {
 
             <div className="mt-8 flex flex-col gap-4">
               <p className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500">
-                Trusted by the world&apos;s biggest brands
+                {t("hero.trusted")}
               </p>
               <div className="flex flex-wrap items-center gap-6 lg:gap-8">
                 {trustedLogos.map((logo) => (
@@ -382,11 +411,11 @@ export const HeroSection = () => {
             className="relative mt-8 min-h-[850px] lg:mt-0 lg:h-[540px] lg:min-h-0 lg:ml-20"
           >
             {/* Figure 1 - Ship Image (transparent background) */}
-            <div className="absolute left-0 top-0 h-[275px] w-full lg:h-[281px] lg:w-[303px]">
+            <div className="absolute left-0 top-0 z-10 h-[273px] w-full lg:h-[281px] lg:w-[303px]">
               <img
                 src="/photos/trend.png"
                 alt="Coffee container ship"
-                className="h-full w-full rounded-[32px] object-cover object-right"
+                className="h-full w-full rounded-[32px] object-cover object-top"
                 loading="lazy"
               />
             </div>
@@ -402,7 +431,7 @@ export const HeroSection = () => {
                 </span>
               </p>
               <p className="mt-3 text-sm leading-relaxed text-gray-500">
-                some big companies that we work with, and deeply trust us
+                {t("hero.companiesTrust")}
               </p>
               <div className="mt-5 h-2 rounded-full bg-gray-100">
                 <div className="h-full w-3/4 rounded-full bg-brand-900" />
@@ -422,10 +451,10 @@ export const HeroSection = () => {
                 {/* Text side */}
                 <div className="flex-1">
                   <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/60">
-                    Driving Global Coffee Trade
+                    {t("hero.drivingTrade")}
                   </p>
                   <p className="mt-3 text-lg font-semibold leading-snug lg:text-xl">
-                    Exporting Premium- <br /> Grade Coffee Worldwide
+                    {t("hero.exportingPremium")} <br /> {t("hero.exportingGrade")}
                   </p>
                 </div>
                 {/* Chart side */}

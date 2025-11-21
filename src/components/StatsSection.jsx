@@ -1,11 +1,13 @@
 import React, { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "../hooks/useTranslation";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const StatsSection = () => {
   const statsRef = useRef(null);
+  const { t } = useTranslation();
 
   useEffect(() => {
     const root = statsRef.current;
@@ -56,18 +58,15 @@ export const StatsSection = () => {
       ref={statsRef}
       className="relative overflow-hidden bg-white py-12 lg:py-16"
     >
-      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
-        <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-          <h2 className="text-balance text-4xl font-semibold leading-tight tracking-[-0.02em] text-brand-900 sm:text-5xl lg:text-[3rem]">
-            Provide the best service a reference in coffee trading
-          </h2>
-          <p className="text-sm leading-relaxed text-gray-500">
-            Cazarini Trading Company excels in risk management, international
-            sales, and domestic procurement, maintaining a meticulous focus on
-            every detail until contract fulfillment—always minimizing risk and
-            proactively addressing any challenges that may arise.
-          </p>
-        </div>
+        <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
+          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
+            <h2 className="text-balance text-4xl font-semibold leading-tight tracking-[-0.02em] text-brand-900 sm:text-5xl lg:text-[3rem]">
+              {t("stats.title")}
+            </h2>
+            <p className="text-sm leading-relaxed text-gray-500">
+              {t("stats.description")}
+            </p>
+          </div>
 
         <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 lg:flex-row lg:h-[320px]">
           {/* ---------- CARD 1 - 920+ ---------- */}
@@ -89,7 +88,7 @@ export const StatsSection = () => {
                 </span>
               </h2>
               <p className="text-white/70 text-base">
-                Bags delivered with success
+                {t("stats.bagsDelivered")}
               </p>
             </div>
 
@@ -123,7 +122,7 @@ export const StatsSection = () => {
             {/* título central */}
             <div className="absolute inset-0 flex items-center justify-center px-6">
               <h3 className="text-center text-3xl font-semibold tracking-[0.2em] text-white">
-                WHO WE ARE
+                {t("stats.whoWeAre")}
               </h3>
             </div>
 

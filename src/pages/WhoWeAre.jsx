@@ -1,5 +1,8 @@
 import React from "react";
 import { useLanguage } from "../context/LanguageContext";
+import { BackButton } from "../components/BackButton";
+import { SEO } from "../components/SEO";
+import { Footer } from "../components/Footer";
 
 export const WhoWeAre = () => {
   const { isPortuguese } = useLanguage();
@@ -12,7 +15,8 @@ export const WhoWeAre = () => {
       },
       pt: {
         title: "Quem Somos",
-        subtitle: "Conectando Produtores de Café aos Mercados Globais Desde 2009",
+        subtitle:
+          "Conectando Produtores de Café aos Mercados Globais Desde 2009",
       },
     },
     mission: {
@@ -183,7 +187,8 @@ export const WhoWeAre = () => {
       },
       pt: {
         title: "Pronto para Trabalhar Juntos?",
-        subtitle: "Vamos discutir como podemos ajudar seu negócio de café a prosperar",
+        subtitle:
+          "Vamos discutir como podemos ajudar seu negócio de café a prosperar",
         button: "Entre em Contato",
       },
     },
@@ -192,191 +197,215 @@ export const WhoWeAre = () => {
   const lang = isPortuguese ? "pt" : "en";
 
   return (
-    <div className="bg-white">
-      {/* Hero Section */}
-      <section className="bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 py-20 lg:py-32">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-          <div className="text-center text-white">
-            <h1 className="text-balance text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]">
-              {content.hero[lang].title}
-            </h1>
-            <p className="mt-6 text-xl text-white/80">
-              {content.hero[lang].subtitle}
-            </p>
-          </div>
-        </div>
-      </section>
+    <>
+      <SEO
+        title={
+          lang === "en"
+            ? "Who We Are - Cazarini Coffee Trading"
+            : "Quem Somos - Cazarini Trading de Café"
+        }
+        description={
+          lang === "en"
+            ? "Learn about Cazarini Trading Company - connecting coffee producers to global markets since 2009. Our mission, vision, and commitment to quality coffee trading."
+            : "Conheça a Cazarini Trading Company - conectando produtores de café aos mercados globais desde 2009. Nossa missão, visão e compromisso com o trading de café de qualidade."
+        }
+        keywords={
+          lang === "en"
+            ? "coffee broker, coffee trading company, brazilian coffee, Thiago Cazarini, coffee brokerage"
+            : "corretor café, empresa trading café, café brasileiro, Thiago Cazarini, corretagem café"
+        }
+      />
 
-      {/* Mission, Vision, Values */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-          <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
-            {/* Mission */}
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold text-brand-900">
-                {content.mission[lang].title}
-              </h2>
-              <p className="text-lg leading-relaxed text-gray-600">
-                {content.mission[lang].text}
-              </p>
+      <div className="bg-white">
+        {/* Hero Section */}
+        <section className="relative bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 py-16 lg:py-24">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div className="mb-8">
+              <BackButton />
             </div>
-
-            {/* Vision */}
-            <div className="space-y-4">
-              <h2 className="text-3xl font-semibold text-brand-900">
-                {content.vision[lang].title}
-              </h2>
-              <p className="text-lg leading-relaxed text-gray-600">
-                {content.vision[lang].text}
+            <div className="text-center text-white">
+              <h1 className="text-balance text-4xl font-semibold leading-tight tracking-[-0.02em] sm:text-5xl lg:text-[3.5rem]">
+                {content.hero[lang].title}
+              </h1>
+              <p className="mt-6 text-xl text-white/80">
+                {content.hero[lang].subtitle}
               </p>
             </div>
           </div>
+        </section>
 
-          {/* Values */}
-          <div className="mt-20">
-            <h2 className="mb-12 text-center text-3xl font-semibold text-brand-900">
-              {content.values[lang].title}
-            </h2>
-            <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
-              {content.values[lang].items.map((value, index) => (
-                <div
-                  key={index}
-                  className="rounded-[24px] border border-gray-100 bg-white p-6 shadow-sm transition hover:shadow-md"
-                >
-                  <h3 className="mb-3 text-xl font-semibold text-brand-900">
-                    {value.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-gray-600">
-                    {value.text}
-                  </p>
-                </div>
-              ))}
+        {/* Mission, Vision, Values */}
+        <section className="py-20 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div className="grid gap-12 lg:grid-cols-2 lg:gap-16">
+              {/* Mission */}
+              <div className="space-y-4">
+                <h2 className="text-3xl font-semibold text-brand-900">
+                  {content.mission[lang].title}
+                </h2>
+                <p className="text-lg leading-relaxed text-gray-600">
+                  {content.mission[lang].text}
+                </p>
+              </div>
+
+              {/* Vision */}
+              <div className="space-y-4">
+                <h2 className="text-3xl font-semibold text-brand-900">
+                  {content.vision[lang].title}
+                </h2>
+                <p className="text-lg leading-relaxed text-gray-600">
+                  {content.vision[lang].text}
+                </p>
+              </div>
             </div>
-          </div>
-        </div>
-      </section>
 
-      {/* Timeline */}
-      <section className="bg-gray-50 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-          <h2 className="mb-16 text-center text-3xl font-semibold text-brand-900">
-            {content.timeline[lang].title}
-          </h2>
-          <div className="relative">
-            {/* Timeline line */}
-            <div className="absolute left-8 top-0 h-full w-0.5 bg-accent-green lg:left-1/2" />
-
-            {/* Timeline events */}
-            <div className="space-y-12">
-              {content.timeline[lang].events.map((event, index) => (
-                <div
-                  key={index}
-                  className={`relative flex gap-8 ${
-                    index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                  }`}
-                >
-                  {/* Year badge */}
-                  <div className="absolute left-0 flex h-16 w-16 items-center justify-center rounded-full bg-accent-green text-lg font-bold text-brand-900 shadow-lg lg:left-1/2 lg:-translate-x-1/2">
-                    {event.year}
-                  </div>
-
-                  {/* Content */}
+            {/* Values */}
+            <div className="mt-20">
+              <h2 className="mb-12 text-center text-3xl font-semibold text-brand-900">
+                {content.values[lang].title}
+              </h2>
+              <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
+                {content.values[lang].items.map((value, index) => (
                   <div
-                    className={`ml-24 flex-1 lg:ml-0 ${
-                      index % 2 === 0 ? "lg:pr-24 lg:text-right" : "lg:pl-24"
+                    key={index}
+                    className="rounded-[24px] border border-gray-100 bg-white p-6 shadow-sm transition hover:shadow-md"
+                  >
+                    <h3 className="mb-3 text-xl font-semibold text-brand-900">
+                      {value.title}
+                    </h3>
+                    <p className="text-sm leading-relaxed text-gray-600">
+                      {value.text}
+                    </p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* Timeline */}
+        <section className="bg-gray-50 py-20 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <h2 className="mb-16 text-center text-3xl font-semibold text-brand-900">
+              {content.timeline[lang].title}
+            </h2>
+            <div className="relative">
+              {/* Timeline line */}
+              <div className="absolute left-8 top-0 h-full w-0.5 bg-accent-green lg:left-1/2" />
+
+              {/* Timeline events */}
+              <div className="space-y-12">
+                {content.timeline[lang].events.map((event, index) => (
+                  <div
+                    key={index}
+                    className={`relative flex gap-8 ${
+                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
                     }`}
                   >
-                    <div className="rounded-[24px] border border-gray-200 bg-white p-6 shadow-sm">
-                      <h3 className="mb-2 text-xl font-semibold text-brand-900">
-                        {event.title}
-                      </h3>
-                      <p className="text-sm leading-relaxed text-gray-600">
-                        {event.text}
-                      </p>
+                    {/* Year badge */}
+                    <div className="absolute left-0 flex h-16 w-16 items-center justify-center rounded-full bg-accent-green text-lg font-bold text-brand-900 shadow-lg lg:left-1/2 lg:-translate-x-1/2">
+                      {event.year}
+                    </div>
+
+                    {/* Content */}
+                    <div
+                      className={`ml-24 flex-1 lg:ml-0 ${
+                        index % 2 === 0 ? "lg:pr-24 lg:text-right" : "lg:pl-24"
+                      }`}
+                    >
+                      <div className="rounded-[24px] border border-gray-200 bg-white p-6 shadow-sm">
+                        <h3 className="mb-2 text-xl font-semibold text-brand-900">
+                          {event.title}
+                        </h3>
+                        <p className="text-sm leading-relaxed text-gray-600">
+                          {event.text}
+                        </p>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Team/Leadership */}
-      <section className="py-20 lg:py-28">
-        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-          <h2 className="mb-16 text-center text-3xl font-semibold text-brand-900">
-            {content.team[lang].title}
-          </h2>
-          <div className="mx-auto max-w-4xl">
-            <div className="overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-lg">
-              <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
-                {/* Photo */}
-                <div className="relative h-[400px] lg:h-auto">
-                  <img
-                    src="/photos/thiago-cafe.jpg"
-                    alt={content.team[lang].name}
-                    className="h-full w-full object-cover"
-                  />
-                </div>
+        {/* Team/Leadership */}
+        <section className="py-20 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <h2 className="mb-16 text-center text-3xl font-semibold text-brand-900">
+              {content.team[lang].title}
+            </h2>
+            <div className="mx-auto max-w-4xl">
+              <div className="overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-lg">
+                <div className="grid gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.5fr)]">
+                  {/* Photo */}
+                  <div className="relative h-[400px] lg:h-auto">
+                    <img
+                      src="/photos/thiago-conteiner.jfif"
+                      alt={content.team[lang].name}
+                      className="h-full w-full object-cover"
+                    />
+                  </div>
 
-                {/* Info */}
-                <div className="flex flex-col justify-center p-8 lg:p-12">
-                  <h3 className="text-2xl font-semibold text-brand-900">
-                    {content.team[lang].name}
-                  </h3>
-                  <p className="mt-2 text-lg text-accent-green">
-                    {content.team[lang].role}
-                  </p>
-                  <p className="mt-6 leading-relaxed text-gray-600">
-                    {content.team[lang].bio}
-                  </p>
-                  <div className="mt-6 flex gap-3">
-                    <a
-                      href="https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
-                      aria-label="LinkedIn"
-                    >
-                      <svg
-                        className="h-5 w-5"
-                        fill="currentColor"
-                        viewBox="0 0 24 24"
+                  {/* Info */}
+                  <div className="flex flex-col justify-center p-8 lg:p-12">
+                    <h3 className="text-2xl font-semibold text-brand-900">
+                      {content.team[lang].name}
+                    </h3>
+                    <p className="mt-2 text-lg text-accent-green">
+                      {content.team[lang].role}
+                    </p>
+                    <p className="mt-6 leading-relaxed text-gray-600">
+                      {content.team[lang].bio}
+                    </p>
+                    <div className="mt-6 flex gap-3">
+                      <a
+                        href="https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="flex h-10 w-10 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
+                        aria-label="LinkedIn"
                       >
-                        <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
-                      </svg>
-                    </a>
+                        <svg
+                          className="h-5 w-5"
+                          fill="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path d="M4.98 3.5c0 1.381-1.11 2.5-2.48 2.5s-2.48-1.119-2.48-2.5c0-1.38 1.11-2.5 2.48-2.5s2.48 1.12 2.48 2.5zm.02 4.5h-5v16h5v-16zm7.982 0h-4.968v16h4.969v-8.399c0-4.67 6.029-5.052 6.029 0v8.399h4.988v-10.131c0-7.88-8.922-7.593-11.018-3.714v-2.155z" />
+                        </svg>
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* CTA Section */}
-      <section className="bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 py-20 lg:py-28">
-        <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-10">
-          <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-[2.5rem]">
-            {content.cta[lang].title}
-          </h2>
-          <p className="mt-4 text-lg text-white/80">
-            {content.cta[lang].subtitle}
-          </p>
-          <div className="mt-8">
-            <a
-              href="/#contato"
-              className="inline-flex items-center gap-3 rounded-pill bg-white px-8 py-3 text-sm font-semibold text-brand-900 transition hover:bg-gray-50"
-            >
-              {content.cta[lang].button}
-            </a>
+        {/* CTA Section */}
+        <section className="bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 py-20 lg:py-28">
+          <div className="mx-auto max-w-[1440px] px-4 text-center sm:px-6 lg:px-10">
+            <h2 className="text-balance text-3xl font-semibold leading-tight text-white sm:text-4xl lg:text-[2.5rem]">
+              {content.cta[lang].title}
+            </h2>
+            <p className="mt-4 text-lg text-white/80">
+              {content.cta[lang].subtitle}
+            </p>
+            <div className="mt-8">
+              <a
+                href="/#contato"
+                className="inline-flex items-center gap-3 rounded-pill bg-white px-8 py-3 text-sm font-semibold text-brand-900 transition hover:bg-gray-50"
+              >
+                {content.cta[lang].button}
+              </a>
+            </div>
           </div>
-        </div>
-      </section>
-    </div>
+        </section>
+
+        <Footer />
+      </div>
+    </>
   );
 };
 
 export default WhoWeAre;
-

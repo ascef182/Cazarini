@@ -1,6 +1,9 @@
 import React from "react";
+import { useTranslation } from "../hooks/useTranslation";
 
 export const Footer = () => {
+  const { t } = useTranslation();
+
   return (
     <footer className="bg-white py-12 lg:py-16">
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
@@ -14,9 +17,7 @@ export const Footer = () => {
               />
             </div>
             <p className="text-sm leading-relaxed text-gray-500">
-              Since 2009 we have been providing our clients with our expertise,
-              sourcing top quality coffee, ensuring trusted services and
-              reliable information.
+              {t("footer.description")}
             </p>
             <div className="flex gap-3">
               <a
@@ -70,32 +71,32 @@ export const Footer = () => {
           <div className="grid gap-8 sm:grid-cols-3">
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-brand-900">
-                Navigation
+                {t("footer.navigation")}
               </h3>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li>
-                  <a href="#" className="hover:text-brand-900">
-                    About
+                  <a href="/#sobre-nos" className="hover:text-brand-900">
+                    {t("footer.about")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
-                    Varieties
+                  <a href="/#variedades" className="hover:text-brand-900">
+                    {t("footer.varieties")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
-                    Services
+                  <a href="/#servicos" className="hover:text-brand-900">
+                    {t("footer.services")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
-                    Location
+                  <a href="/#faq" className="hover:text-brand-900">
+                    {t("footer.location")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
-                    Contact
+                  <a href="/#contato" className="hover:text-brand-900">
+                    {t("footer.contact")}
                   </a>
                 </li>
               </ul>
@@ -103,22 +104,22 @@ export const Footer = () => {
 
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-brand-900">
-                Licence
+                {t("footer.licence")}
               </h3>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li>
                   <a href="#" className="hover:text-brand-900">
-                    Privacy Policy
+                    {t("footer.privacyPolicy")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-brand-900">
-                    Copyright
+                    {t("footer.copyright")}
                   </a>
                 </li>
                 <li>
                   <a href="#" className="hover:text-brand-900">
-                    Email Policy
+                    {t("footer.emailPolicy")}
                   </a>
                 </li>
               </ul>
@@ -126,7 +127,7 @@ export const Footer = () => {
 
             <div>
               <h3 className="mb-4 text-sm font-semibold uppercase tracking-[0.3em] text-brand-900">
-                Contact
+                {t("footer.contactTitle")}
               </h3>
               <ul className="space-y-3 text-sm text-gray-500">
                 <li className="flex items-start gap-2">
@@ -143,8 +144,8 @@ export const Footer = () => {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <a href="tel:+5535984160810" className="hover:text-brand-900">
-                    +55 35 98416-0810
+                  <a href="tel:+553532128552" className="hover:text-brand-900">
+                    (35) 3212-8552
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
@@ -202,8 +203,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-gray-200 pt-8 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} Cazarini Trading Company. All rights
-          reserved.
+          © {new Date().getFullYear()} {t("footer.rights")}
         </div>
       </div>
     </footer>

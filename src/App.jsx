@@ -1,26 +1,25 @@
 import React from "react";
-
-import { AboutUsSection } from "./components/AboutUsSection";
-import ContactSection from "./components/ContactSection";
-import { FaqSection } from "./components/FaqSection";
-import { HeroSection } from "./components/HeroSection";
-import { ServicesSection } from "./components/ServicesSection";
-import { StatsSection } from "./components/StatsSection";
-import { TestimonialsSection } from "./components/TestimonialsSection";
-import { Footer } from "./components/Footer";
+import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
+import Home from "./pages/Home";
+import WhoWeAre from "./pages/WhoWeAre";
+import Varieties from "./pages/Varieties";
+import Blog from "./pages/Blog";
 
 export const CoffeTrading = () => {
   return (
-    <div data-color-mode="SDS-light" className="flex w-full flex-col bg-white">
-      <HeroSection />
-      <StatsSection />
-      <AboutUsSection />
-      <TestimonialsSection />
-      <FaqSection />
-      <ServicesSection />
-      <ContactSection />
-      <Footer />
-    </div>
+    <Router>
+      <div data-color-mode="SDS-light" className="flex w-full flex-col bg-white">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/who-we-are" element={<WhoWeAre />} />
+          <Route path="/quem-somos" element={<WhoWeAre />} />
+          <Route path="/varieties" element={<Varieties />} />
+          <Route path="/variedades" element={<Varieties />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="*" element={<Navigate to="/" replace />} />
+        </Routes>
+      </div>
+    </Router>
   );
 };
 
