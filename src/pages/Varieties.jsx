@@ -19,22 +19,22 @@ const filterButtons = [
 
 const varietyGallery = [
   { id: 1, category: "fine-cup", title: "NY 2/3 SEMI WASHED 17/18", type: "FINE CUP", region: { en: "Semi Washed • Screen 17/18", pt: "Semi Lavado • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
-  { id: 2, category: "fine-cup", title: "NY 2/3 SEMI WASHED 14/16", type: "FINE CUP", region: { en: "Semi Washed • Screen 14/16", pt: "Semi Lavado • Peneira 14/16" }, image: "/photos/cafe-cazarini.jpg" },
-  { id: 3, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 17/18", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 17/18", pt: "Natural • Cerrado/Mogiana • Peneira 17/18" }, image: "/photos/cafes-cazarini.jpg" },
-  { id: 4, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 14/16", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 14/16", pt: "Natural • Cerrado/Mogiana • Peneira 14/16" }, image: "/photos/thiago-cafe.jpg" },
-  { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/experimento-cafe.jpg" },
+  { id: 2, category: "fine-cup", title: "NY 2/3 SEMI WASHED 14/16", type: "FINE CUP", region: { en: "Semi Washed • Screen 14/16", pt: "Semi Lavado • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
+  { id: 3, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 17/18", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 17/18", pt: "Natural • Cerrado/Mogiana • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
+  { id: 4, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 14/16", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 14/16", pt: "Natural • Cerrado/Mogiana • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
+  { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
   { id: 6, category: "fine-cup", title: "NATURAL NY 2/3 14/16", type: "FINE CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
-  { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: { en: "Natural Peaberries • Screen 9/10/11", pt: "Peaberries Natural • Peneira 9/10/11" }, image: "/photos/cafe-cazarini.jpg" },
-  { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/cafes-cazarini.jpg" },
+  { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: { en: "Natural Peaberries • Screen 9/10/11", pt: "Peaberries Natural • Peneira 9/10/11" }, image: "/photos/grade-cafe.jpg" },
+  { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/thiago-cafe.jpg" },
   { id: 9, category: "good-cup", title: "NATURAL NY 3/4 14/16", type: "GOOD CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/thiago-cafe.jpg" },
-  { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 13UP", pt: "Natural Grinders • Peneira 13UP" }, image: "/photos/experimento-cafe.jpg" },
-  { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 12UP", pt: "Natural Grinders • Peneira 12UP" }, image: "/photos/grade-cafe.jpg" },
+  { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 13UP", pt: "Natural Grinders • Peneira 13UP" }, image: "/photos/thiago-cafe.jpg" },
+  { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 12UP", pt: "Natural Grinders • Peneira 12UP" }, image: "/photos/thiago-cafe.jpg" },
   { id: 12, category: "rio-minas", title: "RIO MINAS 17/18", type: "RIO MINAS", region: { en: "Traditional • Screen 17/18", pt: "Tradicional • Peneira 17/18" }, image: "/photos/cafe-cazarini.jpg" },
-  { id: 13, category: "rio-minas", title: "RIO MINAS 15/16", type: "RIO MINAS", region: { en: "Traditional • Screen 15/16", pt: "Tradicional • Peneira 15/16" }, image: "/photos/cafes-cazarini.jpg" },
-  { id: 14, category: "rio-minas", title: "RIO MINAS 14/16", type: "RIO MINAS", region: { en: "Traditional • Screen 14/16", pt: "Tradicional • Peneira 14/16" }, image: "/photos/thiago-cafe.jpg" },
+  { id: 13, category: "rio-minas", title: "RIO MINAS 15/16", type: "RIO MINAS", region: { en: "Traditional • Screen 15/16", pt: "Tradicional • Peneira 15/16" }, image: "/photos/cafe-cazarini.jpg" },
+  { id: 14, category: "rio-minas", title: "RIO MINAS 14/16", type: "RIO MINAS", region: { en: "Traditional • Screen 14/16", pt: "Tradicional • Peneira 14/16" }, image: "/photos/cafe-cazarini.jpg" },
   { id: 15, category: "conilon", title: "CONILON 13UP", type: "CONILON", region: { en: "Robusta • Screen 13UP", pt: "Robusta • Peneira 13UP" }, image: "/photos/experimento-cafe.jpg" },
-  { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: { en: "Robusta • Screen 14UP", pt: "Robusta • Peneira 14UP" }, image: "/photos/grade-cafe.jpg" },
-  { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: { en: "Robusta • Screen 16UP", pt: "Robusta • Peneira 16UP" }, image: "/photos/cafe-cazarini.jpg" },
+  { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: { en: "Robusta • Screen 14UP", pt: "Robusta • Peneira 14UP" }, image: "/photos/experimento-cafe.jpg" },
+  { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: { en: "Robusta • Screen 16UP", pt: "Robusta • Peneira 16UP" }, image: "/photos/experimento-cafe.jpg" },
 ];
 
 const categoryDescriptions = {
@@ -205,6 +205,24 @@ export const Varieties = () => {
         });
       });
 
+      // Chart values
+      const chartValues = pageRef.current.querySelectorAll("[data-chart-value]");
+      chartValues.forEach((val, index) => {
+        const target = Number(val.getAttribute("data-target"));
+        if (Number.isNaN(target)) return;
+        const state = { value: 0 };
+        gsap.to(state, {
+          value: target,
+          duration: 1.0,
+          delay: 0.2 + (0.15 * index),
+          ease: "power2.out",
+          scrollTrigger: { trigger: val, start: "top 90%", once: true },
+          onUpdate: () => {
+            val.textContent = Math.round(state.value);
+          },
+        });
+      });
+
       // CTA
       gsap.from("[data-animate='cta']", {
         y: 40,
@@ -300,7 +318,7 @@ export const Varieties = () => {
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
-              src="/photos/cafes-cazarini.jpg"
+              src="/photos/Different Ways to Process Coffee and Why It Matters.jfif"
               alt="Premium Brazilian Coffee"
               className="w-full h-full object-cover"
             />
@@ -359,14 +377,14 @@ export const Varieties = () => {
                   </div>
                   <div className="mt-6 grid grid-cols-4 gap-3">
                     {[7, 4, 3, 3].map((count, i) => (
-                      <div key={i} className="text-center">
+                      <div key={i} className="text-center flex flex-col justify-end h-full">
                         <div
-                          className="mx-auto w-full rounded-t-lg bg-accent-green"
+                          className="mx-auto w-full rounded-t-lg bg-accent-green mb-2"
                           data-chart-bar
                           data-height={`${20 + count * 10}px`}
                           style={{ height: 0 }}
                         />
-                        <p className="text-xs text-white/40 mt-2">{count}</p>
+                        <p className="text-xs text-white/60 font-medium" data-chart-value data-target={count}>0</p>
                       </div>
                     ))}
                   </div>

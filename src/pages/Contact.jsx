@@ -183,7 +183,7 @@ export const Contact = () => {
         title: "Send us a message",
         name: "Full Name",
         namePh: "John Doe",
-        company: "Company Name",
+        company: "Company / Farm Name",
         companyPh: "Your Coffee Company",
         email: "Work Email",
         emailPh: "john@company.com",
@@ -200,24 +200,39 @@ export const Contact = () => {
         unit: "Unit",
         bags: "Bags (60kg)",
         containers: "Containers",
-        coffeeType: "Coffee Type",
+        coffeeType: "Coffee Types Produced",
         arabica: "Arabica",
         robusta: "Robusta/Conilon",
         specialty: "Specialty",
         organic: "Organic",
         message: "Message",
         messagePh: "How can we help you with your coffee trading needs?",
+        messageBuyerPh: "Tell us about your sourcing needs, preferred origins, and quality specifications...",
+        messageProducerPh: "Tell us about your farm, production capacity, and what makes your coffee unique...",
         submit: "Send Message",
         submitting: "Sending...",
         success: "Message sent successfully! We'll be in touch soon.",
-        agreement:
-          "By submitting, you agree to our privacy policy and terms of service.",
+        agreement: "By submitting, you agree to our privacy policy and terms of service.",
+        // Producer-specific labels
+        region: "Growing Region",
+        regionPh: "e.g. Cerrado Mineiro, Mogiana",
+        farmSize: "Farm Size",
+        small: "Small (up to 20 ha)",
+        medium: "Medium (20–100 ha)",
+        large: "Large (100+ ha)",
+        cooperativeSize: "Cooperative",
+        annualProduction: "Annual Production (bags 60kg)",
+        certifications: "Certifications",
+        utzcert: "UTZ / Rainforest",
+        fairtrade: "Fair Trade",
+        fourC: "4C",
+        sca: "SCA 80+",
       },
       pt: {
         title: "Envie uma mensagem",
         name: "Nome Completo",
         namePh: "João Silva",
-        company: "Nome da Empresa",
+        company: "Empresa / Fazenda",
         companyPh: "Sua Empresa de Café",
         email: "Email Profissional",
         emailPh: "joao@empresa.com",
@@ -234,20 +249,33 @@ export const Contact = () => {
         unit: "Unidade",
         bags: "Sacas (60kg)",
         containers: "Containers",
-        coffeeType: "Tipo de Café",
+        coffeeType: "Tipos de Café Produzidos",
         arabica: "Arábica",
         robusta: "Robusta/Conilon",
         specialty: "Especial",
         organic: "Orgânico",
         message: "Mensagem",
-        messagePh:
-          "Como podemos ajudá-lo com suas necessidades de comércio de café?",
+        messagePh: "Como podemos ajudá-lo com suas necessidades de comércio de café?",
+        messageBuyerPh: "Conte-nos sobre suas necessidades de sourcing, origens preferidas e especificações de qualidade...",
+        messageProducerPh: "Conte-nos sobre sua fazenda, capacidade produtiva e o que torna seu café especial...",
         submit: "Enviar Mensagem",
         submitting: "Enviando...",
-        success:
-          "Mensagem enviada com sucesso! Entraremos em contato em breve.",
-        agreement:
-          "Ao enviar, você concorda com nossa política de privacidade e termos de serviço.",
+        success: "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+        agreement: "Ao enviar, você concorda com nossa política de privacidade e termos de serviço.",
+        // Producer-specific labels
+        region: "Região de Cultivo",
+        regionPh: "ex. Cerrado Mineiro, Mogiana",
+        farmSize: "Tamanho da Propriedade",
+        small: "Pequena (até 20 ha)",
+        medium: "Média (20–100 ha)",
+        large: "Grande (100+ ha)",
+        cooperativeSize: "Cooperativa",
+        annualProduction: "Produção Anual (sacas 60kg)",
+        certifications: "Certificações",
+        utzcert: "UTZ / Rainforest",
+        fairtrade: "Fair Trade",
+        fourC: "4C",
+        sca: "SCA 80+",
       },
     },
     info: {
@@ -499,104 +527,236 @@ export const Contact = () => {
                   </div>
                 </div>
 
-                {/* Organization Type */}
-                <div className="space-y-2">
-                  <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-                    {f.buyerType}
-                  </label>
-                  <select
-                    {...form.register("buyerType")}
-                    className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
-                  >
-                    <option value="">{f.selectPh}</option>
-                    <option value="individual">{f.individual}</option>
-                    <option value="cooperative">{f.cooperative}</option>
-                    <option value="company">{f.companyType}</option>
-                    <option value="trader">{f.trader}</option>
-                    <option value="exporter">{f.exporter}</option>
-                  </select>
-                  {form.formState.errors.buyerType && (
-                    <p className="text-xs text-red-500">
-                      {form.formState.errors.buyerType.message}
-                    </p>
-                  )}
-                </div>
-
-                {/* Volume + Unit */}
-                <div className="grid grid-cols-[1.5fr_1fr] gap-6">
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-                      {f.volume}
-                    </label>
-                    <select
-                      {...form.register("volume")}
-                      className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
-                    >
-                      <option value="">{f.selectPh}</option>
-                      <option value="1-50">1 - 50</option>
-                      <option value="51-100">51 - 100</option>
-                      <option value="101-500">101 - 500</option>
-                      <option value="501-1000">501 - 1,000</option>
-                      <option value="1000+">1,000+</option>
-                    </select>
-                    {form.formState.errors.volume && (
-                      <p className="text-xs text-red-500">
-                        {form.formState.errors.volume.message}
-                      </p>
-                    )}
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-                      {f.unit}
-                    </label>
-                    <select
-                      {...form.register("unit")}
-                      className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
-                    >
-                      <option value="bags">{f.bags}</option>
-                      <option value="containers">{f.containers}</option>
-                    </select>
-                  </div>
-                </div>
-
-                {/* Coffee Type */}
-                <div className="space-y-3">
-                  <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
-                    {f.coffeeType}
-                  </label>
-                  <div className="grid grid-cols-2 gap-3">
-                    {[
-                      { id: "arabica", label: f.arabica },
-                      { id: "robusta", label: f.robusta },
-                      { id: "specialty", label: f.specialty },
-                      { id: "organic", label: f.organic },
-                    ].map((type) => (
-                      <label
-                        key={type.id}
-                        className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                          form.watch("coffeeType").includes(type.id)
-                            ? "border-accent-green bg-accent-green/5"
-                            : "border-gray-200 hover:border-gray-300"
-                        }`}
-                      >
-                        <input
-                          type="checkbox"
-                          checked={form.watch("coffeeType").includes(type.id)}
-                          onChange={() => toggleCoffeeType(type.id)}
-                          className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
-                        />
-                        <span className="text-sm text-gray-700">
-                          {type.label}
-                        </span>
+                {/* ── BUYER-SPECIFIC FIELDS ── */}
+                {selectedRole === "buyer" && (
+                  <>
+                    {/* Organization Type */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.buyerType}
                       </label>
-                    ))}
-                  </div>
-                  {form.formState.errors.coffeeType && (
-                    <p className="text-xs text-red-500">
-                      {form.formState.errors.coffeeType.message}
-                    </p>
-                  )}
-                </div>
+                      <select
+                        {...form.register("buyerType")}
+                        className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                      >
+                        <option value="">{f.selectPh}</option>
+                        <option value="individual">{f.individual}</option>
+                        <option value="cooperative">{f.cooperative}</option>
+                        <option value="company">{f.companyType}</option>
+                        <option value="trader">{f.trader}</option>
+                        <option value="exporter">{f.exporter}</option>
+                      </select>
+                      {form.formState.errors.buyerType && (
+                        <p className="text-xs text-red-500">{form.formState.errors.buyerType.message}</p>
+                      )}
+                    </div>
+
+                    {/* Volume + Unit */}
+                    <div className="grid grid-cols-[1.5fr_1fr] gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                          {f.volume}
+                        </label>
+                        <select
+                          {...form.register("volume")}
+                          className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                        >
+                          <option value="">{f.selectPh}</option>
+                          <option value="1-50">1 - 50</option>
+                          <option value="51-100">51 - 100</option>
+                          <option value="101-500">101 - 500</option>
+                          <option value="501-1000">501 - 1,000</option>
+                          <option value="1000+">1,000+</option>
+                        </select>
+                        {form.formState.errors.volume && (
+                          <p className="text-xs text-red-500">{form.formState.errors.volume.message}</p>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                          {f.unit}
+                        </label>
+                        <select
+                          {...form.register("unit")}
+                          className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                        >
+                          <option value="bags">{f.bags}</option>
+                          <option value="containers">{f.containers}</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    {/* Coffee Type */}
+                    <div className="space-y-3">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.coffeeType}
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { id: "arabica", label: f.arabica },
+                          { id: "robusta", label: f.robusta },
+                          { id: "specialty", label: f.specialty },
+                          { id: "organic", label: f.organic },
+                        ].map((type) => (
+                          <label
+                            key={type.id}
+                            className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                              form.watch("coffeeType").includes(type.id)
+                                ? "border-accent-green bg-accent-green/5"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={form.watch("coffeeType").includes(type.id)}
+                              onChange={() => toggleCoffeeType(type.id)}
+                              className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
+                            />
+                            <span className="text-sm text-gray-700">{type.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      {form.formState.errors.coffeeType && (
+                        <p className="text-xs text-red-500">{form.formState.errors.coffeeType.message}</p>
+                      )}
+                    </div>
+                  </>
+                )}
+
+                {/* ── PRODUCER-SPECIFIC FIELDS ── */}
+                {selectedRole === "producer" && (
+                  <>
+                    {/* Region */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.region}
+                      </label>
+                      <input
+                        type="text"
+                        {...form.register("region")}
+                        className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                        placeholder={f.regionPh}
+                      />
+                      {form.formState.errors.region && (
+                        <p className="text-xs text-red-500">{form.formState.errors.region.message}</p>
+                      )}
+                    </div>
+
+                    {/* Farm Size + Annual Production */}
+                    <div className="grid md:grid-cols-2 gap-6">
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                          {f.farmSize}
+                        </label>
+                        <select
+                          {...form.register("farmSize")}
+                          className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                        >
+                          <option value="">{f.selectPh}</option>
+                          <option value="small">{f.small}</option>
+                          <option value="medium">{f.medium}</option>
+                          <option value="large">{f.large}</option>
+                          <option value="cooperative">{f.cooperativeSize}</option>
+                        </select>
+                        {form.formState.errors.farmSize && (
+                          <p className="text-xs text-red-500">{form.formState.errors.farmSize.message}</p>
+                        )}
+                      </div>
+                      <div className="space-y-2">
+                        <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                          {f.annualProduction}
+                        </label>
+                        <select
+                          {...form.register("annualProduction")}
+                          className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                        >
+                          <option value="">{f.selectPh}</option>
+                          <option value="1-100">1 - 100</option>
+                          <option value="101-500">101 - 500</option>
+                          <option value="501-2000">501 - 2,000</option>
+                          <option value="2000+">2,000+</option>
+                        </select>
+                        {form.formState.errors.annualProduction && (
+                          <p className="text-xs text-red-500">{form.formState.errors.annualProduction.message}</p>
+                        )}
+                      </div>
+                    </div>
+
+                    {/* Coffee Types Produced */}
+                    <div className="space-y-3">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.coffeeType}
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { id: "arabica", label: f.arabica },
+                          { id: "robusta", label: f.robusta },
+                          { id: "specialty", label: f.specialty },
+                          { id: "organic", label: f.organic },
+                        ].map((type) => (
+                          <label
+                            key={type.id}
+                            className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                              form.watch("coffeeType").includes(type.id)
+                                ? "border-accent-green bg-accent-green/5"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={form.watch("coffeeType").includes(type.id)}
+                              onChange={() => toggleCoffeeType(type.id)}
+                              className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
+                            />
+                            <span className="text-sm text-gray-700">{type.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                      {form.formState.errors.coffeeType && (
+                        <p className="text-xs text-red-500">{form.formState.errors.coffeeType.message}</p>
+                      )}
+                    </div>
+
+                    {/* Certifications */}
+                    <div className="space-y-3">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.certifications}
+                      </label>
+                      <div className="grid grid-cols-2 gap-3">
+                        {[
+                          { id: "utz", label: f.utzcert },
+                          { id: "fairtrade", label: f.fairtrade },
+                          { id: "4c", label: f.fourC },
+                          { id: "sca80", label: f.sca },
+                        ].map((cert) => (
+                          <label
+                            key={cert.id}
+                            className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
+                              (form.watch("certifications") || []).includes(cert.id)
+                                ? "border-accent-green bg-accent-green/5"
+                                : "border-gray-200 hover:border-gray-300"
+                            }`}
+                          >
+                            <input
+                              type="checkbox"
+                              checked={(form.watch("certifications") || []).includes(cert.id)}
+                              onChange={() => {
+                                const current = form.watch("certifications") || [];
+                                if (current.includes(cert.id)) {
+                                  form.setValue("certifications", current.filter((c) => c !== cert.id));
+                                } else {
+                                  form.setValue("certifications", [...current, cert.id]);
+                                }
+                              }}
+                              className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
+                            />
+                            <span className="text-sm text-gray-700">{cert.label}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </div>
+                  </>
+                )}
 
                 {/* Message */}
                 <div className="space-y-2">
@@ -607,7 +767,7 @@ export const Contact = () => {
                     rows={4}
                     {...form.register("message")}
                     className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none resize-none text-sm"
-                    placeholder={f.messagePh}
+                    placeholder={selectedRole === "producer" ? f.messageProducerPh : selectedRole === "buyer" ? f.messageBuyerPh : f.messagePh}
                   />
                   {form.formState.errors.message && (
                     <p className="text-xs text-red-500">

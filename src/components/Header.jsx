@@ -121,7 +121,7 @@ export const Header = ({ variant = "light" }) => {
                   className="h-5 w-5 object-cover"
                 />
               ) : (
-                <img src="/photos/American-flag.png" alt="English" className="h-5 w-5 object-cover" />
+                  <img src="/photos/usa.png" alt="English" className="h-4 w-4 rounded-full object-cover" />
               )}
             </span>
             <span className="uppercase tracking-[0.12em]">
@@ -233,7 +233,7 @@ export const Header = ({ variant = "light" }) => {
                       className="h-5 w-5 object-cover"
                     />
                   ) : (
-                    <img src="/photos/American-flag.png" alt="English" className="h-5 w-5 object-cover" />
+                      <img src="/photos/us-flag.png" alt="English" className="h-4 w-4 rounded-full object-cover" />
                   )}
                 </span>
                 <span className="uppercase tracking-[0.12em]">

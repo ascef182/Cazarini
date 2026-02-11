@@ -3,42 +3,58 @@ import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useTranslation } from "../hooks/useTranslation";
+import { ShoppingCart, Wheat } from "lucide-react";
 
-// Schema will be created inside component to access translations
-const getContactSchema = (t) => z.object({
-  name: z.string().min(3, t("contact.errorName")),
-  company: z.string().min(2, t("contact.errorCompany")),
-  email: z.string().email(t("contact.errorEmail")),
-  phone: z.string().min(10, t("contact.errorPhone")),
-  buyerType: z.enum(
-    ["individual", "cooperative", "company", "trader", "exporter"],
-    {
+const getContactSchema = (t, role) => {
+  const base = {
+    role: z.enum(["buyer", "producer"]).optional(),
+    name: z.string().min(3, t("contact.errorName")),
+    company: z.string().min(2, t("contact.errorCompany")),
+    email: z.string().email(t("contact.errorEmail")),
+    phone: z.string().min(10, t("contact.errorPhone")),
+    coffeeType: z.array(z.string()).min(1, t("contact.errorCoffeeType")),
+    message: z.string().min(20, t("contact.errorMessage")),
+  };
+
+  if (role === "producer") {
+    return z.object({
+      ...base,
+      region: z.string().min(2, t("contact.errorCompany")),
+      annualProduction: z.enum(["1-100", "101-500", "501-2000", "2000+"], {
+        required_error: t("contact.errorVolume"),
+      }),
+    });
+  }
+
+  return z.object({
+    ...base,
+    buyerType: z.enum(["individual", "cooperative", "company", "trader", "exporter"], {
       required_error: t("contact.errorBuyerType"),
-    }
-  ),
-  volume: z.enum(["1-50", "51-100", "101-500", "501-1000", "1000+"], {
-    required_error: t("contact.errorVolume"),
-  }),
-  unit: z.enum(["bags", "containers"], {
-    required_error: t("contact.errorUnit"),
-  }),
-  coffeeType: z.array(z.string()).min(1, t("contact.errorCoffeeType")),
-  frequency: z.enum(["monthly", "quarterly", "biannual", "annual", "spot"], {
-    required_error: t("contact.errorFrequency"),
-  }),
-  message: z.string().min(20, t("contact.errorMessage")),
-});
+    }),
+    volume: z.enum(["1-50", "51-100", "101-500", "501-1000", "1000+"], {
+      required_error: t("contact.errorVolume"),
+    }),
+    unit: z.enum(["bags", "containers"], {
+      required_error: t("contact.errorUnit"),
+    }),
+    frequency: z.enum(["monthly", "quarterly", "biannual", "annual", "spot"], {
+      required_error: t("contact.errorFrequency"),
+    }),
+  });
+};
 
 export default function ContactSection() {
   const { t } = useTranslation();
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
+  const [activeRole, setActiveRole] = useState("buyer");
 
-  const contactSchema = getContactSchema(t);
-  
+  const contactSchema = getContactSchema(t, activeRole);
+
   const form = useForm({
     resolver: zodResolver(contactSchema),
     defaultValues: {
+      role: "buyer",
       name: "",
       company: "",
       email: "",
@@ -48,9 +64,22 @@ export default function ContactSection() {
       unit: "bags",
       coffeeType: [],
       frequency: undefined,
+      region: "",
+      annualProduction: undefined,
       message: "",
     },
   });
+
+  const handleRoleSwitch = (role) => {
+    setActiveRole(role);
+    form.setValue("role", role);
+    form.setValue("buyerType", undefined);
+    form.setValue("volume", undefined);
+    form.setValue("coffeeType", []);
+    form.setValue("region", "");
+    form.setValue("annualProduction", undefined);
+    form.setValue("frequency", undefined);
+  };
 
   const onSubmit = async (data) => {
     setIsSubmitting(true);
@@ -143,6 +172,34 @@ export default function ContactSection() {
                 <p className="text-sm text-gray-600">
                   {t("contact.formDescription")}
                 </p>
+              </div>
+
+              {/* Role Selector */}
+              <div className="flex rounded-xl border border-gray-200 overflow-hidden">
+                <button
+                  type="button"
+                  onClick={() => handleRoleSwitch("buyer")}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-all ${
+                    activeRole === "buyer"
+                      ? "bg-brand-900 text-white"
+                      : "bg-white text-gray-500 hover:bg-gray-50"
+                  }`}
+                >
+                  <ShoppingCart className="w-4 h-4" />
+                  {t("contact.buyerLabel") || "Buyer"}
+                </button>
+                <button
+                  type="button"
+                  onClick={() => handleRoleSwitch("producer")}
+                  className={`flex-1 flex items-center justify-center gap-2 py-3 text-sm font-semibold transition-all ${
+                    activeRole === "producer"
+                      ? "bg-brand-900 text-white"
+                      : "bg-white text-gray-500 hover:bg-gray-50"
+                  }`}
+                >
+                  <Wheat className="w-4 h-4" />
+                  {t("contact.producerLabel") || "Producer"}
+                </button>
               </div>
 
               {submitStatus === "success" && (
@@ -246,82 +303,131 @@ export default function ContactSection() {
                   </div>
                 </div>
 
-                <div>
-                  <label
-                    htmlFor="buyerType"
-                    className="block text-sm font-medium text-brand-900 mb-2"
-                  >
-                    {t("contact.buyerType")} {t("contact.required")}
-                  </label>
-                  <select
-                    id="buyerType"
-                    {...form.register("buyerType")}
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                  >
-                    <option value="">{t("contact.selectPlaceholder")}</option>
-                    <option value="individual">{t("contact.buyerIndividual")}</option>
-                    <option value="cooperative">{t("contact.buyerCooperative")}</option>
-                    <option value="company">{t("contact.buyerCompany")}</option>
-                    <option value="trader">{t("contact.buyerTrader")}</option>
-                    <option value="exporter">{t("contact.buyerExporter")}</option>
-                  </select>
-                  {form.formState.errors.buyerType && (
-                    <p className="mt-1.5 text-xs text-red-500">
-                      {form.formState.errors.buyerType.message}
-                    </p>
-                  )}
-                </div>
+                {/* ── BUYER FIELDS ── */}
+                {activeRole === "buyer" && (
+                  <>
+                    <div>
+                      <label htmlFor="buyerType" className="block text-sm font-medium text-brand-900 mb-2">
+                        {t("contact.buyerType")} {t("contact.required")}
+                      </label>
+                      <select
+                        id="buyerType"
+                        {...form.register("buyerType")}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      >
+                        <option value="">{t("contact.selectPlaceholder")}</option>
+                        <option value="individual">{t("contact.buyerIndividual")}</option>
+                        <option value="cooperative">{t("contact.buyerCooperative")}</option>
+                        <option value="company">{t("contact.buyerCompany")}</option>
+                        <option value="trader">{t("contact.buyerTrader")}</option>
+                        <option value="exporter">{t("contact.buyerExporter")}</option>
+                      </select>
+                      {form.formState.errors.buyerType && (
+                        <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.buyerType.message}</p>
+                      )}
+                    </div>
 
-                <div className="grid gap-5 sm:grid-cols-[1.5fr_1fr]">
-                  <div>
-                    <label
-                      htmlFor="volume"
-                      className="block text-sm font-medium text-brand-900 mb-2"
-                    >
-                      {t("contact.volume")} {t("contact.required")}
-                    </label>
-                    <select
-                      id="volume"
-                      {...form.register("volume")}
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                    >
-                      <option value="">{t("contact.selectPlaceholder")}</option>
-                      <option value="1-50">1 - 50</option>
-                      <option value="51-100">51 - 100</option>
-                      <option value="101-500">101 - 500</option>
-                      <option value="501-1000">501 - 1,000</option>
-                      <option value="1000+">1,000+</option>
-                    </select>
-                    {form.formState.errors.volume && (
-                      <p className="mt-1.5 text-xs text-red-500">
-                        {form.formState.errors.volume.message}
-                      </p>
-                    )}
-                  </div>
+                    <div className="grid gap-5 sm:grid-cols-[1.5fr_1fr]">
+                      <div>
+                        <label htmlFor="volume" className="block text-sm font-medium text-brand-900 mb-2">
+                          {t("contact.volume")} {t("contact.required")}
+                        </label>
+                        <select
+                          id="volume"
+                          {...form.register("volume")}
+                          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                        >
+                          <option value="">{t("contact.selectPlaceholder")}</option>
+                          <option value="1-50">1 - 50</option>
+                          <option value="51-100">51 - 100</option>
+                          <option value="101-500">101 - 500</option>
+                          <option value="501-1000">501 - 1,000</option>
+                          <option value="1000+">1,000+</option>
+                        </select>
+                        {form.formState.errors.volume && (
+                          <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.volume.message}</p>
+                        )}
+                      </div>
+                      <div>
+                        <label htmlFor="unit" className="block text-sm font-medium text-brand-900 mb-2">
+                          {t("contact.unit")} {t("contact.required")}
+                        </label>
+                        <select
+                          id="unit"
+                          {...form.register("unit")}
+                          className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                        >
+                          <option value="bags">{t("contact.unitBags")}</option>
+                          <option value="containers">{t("contact.unitContainers")}</option>
+                        </select>
+                      </div>
+                    </div>
 
-                  <div>
-                    <label
-                      htmlFor="unit"
-                      className="block text-sm font-medium text-brand-900 mb-2"
-                    >
-                      {t("contact.unit")} {t("contact.required")}
-                    </label>
-                    <select
-                      id="unit"
-                      {...form.register("unit")}
-                      className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                    >
-                      <option value="bags">{t("contact.unitBags")}</option>
-                      <option value="containers">{t("contact.unitContainers")}</option>
-                    </select>
-                    {form.formState.errors.unit && (
-                      <p className="mt-1.5 text-xs text-red-500">
-                        {form.formState.errors.unit.message}
-                      </p>
-                    )}
-                  </div>
-                </div>
+                    <div>
+                      <label htmlFor="frequency" className="block text-sm font-medium text-brand-900 mb-2">
+                        {t("contact.frequency")} {t("contact.required")}
+                      </label>
+                      <select
+                        id="frequency"
+                        {...form.register("frequency")}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      >
+                        <option value="">{t("contact.selectPlaceholder")}</option>
+                        <option value="monthly">{t("contact.freqMonthly")}</option>
+                        <option value="quarterly">{t("contact.freqQuarterly")}</option>
+                        <option value="biannual">{t("contact.freqBiannual")}</option>
+                        <option value="annual">{t("contact.freqAnnual")}</option>
+                        <option value="spot">{t("contact.freqSpot")}</option>
+                      </select>
+                      {form.formState.errors.frequency && (
+                        <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.frequency.message}</p>
+                      )}
+                    </div>
+                  </>
+                )}
 
+                {/* ── PRODUCER FIELDS ── */}
+                {activeRole === "producer" && (
+                  <>
+                    <div>
+                      <label htmlFor="region" className="block text-sm font-medium text-brand-900 mb-2">
+                        {t("contact.regionLabel") || "Growing Region"} {t("contact.required")}
+                      </label>
+                      <input
+                        id="region"
+                        type="text"
+                        {...form.register("region")}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 placeholder-gray-400 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                        placeholder={t("contact.regionPlaceholder") || "e.g. Cerrado Mineiro, Mogiana"}
+                      />
+                      {form.formState.errors.region && (
+                        <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.region.message}</p>
+                      )}
+                    </div>
+
+                    <div>
+                      <label htmlFor="annualProduction" className="block text-sm font-medium text-brand-900 mb-2">
+                        {t("contact.annualProdLabel") || "Annual Production (bags 60kg)"} {t("contact.required")}
+                      </label>
+                      <select
+                        id="annualProduction"
+                        {...form.register("annualProduction")}
+                        className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
+                      >
+                        <option value="">{t("contact.selectPlaceholder")}</option>
+                        <option value="1-100">1 - 100</option>
+                        <option value="101-500">101 - 500</option>
+                        <option value="501-2000">501 - 2,000</option>
+                        <option value="2000+">2,000+</option>
+                      </select>
+                      {form.formState.errors.annualProduction && (
+                        <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.annualProduction.message}</p>
+                      )}
+                    </div>
+                  </>
+                )}
+
+                {/* Coffee Type (shared) */}
                 <div>
                   <label className="block text-sm font-medium text-brand-900 mb-3">
                     {t("contact.coffeeType")} {t("contact.required")}
@@ -333,52 +439,19 @@ export default function ContactSection() {
                       { id: "specialty", label: t("contact.coffeeSpecialty") },
                       { id: "organic", label: t("contact.coffeeOrganic") },
                     ].map((type) => (
-                      <label
-                        key={type.id}
-                        className="flex items-center gap-2 cursor-pointer"
-                      >
+                      <label key={type.id} className="flex items-center gap-2 cursor-pointer">
                         <input
                           type="checkbox"
                           checked={form.watch("coffeeType").includes(type.id)}
                           onChange={() => toggleCoffeeType(type.id)}
                           className="w-4 h-4 rounded border-gray-300 text-brand-900 focus:ring-2 focus:ring-brand-900/20"
                         />
-                        <span className="text-sm text-gray-700">
-                          {type.label}
-                        </span>
+                        <span className="text-sm text-gray-700">{type.label}</span>
                       </label>
                     ))}
                   </div>
                   {form.formState.errors.coffeeType && (
-                    <p className="mt-1.5 text-xs text-red-500">
-                      {form.formState.errors.coffeeType.message}
-                    </p>
-                  )}
-                </div>
-
-                <div>
-                  <label
-                    htmlFor="frequency"
-                    className="block text-sm font-medium text-brand-900 mb-2"
-                  >
-                    {t("contact.frequency")} {t("contact.required")}
-                  </label>
-                  <select
-                    id="frequency"
-                    {...form.register("frequency")}
-                    className="w-full rounded-xl border border-gray-200 bg-white px-4 py-3 text-sm text-brand-900 focus:border-brand-900 focus:outline-none focus:ring-2 focus:ring-brand-900/20"
-                  >
-                    <option value="">{t("contact.selectPlaceholder")}</option>
-                    <option value="monthly">{t("contact.freqMonthly")}</option>
-                    <option value="quarterly">{t("contact.freqQuarterly")}</option>
-                    <option value="biannual">{t("contact.freqBiannual")}</option>
-                    <option value="annual">{t("contact.freqAnnual")}</option>
-                    <option value="spot">{t("contact.freqSpot")}</option>
-                  </select>
-                  {form.formState.errors.frequency && (
-                    <p className="mt-1.5 text-xs text-red-500">
-                      {form.formState.errors.frequency.message}
-                    </p>
+                    <p className="mt-1.5 text-xs text-red-500">{form.formState.errors.coffeeType.message}</p>
                   )}
                 </div>
 

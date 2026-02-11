@@ -235,10 +235,12 @@ export const WhoWeAre = () => {
             text: "Only premium-grade Brazilian and Colombian coffees",
           },
         ],
+        motivation: "Driven by a passion for excellence and a commitment to sustainable growth, we strive to build bridges between Brazilian coffee producers and the global market, ensuring quality, transparency, and mutual success in every partnership.",
       },
       pt: {
         label: "O QUE NOS MOVE",
         title: "Os Princípios Por Trás de Cada Parceria",
+        motivation: "Impulsionados pela paixão pela excelência e pelo compromisso com o crescimento sustentável, nos esforçamos para construir pontes entre os produtores de café brasileiros e o mercado global, garantindo qualidade, transparência e sucesso mútuo em cada parceria.",
         items: [
           {
             icon: ShieldCheck,
@@ -613,15 +615,18 @@ export const WhoWeAre = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             VALUES SECTION - What Drives Us
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 lg:py-28 bg-gray-50">
+        <section className="py-12 lg:py-16 bg-gray-50">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <div data-animate="fade-up" className="text-center mb-16">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
                 {content.values[lang].label}
               </p>
-              <h2 className="text-balance text-3xl font-editorial leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.75rem]">
+              <h2 className="text-balance text-3xl font-editorial leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.75rem] mb-6">
                 {content.values[lang].title}
               </h2>
+              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                {content.values[lang].motivation}
+              </p>
             </div>
 
             <div
@@ -815,7 +820,7 @@ export const WhoWeAre = () => {
                   </a>
                   <a
                     href="/varieties"
-                    className="rounded-2xl border-2 border-brand-900 text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-900 hover:text-white transition-all"
+                    className="rounded-2xl border border-brand-900/20 bg-white/10 backdrop-blur-md text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-white/20 hover:scale-105 transition-all shadow-lg"
                   >
                     {lang === "en" ? "View Varieties" : "Ver Variedades"}
                   </a>

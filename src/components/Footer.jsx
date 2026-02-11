@@ -90,12 +90,17 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
+                  <a href="/logistics" className="hover:text-brand-900">
+                    {t("footer.logistics") || "Logistics"}
+                  </a>
+                </li>
+                <li>
                   <a href="/#faq" className="hover:text-brand-900">
                     {t("footer.location")}
                   </a>
                 </li>
                 <li>
-                  <a href="/#contato" className="hover:text-brand-900">
+                  <a href="/contact" className="hover:text-brand-900">
                     {t("footer.contact")}
                   </a>
                 </li>

@@ -5,6 +5,7 @@ import { WhoWeAre } from "./components/who-we-are";
 import Varieties from "./pages/Varieties";
 import Blog from "./pages/Blog";
 import Contact from "./pages/Contact";
+import Logistics from "./pages/Logistics";
 
 export const CoffeTrading = () => {
   return (
@@ -17,6 +18,8 @@ export const CoffeTrading = () => {
           <Route path="/varieties" element={<Varieties />} />
           <Route path="/variedades" element={<Varieties />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/logistics" element={<Logistics />} />
+          <Route path="/logistica" element={<Logistics />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contato" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
