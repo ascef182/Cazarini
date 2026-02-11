@@ -2,13 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 
-export const BackButton = () => {
+export const BackButton = ({ variant = "light" }) => {
   const { isPortuguese } = useLanguage();
-  
+
+  const colorClasses = variant === "dark"
+    ? "text-white hover:text-accent-green"
+    : "text-brand-900 hover:text-accent-green";
+
   return (
     <Link
       to="/"
-      className="group inline-flex items-center gap-2 text-sm font-medium text-brand-900 transition hover:text-accent-green"
+      className={`group inline-flex items-center gap-2 text-sm font-medium transition ${colorClasses}`}
     >
       <svg
         className="h-5 w-5 transition-transform group-hover:-translate-x-1"

@@ -1,248 +1,725 @@
-import { useLanguage } from "../context/LanguageContext"
-import { ArrowRight, Globe2, ShieldCheck, TrendingUp, Target, Lightbulb } from "lucide-react"
-import { Button } from "@/components/ui/button"
-import { BackButton } from "./BackButton"
-import { SEO } from "./SEO"
-import { Footer } from "./Footer"
+import { useEffect, useRef } from "react";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useLanguage } from "../context/LanguageContext";
+import {
+  MapPin,
+  Award,
+  TrendingUp,
+  Globe2,
+  ShieldCheck,
+} from "lucide-react";
+import { Header } from "./Header";
+import { SEO } from "./SEO";
+import { Footer } from "./Footer";
+
+gsap.registerPlugin(ScrollTrigger);
 
 export const WhoWeAre = () => {
-  const { isPortuguese } = useLanguage()
-  const lang = isPortuguese ? "pt" : "en"
+  const { isPortuguese } = useLanguage();
+  const lang = isPortuguese ? "pt" : "en";
+  const pageRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const ctx = gsap.context(() => {
+      // Hero animations
+      gsap.from("[data-animate='hero-eyebrow']", {
+        y: 20,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.1,
+      });
+      gsap.from("[data-animate='hero-title']", {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        delay: 0.2,
+      });
+      gsap.from("[data-animate='hero-subtitle']", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        delay: 0.35,
+      });
+      gsap.from("[data-animate='hero-image']", {
+        scale: 0.95,
+        opacity: 0,
+        duration: 1,
+        delay: 0.4,
+      });
+      gsap.from("[data-animate='hero-card']", {
+        y: 30,
+        opacity: 0,
+        duration: 0.7,
+        delay: 0.6,
+      });
+
+      // Stats counter animation
+      const counters = document.querySelectorAll("[data-counter]");
+      counters.forEach((node) => {
+        const target = Number(node.getAttribute("data-target"));
+        const suffix = node.getAttribute("data-suffix") ?? "";
+        if (Number.isNaN(target)) return;
+
+        const state = { value: 0 };
+        gsap.to(state, {
+          value: target,
+          duration: 1.6,
+          ease: "power2.out",
+          scrollTrigger: { trigger: node, start: "top 85%", once: true },
+          onUpdate: () => {
+            node.textContent = `${Math.round(state.value)}${suffix}`;
+          },
+        });
+      });
+
+      // Scroll-triggered animations
+      gsap.utils.toArray("[data-animate='fade-up']").forEach((el: any) => {
+        gsap.from(el, {
+          y: 50,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power3.out",
+          scrollTrigger: { trigger: el, start: "top 88%" },
+        });
+      });
+
+      // Staggered cards
+      gsap.utils
+        .toArray("[data-animate='stagger']")
+        .forEach((container: any) => {
+          const items = container.querySelectorAll("[data-stagger-item]");
+          gsap.from(items, {
+            y: 40,
+            opacity: 0,
+            duration: 0.6,
+            stagger: 0.12,
+            ease: "power3.out",
+            scrollTrigger: { trigger: container, start: "top 85%" },
+          });
+        });
+
+      // Timeline items - alternate from left/right
+      gsap.utils
+        .toArray("[data-timeline-item]")
+        .forEach((item: any, index: number) => {
+          gsap.from(item, {
+            opacity: 0,
+            x: index % 2 === 0 ? -60 : 60,
+            duration: 0.8,
+            ease: "power3.out",
+            scrollTrigger: { trigger: item, start: "top 88%" },
+          });
+        });
+    }, pageRef);
+
+    return () => ctx.revert();
+  }, []);
 
   const content = {
     hero: {
       en: {
-        title: "WHO WE ARE",
+        eyebrow: "Established in Varginha, MG • Since 2009",
+        title: "The bridge between",
+        titleHighlight: "Brazilian excellence",
+        titleEnd: "and the world",
+        subtitle:
+          "From the heart of the world's largest coffee trading hub, we've built a network spanning 5 continents, 140+ partners, and 500,000 bags annually.",
       },
       pt: {
-        title: "QUEM SOMOS",
+        eyebrow: "Estabelecido em Varginha, MG • Desde 2009",
+        title: "A ponte entre a",
+        titleHighlight: "excelência brasileira",
+        titleEnd: "e o mundo",
+        subtitle:
+          "Do coração do maior polo de comércio de café do mundo, construímos uma rede que abrange 5 continentes, 140+ parceiros e 500.000 sacas anuais.",
       },
     },
-    about: {
-      en: {
-        title: "Since 2009",
-        heading: "Connecting the coffee world.",
-        p1: "Cazarini Trading Company is an organization built from the ground up, now recognized across all continents for its excellence in coffee trading.",
-        p2: "With over two decades of experience, we excel in risk management, international sales, and domestic procurement. Our approach maintains a meticulous focus on every detail until contract fulfillment—always minimizing risk and proactively addressing any challenges that may arise.",
-      },
-      pt: {
-        title: "Desde 2009",
-        heading: "Conectando o mundo do café.",
-        p1: "A Cazarini Trading Company é uma organização construída do zero, agora reconhecida em todos os continentes por sua excelência no comércio de café.",
-        p2: "Com mais de duas décadas de experiência, destacamo-nos na gestão de riscos, vendas internacionais e aquisições domésticas. Nossa abordagem mantém um foco meticuloso em cada detalhe até o cumprimento do contrato—sempre minimizando riscos e abordando proativamente quaisquer desafios.",
-      },
+    stats: {
+      en: [
+        {
+          number: 21,
+          suffix: "+",
+          label: "Years in the Industry",
+          sublabel: "Since 2009",
+        },
+        {
+          number: 500,
+          suffix: "K",
+          label: "Bags Traded Annually",
+          sublabel: "Growing 15% YoY",
+        },
+        {
+          number: 140,
+          suffix: "+",
+          label: "Global Partners",
+          sublabel: "Across 5 Continents",
+        },
+      ],
+      pt: [
+        {
+          number: 21,
+          suffix: "+",
+          label: "Anos na Indústria",
+          sublabel: "Desde 2009",
+        },
+        {
+          number: 500,
+          suffix: "K",
+          label: "Sacas Negociadas/Ano",
+          sublabel: "Crescimento 15% a.a.",
+        },
+        {
+          number: 140,
+          suffix: "+",
+          label: "Parceiros Globais",
+          sublabel: "Em 5 Continentes",
+        },
+      ],
     },
-    missionVision: {
+    story: {
       en: {
-        mission: {
-          title: "Our Mission",
-          desc: "To provide the best service and be the global reference in coffee trading, helping high-quality beans travel from farm to roastery with efficiency and integrity.",
-        },
-        vision: {
-          title: "Our Vision",
-          desc: "To minimize risk and maximize value for our partners through meticulous attention to detail, maintaining excellence in every step of the logistics process.",
-        },
-      },
-      pt: {
-        mission: {
-          title: "Nossa Missão",
-          desc: "Prestar o melhor serviço e ser referência global no comércio de café, ajudando grãos de alta qualidade a viajarem da fazenda à torrefação com eficiência e integridade.",
-        },
-        vision: {
-          title: "Nossa Visão",
-          desc: "Minimizar riscos e maximizar valor para nossos parceiros através de atenção meticulosa aos detalhes, mantendo a excelência em cada etapa do processo logístico.",
-        },
-      },
-    },
-    leadership: {
-      en: {
-        title: "LEADERSHIP",
-        name: "Thiago Cazarini",
-        role: "Founder & Head Coffee Trader",
-        quote:
-          "With over 21 years of experience, I leverage language skills and deep industry knowledge to strengthen communication networks and strategic partnerships across the coffee industry.",
-        items: [
+        label: "OUR STORY",
+        title: "Built from the ground up in the coffee capital of the world",
+        blocks: [
           {
-            title: "Market Development",
-            desc: "Developing new international markets and cultivating long-term client relationships.",
-            icon: TrendingUp,
+            title: "The Beginning",
+            text: "Cazarini Trading Company was born in Varginha, Minas Gerais—home to the world's largest dry port for coffee exports and the epicenter of Brazilian coffee commerce. What started as a vision has become a global operation recognized across all continents.",
           },
           {
-            title: "Multilingual Communication",
-            desc: "Fluent in English, Spanish, and Italian to ensure seamless global operations.",
-            icon: Globe2,
+            title: "Our Approach",
+            text: "We combine deep market knowledge with meticulous attention to every detail. From contract negotiation to final delivery, we minimize risk and proactively address challenges. Our weekly market reports have become essential reading for industry professionals worldwide.",
           },
           {
-            title: "Comprehensive Expertise",
-            desc: "Spanning commodity trading, logistics, risk assessment, and quality control.",
-            icon: ShieldCheck,
+            title: "The Difference",
+            text: "We don't just trade coffee—we build lasting relationships. Every bag tells the story of quality Brazilian craftsmanship, and every partnership is built on trust, transparency, and mutual growth.",
           },
         ],
       },
       pt: {
-        title: "LIDERANÇA",
-        name: "Thiago Cazarini",
-        role: "Fundador & Head Coffee Trader",
-        quote:
-          "Com mais de 21 anos de experiência, aproveito habilidades linguísticas e profundo conhecimento da indústria para fortalecer redes de comunicação e parcerias estratégicas.",
+        label: "NOSSA HISTÓRIA",
+        title: "Construído do zero na capital mundial do café",
+        blocks: [
+          {
+            title: "O Início",
+            text: "A Cazarini Trading Company nasceu em Varginha, Minas Gerais—lar do maior porto seco do mundo para exportação de café e epicentro do comércio brasileiro de café. O que começou como uma visão tornou-se uma operação global reconhecida em todos os continentes.",
+          },
+          {
+            title: "Nossa Abordagem",
+            text: "Combinamos profundo conhecimento de mercado com atenção meticulosa a cada detalhe. Da negociação de contrato à entrega final, minimizamos riscos e abordamos desafios proativamente. Nossos relatórios semanais de mercado tornaram-se leitura essencial para profissionais da indústria mundialmente.",
+          },
+          {
+            title: "O Diferencial",
+            text: "Não apenas comercializamos café—construímos relacionamentos duradouros. Cada saca conta a história da qualidade artesanal brasileira, e cada parceria é construída sobre confiança, transparência e crescimento mútuo.",
+          },
+        ],
+      },
+    },
+    values: {
+      en: {
+        label: "WHAT DRIVES US",
+        title: "The Principles Behind Every Partnership",
         items: [
           {
-            title: "Desenvolvimento de Mercado",
-            desc: "Desenvolvendo novos mercados internacionais e cultivando relacionamentos de longo prazo.",
-            icon: TrendingUp,
-          },
-          {
-            title: "Comunicação Multilíngue",
-            desc: "Fluente em Inglês, Espanhol e Italiano para garantir operações globais contínuas.",
-            icon: Globe2,
-          },
-          {
-            title: "Expertise Abrangente",
-            desc: "Abrangendo comércio de commodities, logística, avaliação de riscos e controle de qualidade.",
             icon: ShieldCheck,
+            title: "Risk Management",
+            text: "Meticulous focus on every detail until contract fulfillment",
+          },
+          {
+            icon: Globe2,
+            title: "Global Reach",
+            text: "Operations spanning 5 continents with local expertise",
+          },
+          {
+            icon: TrendingUp,
+            title: "Market Intelligence",
+            text: "Weekly reports trusted by Bloomberg, WSJ, Reuters",
+          },
+          {
+            icon: Award,
+            title: "Quality First",
+            text: "Only premium-grade Brazilian and Colombian coffees",
+          },
+        ],
+      },
+      pt: {
+        label: "O QUE NOS MOVE",
+        title: "Os Princípios Por Trás de Cada Parceria",
+        items: [
+          {
+            icon: ShieldCheck,
+            title: "Gestão de Riscos",
+            text: "Foco meticuloso em cada detalhe até o cumprimento do contrato",
+          },
+          {
+            icon: Globe2,
+            title: "Alcance Global",
+            text: "Operações em 5 continentes com expertise local",
+          },
+          {
+            icon: TrendingUp,
+            title: "Inteligência de Mercado",
+            text: "Relatórios semanais confiados por Bloomberg, WSJ, Reuters",
+          },
+          {
+            icon: Award,
+            title: "Qualidade Primeiro",
+            text: "Apenas cafés premium brasileiros e colombianos",
+          },
+        ],
+      },
+    },
+    leader: {
+      en: {
+        label: "LEADERSHIP",
+        name: "Thiago Marques Cazarini",
+        role: "Founder & Head Coffee Trader",
+        bio: "With over 21 years navigating the complexities of global coffee trading, Thiago has built a reputation that reaches the world's most respected financial publications.",
+        quote:
+          "Every relationship in coffee is built on trust. We're not just moving bags—we're connecting dreams, livelihoods, and cultures across the globe.",
+        credentials: [
+          "Featured in Bloomberg, Wall Street Journal, Reuters",
+          "Fluent in English, Spanish, and Italian",
+          "Head Coffee Trader at Montesa Exportadora since 2014",
+        ],
+      },
+      pt: {
+        label: "LIDERANÇA",
+        name: "Thiago Marques Cazarini",
+        role: "Fundador & Head Coffee Trader",
+        bio: "Com mais de 21 anos navegando as complexidades do comércio global de café, Thiago construiu uma reputação que alcança as publicações financeiras mais respeitadas do mundo.",
+        quote:
+          "Cada relacionamento no café é construído sobre confiança. Não estamos apenas movendo sacas—estamos conectando sonhos, meios de vida e culturas ao redor do globo.",
+        credentials: [
+          "Destaque em Bloomberg, Wall Street Journal, Reuters",
+          "Fluente em Inglês, Espanhol e Italiano",
+          "Head Coffee Trader na Montesa Exportadora desde 2014",
+        ],
+      },
+    },
+    timeline: {
+      en: {
+        label: "OUR JOURNEY",
+        title: "Milestones That Define Us",
+        items: [
+          {
+            year: "2003",
+            title: "Industry Beginnings",
+            text: "Thiago Cazarini enters the coffee industry, learning the craft from Brazil's finest trading floors in Varginha, MG.",
+          },
+          {
+            year: "2009",
+            title: "Cazarini Trading Founded",
+            text: "The company is established in the heart of the world's largest coffee trading hub, with a vision to connect Brazilian excellence to global markets.",
+          },
+          {
+            year: "2014",
+            title: "Head Trader at Montesa",
+            text: "Thiago takes on the role of Head Coffee Trader at Montesa Exportadora, expanding operations and global partnerships.",
+          },
+          {
+            year: "2018",
+            title: "Global Recognition",
+            text: "Market insights featured in Bloomberg, Wall Street Journal, and Reuters. The Cazarini name becomes trusted across 5 continents.",
+          },
+          {
+            year: "2024",
+            title: "500K Bags Milestone",
+            text: "Annual trading volume reaches 500,000 bags with 140+ active partners worldwide and 15% average year-over-year growth.",
+          },
+        ],
+      },
+      pt: {
+        label: "NOSSA JORNADA",
+        title: "Marcos Que Nos Definem",
+        items: [
+          {
+            year: "2003",
+            title: "Início na Indústria",
+            text: "Thiago Cazarini entra na indústria do café, aprendendo o ofício nos melhores pregões de Varginha, MG.",
+          },
+          {
+            year: "2009",
+            title: "Fundação da Cazarini Trading",
+            text: "A empresa é estabelecida no coração do maior polo de comércio de café do mundo, com a visão de conectar a excelência brasileira aos mercados globais.",
+          },
+          {
+            year: "2014",
+            title: "Head Trader na Montesa",
+            text: "Thiago assume o papel de Head Coffee Trader na Montesa Exportadora, expandindo operações e parcerias globais.",
+          },
+          {
+            year: "2018",
+            title: "Reconhecimento Global",
+            text: "Insights de mercado publicados na Bloomberg, Wall Street Journal e Reuters. O nome Cazarini torna-se confiável em 5 continentes.",
+          },
+          {
+            year: "2024",
+            title: "Marco de 500K Sacas",
+            text: "Volume anual de negociação atinge 500.000 sacas com 140+ parceiros ativos em todo o mundo e crescimento médio de 15% ao ano.",
           },
         ],
       },
     },
     cta: {
       en: {
-        title: "Ready to elevate your coffee trade?",
-        subtitle: "Join the network of global partners trusting Cazarini for excellence in every bag.",
-        button: "Schedule a Call",
+        title: "Ready to partner with us?",
+        subtitle:
+          "Join 140+ partners who trust Cazarini for premium Brazilian coffee.",
+        button: "Get in Touch",
       },
       pt: {
-        title: "Pronto para elevar seu comércio de café?",
-        subtitle: "Junte-se à rede de parceiros globais que confiam na Cazarini para excelência em cada saca.",
-        button: "Agendar uma Chamada",
+        title: "Pronto para ser nosso parceiro?",
+        subtitle:
+          "Junte-se a mais de 140 parceiros que confiam na Cazarini para café brasileiro premium.",
+        button: "Entre em Contato",
       },
     },
-  }
+  };
 
   return (
     <>
       <SEO
         title={
           lang === "en"
-            ? "Who We Are - Cazarini Coffee Trading"
-            : "Quem Somos - Cazarini Trading de Café"
+            ? "About Us - Cazarini Coffee Trading"
+            : "Sobre Nós - Cazarini Trading de Café"
         }
         description={
           lang === "en"
-            ? "Learn about Cazarini Trading Company - connecting coffee producers to global markets since 2009. Our mission, vision, and commitment to quality coffee trading."
-            : "Conheça a Cazarini Trading Company - conectando produtores de café aos mercados globais desde 2009. Nossa missão, visão e compromisso com o trading de café de qualidade."
+            ? "Discover Cazarini Trading Company - 21+ years connecting Brazilian coffee excellence to global markets. 500K bags annually, 140+ partners across 5 continents."
+            : "Conheça a Cazarini Trading Company - 21+ anos conectando a excelência do café brasileiro aos mercados globais. 500K sacas anuais, 140+ parceiros em 5 continentes."
         }
         keywords={
           lang === "en"
-            ? "coffee broker, coffee trading company, brazilian coffee, Thiago Cazarini, coffee brokerage"
-            : "corretor café, empresa trading café, café brasileiro, Thiago Cazarini, corretagem café"
+            ? "coffee broker, coffee trading company, brazilian coffee, Thiago Cazarini, Varginha, coffee brokerage"
+            : "corretor café, empresa trading café, café brasileiro, Thiago Cazarini, Varginha, corretagem café"
         }
       />
 
-      <div className="flex flex-col min-h-screen bg-white text-brand-900 font-sans selection:bg-accent-green selection:text-brand-900 overflow-hidden">
-        {/* Hero Section */}
-        <section className="relative pt-32 pb-20 px-4 md:px-8 max-w-7xl mx-auto w-full">
-          <div className="mb-8">
-            <BackButton />
+      <div
+        ref={pageRef}
+        className="flex flex-col min-h-screen bg-white text-brand-900 font-sans selection:bg-accent-green/30"
+      >
+        {/* ═══════════════════════════════════════════════════════════════════
+            HERO SECTION - Dark cinematic
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="relative min-h-[85vh] flex flex-col overflow-hidden bg-brand-950">
+          {/* Background image */}
+          <img
+            src="/photos/bandeira-cazarini.jpg"
+            alt=""
+            className="absolute inset-0 w-full h-full object-cover opacity-30"
+          />
+          {/* Gradient overlays */}
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/60 to-brand-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/50 to-transparent" />
+
+          <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
+            {/* Header */}
+            <Header variant="dark" />
+
+            {/* Centered hero content */}
+            <div className="flex flex-1 items-center justify-center text-center py-20">
+              <div className="max-w-4xl space-y-8">
+                <p
+                  data-animate="hero-eyebrow"
+                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent-green"
+                >
+                  <MapPin className="w-4 h-4" />
+                  {content.hero[lang].eyebrow}
+                </p>
+
+                <h1
+                  data-animate="hero-title"
+                  className="text-balance text-5xl font-editorial italic leading-[1.1] tracking-[-0.02em] text-white sm:text-6xl lg:text-7xl"
+                >
+                  {content.hero[lang].title}
+                  <br />
+                  <span className="text-accent-green">
+                    {content.hero[lang].titleHighlight}
+                  </span>
+                  <br />
+                  {content.hero[lang].titleEnd}
+                </h1>
+
+                <p
+                  data-animate="hero-subtitle"
+                  className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60"
+                >
+                  {content.hero[lang].subtitle}
+                </p>
+
+                {/* Trusted by logos */}
+                <div data-animate="hero-subtitle" className="pt-6">
+                  <p className="text-xs font-medium uppercase tracking-[0.3em] text-white/30 mb-5">
+                    {lang === "en"
+                      ? "Insights featured in"
+                      : "Insights publicados em"}
+                  </p>
+                  <div className="flex flex-wrap items-center justify-center gap-8">
+                    <img
+                      src="/photos/bloomberg.png"
+                      alt="Bloomberg"
+                      className="h-5 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
+                    />
+                    <img
+                      src="/photos/wsj-logo.png"
+                      alt="WSJ"
+                      className="h-4 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
+                    />
+                    <img
+                      src="/photos/reuters.png"
+                      alt="Reuters"
+                      className="h-4 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
-          <div className="animate-in fade-in slide-in-from-bottom-8 duration-700">
-            <h1 className="text-[12vw] leading-[0.8] font-bold tracking-tighter mb-8 uppercase">
-              {lang === "en" ? (
-                <>
-                  WHO <br />
-                  WE <br />
-                  <span className="text-accent-green">ARE</span>
-                </>
-              ) : (
-                <>
-                  QUEM <br />
-                  <span className="text-accent-green">SOMOS</span>
-                </>
-              )}
-            </h1>
-          </div>
+
+          {/* Bottom fade */}
+          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
         </section>
 
-        {/* About Section */}
-        <section className="py-20 px-4 md:px-8 bg-brand-950 text-white rounded-t-[3rem] md:rounded-t-[5rem]">
-          <div className="max-w-7xl mx-auto">
-            <div className="grid md:grid-cols-2 gap-16 items-start">
-              <div className="animate-in fade-in slide-in-from-bottom-8 duration-700 delay-100">
-                <h2 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
-                  {content.about[lang].title}, <span className="text-accent-green">{content.about[lang].heading}</span>
-                </h2>
-              </div>
-              <div className="space-y-6 text-lg md:text-xl text-neutral-300 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-200">
-                <p>{content.about[lang].p1}</p>
-                <p>{content.about[lang].p2}</p>
-              </div>
+        {/* ═══════════════════════════════════════════════════════════════════
+            STATS BAR - Compact white row
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="bg-white py-12 border-b border-gray-100">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div
+              data-animate="stagger"
+              className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
+            >
+              {[
+                ...content.stats[lang],
+                {
+                  number: 98,
+                  suffix: "%",
+                  label: lang === "en" ? "Client Retention" : "Retenção de Clientes",
+                  sublabel: lang === "en" ? "Year over year" : "Ano após ano",
+                },
+              ].map((stat, index) => (
+                <div
+                  key={index}
+                  data-stagger-item
+                  className={`text-center ${index < 3 ? "md:border-r md:border-gray-100" : ""}`}
+                >
+                  <p className="text-4xl lg:text-5xl font-extrabold text-brand-900 mb-1 tracking-tight">
+                    <span
+                      data-counter
+                      data-target={stat.number}
+                      data-suffix={stat.suffix}
+                    >
+                      0
+                    </span>
+                  </p>
+                  <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
+                    {stat.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </section>
 
-        {/* Mission & Vision Section */}
-        <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto w-full">
-          <div className="grid md:grid-cols-2 gap-12">
-            {/* Mission Card */}
-            <div className="bg-neutral-50 p-10 rounded-3xl border border-neutral-100 shadow-sm hover:shadow-md transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-300">
-              <div className="w-12 h-12 bg-accent-green rounded-full flex items-center justify-center mb-6">
-                <Target className="w-6 h-6 text-brand-900" />
-              </div>
-              <h3 className="text-3xl font-bold mb-4 text-brand-900">{content.missionVision[lang].mission.title}</h3>
-              <p className="text-xl text-neutral-600 leading-relaxed">{content.missionVision[lang].mission.desc}</p>
+        {/* ═══════════════════════════════════════════════════════════════════
+            STORY SECTION - Timeline Style
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="py-20 lg:py-32 bg-white">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            {/* Section Header */}
+            <div data-animate="fade-up" className="max-w-3xl mb-16 lg:mb-24">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
+                {content.story[lang].label}
+              </p>
+              <h2 className="text-balance text-3xl font-semibold leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.75rem]">
+                {content.story[lang].title}
+              </h2>
             </div>
 
-            {/* Vision Card */}
-            <div className="bg-brand-950 text-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-shadow duration-300 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-400">
-              <div className="w-12 h-12 bg-white/10 rounded-full flex items-center justify-center mb-6 text-accent-green">
-                <Lightbulb className="w-6 h-6" />
-              </div>
-              <h3 className="text-3xl font-bold mb-4">{content.missionVision[lang].vision.title}</h3>
-              <p className="text-xl text-neutral-300 leading-relaxed">{content.missionVision[lang].vision.desc}</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Leadership Section */}
-        <section className="py-20 px-4 md:px-8 bg-neutral-100 rounded-[3rem]">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex flex-col lg:flex-row gap-12 lg:gap-20 items-center">
-              {/* Image Side */}
-              <div className="w-full lg:w-1/2 relative animate-in fade-in slide-in-from-bottom-8 duration-700 delay-500">
-                <div className="aspect-[3/4] rounded-[2rem] overflow-hidden relative shadow-2xl group">
-                  <img
-                    src="/photos/thiago-cafe.jpg"
-                    alt="Thiago Cazarini"
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-8 text-white">
-                    <h3 className="text-3xl font-bold">{content.leadership[lang].name}</h3>
-                    <p className="text-accent-green font-medium text-lg">{content.leadership[lang].role}</p>
+            {/* Story Grid */}
+            <div className="grid lg:grid-cols-12 gap-12 lg:gap-16">
+              {/* Left - Image */}
+              <div data-animate="fade-up" className="lg:col-span-5">
+                <div className="relative sticky top-24">
+                  <div className="aspect-[4/5] rounded-[28px] overflow-hidden bg-gray-100">
+                    <img
+                      src="/photos/cafes-cazarini.jpg"
+                      alt="Coffee beans"
+                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-tr from-brand-950/40 to-transparent" />
+                  </div>
+                  {/* Floating quote box */}
+                  <div className="absolute -bottom-10 -left-6 lg:-left-10 bg-accent-green p-8 lg:p-10 max-w-xs hidden xl:block shadow-xl">
+                    <p className="font-editorial italic text-2xl lg:text-3xl leading-tight text-brand-900">
+                      {content.leader[lang].quote.split(".")[0]}.
+                    </p>
                   </div>
                 </div>
               </div>
 
+              {/* Right - Story Blocks */}
+              <div className="lg:col-span-7 space-y-12">
+                {content.story[lang].blocks.map((block, index) => (
+                  <div
+                    key={index}
+                    data-animate="fade-up"
+                    className="relative pl-8 border-l-2 border-gray-100"
+                  >
+                    {/* Timeline dot */}
+                    <div className="absolute left-0 top-0 w-4 h-4 -translate-x-[9px] rounded-full bg-accent-green" />
+                    <p className="text-xs font-semibold uppercase tracking-[0.3em] text-accent-green mb-3">
+                      {String(index + 1).padStart(2, "0")}
+                    </p>
+                    <h3 className="text-2xl font-semibold text-brand-900 mb-4">
+                      {block.title}
+                    </h3>
+                    <p className="text-lg leading-relaxed text-gray-600">
+                      {block.text}
+                    </p>
+                  </div>
+                ))}
+
+                {/* Growth highlight */}
+                <div
+                  data-animate="fade-up"
+                  className="bg-brand-950 rounded-[24px] p-8 text-white"
+                >
+                  <div className="flex items-start gap-6">
+                    <div className="w-16 h-16 rounded-2xl bg-accent-green flex items-center justify-center shrink-0">
+                      <TrendingUp className="w-8 h-8 text-brand-900" />
+                    </div>
+                    <div>
+                      <p className="text-4xl font-bold text-accent-green mb-2">
+                        15%
+                      </p>
+                      <p className="text-lg font-semibold mb-1">
+                        {lang === "en"
+                          ? "Average Annual Growth"
+                          : "Crescimento Médio Anual"}
+                      </p>
+                      <p className="text-white/60 text-sm">
+                        {lang === "en"
+                          ? "Consistent growth that speaks to the trust our partners place in us."
+                          : "Crescimento consistente que reflete a confiança que nossos parceiros depositam em nós."}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            VALUES SECTION - What Drives Us
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="py-20 lg:py-28 bg-gray-50">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div data-animate="fade-up" className="text-center mb-16">
+              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
+                {content.values[lang].label}
+              </p>
+              <h2 className="text-balance text-3xl font-editorial leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.75rem]">
+                {content.values[lang].title}
+              </h2>
+            </div>
+
+            <div
+              data-animate="stagger"
+              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            >
+              {content.values[lang].items.map((item, index) => (
+                <div
+                  key={index}
+                  data-stagger-item
+                  className="group bg-white rounded-[24px] p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
+                >
+                  <div className="w-14 h-14 rounded-2xl bg-brand-900 group-hover:bg-accent-green flex items-center justify-center mb-6 transition-colors">
+                    <item.icon className="w-7 h-7 text-white group-hover:text-brand-900 transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-semibold text-brand-900 mb-3">
+                    {item.title}
+                  </h3>
+                  <p className="text-gray-600 leading-relaxed">{item.text}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            LEADERSHIP SECTION
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="py-20 lg:py-32 bg-white overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
+              {/* Image Side */}
+              <div
+                data-animate="fade-up"
+                className="relative order-2 lg:order-1"
+              >
+                <div className="relative aspect-[3/4] rounded-[32px] overflow-hidden shadow-2xl">
+                  <img
+                    src="/photos/thiago-conteiner.jfif"
+                    alt="Thiago Cazarini"
+                    className="w-full h-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-950/80 via-brand-950/30 to-transparent" />
+
+                  {/* Name overlay */}
+                  <div className="absolute bottom-0 left-0 right-0 p-8">
+                    <p className="text-accent-green font-semibold text-sm uppercase tracking-wider mb-1">
+                      {content.leader[lang].role}
+                    </p>
+                    <h3 className="text-3xl lg:text-4xl font-semibold text-white">
+                      {content.leader[lang].name}
+                    </h3>
+                  </div>
+                </div>
+
+                {/* Experience badge */}
+                <div className="absolute -top-4 -right-4 lg:-right-8 bg-accent-green rounded-2xl px-6 py-4 shadow-lg">
+                  <p className="text-3xl font-bold text-brand-900">21+</p>
+                  <p className="text-sm font-medium text-brand-900/70">
+                    {lang === "en" ? "Years" : "Anos"}
+                  </p>
+                </div>
+              </div>
+
               {/* Content Side */}
-              <div className="w-full lg:w-1/2 space-y-8 animate-in fade-in slide-in-from-bottom-8 duration-700 delay-600">
-                <div>
-                  <h2 className="text-4xl md:text-5xl font-bold mb-6 text-brand-900">{content.leadership[lang].title}</h2>
-                  <p className="text-lg text-neutral-600 leading-relaxed italic border-l-4 border-accent-green pl-6">
-                    "{content.leadership[lang].quote}"
+              <div className="space-y-8 order-1 lg:order-2">
+                <div data-animate="fade-up">
+                  <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
+                    {content.leader[lang].label}
+                  </p>
+                  <p className="text-xl text-gray-600 leading-relaxed">
+                    {content.leader[lang].bio}
                   </p>
                 </div>
 
-                <div className="space-y-6">
-                  {content.leadership[lang].items.map((item, index) => (
-                    <div key={index} className="flex gap-4 items-start group">
-                      <div className="w-12 h-12 rounded-full bg-white border border-neutral-200 flex items-center justify-center shrink-0 group-hover:border-accent-green transition-colors">
-                        <item.icon className="w-5 h-5 text-brand-900 group-hover:text-accent-green transition-colors" />
-                      </div>
-                      <div>
-                        <h4 className="text-xl font-bold mb-1 text-brand-900 group-hover:text-accent-green transition-colors">
-                          {item.title}
-                        </h4>
-                        <p className="text-neutral-600">{item.desc}</p>
-                      </div>
+                {/* Quote */}
+                <blockquote
+                  data-animate="fade-up"
+                  className="relative bg-gray-50 rounded-[24px] p-8"
+                >
+                  <div className="absolute top-6 left-6 text-6xl text-accent-green/20 font-serif leading-none">
+                    "
+                  </div>
+                  <p className="relative text-xl lg:text-2xl font-medium text-brand-900 leading-relaxed italic pl-8">
+                    {content.leader[lang].quote}
+                  </p>
+                </blockquote>
+
+                {/* Credentials */}
+                <div data-animate="fade-up" className="space-y-4">
+                  {content.leader[lang].credentials.map((credential, index) => (
+                    <div key={index} className="flex items-center gap-3">
+                      <div className="w-2 h-2 rounded-full bg-accent-green" />
+                      <p className="text-gray-600">{credential}</p>
                     </div>
                   ))}
                 </div>
@@ -251,22 +728,107 @@ export const WhoWeAre = () => {
           </div>
         </section>
 
-        {/* CTA Section */}
-        <section className="py-24 px-4 md:px-8 max-w-7xl mx-auto text-center">
-          <div className="max-w-3xl mx-auto animate-in zoom-in duration-700 delay-700">
-            <h2 className="text-4xl md:text-6xl font-bold mb-8 text-brand-900">{content.cta[lang].title}</h2>
-            <p className="text-xl text-neutral-600 mb-10">{content.cta[lang].subtitle}</p>
-            <a href="/#contato">
-              <Button className="bg-brand-900 text-white px-8 py-6 rounded-full text-lg font-medium hover:bg-accent-green hover:text-brand-900 transition-all duration-300">
-                {content.cta[lang].button}
-                <ArrowRight className="w-5 h-5 ml-2" />
-              </Button>
-            </a>
+        {/* ═══════════════════════════════════════════════════════════════════
+            TIMELINE SECTION - Company Journey (Dark)
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="py-24 lg:py-40 bg-brand-950 overflow-hidden">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            {/* Section Header */}
+            <div data-animate="fade-up" className="text-center mb-20 lg:mb-32">
+              <p className="text-xs font-bold uppercase tracking-[0.4em] text-accent-green mb-6">
+                {content.timeline[lang].label}
+              </p>
+              <h2 className="text-white text-4xl lg:text-5xl font-bold mb-4">
+                {content.timeline[lang].title}
+              </h2>
+            </div>
+
+            {/* Timeline */}
+            <div className="relative">
+              {/* Central gradient line */}
+              <div className="absolute left-1/2 top-0 bottom-0 w-px hidden lg:block timeline-line" />
+              <div className="absolute left-6 top-0 bottom-0 w-px lg:hidden timeline-line" />
+
+              <div className="space-y-24 lg:space-y-32">
+                {content.timeline[lang].items.map((item, index) => (
+                  <div
+                    key={index}
+                    data-timeline-item
+                    className={`relative flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12 ${
+                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
+                    }`}
+                  >
+                    {/* Content Card */}
+                    <div
+                      className={`lg:w-[calc(50%-3rem)] ${
+                        index % 2 === 0 ? "lg:text-right" : "lg:text-left"
+                      } ml-14 lg:ml-0`}
+                    >
+                      <span className="text-accent-green text-5xl lg:text-6xl font-light font-editorial mb-4 block">
+                        {item.year}
+                      </span>
+                      <h3 className="text-white text-2xl font-bold mb-4">
+                        {item.title}
+                      </h3>
+                      <p className="text-gray-400 leading-relaxed">
+                        {item.text}
+                      </p>
+                    </div>
+
+                    {/* Center dot */}
+                    <div className="absolute left-6 lg:left-1/2 top-2 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-10">
+                      <div className={`w-3 h-3 rounded-full ${index === 0 ? "bg-accent-green" : "bg-white"} ring-8 ring-white/5`} />
+                    </div>
+
+                    {/* Spacer for opposite side */}
+                    <div className="hidden lg:block lg:w-[calc(50%-3rem)]" />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            CTA SECTION - Green inner with dark outer
+        ═══════════════════════════════════════════════════════════════════ */}
+        <section className="py-20 lg:py-28 bg-brand-950">
+          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
+            <div
+              data-animate="fade-up"
+              className="relative rounded-[32px] bg-accent-green px-8 py-20 lg:px-16 lg:py-24 text-center overflow-hidden"
+            >
+              {/* Decorative elements */}
+              <div className="absolute right-0 top-0 w-1/3 h-full bg-black/5 -skew-x-12 translate-x-1/4 rounded-[32px]" />
+
+              <div className="relative z-10">
+                <h2 className="text-balance text-4xl font-editorial italic leading-tight text-brand-900 sm:text-5xl lg:text-6xl mb-8 tracking-tight">
+                  {content.cta[lang].title}
+                </h2>
+                <p className="text-xl text-brand-900/60 max-w-2xl mx-auto mb-12">
+                  {content.cta[lang].subtitle}
+                </p>
+                <div className="flex flex-wrap gap-4 justify-center">
+                  <a
+                    href="/contact"
+                    className="rounded-2xl bg-brand-900 text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-700 transition-colors"
+                  >
+                    {content.cta[lang].button}
+                  </a>
+                  <a
+                    href="/varieties"
+                    className="rounded-2xl border-2 border-brand-900 text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-900 hover:text-white transition-all"
+                  >
+                    {lang === "en" ? "View Varieties" : "Ver Variedades"}
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
         <Footer />
       </div>
     </>
-  )
-}
+  );
+};

@@ -4,6 +4,7 @@ import Home from "./pages/Home";
 import { WhoWeAre } from "./components/who-we-are";
 import Varieties from "./pages/Varieties";
 import Blog from "./pages/Blog";
+import Contact from "./pages/Contact";
 
 export const CoffeTrading = () => {
   return (
@@ -16,6 +17,8 @@ export const CoffeTrading = () => {
           <Route path="/varieties" element={<Varieties />} />
           <Route path="/variedades" element={<Varieties />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/contact" element={<Contact />} />
+          <Route path="/contato" element={<Contact />} />
           <Route path="*" element={<Navigate to="/" replace />} />
         </Routes>
       </div>

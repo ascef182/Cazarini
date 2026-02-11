@@ -30,6 +30,19 @@ export default {
   				DEFAULT: 'hsl(var(--accent))',
   				foreground: 'hsl(var(--accent-foreground))'
   			},
+  			earth: {
+  				'50': '#faf8f5',
+  				'100': '#f5f0e8',
+  				'200': '#e8dcc8',
+  				'300': '#d4c4a8',
+  				'400': '#b8a07a',
+  				'500': '#9a7f5a',
+  				'600': '#7d6548',
+  				'700': '#5c4a35',
+  				'800': '#3d3224',
+  				'900': '#2a2318',
+  				'950': '#1a150f'
+  			},
   			gray: {
   				'50': '#F9FAFB',
   				'100': '#F3F3F3',
@@ -87,7 +100,13 @@ export default {
   			display: [
   				'Manrope',
                     ...defaultTheme.fontFamily.sans
-                ]
+                ],
+  			editorial: [
+  				'DM Serif Display',
+  				'Georgia',
+  				'Times New Roman',
+  				'serif'
+  			]
   		},
   		spacing: {
   			'section-y': '5rem',

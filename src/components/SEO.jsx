@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
 
-export const SEO = ({ title, description, keywords, ogImage, canonical }) => {
+export const SEO = ({ title, description, keywords, ogImage = '', canonical = '' }) => {
   const location = useLocation();
   
   useEffect(() => {
