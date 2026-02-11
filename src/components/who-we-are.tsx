@@ -2,13 +2,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
-import {
-  MapPin,
-  Award,
-  TrendingUp,
-  Globe2,
-  ShieldCheck,
-} from "lucide-react";
+import { MapPin, Award, TrendingUp, Globe2, ShieldCheck } from "lucide-react";
 import { Header } from "./Header";
 import { SEO } from "./SEO";
 import { Footer } from "./Footer";
@@ -497,7 +491,8 @@ export const WhoWeAre = () => {
                 {
                   number: 98,
                   suffix: "%",
-                  label: lang === "en" ? "Client Retention" : "Retenção de Clientes",
+                  label:
+                    lang === "en" ? "Client Retention" : "Retenção de Clientes",
                   sublabel: lang === "en" ? "Year over year" : "Ano após ano",
                 },
               ].map((stat, index) => (
@@ -544,14 +539,15 @@ export const WhoWeAre = () => {
               {/* Left - Image */}
               <div data-animate="fade-up" className="lg:col-span-5">
                 <div className="relative sticky top-24">
-                  <div className="aspect-[4/5] rounded-[28px] overflow-hidden bg-gray-100">
+                  <div className="aspect-[4/5] rounded-[28px] overflow-hidden bg-gray-100 relative">
                     <img
-                      src="/photos/cafes-cazarini.jpg"
+                      src="/photos/brasilemsemenetes.jfif"
                       alt="Coffee beans"
-                      className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-700"
+                      className="w-full h-full object-cover transition-all duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-tr from-brand-950/40 to-transparent" />
                   </div>
+
                   {/* Floating quote box */}
                   <div className="absolute -bottom-10 -left-6 lg:-left-10 bg-accent-green p-8 lg:p-10 max-w-xs hidden xl:block shadow-xl">
                     <p className="font-editorial italic text-2xl lg:text-3xl leading-tight text-brand-900">
@@ -777,7 +773,9 @@ export const WhoWeAre = () => {
 
                     {/* Center dot */}
                     <div className="absolute left-6 lg:left-1/2 top-2 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-10">
-                      <div className={`w-3 h-3 rounded-full ${index === 0 ? "bg-accent-green" : "bg-white"} ring-8 ring-white/5`} />
+                      <div
+                        className={`w-3 h-3 rounded-full ${index === 0 ? "bg-accent-green" : "bg-white"} ring-8 ring-white/5`}
+                      />
                     </div>
 
                     {/* Spacer for opposite side */}
