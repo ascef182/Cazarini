@@ -235,12 +235,14 @@ export const WhoWeAre = () => {
             text: "Only premium-grade Brazilian and Colombian coffees",
           },
         ],
-        motivation: "Driven by a passion for excellence and a commitment to sustainable growth, we strive to build bridges between Brazilian coffee producers and the global market, ensuring quality, transparency, and mutual success in every partnership.",
+        motivation:
+          "Driven by a passion for excellence and a commitment to sustainable growth, we strive to build bridges between Brazilian coffee producers and the global market, ensuring quality, transparency, and mutual success in every partnership.",
       },
       pt: {
         label: "O QUE NOS MOVE",
         title: "Os Princípios Por Trás de Cada Parceria",
-        motivation: "Impulsionados pela paixão pela excelência e pelo compromisso com o crescimento sustentável, nos esforçamos para construir pontes entre os produtores de café brasileiros e o mercado global, garantindo qualidade, transparência e sucesso mútuo em cada parceria.",
+        motivation:
+          "Impulsionados pela paixão pela excelência e pelo compromisso com o crescimento sustentável, nos esforçamos para construir pontes entre os produtores de café brasileiros e o mercado global, garantindo qualidade, transparência e sucesso mútuo em cada parceria.",
         items: [
           {
             icon: ShieldCheck,
@@ -270,7 +272,7 @@ export const WhoWeAre = () => {
         label: "LEADERSHIP",
         name: "Thiago Marques Cazarini",
         role: "Founder & Head Coffee Trader",
-        bio: "With over 21 years navigating the complexities of global coffee trading, Thiago has built a reputation that reaches the world's most respected financial publications.",
+        bio: "With over 21 years of experience, I lead Cazarini Trading Company, an organization I built from the ground up in 2009, which is now recognized across all continents for its excellence in coffee trading. Cazarini Trading Company masters risk management, export sales, and domestic market acquisitions, always with a detailed eye until the fulfillment of every contract, minimizing risks with proactivity when resolving any eventualities.",
         quote:
           "Every relationship in coffee is built on trust. We're not just moving bags—we're connecting dreams, livelihoods, and cultures across the globe.",
         credentials: [
@@ -283,7 +285,7 @@ export const WhoWeAre = () => {
         label: "LIDERANÇA",
         name: "Thiago Marques Cazarini",
         role: "Fundador & Head Coffee Trader",
-        bio: "Com mais de 21 anos navegando as complexidades do comércio global de café, Thiago construiu uma reputação que alcança as publicações financeiras mais respeitadas do mundo.",
+        bio: "Com mais de 21 anos de experiência, lidero a Cazarini Trading Company, uma organização que construí desde o início, em 2009, que hoje é reconhecida em todos os continentes pela excelência em comércio de café. A Cazarini Trading Company domina a gestão de riscos, vendas externas e aquisições no mercado interno, sempre com um olhar atento aos detalhes até o cumprimento de cada contrato, minimizando riscos, com pró atividade quando na solução de eventualidades.",
         quote:
           "Cada relacionamento no café é construído sobre confiança. Não estamos apenas movendo sacas—estamos conectando sonhos, meios de vida e culturas ao redor do globo.",
         credentials: [
@@ -615,9 +617,9 @@ export const WhoWeAre = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             VALUES SECTION - What Drives Us
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-12 lg:py-16 bg-gray-50">
+        <section className="py-10 lg:py-12 bg-gray-50">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-            <div data-animate="fade-up" className="text-center mb-16">
+            <div data-animate="fade-up" className="text-center mb-8">
               <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
                 {content.values[lang].label}
               </p>
@@ -655,7 +657,7 @@ export const WhoWeAre = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             LEADERSHIP SECTION
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 lg:py-32 bg-white overflow-hidden">
+        <section className="py-20 lg:py-12 bg-white overflow-hidden">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Image Side */}

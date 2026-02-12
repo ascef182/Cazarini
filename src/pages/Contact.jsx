@@ -24,40 +24,97 @@ const getContactSchema = (lang, role) => {
           ? "Please select your role"
           : "Por favor selecione seu papel",
     }),
-    name: z.string().min(3, lang === "en" ? "Name must be at least 3 characters" : "Nome deve ter no mínimo 3 caracteres"),
-    company: z.string().min(2, lang === "en" ? "Company must be at least 2 characters" : "Empresa deve ter no mínimo 2 caracteres"),
-    email: z.string().email(lang === "en" ? "Please enter a valid email" : "Email inválido"),
-    phone: z.string().min(10, lang === "en" ? "Phone must be at least 10 digits" : "Telefone deve ter no mínimo 10 dígitos"),
-    message: z.string().min(20, lang === "en" ? "Message must be at least 20 characters" : "Mensagem deve ter no mínimo 20 caracteres"),
+    name: z
+      .string()
+      .min(
+        3,
+        lang === "en"
+          ? "Name must be at least 3 characters"
+          : "Nome deve ter no mínimo 3 caracteres",
+      ),
+    company: z
+      .string()
+      .min(
+        2,
+        lang === "en"
+          ? "Company must be at least 2 characters"
+          : "Empresa deve ter no mínimo 2 caracteres",
+      ),
+    email: z
+      .string()
+      .email(lang === "en" ? "Please enter a valid email" : "Email inválido"),
+    phone: z
+      .string()
+      .min(
+        10,
+        lang === "en"
+          ? "Phone must be at least 10 digits"
+          : "Telefone deve ter no mínimo 10 dígitos",
+      ),
+    message: z
+      .string()
+      .min(
+        20,
+        lang === "en"
+          ? "Message must be at least 20 characters"
+          : "Mensagem deve ter no mínimo 20 caracteres",
+      ),
   };
 
   if (role === "producer") {
     return z.object({
       ...base,
-      region: z.string().min(2, lang === "en" ? "Please enter your region" : "Informe sua região"),
+      region: z
+        .string()
+        .min(
+          2,
+          lang === "en" ? "Please enter your region" : "Informe sua região",
+        ),
       farmSize: z.enum(["small", "medium", "large", "cooperative"], {
-        required_error: lang === "en" ? "Please select farm size" : "Selecione o tamanho",
+        required_error:
+          lang === "en" ? "Please select farm size" : "Selecione o tamanho",
       }),
       annualProduction: z.enum(["1-100", "101-500", "501-2000", "2000+"], {
-        required_error: lang === "en" ? "Please select production volume" : "Selecione o volume",
+        required_error:
+          lang === "en"
+            ? "Please select production volume"
+            : "Selecione o volume",
       }),
-      coffeeType: z.array(z.string()).min(1, lang === "en" ? "Select at least one" : "Selecione pelo menos um"),
+      coffeeType: z
+        .array(z.string())
+        .min(
+          1,
+          lang === "en" ? "Select at least one" : "Selecione pelo menos um",
+        ),
       certifications: z.array(z.string()).optional(),
     });
   }
 
   return z.object({
     ...base,
-    buyerType: z.enum(["individual", "cooperative", "company", "trader", "exporter"], {
-      required_error: lang === "en" ? "Please select a type" : "Selecione um tipo",
-    }),
+    buyerType: z.enum(
+      ["individual", "cooperative", "company", "trader", "exporter"],
+      {
+        required_error:
+          lang === "en" ? "Please select a type" : "Selecione um tipo",
+      },
+    ),
     volume: z.enum(["1-50", "51-100", "101-500", "501-1000", "1000+"], {
-      required_error: lang === "en" ? "Please select volume" : "Selecione o volume",
+      required_error:
+        lang === "en" ? "Please select volume" : "Selecione o volume",
     }),
     unit: z.enum(["bags", "containers"], {
-      required_error: lang === "en" ? "Please select unit" : "Selecione a unidade",
+      required_error:
+        lang === "en" ? "Please select unit" : "Selecione a unidade",
     }),
-    coffeeType: z.array(z.string()).min(1, lang === "en" ? "Select at least one coffee type" : "Selecione pelo menos um tipo de café"),
+    coffeeType: z
+      .array(z.string())
+      .min(
+        1,
+        lang === "en"
+          ? "Select at least one coffee type"
+          : "Selecione pelo menos um tipo de café",
+      ),
   });
 };
 
@@ -140,7 +197,7 @@ export const Contact = () => {
     if (current.includes(type)) {
       form.setValue(
         "coffeeType",
-        current.filter((t) => t !== type)
+        current.filter((t) => t !== type),
       );
     } else {
       form.setValue("coffeeType", [...current, type]);
@@ -207,12 +264,15 @@ export const Contact = () => {
         organic: "Organic",
         message: "Message",
         messagePh: "How can we help you with your coffee trading needs?",
-        messageBuyerPh: "Tell us about your sourcing needs, preferred origins, and quality specifications...",
-        messageProducerPh: "Tell us about your farm, production capacity, and what makes your coffee unique...",
+        messageBuyerPh:
+          "Tell us about your sourcing needs, preferred origins, and quality specifications...",
+        messageProducerPh:
+          "Tell us about your farm, production capacity, and what makes your coffee unique...",
         submit: "Send Message",
         submitting: "Sending...",
         success: "Message sent successfully! We'll be in touch soon.",
-        agreement: "By submitting, you agree to our privacy policy and terms of service.",
+        agreement:
+          "By submitting, you agree to our privacy policy and terms of service.",
         // Producer-specific labels
         region: "Growing Region",
         regionPh: "e.g. Cerrado Mineiro, Mogiana",
@@ -255,13 +315,18 @@ export const Contact = () => {
         specialty: "Especial",
         organic: "Orgânico",
         message: "Mensagem",
-        messagePh: "Como podemos ajudá-lo com suas necessidades de comércio de café?",
-        messageBuyerPh: "Conte-nos sobre suas necessidades de sourcing, origens preferidas e especificações de qualidade...",
-        messageProducerPh: "Conte-nos sobre sua fazenda, capacidade produtiva e o que torna seu café especial...",
+        messagePh:
+          "Como podemos ajudá-lo com suas necessidades de comércio de café?",
+        messageBuyerPh:
+          "Conte-nos sobre suas necessidades de sourcing, origens preferidas e especificações de qualidade...",
+        messageProducerPh:
+          "Conte-nos sobre sua fazenda, capacidade produtiva e o que torna seu café especial...",
         submit: "Enviar Mensagem",
         submitting: "Enviando...",
-        success: "Mensagem enviada com sucesso! Entraremos em contato em breve.",
-        agreement: "Ao enviar, você concorda com nossa política de privacidade e termos de serviço.",
+        success:
+          "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+        agreement:
+          "Ao enviar, você concorda com nossa política de privacidade e termos de serviço.",
         // Producer-specific labels
         region: "Região de Cultivo",
         regionPh: "ex. Cerrado Mineiro, Mogiana",
@@ -283,17 +348,17 @@ export const Contact = () => {
         {
           icon: Mail,
           title: "Email Us",
-          lines: ["info@cazarinitrading.com", "trade@cazarinitrading.com"],
+          lines: ["trade@cazarinitrading.com"],
         },
         {
           icon: Phone,
           title: "Call Us",
-          lines: ["+55 (35) 3222-5678", "+55 (35) 99876-5432"],
+          lines: ["+55 (35) 99876-5432"],
         },
         {
           icon: MapPin,
           title: "Visit Us",
-          lines: ["Varginha, MG", "Brazil - Coffee Capital"],
+          lines: ["Varginha, MG", "Brazil "],
         },
         {
           icon: Globe2,
@@ -306,17 +371,17 @@ export const Contact = () => {
         {
           icon: Mail,
           title: "Email",
-          lines: ["info@cazarinitrading.com", "trade@cazarinitrading.com"],
+          lines: ["trade@cazarinitrading.com"],
         },
         {
           icon: Phone,
           title: "Telefone",
-          lines: ["+55 (35) 3222-5678", "+55 (35) 99876-5432"],
+          lines: ["+55 (35) 99876-5432"],
         },
         {
           icon: MapPin,
           title: "Visite-nos",
-          lines: ["Varginha, MG", "Brasil - Capital do Café"],
+          lines: ["Varginha, MG", "Brasil "],
         },
         {
           icon: Globe2,
@@ -547,7 +612,9 @@ export const Contact = () => {
                         <option value="exporter">{f.exporter}</option>
                       </select>
                       {form.formState.errors.buyerType && (
-                        <p className="text-xs text-red-500">{form.formState.errors.buyerType.message}</p>
+                        <p className="text-xs text-red-500">
+                          {form.formState.errors.buyerType.message}
+                        </p>
                       )}
                     </div>
 
@@ -569,7 +636,9 @@ export const Contact = () => {
                           <option value="1000+">1,000+</option>
                         </select>
                         {form.formState.errors.volume && (
-                          <p className="text-xs text-red-500">{form.formState.errors.volume.message}</p>
+                          <p className="text-xs text-red-500">
+                            {form.formState.errors.volume.message}
+                          </p>
                         )}
                       </div>
                       <div className="space-y-2">
@@ -608,16 +677,22 @@ export const Contact = () => {
                           >
                             <input
                               type="checkbox"
-                              checked={form.watch("coffeeType").includes(type.id)}
+                              checked={form
+                                .watch("coffeeType")
+                                .includes(type.id)}
                               onChange={() => toggleCoffeeType(type.id)}
                               className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
                             />
-                            <span className="text-sm text-gray-700">{type.label}</span>
+                            <span className="text-sm text-gray-700">
+                              {type.label}
+                            </span>
                           </label>
                         ))}
                       </div>
                       {form.formState.errors.coffeeType && (
-                        <p className="text-xs text-red-500">{form.formState.errors.coffeeType.message}</p>
+                        <p className="text-xs text-red-500">
+                          {form.formState.errors.coffeeType.message}
+                        </p>
                       )}
                     </div>
                   </>
@@ -638,7 +713,9 @@ export const Contact = () => {
                         placeholder={f.regionPh}
                       />
                       {form.formState.errors.region && (
-                        <p className="text-xs text-red-500">{form.formState.errors.region.message}</p>
+                        <p className="text-xs text-red-500">
+                          {form.formState.errors.region.message}
+                        </p>
                       )}
                     </div>
 
@@ -656,10 +733,14 @@ export const Contact = () => {
                           <option value="small">{f.small}</option>
                           <option value="medium">{f.medium}</option>
                           <option value="large">{f.large}</option>
-                          <option value="cooperative">{f.cooperativeSize}</option>
+                          <option value="cooperative">
+                            {f.cooperativeSize}
+                          </option>
                         </select>
                         {form.formState.errors.farmSize && (
-                          <p className="text-xs text-red-500">{form.formState.errors.farmSize.message}</p>
+                          <p className="text-xs text-red-500">
+                            {form.formState.errors.farmSize.message}
+                          </p>
                         )}
                       </div>
                       <div className="space-y-2">
@@ -677,7 +758,9 @@ export const Contact = () => {
                           <option value="2000+">2,000+</option>
                         </select>
                         {form.formState.errors.annualProduction && (
-                          <p className="text-xs text-red-500">{form.formState.errors.annualProduction.message}</p>
+                          <p className="text-xs text-red-500">
+                            {form.formState.errors.annualProduction.message}
+                          </p>
                         )}
                       </div>
                     </div>
@@ -704,16 +787,22 @@ export const Contact = () => {
                           >
                             <input
                               type="checkbox"
-                              checked={form.watch("coffeeType").includes(type.id)}
+                              checked={form
+                                .watch("coffeeType")
+                                .includes(type.id)}
                               onChange={() => toggleCoffeeType(type.id)}
                               className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
                             />
-                            <span className="text-sm text-gray-700">{type.label}</span>
+                            <span className="text-sm text-gray-700">
+                              {type.label}
+                            </span>
                           </label>
                         ))}
                       </div>
                       {form.formState.errors.coffeeType && (
-                        <p className="text-xs text-red-500">{form.formState.errors.coffeeType.message}</p>
+                        <p className="text-xs text-red-500">
+                          {form.formState.errors.coffeeType.message}
+                        </p>
                       )}
                     </div>
 
@@ -732,25 +821,38 @@ export const Contact = () => {
                           <label
                             key={cert.id}
                             className={`flex items-center gap-3 p-3 rounded-xl border cursor-pointer transition-all ${
-                              (form.watch("certifications") || []).includes(cert.id)
+                              (form.watch("certifications") || []).includes(
+                                cert.id,
+                              )
                                 ? "border-accent-green bg-accent-green/5"
                                 : "border-gray-200 hover:border-gray-300"
                             }`}
                           >
                             <input
                               type="checkbox"
-                              checked={(form.watch("certifications") || []).includes(cert.id)}
+                              checked={(
+                                form.watch("certifications") || []
+                              ).includes(cert.id)}
                               onChange={() => {
-                                const current = form.watch("certifications") || [];
+                                const current =
+                                  form.watch("certifications") || [];
                                 if (current.includes(cert.id)) {
-                                  form.setValue("certifications", current.filter((c) => c !== cert.id));
+                                  form.setValue(
+                                    "certifications",
+                                    current.filter((c) => c !== cert.id),
+                                  );
                                 } else {
-                                  form.setValue("certifications", [...current, cert.id]);
+                                  form.setValue("certifications", [
+                                    ...current,
+                                    cert.id,
+                                  ]);
                                 }
                               }}
                               className="w-4 h-4 rounded border-gray-300 text-accent-green focus:ring-2 focus:ring-accent-green/20"
                             />
-                            <span className="text-sm text-gray-700">{cert.label}</span>
+                            <span className="text-sm text-gray-700">
+                              {cert.label}
+                            </span>
                           </label>
                         ))}
                       </div>
@@ -767,7 +869,13 @@ export const Contact = () => {
                     rows={4}
                     {...form.register("message")}
                     className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none resize-none text-sm"
-                    placeholder={selectedRole === "producer" ? f.messageProducerPh : selectedRole === "buyer" ? f.messageBuyerPh : f.messagePh}
+                    placeholder={
+                      selectedRole === "producer"
+                        ? f.messageProducerPh
+                        : selectedRole === "buyer"
+                          ? f.messageBuyerPh
+                          : f.messagePh
+                    }
                   />
                   {form.formState.errors.message && (
                     <p className="text-xs text-red-500">
@@ -823,37 +931,18 @@ export const Contact = () => {
               </div>
 
               {/* Map Section */}
-              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden bg-gray-200 group">
-                <img
-                  src="/photos/caffe-in-field.jpg"
-                  alt="Coffee growing region"
-                  className="w-full h-full object-cover opacity-60 grayscale group-hover:scale-110 transition-transform duration-700"
-                />
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="bg-white p-6 rounded-2xl shadow-2xl flex items-center gap-4 max-w-xs">
-                    <div className="w-10 h-10 bg-accent-green rounded-full flex items-center justify-center shrink-0">
-                      <MapPin className="w-5 h-5 text-brand-900" />
-                    </div>
-                    <div>
-                      <p className="font-bold text-sm">Cazarini Trading HQ</p>
-                      <p className="text-xs text-gray-500">
-                        Varginha, MG - Brazil
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="absolute bottom-6 right-6">
-                  <a
-                    href="https://maps.google.com/?q=Varginha,MG,Brazil"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="bg-black/80 backdrop-blur-md text-white px-4 py-2 rounded-full text-xs font-semibold hover:bg-black transition-colors"
-                  >
-                    {lang === "en"
-                      ? "Open in Google Maps"
-                      : "Abrir no Google Maps"}
-                  </a>
-                </div>
+              <div className="relative w-full h-[400px] rounded-3xl overflow-hidden bg-gray-200 shadow-lg border border-gray-100">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8824.657620651667!2d-45.43728584603923!3d-21.57376150657078!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94ca9279d76da9d9%3A0xe981b52acceb973a!2sCazarini%20Trading%20Company!5e0!3m2!1spt-BR!2sbr!4v1770843579740!5m2!1spt-BR!2sbr" 
+                  width="100%" 
+                  height="100%" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Cazarini Trading Map"
+                  className="w-full h-full"
+                ></iframe>
               </div>
             </div>
           </div>

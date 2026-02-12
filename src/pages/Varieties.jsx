@@ -17,23 +17,36 @@ const filterButtons = [
   { id: "conilon", label: { en: "Conilon", pt: "Conilon" } },
 ];
 
+
 const varietyGallery = [
+  // FINE CUP - SEMI WASHED
   { id: 1, category: "fine-cup", title: "NY 2/3 SEMI WASHED 17/18", type: "FINE CUP", region: { en: "Semi Washed • Screen 17/18", pt: "Semi Lavado • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
   { id: 2, category: "fine-cup", title: "NY 2/3 SEMI WASHED 14/16", type: "FINE CUP", region: { en: "Semi Washed • Screen 14/16", pt: "Semi Lavado • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
+  
+  // FINE CUP - NATURAL
   { id: 3, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 17/18", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 17/18", pt: "Natural • Cerrado/Mogiana • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
   { id: 4, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 14/16", type: "FINE CUP", region: { en: "Natural • Cerrado/Mogiana • Screen 14/16", pt: "Natural • Cerrado/Mogiana • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
   { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
   { id: 6, category: "fine-cup", title: "NATURAL NY 2/3 14/16", type: "FINE CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
   { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: { en: "Natural Peaberries • Screen 9/10/11", pt: "Peaberries Natural • Peneira 9/10/11" }, image: "/photos/grade-cafe.jpg" },
+  { id: 18, category: "fine-cup", title: "SIMPLE RED", type: "FINE CUP", region: { en: "Natural • Red Catuai", pt: "Natural • Catuai Vermelho" }, image: "/photos/grade-cafe.jpg" },
+
+  // GOOD CUP
   { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/thiago-cafe.jpg" },
+  { id: 19, category: "good-cup", title: "17/18 VGC", type: "GOOD CUP", region: { en: "Very Good Cup • Screen 17/18", pt: "Very Good Cup • Peneira 17/18" }, image: "/photos/thiago-cafe.jpg" },
   { id: 9, category: "good-cup", title: "NATURAL NY 3/4 14/16", type: "GOOD CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/thiago-cafe.jpg" },
   { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 13UP", pt: "Natural Grinders • Peneira 13UP" }, image: "/photos/thiago-cafe.jpg" },
   { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 12UP", pt: "Natural Grinders • Peneira 12UP" }, image: "/photos/thiago-cafe.jpg" },
+
+  // RIO MINAS
   { id: 12, category: "rio-minas", title: "RIO MINAS 17/18", type: "RIO MINAS", region: { en: "Traditional • Screen 17/18", pt: "Tradicional • Peneira 17/18" }, image: "/photos/cafe-cazarini.jpg" },
   { id: 13, category: "rio-minas", title: "RIO MINAS 15/16", type: "RIO MINAS", region: { en: "Traditional • Screen 15/16", pt: "Tradicional • Peneira 15/16" }, image: "/photos/cafe-cazarini.jpg" },
   { id: 14, category: "rio-minas", title: "RIO MINAS 14/16", type: "RIO MINAS", region: { en: "Traditional • Screen 14/16", pt: "Tradicional • Peneira 14/16" }, image: "/photos/cafe-cazarini.jpg" },
+
+  // CONILON
   { id: 15, category: "conilon", title: "CONILON 13UP", type: "CONILON", region: { en: "Robusta • Screen 13UP", pt: "Robusta • Peneira 13UP" }, image: "/photos/experimento-cafe.jpg" },
   { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: { en: "Robusta • Screen 14UP", pt: "Robusta • Peneira 14UP" }, image: "/photos/experimento-cafe.jpg" },
+  { id: 20, category: "conilon", title: "BAHIA CONILON 16UP", type: "CONILON", region: { en: "Robusta • Bahia • Screen 16UP", pt: "Robusta • Bahia • Peneira 16UP" }, image: "/photos/experimento-cafe.jpg" },
   { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: { en: "Robusta • Screen 16UP", pt: "Robusta • Peneira 16UP" }, image: "/photos/experimento-cafe.jpg" },
 ];
 
@@ -51,8 +64,8 @@ const categoryDescriptions = {
     pt: "Perfil tradicional brasileiro. Ideal para mercados que valorizam sabores clássicos.",
   },
   conilon: {
-    en: "Brazilian Robusta with strong body. Excellent for espresso blends and soluble coffee.",
-    pt: "Robusta brasileiro com corpo forte. Excelente para blends de espresso e café solúvel.",
+    en: "Brazilian Robusta with strong body. All standard cup no glypho requirement.",
+    pt: "Robusta brasileiro com corpo forte. Padrão standard sem requisitos de glifosato.",
   },
 };
 
@@ -92,11 +105,11 @@ const sourcingFeatures = [
 
 const certifications = [
   { id: "rfa", name: "RFA", fullName: { en: "Rainforest Alliance", pt: "Rainforest Alliance" }, description: { en: "Environmental, social and economic sustainability certification.", pt: "Certificação de sustentabilidade ambiental, social e econômica." }, icon: Leaf, color: "bg-green-500" },
-  { id: "4c", name: "4C", fullName: { en: "Common Code for Coffee Community", pt: "Código Comum para a Comunidade do Café" }, description: { en: "Baseline sustainability standard for coffee production.", pt: "Padrão básico de sustentabilidade para produção de café." }, icon: Globe2, color: "bg-blue-500" },
+  { id: "4c", name: "4C", fullName: { en: "4C", pt: "4C" }, description: { en: "Baseline sustainability standard for coffee production.", pt: "Padrão básico de sustentabilidade para produção de café." }, icon: Globe2, color: "bg-blue-500" },
   { id: "rs", name: "RS", fullName: { en: "Responsible Sourcing", pt: "Fornecimento Responsável" }, description: { en: "Responsible and sustainable sourcing compliance.", pt: "Conformidade de fornecimento responsável e sustentável." }, icon: Shield, color: "bg-purple-500" },
   { id: "eudr", name: "EUDR", fullName: { en: "EUDR Compliance", pt: "Conformidade EUDR" }, description: { en: "Full compliance with EU Deforestation Regulation.", pt: "Conformidade total com o Regulamento de Desmatamento da UE." }, icon: CheckCircle2, color: "bg-amber-500" },
   { id: "fairtrade", name: "Fair Trade", fullName: { en: "Fair Trade Certified", pt: "Comércio Justo Certificado" }, description: { en: "Certification for equitable trading relationships.", pt: "Certificação para relações comerciais equitativas." }, icon: Award, color: "bg-teal-500" },
-  { id: "organic", name: "Organic", fullName: { en: "Certified Organic", pt: "Orgânico Certificado" }, description: { en: "Organic production under international standards.", pt: "Produção orgânica sob padrões internacionais." }, icon: Leaf, color: "bg-emerald-500" },
+  { id: "organic", name: "Organic", fullName: { en: "Fair Trade Organic", pt: "Orgânico Fair Trade" }, description: { en: "Organic and Fair Trade certified production.", pt: "Produção certificada Orgânica e Fair Trade." }, icon: Leaf, color: "bg-emerald-500" },
 ];
 
 export const Varieties = () => {
@@ -223,6 +236,7 @@ export const Varieties = () => {
         });
       });
 
+
       // CTA
       gsap.from("[data-animate='cta']", {
         y: 40,
@@ -238,8 +252,8 @@ export const Varieties = () => {
   const content = {
     hero: {
       en: {
-        eyebrow: "PREMIUM BRAZILIAN COFFEE",
-        title: "17+ Varieties of Excellence",
+        eyebrow: "GREEN COFFEE",
+        title: "Green Coffe Varieties",
         subtitle: "From Fine Cup to Conilon, discover our carefully sourced and graded coffees that meet the highest international standards.",
         stats: [
           { value: "17+", label: "Varieties" },
@@ -248,8 +262,8 @@ export const Varieties = () => {
         ],
       },
       pt: {
-        eyebrow: "CAFÉ BRASILEIRO PREMIUM",
-        title: "17+ Variedades de Excelência",
+        eyebrow: "CAFÉ VERDE",
+        title: "Variedades de Café Verde",
         subtitle: "De Fine Cup a Conilon, descubra nossos cafés cuidadosamente selecionados e classificados que atendem aos mais altos padrões internacionais.",
         stats: [
           { value: "17+", label: "Variedades" },

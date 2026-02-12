@@ -7,11 +7,12 @@ import { useTranslation } from "../hooks/useTranslation";
 
 // Dynamic nav items that change based on language
 const getNavItems = (lang) => [
+  { label: lang === "pt" ? "Início" : "Home", href: "/", type: "link" },
   { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
   { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
   { label: "Blog", href: "/blog", type: "link" },
-  { label: lang === "pt" ? "Localização" : "Location", href: "/#faq", type: "anchor" },
-  { label: lang === "pt" ? "Contato" : "Contact", href: "/#contato", type: "anchor" },
+  { label: lang === "pt" ? "Logística" : "Logistics", href: lang === "pt" ? "/logistica" : "/logistics", type: "link" },
+  { label: lang === "pt" ? "Contato" : "Contact", href: lang === "pt" ? "/contato" : "/contact", type: "link" },
 ];
 
 const trustedLogos = [
@@ -131,7 +132,7 @@ export const HeroSection = () => {
   return (
     <section
       ref={heroRef}
-      className="relative overflow-hidden bg-white pb-16 pt-6 text-brand-900"
+      className="relative overflow-hidden bg-gradient-to-b from-white via-gray-50/50 to-gray-50 pb-16 pt-6 text-brand-900"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 pt-4 sm:px-6 lg:px-10">
         <header
@@ -177,7 +178,7 @@ export const HeroSection = () => {
               className="relative hidden items-center gap-1 overflow-hidden rounded-pill border border-brand-900 bg-brand-900 px-6 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-900/10 transition duration-300 ease-soft-spring hover:border-brand-900 hover:bg-white hover:text-brand-900 md:inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <span>Schedule Call</span>
+                <span>{currentLanguage === "pt" ? "Agendar Chamada" : "Schedule Call"}</span>
                 <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-900">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -208,7 +209,7 @@ export const HeroSection = () => {
                       className="h-5 w-5 object-cover"
                     />
                   ) : (
-                    <span className="text-[10px] font-semibold">EN</span>
+                    <img src="/photos/usa.png" alt="English" className="h-4 w-4 rounded-full object-cover" />
                   )}
                 </span>
                 <span className="uppercase tracking-[0.12em]">
@@ -249,9 +250,11 @@ export const HeroSection = () => {
                     onClick={() => toggleLanguage("en")}
                     className="flex w-full items-center gap-2 px-3 py-2 text-left hover:bg-gray-50"
                   >
-                    <span className="flex h-4 w-4 items-center justify-center rounded-full border border-gray-300 text-[9px] font-semibold">
-                      EN
-                    </span>
+                    <img
+                      src="/photos/American-flag.png"
+                      alt="English"
+                      className="h-4 w-4 rounded-full object-cover"
+                    />
                     <span>English</span>
                   </button>
                 </div>
@@ -301,7 +304,7 @@ export const HeroSection = () => {
                   type="button"
                   className="w-full rounded-pill border border-brand-900 bg-brand-900 px-4 py-2 text-sm font-semibold text-white"
                 >
-                  Schedule Call
+                  {currentLanguage === "pt" ? "Agendar Chamada" : "Schedule Call"}
                 </button>
                 <button
                   type="button"
@@ -317,7 +320,7 @@ export const HeroSection = () => {
                           className="h-5 w-5 object-cover"
                         />
                       ) : (
-                        <span className="text-[10px] font-semibold">EN</span>
+                        <img src="/photos/usa.png" alt="English" className="h-4 w-4 rounded-full object-cover" />
                       )}
                     </span>
                     <span className="uppercase tracking-[0.12em]">

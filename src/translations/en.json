@@ -43,7 +43,8 @@
     "variety": "variety",
     "varieties": "varieties",
     "previous": "Previous",
-    "next": "Next"
+    "next": "Next",
+    "seeAll": "See All"
   },
   "testimonials": {
     "title": "Testimonials from industry-leading clients",
@@ -197,7 +198,9 @@
     "address": "Rua do Comércio do Café, 77",
     "city": "Varginha, Minas Gerais, MG",
     "country": "Brazil",
-    "rights": "Cazarini Trading Company. All rights reserved."
+    "rights": "Cazarini Trading Company. All rights reserved.",
+    "logistics": "Logistics",
+    "latestInsights": "Latest Insights"
   }
 }
 

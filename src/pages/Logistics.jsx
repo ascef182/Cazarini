@@ -233,78 +233,84 @@ export const Logistics = () => {
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    // Force a refresh to ensure positions are correct after render
+    const timer = setTimeout(() => ScrollTrigger.refresh(), 100);
+
     const ctx = gsap.context(() => {
       // Hero animations
-      gsap.from('[data-animate="hero-eyebrow"]', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.2,
-      });
-      gsap.from('[data-animate="hero-title"]', {
-        y: 40,
-        opacity: 0,
-        duration: 1,
-        delay: 0.4,
-      });
-      gsap.from('[data-animate="hero-subtitle"]', {
-        y: 30,
-        opacity: 0,
-        duration: 0.8,
-        delay: 0.6,
-      });
+      gsap.fromTo('[data-animate="hero-eyebrow"]', 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.2 }
+      );
+      gsap.fromTo('[data-animate="hero-title"]', 
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 1, delay: 0.4 }
+      );
+      gsap.fromTo('[data-animate="hero-subtitle"]', 
+        { y: 30, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.8, delay: 0.6 }
+      );
 
       // Stats counter animation
-      gsap.from('[data-animate="stat"]', {
-        y: 40,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.1,
-        delay: 0.8,
-      });
+      gsap.fromTo('[data-animate="stat"]', 
+        { y: 40, opacity: 0 },
+        { y: 0, opacity: 1, duration: 0.6, stagger: 0.1, delay: 0.8 }
+      );
 
       // Scroll-triggered sections
       gsap.utils.toArray('[data-animate="fade-up"]').forEach((el) => {
-        gsap.from(el, {
-          y: 60,
-          opacity: 0,
-          duration: 0.8,
-          scrollTrigger: {
-            trigger: el,
-            start: "top 85%",
-            toggleActions: "play none none none",
-          },
-        });
+        gsap.fromTo(el, 
+          { y: 60, opacity: 0 },
+          { 
+            y: 0, 
+            opacity: 1, 
+            duration: 0.8,
+            scrollTrigger: {
+              trigger: el,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            }
+          }
+        );
       });
 
       // Service cards stagger
-      gsap.from('[data-animate="service-card"]', {
-        y: 60,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.12,
-        scrollTrigger: {
-          trigger: ".services-grid",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
+      gsap.fromTo('[data-animate="service-card"]', 
+        { y: 60, opacity: 0 },
+        { 
+          y: 0, 
+          opacity: 1, 
+          duration: 0.6,
+          stagger: 0.12,
+          scrollTrigger: {
+            trigger: ".services-grid",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          }
+        }
+      );
 
       // Process steps stagger
-      gsap.from('[data-animate="process-step"]', {
-        x: -40,
-        opacity: 0,
-        duration: 0.6,
-        stagger: 0.15,
-        scrollTrigger: {
-          trigger: ".process-grid",
-          start: "top 80%",
-          toggleActions: "play none none none",
-        },
-      });
+      gsap.fromTo('[data-animate="process-step"]', 
+        { x: -40, opacity: 0 },
+        { 
+          x: 0, 
+          opacity: 1, 
+          duration: 0.6,
+          stagger: 0.15,
+          scrollTrigger: {
+            trigger: ".process-grid",
+            start: "top 85%",
+            toggleActions: "play none none none",
+          }
+        }
+      );
     }, sectionRef);
 
-    return () => ctx.revert();
+    return () => {
+      ctx.revert();
+      clearTimeout(timer);
+    };
   }, []);
 
   return (
@@ -336,6 +342,7 @@ export const Logistics = () => {
             src="/photos/container-de-cafe.jpg"
             alt=""
             className="absolute inset-0 w-full h-full object-cover opacity-25"
+            loading="lazy"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-brand-950/50 to-brand-950" />
           <div className="absolute inset-0 bg-gradient-to-r from-brand-950/60 to-transparent" />
@@ -455,7 +462,7 @@ export const Logistics = () => {
         ═══════════════════════════════════════════════════════════════════ */}
         <section className="py-24 lg:py-32 bg-brand-950 relative overflow-hidden">
           {/* Subtle grid pattern */}
-          <div className="absolute inset-0 opacity-[0.03]" style={{ backgroundImage: "url(\"data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E\")" }} />
+          <div className="absolute inset-0 opacity-[0.03] pattern-grid" />
 
           <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <div data-animate="fade-up" className="text-center mb-16 lg:mb-20">
@@ -560,9 +567,9 @@ export const Logistics = () => {
               <div data-animate="fade-up" className="relative">
                 <div className="aspect-square rounded-[32px] overflow-hidden bg-brand-950 relative">
                   <img
-                    src="/photos/thiago-conteiner.jfif"
-                    alt="Coffee container at port"
+                    src="/photos/What is a Q Grader_.jfif"
                     className="w-full h-full object-cover opacity-60"
+                    loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-950/90 via-brand-950/30 to-transparent" />
                   <div className="absolute bottom-8 left-8 right-8">

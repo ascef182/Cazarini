@@ -10,142 +10,35 @@ const filterButtons = [
 ];
 
 const varietyGallery = [
-  {
-    id: 1,
-    category: "fine-cup",
-    title: "NY 2/3 SEMI WASHED 17/18",
-    type: "FINE CUP",
-    region: "Semi Washed • Screen 17/18",
-    image: "/photos/grade-cafe.jpg",
-  },
-  {
-    id: 2,
-    category: "fine-cup",
-    title: "NY 2/3 SEMI WASHED 14/16",
-    type: "FINE CUP",
-    region: "Semi Washed • Screen 14/16",
-    image: "/photos/cafe-cazarini.jpg",
-  },
-  {
-    id: 3,
-    category: "fine-cup",
-    title: "NATURAL NY 2/3 CERRADO/MOGIANA 17/18",
-    type: "FINE CUP",
-    region: "Natural • Cerrado/Mogiana • Screen 17/18",
-    image: "/photos/cafes-cazarini.jpg",
-  },
-  {
-    id: 4,
-    category: "fine-cup",
-    title: "NATURAL NY 2/3 CERRADO/MOGIANA 14/16",
-    type: "FINE CUP",
-    region: "Natural • Cerrado/Mogiana • Screen 14/16",
-    image: "/photos/thiago-cafe.jpg",
-  },
-  {
-    id: 5,
-    category: "fine-cup",
-    title: "NATURAL NY 2/3 17/18",
-    type: "FINE CUP",
-    region: "Natural • Screen 17/18",
-    image: "/photos/experimento-cafe.jpg",
-  },
-  {
-    id: 6,
-    category: "fine-cup",
-    title: "NATURAL NY 2/3 14/16",
-    type: "FINE CUP",
-    region: "Natural • Screen 14/16",
-    image: "/photos/grade-cafe.jpg",
-  },
-  {
-    id: 7,
-    category: "fine-cup",
-    title: "NATURAL PEABERRIES (MOKA) 9/10/11",
-    type: "FINE CUP",
-    region: "Natural Peaberries • Screen 9/10/11",
-    image: "/photos/cafe-cazarini.jpg",
-  },
-  {
-    id: 8,
-    category: "good-cup",
-    title: "NATURAL NY 2/3 17/18",
-    type: "GOOD CUP",
-    region: "Natural • Screen 17/18",
-    image: "/photos/cafes-cazarini.jpg",
-  },
-  {
-    id: 9,
-    category: "good-cup",
-    title: "NATURAL NY 3/4 14/16",
-    type: "GOOD CUP",
-    region: "Natural • Screen 14/16",
-    image: "/photos/thiago-cafe.jpg",
-  },
-  {
-    id: 10,
-    category: "good-cup",
-    title: "NATURAL NY 5/6 GRINDERS 13UP",
-    type: "GOOD CUP",
-    region: "Natural Grinders • Screen 13UP",
-    image: "/photos/experimento-cafe.jpg",
-  },
-  {
-    id: 11,
-    category: "good-cup",
-    title: "NATURAL NY 5/6 GRINDERS 12UP",
-    type: "GOOD CUP",
-    region: "Natural Grinders • Screen 12UP",
-    image: "/photos/grade-cafe.jpg",
-  },
-  {
-    id: 12,
-    category: "rio-minas",
-    title: "RIO MINAS 17/18",
-    type: "RIO MINAS",
-    region: "Traditional • Screen 17/18",
-    image: "/photos/cafe-cazarini.jpg",
-  },
-  {
-    id: 13,
-    category: "rio-minas",
-    title: "RIO MINAS 15/16",
-    type: "RIO MINAS",
-    region: "Traditional • Screen 15/16",
-    image: "/photos/cafes-cazarini.jpg",
-  },
-  {
-    id: 14,
-    category: "rio-minas",
-    title: "RIO MINAS 14/16",
-    type: "RIO MINAS",
-    region: "Traditional • Screen 14/16",
-    image: "/photos/thiago-cafe.jpg",
-  },
-  {
-    id: 15,
-    category: "conilon",
-    title: "CONILON 13UP",
-    type: "CONILON",
-    region: "Robusta • Screen 13UP",
-    image: "/photos/experimento-cafe.jpg",
-  },
-  {
-    id: 16,
-    category: "conilon",
-    title: "CONILON 14UP",
-    type: "CONILON",
-    region: "Robusta • Screen 14UP",
-    image: "/photos/grade-cafe.jpg",
-  },
-  {
-    id: 17,
-    category: "conilon",
-    title: "CONILON 16UP",
-    type: "CONILON",
-    region: "Robusta • Screen 16UP",
-    image: "/photos/cafe-cazarini.jpg",
-  },
+  // FINE CUP - SEMI WASHED
+  { id: 1, category: "fine-cup", title: "NY 2/3 SEMI WASHED 17/18", type: "FINE CUP", region: "Semi Washed • Screen 17/18", image: "/photos/grade-cafe.jpg" },
+  { id: 2, category: "fine-cup", title: "NY 2/3 SEMI WASHED 14/16", type: "FINE CUP", region: "Semi Washed • Screen 14/16", image: "/photos/grade-cafe.jpg" },
+  
+  // FINE CUP - NATURAL
+  { id: 3, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 17/18", type: "FINE CUP", region: "Natural • Cerrado/Mogiana • Screen 17/18", image: "/photos/grade-cafe.jpg" },
+  { id: 4, category: "fine-cup", title: "NATURAL NY 2/3 CERRADO/MOGIANA 14/16", type: "FINE CUP", region: "Natural • Cerrado/Mogiana • Screen 14/16", image: "/photos/grade-cafe.jpg" },
+  { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: "Natural • Screen 17/18", image: "/photos/grade-cafe.jpg" },
+  { id: 6, category: "fine-cup", title: "NATURAL NY 2/3 14/16", type: "FINE CUP", region: "Natural • Screen 14/16", image: "/photos/grade-cafe.jpg" },
+  { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: "Natural Peaberries • Screen 9/10/11", image: "/photos/grade-cafe.jpg" },
+  { id: 18, category: "fine-cup", title: "SIMPLE RED", type: "FINE CUP", region: "Natural • Red Catuai", image: "/photos/grade-cafe.jpg" },
+
+  // GOOD CUP
+  { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: "Natural • Screen 17/18", image: "/photos/thiago-cafe.jpg" },
+  { id: 19, category: "good-cup", title: "17/18 VGC", type: "GOOD CUP", region: "Very Good Cup • Screen 17/18", image: "/photos/thiago-cafe.jpg" },
+  { id: 9, category: "good-cup", title: "NATURAL NY 3/4 14/16", type: "GOOD CUP", region: "Natural • Screen 14/16", image: "/photos/thiago-cafe.jpg" },
+  { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: "Natural Grinders • Screen 13UP", image: "/photos/thiago-cafe.jpg" },
+  { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: "Natural Grinders • Screen 12UP", image: "/photos/thiago-cafe.jpg" },
+
+  // RIO MINAS
+  { id: 12, category: "rio-minas", title: "RIO MINAS 17/18", type: "RIO MINAS", region: "Traditional • Screen 17/18", image: "/photos/cafe-cazarini.jpg" },
+  { id: 13, category: "rio-minas", title: "RIO MINAS 15/16", type: "RIO MINAS", region: "Traditional • Screen 15/16", image: "/photos/cafe-cazarini.jpg" },
+  { id: 14, category: "rio-minas", title: "RIO MINAS 14/16", type: "RIO MINAS", region: "Traditional • Screen 14/16", image: "/photos/cafe-cazarini.jpg" },
+
+  // CONILON
+  { id: 15, category: "conilon", title: "CONILON 13UP", type: "CONILON", region: "Robusta • Screen 13UP", image: "/photos/experimento-cafe.jpg" },
+  { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: "Robusta • Screen 14UP", image: "/photos/experimento-cafe.jpg" },
+  { id: 20, category: "conilon", title: "BAHIA CONILON 16UP", type: "CONILON", region: "Robusta • Bahia • Screen 16UP", image: "/photos/experimento-cafe.jpg" },
+  { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: "Robusta • Screen 16UP", image: "/photos/experimento-cafe.jpg" },
 ];
 
 export const AboutUsSection = () => {
@@ -155,7 +48,7 @@ export const AboutUsSection = () => {
     left: false,
     right: false,
   });
-  const { t } = useTranslation();
+  const { t, isPortuguese } = useTranslation();
 
   const filteredVarieties = useMemo(() => {
     if (activeFilter === "all") return varietyGallery;
@@ -214,13 +107,23 @@ export const AboutUsSection = () => {
     >
       <div className="mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
         {/* Título */}
-        <div className="max-w-3xl space-y-5">
-          <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl lg:text-[2.5rem]">
-            {t("varieties.title")}
-          </h2>
-          <p className="text-white/70 text-lg">
-            {t("varieties.description")}
-          </p>
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.4fr)] lg:items-end">
+          <div className="space-y-5">
+            <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl lg:text-[2.5rem]">
+              {t("varieties.title")}
+            </h2>
+            <p className="text-white/70 text-lg max-w-xl">
+              {t("varieties.description")}
+            </p>
+          </div>
+          <div className="flex justify-start lg:justify-end">
+            <a
+              href={isPortuguese ? "/variedades" : "/varieties"}
+              className="pill-button rounded-pill border border-white/30 bg-transparent text-white hover:bg-white hover:text-brand-900 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 hover:scale-105 inline-block"
+            >
+              {t("varieties.seeAll") || "See All"}
+            </a>
+          </div>
         </div>
 
         {/* Filtros */}

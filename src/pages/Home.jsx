@@ -17,7 +17,7 @@ export const Home = () => {
   return (
     <>
       <SEO
-        title={lang === "en" 
+        title={lang === "en"
           ? "Cazarini Coffee Trading | Premium Brazilian Coffee Brokers Since 2009"
           : "Cazarini Trading de Café | Corretores Premium de Café Brasileiro Desde 2009"}
         description={lang === "en"
@@ -27,7 +27,7 @@ export const Home = () => {
           ? "coffee trading, coffee broker, brazilian coffee, coffee export, coffee brokerage, premium coffee, arabica, robusta"
           : "trading café, corretor café, café brasileiro, exportação café, corretagem café, café premium, arábica, robusta"}
       />
-      
+
       <HeroSection />
       <StatsSection />
       <AboutUsSection />
@@ -41,4 +41,3 @@ export const Home = () => {
 };
 
 export default Home;
-

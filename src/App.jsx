@@ -4,8 +4,12 @@ import Home from "./pages/Home";
 import { WhoWeAre } from "./components/who-we-are";
 import Varieties from "./pages/Varieties";
 import Blog from "./pages/Blog";
+import BlogPost from "./pages/BlogPost";
+import Insights from "./pages/Insights";
 import Contact from "./pages/Contact";
 import Logistics from "./pages/Logistics";
+import Gallery from "./pages/Gallery";
+import NotFound from "./pages/NotFound";
 
 export const CoffeTrading = () => {
   return (
@@ -18,11 +22,15 @@ export const CoffeTrading = () => {
           <Route path="/varieties" element={<Varieties />} />
           <Route path="/variedades" element={<Varieties />} />
           <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
+          <Route path="/insights" element={<Insights />} />
           <Route path="/logistics" element={<Logistics />} />
           <Route path="/logistica" element={<Logistics />} />
+          <Route path="/gallery" element={<Gallery />} />
+          <Route path="/galeria" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contato" element={<Contact />} />
-          <Route path="*" element={<Navigate to="/" replace />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </Router>
@@ -30,3 +38,4 @@ export const CoffeTrading = () => {
 };
 
 export default CoffeTrading;
+
