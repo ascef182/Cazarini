@@ -109,7 +109,7 @@ const BlogPost = () => {
                 {/* ═══════════════════════════════════════════════════════════════════
                     HERO - Dark cinematic with post image
                 ═══════════════════════════════════════════════════════════════════ */}
-                <section className="relative min-h-[70vh] lg:min-h-[80vh] flex flex-col overflow-hidden">
+                <section className="relative min-h-[50vh] lg:min-h-[55vh] flex flex-col overflow-hidden">
                     {/* Background Image */}
                     <img
                         src={post.image}
@@ -119,9 +119,6 @@ const BlogPost = () => {
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-brand-950 via-brand-950/80 to-brand-950/50" />
                     <div className="absolute inset-0 bg-gradient-to-r from-brand-950/60 to-transparent" />
-
-                    {/* Subtle texture overlay */}
-                    <div className="absolute inset-0 opacity-[0.03] pattern-grid" />
 
                     <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
                         <Header variant="dark" />

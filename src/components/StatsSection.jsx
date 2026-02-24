@@ -1,13 +1,17 @@
 import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useTranslation } from "../hooks/useTranslation";
+import { useLanguage } from "../context/LanguageContext";
 
 gsap.registerPlugin(ScrollTrigger);
 
 export const StatsSection = () => {
   const statsRef = useRef(null);
   const { t } = useTranslation();
+  const { isPortuguese } = useLanguage();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const root = statsRef.current;
@@ -126,15 +130,10 @@ export const StatsSection = () => {
               </h3>
             </div>
 
-            {/* Botão Play - posicionado dentro do card */}
+            {/* Botão Play - navega para Who We Are */}
             <button
               className="absolute bottom-4 right-4 w-20 h-20 rounded-full bg-[#B4F34C] flex items-center justify-center shadow-2xl hover:bg-[#A0E338] transition-all z-50 hover:scale-105"
-              onClick={() =>
-                window.open(
-                  "https://www.figma.com/design/7TgD4X065LaFFtNRZ8w0IU",
-                  "_blank"
-                )
-              }
+              onClick={() => navigate(isPortuguese ? "/quem-somos" : "/who-we-are")}
             >
               <svg
                 className="w-8 h-8 text-black ml-1"

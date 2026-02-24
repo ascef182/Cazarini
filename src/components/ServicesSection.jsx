@@ -1,6 +1,10 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useGsapFadeIn } from "../hooks/useGsapFadeIn";
 import { useTranslation } from "../hooks/useTranslation";
+import { useLanguage } from "../context/LanguageContext";
+import { blogPosts } from "../data/blogPosts";
+import { ArrowRight } from "lucide-react";
 
 const trustedLogos = [
   { src: "/photos/bloomberg.png", alt: "Bloomberg" },
@@ -12,9 +16,12 @@ const trustedLogos = [
 
 export const ServicesSection = () => {
   const { t } = useTranslation();
+  const { isPortuguese } = useLanguage();
+  const lang = isPortuguese ? "pt" : "en";
   useGsapFadeIn("[data-service-card]", { stagger: 0.1 });
-  
-  const articles = t("services.articles");
+
+  // Show the 3 most recent blog posts
+  const recentPosts = blogPosts.slice(0, 3);
 
   return (
     <section id="servicos" className="bg-white py-20 lg:py-28">
@@ -29,58 +36,52 @@ export const ServicesSection = () => {
             </p>
           </div>
           <div className="flex justify-start lg:justify-end">
-            <button className="pill-button rounded-pill border border-brand-900 bg-white text-brand-900 hover:bg-brand-900 hover:text-white">
+            <Link
+              to="/blog"
+              className="pill-button rounded-pill border border-brand-900 bg-white text-brand-900 hover:bg-brand-900 hover:text-white"
+            >
               {t("services.seeMore")}
-            </button>
+            </Link>
           </div>
         </div>
 
         <div className="grid gap-6 lg:grid-cols-3">
-          {articles.map((article) => (
-            <article
-              key={article.id}
+          {recentPosts.map((post) => (
+            <Link
+              to={`/blog/${post.slug}`}
+              key={post.id}
               data-service-card
               className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(1,2,5,0.14)]"
             >
-              <div className="relative overflow-hidden">
-                <div
-                  className={`absolute left-4 top-4 z-10 h-2 w-2 rounded-full ${article.accent}`}
-                />
+              <div className="relative h-56 overflow-hidden">
                 <img
-                  src={article.image}
-                  alt={article.title}
-                  className="h-56 w-full object-cover transition duration-300 group-hover:scale-105"
+                  src={post.image}
+                  alt={post.title}
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                   loading="lazy"
                 />
+                <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-900 shadow-sm">
+                  {post.category}
+                </div>
               </div>
               <div className="flex flex-1 flex-col gap-3 p-6">
-                <p className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500">
-                  {article.meta}
-                </p>
-                <h3 className="text-xl font-semibold leading-snug text-brand-900">
-                  {article.title}
+                <div className="flex items-center gap-2 text-xs text-gray-400 font-medium">
+                  <span>{post.date}</span>
+                  <span className="w-1 h-1 rounded-full bg-gray-300" />
+                  <span>{post.author}</span>
+                </div>
+                <h3 className="text-xl font-semibold leading-snug text-brand-900 group-hover:text-accent-green transition-colors">
+                  {post.title}
                 </h3>
-                <p className="text-sm leading-relaxed text-gray-500">
-                  {article.description}
+                <p className="text-sm leading-relaxed text-gray-500 line-clamp-3">
+                  {post.preview}
                 </p>
-                <button
-                  type="button"
-                  className="mt-auto flex h-10 w-10 items-center justify-center self-start rounded-full bg-brand-900 text-white transition hover:bg-brand-950"
-                  aria-label={`Read more about ${article.title}`}
-                >
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 24 24"
-                    className="h-4 w-4"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                  >
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </button>
+                <span className="mt-auto text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all inline-flex items-center gap-2">
+                  {lang === "en" ? "Read Article" : "Ler Artigo"}
+                  <ArrowRight className="w-3 h-3" />
+                </span>
               </div>
-            </article>
+            </Link>
           ))}
         </div>
 

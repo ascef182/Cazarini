@@ -5,7 +5,7 @@
     "blog": "Blog",
     "location": "Location",
     "contact": "Contact",
-    "scheduleCall": "Schedule Call"
+    "scheduleCall": "Request a Quote"
   },
   "hero": {
     "tagline": "Coffee Trading Company • since 2009",
@@ -13,10 +13,10 @@
     "titleHighlight": "Coffee brokers",
     "subtitle": "Helping coffee beans travel the world —",
     "subtitleSecond": "from farm to roastery",
-    "ctaSchedule": "Schedule Call",
+    "ctaSchedule": "Request a Quote",
     "ctaVarieties": "View Varieties",
     "trusted": "Trusted by the world's biggest brands",
-    "companiesTrust": "some big companies that we work with, and deeply trust us",
+    "companiesTrust": "Big companies that work with us and deeply trust our services",
     "drivingTrade": "Driving Global Coffee Trade",
     "exportingPremium": "Exporting Premium-",
     "exportingGrade": "Grade Coffee Worldwide"
@@ -25,7 +25,7 @@
     "title": "Provide the best service a reference in coffee trading",
     "description": "Cazarini Trading Company excels in risk management, international sales, and domestic procurement, maintaining a meticulous focus on every detail until contract fulfillment—always minimizing risk and proactively addressing any challenges that may arise.",
     "bagsDelivered": "Bags delivered with success",
-    "companiesTrust": "some big companies that we work with, and deeply trust us",
+    "companiesTrust": "Big companies that work with us and deeply trust our services",
     "drivingTrade": "Driving Global Coffee Trade",
     "exportingPremium": "Exporting Premium-",
     "exportingGrade": "Grade Coffee Worldwide",

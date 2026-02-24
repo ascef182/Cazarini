@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -37,9 +37,29 @@ export const HeroSection = () => {
   const lang = isPortuguese ? "pt" : "en";
   const location = useLocation();
   const navItems = getNavItems(lang);
-  
-  // Import translation hook
+
   const { t } = useTranslation();
+
+  // Close on Escape key + lock body scroll
+  const handleEscape = useCallback((e) => {
+    if (e.key === "Escape") {
+      setIsMobileNavOpen(false);
+      setIsLanguageOpen(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isMobileNavOpen) {
+      document.addEventListener("keydown", handleEscape);
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.removeEventListener("keydown", handleEscape);
+      document.body.style.overflow = "";
+    };
+  }, [isMobileNavOpen, handleEscape]);
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -137,7 +157,7 @@ export const HeroSection = () => {
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 pt-4 sm:px-6 lg:px-10">
         <header
           data-hero="nav"
-          className="border-brand-50/60 sticky top-3 z-20 flex items-center justify-between gap-4 rounded-pill border bg-white/90 px-4 py-2.5 shadow-sm shadow-brand-900/5 backdrop-blur sm:px-5"
+          className="border-brand-50/60 sticky top-3 z-50 flex items-center justify-between gap-4 rounded-pill border bg-white/90 px-4 py-2.5 shadow-sm shadow-brand-900/5 backdrop-blur sm:px-5"
         >
           <div className="flex items-center gap-6">
             <Link to="/" className="flex items-center gap-2">
@@ -146,7 +166,6 @@ export const HeroSection = () => {
                 alt="Cazarini logo"
                 className="h-12 w-auto rounded-sm object-contain"
               />
-              <span className="text-xs font-semibold uppercase tracking-[0.35em] text-brand-900"></span>
             </Link>
 
             <nav className="hidden items-center gap-6 text-sm font-semibold text-brand-900 md:flex">
@@ -173,12 +192,12 @@ export const HeroSection = () => {
           </div>
 
           <div className="flex items-center gap-3 md:gap-4">
-            <button
-              type="button"
+            <a
+              href="/#contact"
               className="relative hidden items-center gap-1 overflow-hidden rounded-pill border border-brand-900 bg-brand-900 px-6 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-900/10 transition duration-300 ease-soft-spring hover:border-brand-900 hover:bg-white hover:text-brand-900 md:inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <span>{currentLanguage === "pt" ? "Agendar Chamada" : "Schedule Call"}</span>
+                <span>{currentLanguage === "pt" ? "Solicitar Cotação" : "Request a Quote"}</span>
                 <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-900">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +212,7 @@ export const HeroSection = () => {
                 </span>
               </span>
               <span className="pointer-events-none absolute inset-0 rounded-pill border border-accent-green/70" />
-            </button>
+            </a>
 
             <div className="relative hidden md:block">
               <button
@@ -261,90 +280,28 @@ export const HeroSection = () => {
               )}
             </div>
 
+            {/* Hamburger / X toggle — 44px touch target */}
             <button
               type="button"
-              className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-900 md:hidden"
+              className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-900 md:hidden"
               onClick={() => setIsMobileNavOpen((open) => !open)}
-              aria-label="Open navigation"
+              aria-label={isMobileNavOpen ? "Close navigation" : "Open navigation"}
+              aria-expanded={isMobileNavOpen}
             >
-              <div className="flex flex-col gap-1">
-                <span className="block h-0.5 w-4 rounded-full bg-brand-900" />
-                <span className="block h-0.5 w-4 rounded-full bg-brand-900" />
+              <div className="flex h-4 w-5 flex-col items-center justify-center">
+                <span
+                  className={`block h-0.5 w-5 rounded-full bg-brand-900 transition-all duration-300 ease-out ${
+                    isMobileNavOpen ? "translate-y-[3px] rotate-45" : ""
+                  }`}
+                />
+                <span
+                  className={`mt-1.5 block h-0.5 w-5 rounded-full bg-brand-900 transition-all duration-300 ease-out ${
+                    isMobileNavOpen ? "-translate-y-[3px] -rotate-45" : ""
+                  }`}
+                />
               </div>
             </button>
           </div>
-
-          {isMobileNavOpen && (
-            <div className="absolute inset-x-0 top-full mt-3 rounded-3xl border border-gray-100 bg-white px-4 py-4 text-sm shadow-lg shadow-brand-900/10 md:hidden">
-              <nav className="flex flex-col gap-3 text-brand-900">
-                {navItems.map((item, idx) => (
-                  item.type === "link" ? (
-                    <Link
-                      key={`mobile-${idx}-${item.label}`}
-                      to={item.href}
-                      className="py-1"
-                      onClick={() => setIsMobileNavOpen(false)}
-                    >
-                      {item.label}
-                    </Link>
-                  ) : (
-                    <a
-                      key={`mobile-${idx}-${item.label}`}
-                      href={location.pathname === "/" ? item.href : `/${item.href}`}
-                      className="py-1"
-                      onClick={() => setIsMobileNavOpen(false)}
-                    >
-                      {item.label}
-                    </a>
-                  )
-                ))}
-              </nav>
-              <div className="mt-4 flex flex-col gap-3">
-                <button
-                  type="button"
-                  className="w-full rounded-pill border border-brand-900 bg-brand-900 px-4 py-2 text-sm font-semibold text-white"
-                >
-                  {currentLanguage === "pt" ? "Agendar Chamada" : "Schedule Call"}
-                </button>
-                <button
-                  type="button"
-                  onClick={() => setIsLanguageOpen((open) => !open)}
-                  className="flex items-center justify-between rounded-pill border border-gray-200 bg-white px-4 py-2 text-xs font-semibold text-brand-900"
-                >
-                  <span className="flex items-center gap-2">
-                    <span className="flex h-6 w-6 items-center justify-center overflow-hidden rounded-full border border-gray-200 bg-white">
-                      {currentLanguage === "pt" ? (
-                        <img
-                          src="/photos/brazil-flag.png"
-                          alt="Português"
-                          className="h-5 w-5 object-cover"
-                        />
-                      ) : (
-                        <img src="/photos/usa.png" alt="English" className="h-4 w-4 rounded-full object-cover" />
-                      )}
-                    </span>
-                    <span className="uppercase tracking-[0.12em]">
-                      {currentLanguage === "pt" ? "PT" : "EN"}
-                    </span>
-                  </span>
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    viewBox="0 0 20 20"
-                    fill="none"
-                    className="h-3 w-3"
-                  >
-                    <path
-                      d="M5 7l5 6 5-6"
-                      stroke="currentColor"
-                      strokeWidth="1.4"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                    />
-                  </svg>
-                </button>
-              </div>
-            </div>
-          )}
         </header>
 
         <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
@@ -376,9 +333,9 @@ export const HeroSection = () => {
               data-hero="cta"
               className="flex flex-wrap items-center gap-6 text-sm font-semibold"
             >
-              <button className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
+              <a href="#contact" className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
                 {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
-              </button>
+              </a>
               <a
                 href="#variedades"
                 className="group relative flex items-center gap-2 text-brand-900"
@@ -423,13 +380,13 @@ export const HeroSection = () => {
               />
             </div>
 
-            {/* Figure 2 - Light Stat Card (250+) */}
+            {/* Figure 2 - Light Stat Card (150+) */}
             <div
               data-hero="stat-card"
               className="absolute left-0 top-[290px] h-[250px] w-full overflow-hidden rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:h-[281px] lg:w-[261px]"
             >
               <p className="text-4xl font-bold tracking-[0.04em] lg:text-5xl">
-                <span data-counter data-target="250" data-suffix="+">
+                <span data-counter data-target="150" data-suffix="+">
                   0+
                 </span>
               </p>
@@ -480,6 +437,82 @@ export const HeroSection = () => {
           </div>
         </div>
       </div>
+
+      {/* Mobile menu — fixed overlay with backdrop (rendered at root level, not clipped by overflow-hidden) */}
+      {isMobileNavOpen && (
+        <div className="fixed inset-0 z-[999] md:hidden" role="dialog" aria-modal="true">
+          {/* Backdrop */}
+          <div
+            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+            onClick={() => setIsMobileNavOpen(false)}
+          />
+
+          {/* Menu panel */}
+          <div className="absolute left-3 right-3 top-20 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl border border-gray-100 bg-white px-5 py-6 text-brand-900 shadow-2xl">
+            <nav className="flex flex-col gap-1">
+              {navItems.map((item, idx) => (
+                item.type === "link" ? (
+                  <Link
+                    key={`mobile-${idx}-${item.label}`}
+                    to={item.href}
+                    className="rounded-xl px-4 py-3.5 text-base font-medium transition-colors hover:bg-gray-50 hover:text-accent-green"
+                    onClick={() => setIsMobileNavOpen(false)}
+                  >
+                    {item.label}
+                  </Link>
+                ) : (
+                  <a
+                    key={`mobile-${idx}-${item.label}`}
+                    href={location.pathname === "/" ? item.href : `/${item.href}`}
+                    className="rounded-xl px-4 py-3.5 text-base font-medium transition-colors hover:bg-gray-50 hover:text-accent-green"
+                    onClick={() => setIsMobileNavOpen(false)}
+                  >
+                    {item.label}
+                  </a>
+                )
+              ))}
+            </nav>
+
+            <div className="mt-5 border-t border-gray-100 pt-5 flex flex-col gap-4">
+              <a
+                href="#contact"
+                className="w-full rounded-2xl border border-brand-900 bg-brand-900 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white hover:text-brand-900"
+                onClick={() => setIsMobileNavOpen(false)}
+              >
+                {currentLanguage === "pt" ? "Solicitar Cotação" : "Request a Quote"}
+              </a>
+
+              {/* Language toggle — clean inline buttons */}
+              <div className="flex items-center justify-center gap-3">
+                <button
+                  type="button"
+                  onClick={() => { toggleLanguage("pt"); setIsMobileNavOpen(false); }}
+                  className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+                    currentLanguage === "pt"
+                      ? "bg-accent-green/10 border border-accent-green/30 text-accent-green"
+                      : "text-gray-500 hover:text-brand-900"
+                  }`}
+                >
+                  <img src="/photos/brazil-flag.png" alt="PT" className="h-5 w-5 rounded-full object-cover" />
+                  PT
+                </button>
+                <button
+                  type="button"
+                  onClick={() => { toggleLanguage("en"); setIsMobileNavOpen(false); }}
+                  className={`flex items-center gap-2 rounded-xl px-4 py-2.5 text-sm font-semibold transition ${
+                    currentLanguage === "en"
+                      ? "bg-accent-green/10 border border-accent-green/30 text-accent-green"
+                      : "text-gray-500 hover:text-brand-900"
+                  }`}
+                >
+                  <img src="/photos/American-flag.png" alt="EN" className="h-5 w-5 rounded-full object-cover" />
+                  EN
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
     </section>
   );
 };

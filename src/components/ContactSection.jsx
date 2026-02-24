@@ -306,13 +306,13 @@ export default function ContactSection() {
   return (
     <section id="contact" className="bg-white py-16 lg:py-20">
       <div className="mx-auto flex w-full max-w-[1440px] px-4 sm:px-6 lg:px-10">
-        <div className="grid w-full gap-0 overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)]">
+        <div className="grid w-full gap-0 overflow-hidden rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:grid-cols-[minmax(0,1fr)_minmax(0,1.4fr)] lg:auto-rows-auto">
           {/* Left - Image */}
-          <div className="relative overflow-hidden min-h-[400px] lg:min-h-full">
+          <div className="relative overflow-hidden min-h-[250px] lg:min-h-[600px]">
             <img
               src="/photos/caffe-in-field.jpg"
               alt="Coffee field at sunset"
-              className="absolute inset-0 h-full w-full object-cover"
+              className="absolute inset-0 h-full w-full object-cover transition-none"
               loading="lazy"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-brand-900/20 to-transparent" />
