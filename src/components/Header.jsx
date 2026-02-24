@@ -117,7 +117,7 @@ export const Header = ({ variant = "light" }) => {
 
         <div className="flex items-center gap-3 md:gap-4">
           <a
-            href="/#contact"
+            href="/contact"
             className={`relative hidden items-center gap-1 overflow-hidden rounded-pill border px-6 py-2 text-sm font-semibold shadow-sm transition duration-300 ease-soft-spring md:inline-flex ${buttonClasses}`}
           >
             <span className="relative z-10 flex items-center gap-2">
@@ -266,7 +266,7 @@ export const Header = ({ variant = "light" }) => {
 
             <div className={`mt-5 border-t pt-5 flex flex-col gap-4 ${isDark ? "border-white/10" : "border-gray-100"}`}>
               <a
-                href="/#contact"
+                href="/contact"
                 className={`w-full rounded-2xl border px-4 py-3.5 text-center text-sm font-semibold transition ${buttonClasses}`}
                 onClick={() => setIsMobileNavOpen(false)}
               >

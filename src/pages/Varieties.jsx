@@ -652,7 +652,7 @@ export const Varieties = () => {
             </p>
 
             <a
-              href="/#contato"
+              href="/contact"
               className="inline-flex items-center gap-3 rounded-pill bg-accent-green px-8 py-4 text-base font-semibold text-brand-900 transition-all hover:bg-white hover:scale-105 shadow-lg shadow-accent-green/20"
             >
               {content.cta[lang].button}
@@ -754,7 +754,7 @@ export const Varieties = () => {
 
                   {/* CTA */}
                   <a
-                    href="/#contato"
+                    href="/contact"
                     className="inline-flex items-center gap-3 w-full justify-center rounded-pill bg-accent-green px-8 py-4 text-base font-semibold text-brand-900 transition-all hover:bg-white hover:scale-[1.02] shadow-lg shadow-accent-green/20"
                   >
                     {lang === "en" ? "Request Quote" : "Solicitar Cotação"}

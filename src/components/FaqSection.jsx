@@ -26,7 +26,7 @@ export const FaqSection = () => {
               {t("faq.moreQuestions")}
             </button>
             <a
-              href="#contact"
+              href="/contact"
               className="pill-button rounded-pill border border-gray-300 bg-white text-brand-900 hover:border-brand-900 text-center"
             >
               {t("faq.contactUs")}

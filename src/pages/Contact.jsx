@@ -429,11 +429,9 @@ export const Contact = () => {
 
       <div className="bg-gray-50 min-h-screen">
         {/* Header */}
-        <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-gray-200">
-          <div className="max-w-[1440px] mx-auto px-4 sm:px-6 lg:px-10 py-4">
-            <Header variant="light" />
-          </div>
-        </nav>
+        <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 pt-10">
+          <Header variant="light" />
+        </div>
 
         {/* Hero */}
         <header className="py-16 md:py-24 px-6 text-center max-w-4xl mx-auto">

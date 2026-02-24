@@ -193,7 +193,7 @@ export const HeroSection = () => {
 
           <div className="flex items-center gap-3 md:gap-4">
             <a
-              href="/#contact"
+              href="/contact"
               className="relative hidden items-center gap-1 overflow-hidden rounded-pill border border-brand-900 bg-brand-900 px-6 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-900/10 transition duration-300 ease-soft-spring hover:border-brand-900 hover:bg-white hover:text-brand-900 md:inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -333,7 +333,7 @@ export const HeroSection = () => {
               data-hero="cta"
               className="flex flex-wrap items-center gap-6 text-sm font-semibold"
             >
-              <a href="#contact" className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
+              <a href="/contact" className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
                 {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
               </a>
               <a
@@ -475,7 +475,7 @@ export const HeroSection = () => {
 
             <div className="mt-5 border-t border-gray-100 pt-5 flex flex-col gap-4">
               <a
-                href="#contact"
+                href="/contact"
                 className="w-full rounded-2xl border border-brand-900 bg-brand-900 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white hover:text-brand-900"
                 onClick={() => setIsMobileNavOpen(false)}
               >

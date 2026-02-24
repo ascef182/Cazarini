@@ -622,7 +622,7 @@ export const Logistics = () => {
                     <ArrowRight className="w-4 h-4" />
                   </a>
                   <a
-                    href="/varieties"
+                    href="#services"
                     className="rounded-2xl border-2 border-brand-900 text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-900 hover:text-white transition-all"
                   >
                     {content.cta[lang].secondary}
