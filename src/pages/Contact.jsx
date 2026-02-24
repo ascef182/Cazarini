@@ -348,46 +348,58 @@ export const Contact = () => {
         {
           icon: Mail,
           title: "Email Us",
-          lines: ["trade@cazarinitrading.com"],
+          lines: ["trading@cazarini.com"],
+          href: "mailto:trading@cazarini.com",
         },
         {
           icon: Phone,
-          title: "Call Us",
-          lines: ["+55 (35) 99876-5432"],
+          title: "Call / WhatsApp",
+          lines: ["+55 35 8416-0810"],
+          href: "tel:+553584160810",
+          whatsapp: "https://wa.me/5535984160810",
         },
         {
           icon: MapPin,
           title: "Visit Us",
-          lines: ["Varginha, MG", "Brazil "],
+          lines: ["Varginha, MG", "Brazil"],
         },
         {
           icon: Globe2,
           title: "Social Media",
-          lines: ["LinkedIn", "Instagram"],
-          isLinks: true,
+          links: [
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/" },
+            { label: "Instagram", href: "https://www.instagram.com/cazarinithiago/" },
+            { label: "Facebook", href: "https://www.facebook.com/CazariniTradingCompany/" },
+          ],
         },
       ],
       pt: [
         {
           icon: Mail,
           title: "Email",
-          lines: ["trade@cazarinitrading.com"],
+          lines: ["trading@cazarini.com"],
+          href: "mailto:trading@cazarini.com",
         },
         {
           icon: Phone,
-          title: "Telefone",
-          lines: ["+55 (35) 99876-5432"],
+          title: "Telefone / WhatsApp",
+          lines: ["+55 35 8416-0810"],
+          href: "tel:+553584160810",
+          whatsapp: "https://wa.me/5535984160810",
         },
         {
           icon: MapPin,
           title: "Visite-nos",
-          lines: ["Varginha, MG", "Brasil "],
+          lines: ["Varginha, MG", "Brasil"],
         },
         {
           icon: Globe2,
           title: "Redes Sociais",
-          lines: ["LinkedIn", "Instagram"],
-          isLinks: true,
+          links: [
+            { label: "LinkedIn", href: "https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/" },
+            { label: "Instagram", href: "https://www.instagram.com/cazarinithiago/" },
+            { label: "Facebook", href: "https://www.facebook.com/CazariniTradingCompany/" },
+          ],
         },
       ],
     },
@@ -910,20 +922,34 @@ export const Contact = () => {
                       <item.icon className="w-5 h-5" />
                     </div>
                     <h3 className="font-bold text-lg">{item.title}</h3>
-                    {item.isLinks ? (
-                      <div className="flex gap-4">
-                        {item.lines.map((line, j) => (
-                          <span
+                    {item.links ? (
+                      <div className="flex flex-col gap-1.5">
+                        {item.links.map((link, j) => (
+                          <a
                             key={j}
-                            className="text-gray-500 hover:text-accent-green transition-colors cursor-pointer"
+                            href={link.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-gray-500 hover:text-accent-green transition-colors"
                           >
-                            {line}
-                          </span>
+                            {link.label}
+                          </a>
                         ))}
+                      </div>
+                    ) : item.href ? (
+                      <div className="flex flex-col gap-1.5">
+                        <a href={item.href} className="text-gray-500 hover:text-accent-green transition-colors">
+                          {item.lines[0]}
+                        </a>
+                        {item.whatsapp && (
+                          <a href={item.whatsapp} target="_blank" rel="noopener noreferrer" className="text-gray-500 hover:text-accent-green transition-colors text-sm">
+                            WhatsApp
+                          </a>
+                        )}
                       </div>
                     ) : (
                       <p className="text-gray-500 leading-relaxed">
-                        {item.lines.join("\n")}
+                        {item.lines.join(", ")}
                       </p>
                     )}
                   </div>

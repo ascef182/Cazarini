@@ -10,6 +10,9 @@ import Contact from "./pages/Contact";
 import Logistics from "./pages/Logistics";
 import Gallery from "./pages/Gallery";
 import NotFound from "./pages/NotFound";
+import PrivacyPolicy from "./pages/PrivacyPolicy";
+import EmailPolicy from "./pages/EmailPolicy";
+import Copyright from "./pages/Copyright";
 
 export const CoffeTrading = () => {
   return (
@@ -30,6 +33,11 @@ export const CoffeTrading = () => {
           <Route path="/galeria" element={<Gallery />} />
           <Route path="/contact" element={<Contact />} />
           <Route path="/contato" element={<Contact />} />
+          <Route path="/privacy-policy" element={<PrivacyPolicy />} />
+          <Route path="/politica-de-privacidade" element={<PrivacyPolicy />} />
+          <Route path="/email-policy" element={<EmailPolicy />} />
+          <Route path="/politica-de-email" element={<EmailPolicy />} />
+          <Route path="/copyright" element={<Copyright />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </div>

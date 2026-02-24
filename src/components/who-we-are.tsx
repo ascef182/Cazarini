@@ -400,85 +400,88 @@ export const WhoWeAre = () => {
         className="flex flex-col min-h-screen bg-white text-brand-900 font-sans selection:bg-accent-green/30"
       >
         {/* ═══════════════════════════════════════════════════════════════════
-            HERO SECTION - Dark cinematic
+            HERO SECTION - Split editorial
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="relative min-h-[85vh] flex flex-col overflow-hidden bg-brand-950">
-          {/* Background image */}
-          <img
-            src="/photos/bandeira-cazarini.jpg"
-            alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-30"
-          />
-          {/* Gradient overlays */}
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-950/80 via-brand-950/60 to-brand-950" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/50 to-transparent" />
-
-          <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
-            {/* Header */}
+        <section className="relative flex flex-col overflow-hidden bg-brand-950 min-h-[60vh] lg:min-h-[70vh]">
+          <div className="mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
             <Header variant="dark" />
+          </div>
 
-            {/* Centered hero content */}
-            <div className="flex flex-1 items-center justify-center text-center py-20">
-              <div className="max-w-4xl space-y-8">
-                <p
-                  data-animate="hero-eyebrow"
-                  className="inline-flex items-center gap-2 text-sm font-semibold uppercase tracking-[0.3em] text-accent-green"
-                >
-                  <MapPin className="w-4 h-4" />
+          {/* Split layout */}
+          <div className="flex flex-col lg:flex-row flex-1">
+            {/* Left — Content */}
+            <div className="relative z-10 flex flex-col justify-center px-8 py-12 lg:py-16 lg:px-20 xl:px-28 lg:w-[52%] shrink-0">
+              {/* Accent rule */}
+              <div
+                data-animate="hero-eyebrow"
+                className="flex items-center gap-4 mb-10"
+              >
+                <div className="h-px w-10 bg-accent-green" />
+                <p className="text-xs font-bold uppercase tracking-[0.35em] text-accent-green">
                   {content.hero[lang].eyebrow}
                 </p>
+              </div>
 
-                <h1
-                  data-animate="hero-title"
-                  className="text-balance text-5xl font-editorial italic leading-[1.1] tracking-[-0.02em] text-white sm:text-6xl lg:text-7xl"
-                >
-                  {content.hero[lang].title}
-                  <br />
-                  <span className="text-accent-green">
-                    {content.hero[lang].titleHighlight}
+              <h1
+                data-animate="hero-title"
+                className="text-white text-4xl sm:text-5xl lg:text-[3.5rem] font-editorial italic leading-[1.08] tracking-[-0.02em] mb-6"
+              >
+                {content.hero[lang].title}
+                <br />
+                <span className="text-accent-green not-italic">
+                  {content.hero[lang].titleHighlight}
+                </span>
+                <br />
+                {content.hero[lang].titleEnd}
+              </h1>
+
+              <p
+                data-animate="hero-subtitle"
+                className="text-white/50 text-lg leading-relaxed max-w-lg mb-12"
+              >
+                {content.hero[lang].subtitle}
+              </p>
+
+              {/* Bottom detail */}
+              <div data-animate="hero-card" className="flex items-center gap-6">
+                <div className="flex items-center gap-2 text-white/30">
+                  <MapPin className="w-4 h-4" />
+                  <span className="text-sm font-medium">
+                    Varginha, MG — Brazil
                   </span>
-                  <br />
-                  {content.hero[lang].titleEnd}
-                </h1>
-
-                <p
-                  data-animate="hero-subtitle"
-                  className="mx-auto max-w-2xl text-lg leading-relaxed text-white/60"
-                >
-                  {content.hero[lang].subtitle}
-                </p>
-
-                {/* Trusted by logos */}
-                <div data-animate="hero-subtitle" className="pt-6">
-                  <p className="text-xs font-medium uppercase tracking-[0.3em] text-white/30 mb-5">
-                    {lang === "en"
-                      ? "Insights featured in"
-                      : "Insights publicados em"}
-                  </p>
-                  <div className="flex flex-wrap items-center justify-center gap-8">
-                    <img
-                      src="/photos/bloomberg.png"
-                      alt="Bloomberg"
-                      className="h-5 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
-                    />
-                    <img
-                      src="/photos/wsj-logo.png"
-                      alt="WSJ"
-                      className="h-4 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
-                    />
-                    <img
-                      src="/photos/reuters.png"
-                      alt="Reuters"
-                      className="h-4 object-contain opacity-40 hover:opacity-80 transition-opacity brightness-0 invert"
-                    />
-                  </div>
                 </div>
+                <div className="h-4 w-px bg-white/10" />
+                <span className="text-sm font-medium text-white/30">
+                  Est. 2009
+                </span>
+              </div>
+            </div>
+
+            {/* Right — Image panel */}
+            <div
+              data-animate="hero-image"
+              className="relative lg:flex-1 min-h-[50vh] lg:min-h-full"
+            >
+              <img
+                src="/photos/bandeira-cazarini.jpg"
+                alt="Cazarini Trading"
+                className="absolute inset-0 w-full h-full object-cover"
+              />
+              {/* Subtle left-edge blend only */}
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/20 to-transparent lg:block hidden" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-950/60 to-transparent lg:hidden" />
+
+              {/* Year badge */}
+              <div className="absolute bottom-8 right-8 bg-brand-950/80 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-4">
+                <p className="text-4xl font-bold text-white leading-none">
+                  21<span className="text-accent-green">+</span>
+                </p>
+                <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mt-1">
+                  {lang === "en" ? "Years of Excellence" : "Anos de Excelência"}
+                </p>
               </div>
             </div>
           </div>
-
-          {/* Bottom fade */}
-          <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent" />
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
@@ -617,47 +620,11 @@ export const WhoWeAre = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             VALUES SECTION - What Drives Us
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-10 lg:py-12 bg-gray-50">
-          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-            <div data-animate="fade-up" className="text-center mb-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.35em] text-accent-green mb-4">
-                {content.values[lang].label}
-              </p>
-              <h2 className="text-balance text-3xl font-editorial leading-tight tracking-[-0.02em] text-brand-900 sm:text-4xl lg:text-[2.75rem] mb-6">
-                {content.values[lang].title}
-              </h2>
-              <p className="text-lg text-gray-600 max-w-3xl mx-auto leading-relaxed">
-                {content.values[lang].motivation}
-              </p>
-            </div>
-
-            <div
-              data-animate="stagger"
-              className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6"
-            >
-              {content.values[lang].items.map((item, index) => (
-                <div
-                  key={index}
-                  data-stagger-item
-                  className="group bg-white rounded-[24px] p-8 shadow-sm border border-gray-100 hover:shadow-lg hover:-translate-y-1 transition-all duration-300"
-                >
-                  <div className="w-14 h-14 rounded-2xl bg-brand-900 group-hover:bg-accent-green flex items-center justify-center mb-6 transition-colors">
-                    <item.icon className="w-7 h-7 text-white group-hover:text-brand-900 transition-colors" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-brand-900 mb-3">
-                    {item.title}
-                  </h3>
-                  <p className="text-gray-600 leading-relaxed">{item.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
             LEADERSHIP SECTION
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-20 lg:py-12 bg-white overflow-hidden">
+        <section className="py-12 lg:py-16 bg-white overflow-hidden">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <div className="grid lg:grid-cols-2 gap-12 lg:gap-20 items-center">
               {/* Image Side */}

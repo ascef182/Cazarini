@@ -36,7 +36,22 @@ export const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/cazarinitrading/"
+                href="https://www.facebook.com/CazariniTradingCompany/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
+                aria-label="Facebook"
+              >
+                <svg
+                  className="h-4 w-4"
+                  fill="currentColor"
+                  viewBox="0 0 24 24"
+                >
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
+              </a>
+              <a
+                href="https://www.instagram.com/cazarinithiago/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
@@ -95,11 +110,6 @@ export const Footer = () => {
                   </a>
                 </li>
                 <li>
-                  <a href="/#faq" className="hover:text-brand-900">
-                    {t("footer.location")}
-                  </a>
-                </li>
-                <li>
                   <a href="/contact" className="hover:text-brand-900">
                     {t("footer.contact")}
                   </a>
@@ -113,17 +123,17 @@ export const Footer = () => {
               </h3>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li>
-                  <a href="#" className="hover:text-brand-900">
+                  <a href="/privacy-policy" className="hover:text-brand-900">
                     {t("footer.privacyPolicy")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
+                  <a href="/copyright" className="hover:text-brand-900">
                     {t("footer.copyright")}
                   </a>
                 </li>
                 <li>
-                  <a href="#" className="hover:text-brand-900">
+                  <a href="/email-policy" className="hover:text-brand-900">
                     {t("footer.emailPolicy")}
                   </a>
                 </li>
@@ -168,10 +178,10 @@ export const Footer = () => {
                     />
                   </svg>
                   <a
-                    href="mailto:trading@cazarini.com.br"
+                    href="mailto:trading@cazarini.com"
                     className="hover:text-brand-900"
                   >
-                    trading@cazarini.com.br
+                    trading@cazarini.com
                   </a>
                 </li>
                 <li className="flex items-start gap-2">
@@ -207,9 +217,21 @@ export const Footer = () => {
           </div>
         </div>
 
-
-        <div className="border-t border-gray-200 mt-12 pt-8 text-center text-sm text-gray-500">
-          © {new Date().getFullYear()} {t("footer.rights")}
+        <div className="border-t border-gray-200 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-2 text-sm text-gray-500">
+          <span>
+            © {new Date().getFullYear()} {t("footer.rights")}
+          </span>
+          <span>
+            Website by{" "}
+            <a
+              href="https://caza-tech.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-brand-900 transition-colors"
+            >
+              CazaTech
+            </a>
+          </span>
         </div>
       </div>
     </footer>
