@@ -341,11 +341,11 @@ export const Logistics = () => {
           <img
             src="/photos/container-de-cafe.jpg"
             alt=""
-            className="absolute inset-0 w-full h-full object-cover opacity-25"
+            className="absolute inset-0 w-full h-full object-cover opacity-45"
             loading="lazy"
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-brand-950/50 to-brand-950" />
-          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/60 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-b from-brand-950/50 via-brand-950/30 to-brand-950" />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand-950/50 to-transparent" />
 
           <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
             <Header variant="dark" />

@@ -75,11 +75,10 @@ const Blog = () => {
                     <img
                         src="/photos/materialdetrabalho.jpg"
                         alt=""
-                        className="absolute inset-0 w-full h-full object-cover opacity-25"
+                        className="absolute inset-0 w-full h-full object-cover"
                         loading="eager"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-b from-brand-950/70 via-brand-950/50 to-brand-950" />
-                    <div className="absolute inset-0 bg-gradient-to-r from-brand-950/60 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/60" />
 
                     <div className="relative z-10 mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
                         <Header variant="dark" />
