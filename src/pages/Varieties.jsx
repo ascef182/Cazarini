@@ -345,7 +345,7 @@ export const Varieties = () => {
             <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent-lime rounded-full blur-[100px]" />
           </div>
 
-          <div className="relative z-10 mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 w-full pt-6">
+          <div className="relative mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10 w-full pt-6">
             {/* Header */}
             <Header variant="dark" />
           </div>
