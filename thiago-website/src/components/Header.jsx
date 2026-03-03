@@ -240,6 +240,22 @@ export const Header = ({ variant = "light" }) => {
           <div
             className={`absolute left-3 right-3 top-20 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl border px-5 py-6 shadow-2xl ${mobileMenuClasses}`}
           >
+            {/* Close button */}
+            <div className="flex justify-end mb-3">
+              <button
+                type="button"
+                onClick={() => setIsMobileNavOpen(false)}
+                aria-label="Close menu"
+                className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
+                  isDark ? "bg-white/10 text-white hover:bg-white/20" : "bg-gray-100 text-brand-900 hover:bg-gray-200"
+                }`}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
             <nav className="flex flex-col gap-1">
               {navItems.map((item, idx) => (
                 item.type === "link" ? (

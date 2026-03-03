@@ -328,7 +328,7 @@ export const Varieties = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             HERO SECTION - Full-width image background
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col overflow-hidden">
+        <section className="relative min-h-[60vh] lg:min-h-[70vh] flex flex-col">
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
@@ -339,8 +339,8 @@ export const Varieties = () => {
             <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/60" />
           </div>
 
-          {/* Glow decorations */}
-          <div className="absolute inset-0 opacity-10 pointer-events-none">
+          {/* Glow decorations — overflow-hidden aqui para não clipar o menu fixo do Header */}
+          <div className="absolute inset-0 overflow-hidden opacity-10 pointer-events-none">
             <div className="absolute top-0 left-1/4 w-96 h-96 bg-accent-green rounded-full blur-[128px]" />
             <div className="absolute bottom-0 right-1/4 w-64 h-64 bg-accent-lime rounded-full blur-[100px]" />
           </div>

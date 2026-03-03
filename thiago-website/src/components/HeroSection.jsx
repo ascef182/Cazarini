@@ -337,7 +337,7 @@ export const HeroSection = () => {
                 {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
               </a>
               <a
-                href="#variedades"
+                href={lang === "pt" ? "/variedades" : "/varieties"}
                 className="group relative flex items-center gap-2 text-brand-900"
               >
                 <span className="relative">
@@ -449,6 +449,20 @@ export const HeroSection = () => {
 
           {/* Menu panel */}
           <div className="absolute left-3 right-3 top-20 max-h-[calc(100vh-6rem)] overflow-y-auto rounded-3xl border border-gray-100 bg-white px-5 py-6 text-brand-900 shadow-2xl">
+            {/* Close button */}
+            <div className="flex justify-end mb-3">
+              <button
+                type="button"
+                onClick={() => setIsMobileNavOpen(false)}
+                aria-label="Close menu"
+                className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-brand-900 hover:bg-gray-200 transition-colors"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
+                  <path d="M18 6L6 18M6 6l12 12" />
+                </svg>
+              </button>
+            </div>
+
             <nav className="flex flex-col gap-1">
               {navItems.map((item, idx) => (
                 item.type === "link" ? (

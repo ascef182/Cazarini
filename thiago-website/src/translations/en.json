@@ -32,7 +32,7 @@
     "whoWeAre": "WHO WE ARE"
   },
   "varieties": {
-    "title": "Our Coffee Varieties Portfolio",
+    "title": "Green Coffees We Trade",
     "description": "Explore our selection of Brazilian and Colombia coffees, carefully sourced and graded to meet international standards.",
     "filterAll": "All",
     "filterFineCup": "Fine Cup",
@@ -93,7 +93,7 @@
     ]
   },
   "services": {
-    "title": "Coffee Brokerage & Market Insights That Drive Growth & Profitability",
+    "title": "Latest Market Insights",
     "description": "We are a leading coffee brokerage firm connecting producers, exporters, and buyers worldwide. Our mission is to help clients navigate global markets, optimize pricing, and strengthen their coffee trade strategy.",
     "seeMore": "See more",
     "trustedBy": "Trusted by",

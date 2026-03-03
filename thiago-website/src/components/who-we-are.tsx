@@ -114,17 +114,17 @@ export const WhoWeAre = () => {
     hero: {
       en: {
         eyebrow: "Established in Varginha, MG • Since 2009",
-        title: "The bridge between",
-        titleHighlight: "Brazilian excellence",
-        titleEnd: "and the world",
+        title: "21 years trading",
+        titleHighlight: "Brazilian coffee",
+        titleEnd: "to global markets",
         subtitle:
           "From the heart of the world's largest coffee trading hub, we've built a network spanning 5 continents, 140+ partners, and 500,000 bags annually.",
       },
       pt: {
         eyebrow: "Estabelecido em Varginha, MG • Desde 2009",
-        title: "A ponte entre a",
-        titleHighlight: "excelência brasileira",
-        titleEnd: "e o mundo",
+        title: "21 anos negociando",
+        titleHighlight: "café brasileiro",
+        titleEnd: "para o mundo",
         subtitle:
           "Do coração do maior polo de comércio de café do mundo, construímos uma rede que abrange 5 continentes, 140+ parceiros e 500.000 sacas anuais.",
       },
@@ -402,7 +402,7 @@ export const WhoWeAre = () => {
         {/* ═══════════════════════════════════════════════════════════════════
             HERO SECTION - Split editorial
         ═══════════════════════════════════════════════════════════════════ */}
-        <section className="relative flex flex-col overflow-hidden bg-brand-950 min-h-[60vh] lg:min-h-[70vh]">
+        <section className="relative flex flex-col bg-brand-950 min-h-[60vh] lg:min-h-[70vh]">
           <div className="mx-auto flex w-full max-w-[1440px] flex-col flex-1 px-4 pt-10 sm:px-6 lg:px-10">
             <Header variant="dark" />
           </div>
@@ -788,7 +788,7 @@ export const WhoWeAre = () => {
                     {content.cta[lang].button}
                   </a>
                   <a
-                    href="/varieties"
+                    href={lang === "en" ? "/varieties" : "/variedades"}
                     className="rounded-2xl border border-brand-900/20 bg-white/10 backdrop-blur-md text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-white/20 hover:scale-105 transition-all shadow-lg"
                   >
                     {lang === "en" ? "View Varieties" : "Ver Variedades"}
