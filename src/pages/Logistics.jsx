@@ -1,4 +1,5 @@
 import React, { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
@@ -378,12 +379,12 @@ export const Logistics = () => {
                 </p>
 
                 <div data-animate="hero-subtitle" className="flex flex-wrap gap-4 justify-center pt-4">
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="rounded-2xl bg-accent-green text-brand-900 px-10 py-4 font-bold text-sm uppercase tracking-widest hover:scale-[1.03] transition-transform"
                   >
                     {content.cta[lang].button}
-                  </a>
+                  </Link>
                   <a
                     href="#services"
                     className="rounded-2xl border border-white/20 text-white px-10 py-4 font-bold text-sm uppercase tracking-widest hover:bg-white/10 transition-colors"
@@ -614,13 +615,13 @@ export const Logistics = () => {
                   {content.cta[lang].subtitle}
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="rounded-2xl bg-brand-900 text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-700 transition-colors flex items-center gap-3"
                   >
                     {content.cta[lang].button}
                     <ArrowRight className="w-4 h-4" />
-                  </a>
+                  </Link>
                   <a
                     href="#services"
                     className="rounded-2xl border-2 border-brand-900 text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-900 hover:text-white transition-all"

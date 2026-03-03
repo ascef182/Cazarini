@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "../hooks/useTranslation";
 
 export const FaqSection = () => {
@@ -25,12 +26,12 @@ export const FaqSection = () => {
             <button className="pill-button rounded-pill border border-brand-900 bg-brand-900 text-white hover:bg-brand-950">
               {t("faq.moreQuestions")}
             </button>
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="pill-button rounded-pill border border-gray-300 bg-white text-brand-900 hover:border-brand-900 text-center"
             >
               {t("faq.contactUs")}
-            </a>
+            </Link>
           </div>
         </div>
 

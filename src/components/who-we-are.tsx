@@ -1,4 +1,5 @@
 import { useEffect, useRef } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
@@ -781,18 +782,18 @@ export const WhoWeAre = () => {
                   {content.cta[lang].subtitle}
                 </p>
                 <div className="flex flex-wrap gap-4 justify-center">
-                  <a
-                    href="/contact"
+                  <Link
+                    to="/contact"
                     className="rounded-2xl bg-brand-900 text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-700 transition-colors"
                   >
                     {content.cta[lang].button}
-                  </a>
-                  <a
-                    href={lang === "en" ? "/varieties" : "/variedades"}
+                  </Link>
+                  <Link
+                    to={lang === "en" ? "/varieties" : "/variedades"}
                     className="rounded-2xl border border-brand-900/20 bg-white/10 backdrop-blur-md text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-white/20 hover:scale-105 transition-all shadow-lg"
                   >
                     {lang === "en" ? "View Varieties" : "Ver Variedades"}
-                  </a>
+                  </Link>
                 </div>
               </div>
             </div>

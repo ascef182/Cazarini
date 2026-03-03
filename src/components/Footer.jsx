@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "../hooks/useTranslation";
 
 export const Footer = () => {
@@ -90,29 +91,29 @@ export const Footer = () => {
               </h3>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li>
-                  <a href="/#sobre-nos" className="hover:text-brand-900">
+                  <Link to="/#sobre-nos" className="hover:text-brand-900">
                     {t("footer.about")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/#variedades" className="hover:text-brand-900">
+                  <Link to="/#variedades" className="hover:text-brand-900">
                     {t("footer.varieties")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/#servicos" className="hover:text-brand-900">
+                  <Link to="/#servicos" className="hover:text-brand-900">
                     {t("footer.services")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/logistics" className="hover:text-brand-900">
+                  <Link to="/logistics" className="hover:text-brand-900">
                     {t("footer.logistics") || "Logistics"}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/contact" className="hover:text-brand-900">
+                  <Link to="/contact" className="hover:text-brand-900">
                     {t("footer.contact")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>
@@ -123,19 +124,19 @@ export const Footer = () => {
               </h3>
               <ul className="space-y-2 text-sm text-gray-500">
                 <li>
-                  <a href="/privacy-policy" className="hover:text-brand-900">
+                  <Link to="/privacy-policy" className="hover:text-brand-900">
                     {t("footer.privacyPolicy")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/copyright" className="hover:text-brand-900">
+                  <Link to="/copyright" className="hover:text-brand-900">
                     {t("footer.copyright")}
-                  </a>
+                  </Link>
                 </li>
                 <li>
-                  <a href="/email-policy" className="hover:text-brand-900">
+                  <Link to="/email-policy" className="hover:text-brand-900">
                     {t("footer.emailPolicy")}
-                  </a>
+                  </Link>
                 </li>
               </ul>
             </div>

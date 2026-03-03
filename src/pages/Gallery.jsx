@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef, useCallback, useMemo } from "react";
+import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
@@ -518,13 +519,13 @@ export const Gallery = () => {
                 <p className="text-xl text-brand-900/60 max-w-2xl mx-auto mb-10">
                   {content.cta[lang].subtitle}
                 </p>
-                <a
-                  href="/contact"
+                <Link
+                  to="/contact"
                   className="inline-flex items-center gap-3 rounded-2xl bg-brand-900 text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-700 transition-colors"
                 >
                   {content.cta[lang].button}
                   <ArrowRight className="w-4 h-4" />
-                </a>
+                </Link>
               </div>
             </div>
           </div>

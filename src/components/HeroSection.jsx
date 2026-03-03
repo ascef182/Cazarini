@@ -192,8 +192,8 @@ export const HeroSection = () => {
           </div>
 
           <div className="flex items-center gap-3 md:gap-4">
-            <a
-              href="/contact"
+            <Link
+              to="/contact"
               className="relative hidden items-center gap-1 overflow-hidden rounded-pill border border-brand-900 bg-brand-900 px-6 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-900/10 transition duration-300 ease-soft-spring hover:border-brand-900 hover:bg-white hover:text-brand-900 md:inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
@@ -212,7 +212,7 @@ export const HeroSection = () => {
                 </span>
               </span>
               <span className="pointer-events-none absolute inset-0 rounded-pill border border-accent-green/70" />
-            </a>
+            </Link>
 
             <div className="relative hidden md:block">
               <button
@@ -333,18 +333,18 @@ export const HeroSection = () => {
               data-hero="cta"
               className="flex flex-wrap items-center gap-6 text-sm font-semibold"
             >
-              <a href="/contact" className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
+              <Link to="/contact" className="pill-button rounded-pill bg-brand-900 text-white hover:scale-105 hover:drop-shadow-glow">
                 {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
-              </a>
-              <a
-                href={lang === "pt" ? "/variedades" : "/varieties"}
+              </Link>
+              <Link
+                to={lang === "pt" ? "/variedades" : "/varieties"}
                 className="group relative flex items-center gap-2 text-brand-900"
               >
                 <span className="relative">
                   {t("hero.ctaVarieties")}
                   <span className="absolute bottom-0 left-0 h-0.5 w-0 bg-accent-green transition-all duration-300 ease-out group-hover:w-full" />
                 </span>
-              </a>
+              </Link>
             </div>
 
             <div className="mt-8 flex flex-col gap-4">
@@ -488,13 +488,13 @@ export const HeroSection = () => {
             </nav>
 
             <div className="mt-5 border-t border-gray-100 pt-5 flex flex-col gap-4">
-              <a
-                href="/contact"
+              <Link
+                to="/contact"
                 className="w-full rounded-2xl border border-brand-900 bg-brand-900 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white hover:text-brand-900"
                 onClick={() => setIsMobileNavOpen(false)}
               >
                 {currentLanguage === "pt" ? "Solicitar Cotação" : "Request a Quote"}
-              </a>
+              </Link>
 
               {/* Language toggle — clean inline buttons */}
               <div className="flex items-center justify-center gap-3">

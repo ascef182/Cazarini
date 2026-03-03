@@ -414,13 +414,13 @@ const BlogPost = () => {
                                         ? "Get direct access to premium Brazilian coffee. Contact our team for pricing, samples, and availability."
                                         : "Tenha acesso direto ao café premium brasileiro. Entre em contato para preços, amostras e disponibilidade."}
                                 </p>
-                                <a
-                                    href="/contact"
+                                <Link
+                                    to="/contact"
                                     className="inline-flex items-center gap-3 rounded-2xl bg-brand-900 text-white px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-brand-700 transition-colors"
                                 >
                                     {lang === "en" ? "Contact Us" : "Fale Conosco"}
                                     <ArrowRight className="w-4 h-4" />
-                                </a>
+                                </Link>
                             </div>
                         </div>
                     </div>

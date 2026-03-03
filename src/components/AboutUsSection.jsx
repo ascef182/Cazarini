@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import { useTranslation } from "../hooks/useTranslation";
 
 const filterButtons = [
@@ -117,12 +118,12 @@ export const AboutUsSection = () => {
             </p>
           </div>
           <div className="flex justify-start lg:justify-end">
-            <a
-              href={isPortuguese ? "/variedades" : "/varieties"}
+            <Link
+              to={isPortuguese ? "/variedades" : "/varieties"}
               className="pill-button rounded-pill border border-white/30 bg-transparent text-white hover:bg-white hover:text-brand-900 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 hover:scale-105 inline-block"
             >
               {t("varieties.seeAll") || "See All"}
-            </a>
+            </Link>
           </div>
         </div>
 
