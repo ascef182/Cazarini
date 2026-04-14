@@ -17,6 +17,7 @@
     "ctaVarieties": "Ver Variedades",
     "trusted": "Confiado pelas maiores marcas do mundo",
     "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
+    "presentOnAllContinents": "Presente em todos os continentes",
     "drivingTrade": "Impulsionando o Comércio Global de Café",
     "exportingPremium": "Exportando Café de Qualidade",
     "exportingGrade": "Premium para o Mundo Todo"
@@ -33,7 +34,7 @@
   },
   "varieties": {
     "title": "Cafés Verdes que Negociamos",
-    "description": "Explore nossa seleção de cafés brasileiros e colombianos, cuidadosamente selecionados e classificados para atender aos padrões internacionais.",
+    "description": "Explore nossa seleção de cafés brasileiros, cuidadosamente selecionados e classificados para atender aos padrões internacionais.",
     "filterAll": "Todos",
     "filterFineCup": "Fine Cup",
     "filterGoodCup": "Good Cup",
@@ -199,7 +200,6 @@
     "city": "Varginha, Minas Gerais, MG",
     "country": "Brasil",
     "rights": "Cazarini Trading Company. Todos os direitos reservados.",
-    "logistics": "Logística",
     "latestInsights": "Últimos Insights"
   }
 }

@@ -6,14 +6,6 @@ import { useLanguage } from "../context/LanguageContext";
 import { blogPosts } from "../data/blogPosts";
 import { ArrowRight } from "lucide-react";
 
-const trustedLogos = [
-  { src: "/photos/bloomberg.png", alt: "Bloomberg" },
-  { src: "/photos/wsj-logo.png", alt: "WSJ" },
-  { src: "/photos/globo_rural-removebg-preview.png", alt: "Globo Rural" },
-  { src: "/photos/valorecomnomico.png", alt: "Valor Econômico" },
-  { src: "/photos/reuters.png", alt: "Reuters" },
-];
-
 export const ServicesSection = () => {
   const { t } = useTranslation();
   const { isPortuguese } = useLanguage();
@@ -70,7 +62,7 @@ export const ServicesSection = () => {
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
                   <span>{post.author}</span>
                 </div>
-                <h3 className="text-xl font-semibold leading-snug text-brand-900 group-hover:text-accent-green transition-colors">
+                <h3 className="text-sm font-semibold leading-snug text-brand-900 group-hover:text-accent-green transition-colors">
                   {post.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-500 line-clamp-3">
@@ -85,24 +77,7 @@ export const ServicesSection = () => {
           ))}
         </div>
 
-        <div className="mt-8 space-y-6">
-          <div className="flex items-center justify-center">
-            <p className="text-xs font-medium uppercase tracking-[0.35em] text-gray-500">
-              {t("services.trustedBy")}
-            </p>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-8">
-            {trustedLogos.map((logo) => (
-              <img
-                key={logo.alt}
-                src={logo.src}
-                alt={logo.alt}
-                className="h-10 object-contain opacity-60 transition hover:opacity-100"
-                loading="lazy"
-              />
-            ))}
-          </div>
-        </div>
+        
       </div>
     </section>
   );

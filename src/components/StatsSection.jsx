@@ -63,13 +63,10 @@ export const StatsSection = () => {
       className="relative overflow-hidden bg-white py-12 lg:py-16"
     >
         <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
-          <div className="grid gap-8 lg:grid-cols-2 lg:gap-12">
-            <h2 className="text-balance text-4xl font-semibold leading-tight tracking-[-0.02em] text-brand-900 sm:text-5xl lg:text-[3rem]">
+          <div className="flex justify-center">
+            <h2 className="text-balance text-center text-4xl font-semibold leading-tight tracking-[-0.02em] text-black sm:text-5xl lg:text-[3rem]">
               {t("stats.title")}
             </h2>
-            <p className="text-sm leading-relaxed text-gray-500">
-              {t("stats.description")}
-            </p>
           </div>
 
         <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 lg:flex-row lg:h-[320px]">
@@ -87,8 +84,8 @@ export const StatsSection = () => {
             {/* Conteúdo */}
             <div className="relative z-10 p-10">
               <h2 className="text-white text-6xl font-bold leading-none mb-3">
-                <span data-counter data-target="920" data-suffix="+">
-                  920+
+                <span data-counter data-target="8" data-suffix="M+">
+                  8M+
                 </span>
               </h2>
               <p className="text-white/70 text-base">

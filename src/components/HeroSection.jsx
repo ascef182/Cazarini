@@ -4,6 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
+import { GlobeStickers } from "../components/ui/GlobeStickers";
 
 // Dynamic nav items that change based on language
 const getNavItems = (lang) => [
@@ -11,19 +12,7 @@ const getNavItems = (lang) => [
   { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
   { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
   { label: "Blog", href: "/blog", type: "link" },
-  { label: lang === "pt" ? "Logística" : "Logistics", href: lang === "pt" ? "/logistica" : "/logistics", type: "link" },
   { label: lang === "pt" ? "Contato" : "Contact", href: lang === "pt" ? "/contato" : "/contact", type: "link" },
-];
-
-const trustedLogos = [
-  { alt: "Bloomberg", src: "/photos/bloomberg.png", width: 120 },
-  { alt: "WSJ", src: "/photos/wsj-logo.png", width: 80 },
-  {
-    alt: "Globo Rural",
-    src: "/photos/globo_rural-removebg-preview.png",
-    width: 120,
-  },
-  { alt: "Valor Econômico", src: "/photos/valorecomnomico.png", width: 120 },
 ];
 
 gsap.registerPlugin(ScrollTrigger);
@@ -347,28 +336,12 @@ export const HeroSection = () => {
               </Link>
             </div>
 
-            <div className="mt-8 flex flex-col gap-4">
-              <p className="text-xs font-medium uppercase tracking-[0.3em] text-gray-500">
-                {t("hero.trusted")}
-              </p>
-              <div className="flex flex-wrap items-center gap-6 lg:gap-8">
-                {trustedLogos.map((logo) => (
-                  <img
-                    key={logo.alt}
-                    src={logo.src}
-                    alt={logo.alt}
-                    width={logo.width}
-                    className="h-8 object-contain opacity-70 transition-opacity hover:opacity-100"
-                    loading="lazy"
-                  />
-                ))}
-              </div>
-            </div>
+            
           </div>
 
           <div
             data-hero="media"
-            className="relative mt-8 min-h-[850px] lg:mt-0 lg:h-[540px] lg:min-h-0 lg:ml-20"
+            className="relative mt-8 min-h-[560px] lg:mt-0 lg:h-[540px] lg:min-h-0 lg:ml-20"
           >
             {/* Figure 1 - Ship Image (transparent background) */}
             <div className="absolute left-0 top-0 z-10 h-[273px] w-full lg:h-[281px] lg:w-[303px]">
@@ -380,58 +353,19 @@ export const HeroSection = () => {
               />
             </div>
 
-            {/* Figure 2 - Light Stat Card (150+) */}
+            {/* Figure 2 - Light Stat Card */}
             <div
               data-hero="stat-card"
-              className="absolute left-0 top-[290px] h-[250px] w-full overflow-hidden rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:h-[281px] lg:w-[261px]"
+              className="absolute left-0 top-[278px] w-full rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:w-[261px]"
             >
-              <p className="text-4xl font-bold tracking-[0.04em] lg:text-5xl">
-                <span data-counter data-target="150" data-suffix="+">
-                  0+
-                </span>
+              <p className="text-sm leading-relaxed text-gray-500">
+                {t("hero.presentOnAllContinents")}
               </p>
-              <p className="mt-3 text-sm leading-relaxed text-gray-500">
-                {t("hero.companiesTrust")}
-              </p>
-              <div className="mt-5 h-2 rounded-full bg-gray-100">
+              <div className="mt-3 h-2 rounded-full bg-gray-100">
                 <div className="h-full w-3/4 rounded-full bg-brand-900" />
               </div>
-            </div>
-
-            {/* Figure 3 - Dark Chart Card (texto e charts lado a lado) */}
-            <div className="absolute left-0 top-[555px] h-[270px] w-full overflow-hidden rounded-[28px] bg-gradient-to-br from-brand-950 via-brand-900 to-brand-950 p-6 text-white shadow-[0_18px_45px_rgba(1,2,5,0.14)] lg:top-[304px] lg:h-[216px] lg:w-[588px]">
-              {/* Shadow overlay image */}
-              <img
-                src="/photos/image 60.png"
-                alt=""
-                className="pointer-events-none absolute left-0 top-0 h-full w-auto opacity-60"
-                loading="lazy"
-              />
-              <div className="relative z-10 flex h-full items-center gap-6">
-                {/* Text side */}
-                <div className="flex-1">
-                  <p className="text-[11px] font-medium uppercase tracking-[0.35em] text-white/60">
-                    {t("hero.drivingTrade")}
-                  </p>
-                  <p className="mt-3 text-lg font-semibold leading-snug lg:text-xl">
-                    {t("hero.exportingPremium")} <br /> {t("hero.exportingGrade")}
-                  </p>
-                </div>
-                {/* Chart side */}
-                <div className="flex flex-col items-end">
-                  <div className="flex items-end gap-2">
-                    {[36, 52, 68, 80].map((height, idx) => (
-                      <div
-                        key={`bar-${idx}`}
-                        data-chart-bar
-                        data-height={`${height}px`}
-                        className="w-10 rounded-t-[10px] bg-accent-green"
-                        style={{ height: 0 }}
-                      />
-                    ))}
-                  </div>
-                  <div className="mt-3 h-px w-full bg-white/10" />
-                </div>
+              <div className="mt-4 flex justify-center">
+                <GlobeStickers size={160} speed={0.005} />
               </div>
             </div>
           </div>

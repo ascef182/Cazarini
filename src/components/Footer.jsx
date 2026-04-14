@@ -52,7 +52,7 @@ export const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://www.instagram.com/cazarinithiago/"
+                href="https://www.instagram.com/cazarinitrading/"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
@@ -67,7 +67,7 @@ export const Footer = () => {
                 </svg>
               </a>
               <a
-                href="https://wa.me/5535984160810"
+                href="https://wa.me/5535984160810?text=Ola,%20gostaria%20de%20saber%20mais%20sobre%20os%20cafes"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex h-9 w-9 items-center justify-center rounded-full border border-gray-200 text-brand-900 transition hover:border-brand-900 hover:bg-gray-50"
@@ -103,11 +103,6 @@ export const Footer = () => {
                 <li>
                   <Link to="/#servicos" className="hover:text-brand-900">
                     {t("footer.services")}
-                  </Link>
-                </li>
-                <li>
-                  <Link to="/logistics" className="hover:text-brand-900">
-                    {t("footer.logistics") || "Logistics"}
                   </Link>
                 </li>
                 <li>
@@ -160,8 +155,8 @@ export const Footer = () => {
                       d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
                     />
                   </svg>
-                  <a href="tel:+553584160810" className="hover:text-brand-900">
-                    +55 35 8416-0810
+                  <a href="tel:+5535984160810" className="hover:text-brand-900">
+                    +55 (35) 98416-0810
                   </a>
                 </li>
                 <li className="flex items-start gap-2">

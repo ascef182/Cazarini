@@ -254,23 +254,13 @@ export const Varieties = () => {
     hero: {
       en: {
         eyebrow: "GREEN COFFEE",
-        title: "Green Coffe Varieties",
+        title: "Green Coffee   Varieties",
         subtitle: "From Fine Cup to Conilon, discover our carefully sourced and graded coffees that meet the highest international standards.",
-        stats: [
-          { value: "17+", label: "Varieties" },
-          { value: "4", label: "Categories" },
-          { value: "6", label: "Certifications" },
-        ],
       },
       pt: {
         eyebrow: "CAFÉ VERDE",
         title: "Variedades de Café Verde",
         subtitle: "De Fine Cup a Conilon, descubra nossos cafés cuidadosamente selecionados e classificados que atendem aos mais altos padrões internacionais.",
-        stats: [
-          { value: "17+", label: "Variedades" },
-          { value: "4", label: "Categorias" },
-          { value: "6", label: "Certificações" },
-        ],
       },
     },
     certifications: {
@@ -366,44 +356,6 @@ export const Varieties = () => {
                 <p data-animate="hero-subtitle" className="text-xl text-white/70 mb-10 max-w-xl">
                   {content.hero[lang].subtitle}
                 </p>
-
-                {/* Stats */}
-                <div data-animate="hero-stats" className="flex flex-wrap gap-8 lg:gap-12">
-                  {content.hero[lang].stats.map((stat, index) => (
-                    <div key={index} className="text-center sm:text-left">
-                      <p className="text-3xl lg:text-4xl font-bold text-accent-green">{stat.value}</p>
-                      <p className="text-sm text-white/50">{stat.label}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Floating glassmorphism stat card */}
-              <div data-animate="hero-stats" className="hidden lg:block">
-                <div className="glass-panel bg-white/5 backdrop-blur-md border border-white/10 rounded-[28px] p-8 shadow-2xl">
-                  <div className="text-center">
-                    <p className="text-7xl font-bold text-white mb-2" data-counter data-target="17" data-suffix="+">0+</p>
-                    <p className="text-lg font-semibold text-white/80 mb-1">
-                      {lang === "en" ? "Premium Varieties" : "Variedades Premium"}
-                    </p>
-                    <p className="text-sm text-white/50">
-                      {lang === "en" ? "Fine Cup • Good Cup • Rio Minas • Conilon" : "Fine Cup • Good Cup • Rio Minas • Conilon"}
-                    </p>
-                  </div>
-                  <div className="mt-6 grid grid-cols-4 gap-3">
-                    {[7, 4, 3, 3].map((count, i) => (
-                      <div key={i} className="text-center flex flex-col justify-end h-full">
-                        <div
-                          className="mx-auto w-full rounded-t-lg bg-accent-green mb-2"
-                          data-chart-bar
-                          data-height={`${20 + count * 10}px`}
-                          style={{ height: 0 }}
-                        />
-                        <p className="text-xs text-white/60 font-medium" data-chart-value data-target={count}>0</p>
-                      </div>
-                    ))}
-                  </div>
-                </div>
               </div>
             </div>
           </div>

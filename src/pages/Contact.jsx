@@ -354,8 +354,8 @@ export const Contact = () => {
         {
           icon: Phone,
           title: "Call / WhatsApp",
-          lines: ["+55 35 8416-0810"],
-          href: "tel:+553584160810",
+          lines: ["+55 35 98416-0810"],
+          href: "tel:+5535984160810",
           whatsapp: "https://wa.me/5535984160810",
         },
         {
@@ -368,7 +368,7 @@ export const Contact = () => {
           title: "Social Media",
           links: [
             { label: "LinkedIn", href: "https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/" },
-            { label: "Instagram", href: "https://www.instagram.com/cazarinithiago/" },
+            { label: "Instagram", href: "https://www.instagram.com/cazarinitrading/" },
             { label: "Facebook", href: "https://www.facebook.com/CazariniTradingCompany/" },
           ],
         },
@@ -397,7 +397,7 @@ export const Contact = () => {
           title: "Redes Sociais",
           links: [
             { label: "LinkedIn", href: "https://www.linkedin.com/in/thiago-marques-cazarini-903a96b/" },
-            { label: "Instagram", href: "https://www.instagram.com/cazarinithiago/" },
+            { label: "Instagram", href: "https://www.instagram.com/cazarinitrading/" },
             { label: "Facebook", href: "https://www.facebook.com/CazariniTradingCompany/" },
           ],
         },

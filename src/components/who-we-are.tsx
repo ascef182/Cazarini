@@ -79,21 +79,6 @@ export const WhoWeAre = () => {
         });
       });
 
-      // Staggered cards
-      gsap.utils
-        .toArray("[data-animate='stagger']")
-        .forEach((container: any) => {
-          const items = container.querySelectorAll("[data-stagger-item]");
-          gsap.from(items, {
-            y: 40,
-            opacity: 0,
-            duration: 0.6,
-            stagger: 0.12,
-            ease: "power3.out",
-            scrollTrigger: { trigger: container, start: "top 85%" },
-          });
-        });
-
       // Timeline items - alternate from left/right
       gsap.utils
         .toArray("[data-timeline-item]")
@@ -129,48 +114,6 @@ export const WhoWeAre = () => {
         subtitle:
           "Do coração do maior polo de comércio de café do mundo, construímos uma rede que abrange 5 continentes, 140+ parceiros e 500.000 sacas anuais.",
       },
-    },
-    stats: {
-      en: [
-        {
-          number: 21,
-          suffix: "+",
-          label: "Years in the Industry",
-          sublabel: "Since 2009",
-        },
-        {
-          number: 500,
-          suffix: "K",
-          label: "Bags Traded Annually",
-          sublabel: "Growing 15% YoY",
-        },
-        {
-          number: 140,
-          suffix: "+",
-          label: "Global Partners",
-          sublabel: "Across 5 Continents",
-        },
-      ],
-      pt: [
-        {
-          number: 21,
-          suffix: "+",
-          label: "Anos na Indústria",
-          sublabel: "Desde 2009",
-        },
-        {
-          number: 500,
-          suffix: "K",
-          label: "Sacas Negociadas/Ano",
-          sublabel: "Crescimento 15% a.a.",
-        },
-        {
-          number: 140,
-          suffix: "+",
-          label: "Parceiros Globais",
-          sublabel: "Em 5 Continentes",
-        },
-      ],
     },
     story: {
       en: {
@@ -276,11 +219,7 @@ export const WhoWeAre = () => {
         bio: "With over 21 years of experience, I lead Cazarini Trading Company, an organization I built from the ground up in 2009, which is now recognized across all continents for its excellence in coffee trading. Cazarini Trading Company masters risk management, export sales, and domestic market acquisitions, always with a detailed eye until the fulfillment of every contract, minimizing risks with proactivity when resolving any eventualities.",
         quote:
           "Every relationship in coffee is built on trust. We're not just moving bags—we're connecting dreams, livelihoods, and cultures across the globe.",
-        credentials: [
-          "Featured in Bloomberg, Wall Street Journal, Reuters",
-          "Fluent in English, Spanish, and Italian",
-          "Head Coffee Trader at Montesa Exportadora since 2014",
-        ],
+        credentials: [],
       },
       pt: {
         label: "LIDERANÇA",
@@ -289,75 +228,7 @@ export const WhoWeAre = () => {
         bio: "Com mais de 21 anos de experiência, lidero a Cazarini Trading Company, uma organização que construí desde o início, em 2009, que hoje é reconhecida em todos os continentes pela excelência em comércio de café. A Cazarini Trading Company domina a gestão de riscos, vendas externas e aquisições no mercado interno, sempre com um olhar atento aos detalhes até o cumprimento de cada contrato, minimizando riscos, com pró atividade quando na solução de eventualidades.",
         quote:
           "Cada relacionamento no café é construído sobre confiança. Não estamos apenas movendo sacas—estamos conectando sonhos, meios de vida e culturas ao redor do globo.",
-        credentials: [
-          "Destaque em Bloomberg, Wall Street Journal, Reuters",
-          "Fluente em Inglês, Espanhol e Italiano",
-          "Head Coffee Trader na Montesa Exportadora desde 2014",
-        ],
-      },
-    },
-    timeline: {
-      en: {
-        label: "OUR JOURNEY",
-        title: "Milestones That Define Us",
-        items: [
-          {
-            year: "2003",
-            title: "Industry Beginnings",
-            text: "Thiago Cazarini enters the coffee industry, learning the craft from Brazil's finest trading floors in Varginha, MG.",
-          },
-          {
-            year: "2009",
-            title: "Cazarini Trading Founded",
-            text: "The company is established in the heart of the world's largest coffee trading hub, with a vision to connect Brazilian excellence to global markets.",
-          },
-          {
-            year: "2014",
-            title: "Head Trader at Montesa",
-            text: "Thiago takes on the role of Head Coffee Trader at Montesa Exportadora, expanding operations and global partnerships.",
-          },
-          {
-            year: "2018",
-            title: "Global Recognition",
-            text: "Market insights featured in Bloomberg, Wall Street Journal, and Reuters. The Cazarini name becomes trusted across 5 continents.",
-          },
-          {
-            year: "2024",
-            title: "500K Bags Milestone",
-            text: "Annual trading volume reaches 500,000 bags with 140+ active partners worldwide and 15% average year-over-year growth.",
-          },
-        ],
-      },
-      pt: {
-        label: "NOSSA JORNADA",
-        title: "Marcos Que Nos Definem",
-        items: [
-          {
-            year: "2003",
-            title: "Início na Indústria",
-            text: "Thiago Cazarini entra na indústria do café, aprendendo o ofício nos melhores pregões de Varginha, MG.",
-          },
-          {
-            year: "2009",
-            title: "Fundação da Cazarini Trading",
-            text: "A empresa é estabelecida no coração do maior polo de comércio de café do mundo, com a visão de conectar a excelência brasileira aos mercados globais.",
-          },
-          {
-            year: "2014",
-            title: "Head Trader na Montesa",
-            text: "Thiago assume o papel de Head Coffee Trader na Montesa Exportadora, expandindo operações e parcerias globais.",
-          },
-          {
-            year: "2018",
-            title: "Reconhecimento Global",
-            text: "Insights de mercado publicados na Bloomberg, Wall Street Journal e Reuters. O nome Cazarini torna-se confiável em 5 continentes.",
-          },
-          {
-            year: "2024",
-            title: "Marco de 500K Sacas",
-            text: "Volume anual de negociação atinge 500.000 sacas com 140+ parceiros ativos em todo o mundo e crescimento médio de 15% ao ano.",
-          },
-        ],
+        credentials: [],
       },
     },
     cta: {
@@ -486,48 +357,6 @@ export const WhoWeAre = () => {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            STATS BAR - Compact white row
-        ═══════════════════════════════════════════════════════════════════ */}
-        <section className="bg-white py-12 border-b border-gray-100">
-          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-            <div
-              data-animate="stagger"
-              className="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12"
-            >
-              {[
-                ...content.stats[lang],
-                {
-                  number: 98,
-                  suffix: "%",
-                  label:
-                    lang === "en" ? "Client Retention" : "Retenção de Clientes",
-                  sublabel: lang === "en" ? "Year over year" : "Ano após ano",
-                },
-              ].map((stat, index) => (
-                <div
-                  key={index}
-                  data-stagger-item
-                  className={`text-center ${index < 3 ? "md:border-r md:border-gray-100" : ""}`}
-                >
-                  <p className="text-4xl lg:text-5xl font-extrabold text-brand-900 mb-1 tracking-tight">
-                    <span
-                      data-counter
-                      data-target={stat.number}
-                      data-suffix={stat.suffix}
-                    >
-                      0
-                    </span>
-                  </p>
-                  <p className="text-[10px] uppercase tracking-[0.2em] font-bold text-gray-400">
-                    {stat.label}
-                  </p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════════════════
             STORY SECTION - Timeline Style
         ═══════════════════════════════════════════════════════════════════ */}
         <section className="py-20 lg:py-32 bg-white">
@@ -586,33 +415,6 @@ export const WhoWeAre = () => {
                     </p>
                   </div>
                 ))}
-
-                {/* Growth highlight */}
-                <div
-                  data-animate="fade-up"
-                  className="bg-brand-950 rounded-[24px] p-8 text-white"
-                >
-                  <div className="flex items-start gap-6">
-                    <div className="w-16 h-16 rounded-2xl bg-accent-green flex items-center justify-center shrink-0">
-                      <TrendingUp className="w-8 h-8 text-brand-900" />
-                    </div>
-                    <div>
-                      <p className="text-4xl font-bold text-accent-green mb-2">
-                        15%
-                      </p>
-                      <p className="text-lg font-semibold mb-1">
-                        {lang === "en"
-                          ? "Average Annual Growth"
-                          : "Crescimento Médio Anual"}
-                      </p>
-                      <p className="text-white/60 text-sm">
-                        {lang === "en"
-                          ? "Consistent growth that speaks to the trust our partners place in us."
-                          : "Crescimento consistente que reflete a confiança que nossos parceiros depositam em nós."}
-                      </p>
-                    </div>
-                  </div>
-                </div>
               </div>
             </div>
           </div>
@@ -684,79 +486,6 @@ export const WhoWeAre = () => {
                     {content.leader[lang].quote}
                   </p>
                 </blockquote>
-
-                {/* Credentials */}
-                <div data-animate="fade-up" className="space-y-4">
-                  {content.leader[lang].credentials.map((credential, index) => (
-                    <div key={index} className="flex items-center gap-3">
-                      <div className="w-2 h-2 rounded-full bg-accent-green" />
-                      <p className="text-gray-600">{credential}</p>
-                    </div>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ═══════════════════════════════════════════════════════════════════
-            TIMELINE SECTION - Company Journey (Dark)
-        ═══════════════════════════════════════════════════════════════════ */}
-        <section className="py-24 lg:py-40 bg-brand-950 overflow-hidden">
-          <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
-            {/* Section Header */}
-            <div data-animate="fade-up" className="text-center mb-20 lg:mb-32">
-              <p className="text-xs font-bold uppercase tracking-[0.4em] text-accent-green mb-6">
-                {content.timeline[lang].label}
-              </p>
-              <h2 className="text-white text-4xl lg:text-5xl font-bold mb-4">
-                {content.timeline[lang].title}
-              </h2>
-            </div>
-
-            {/* Timeline */}
-            <div className="relative">
-              {/* Central gradient line */}
-              <div className="absolute left-1/2 top-0 bottom-0 w-px hidden lg:block timeline-line" />
-              <div className="absolute left-6 top-0 bottom-0 w-px lg:hidden timeline-line" />
-
-              <div className="space-y-24 lg:space-y-32">
-                {content.timeline[lang].items.map((item, index) => (
-                  <div
-                    key={index}
-                    data-timeline-item
-                    className={`relative flex flex-col lg:flex-row lg:items-center gap-6 lg:gap-12 ${
-                      index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse"
-                    }`}
-                  >
-                    {/* Content Card */}
-                    <div
-                      className={`lg:w-[calc(50%-3rem)] ${
-                        index % 2 === 0 ? "lg:text-right" : "lg:text-left"
-                      } ml-14 lg:ml-0`}
-                    >
-                      <span className="text-accent-green text-5xl lg:text-6xl font-light font-editorial mb-4 block">
-                        {item.year}
-                      </span>
-                      <h3 className="text-white text-2xl font-bold mb-4">
-                        {item.title}
-                      </h3>
-                      <p className="text-gray-400 leading-relaxed">
-                        {item.text}
-                      </p>
-                    </div>
-
-                    {/* Center dot */}
-                    <div className="absolute left-6 lg:left-1/2 top-2 lg:top-1/2 -translate-x-1/2 lg:-translate-y-1/2 z-10">
-                      <div
-                        className={`w-3 h-3 rounded-full ${index === 0 ? "bg-accent-green" : "bg-white"} ring-8 ring-white/5`}
-                      />
-                    </div>
-
-                    {/* Spacer for opposite side */}
-                    <div className="hidden lg:block lg:w-[calc(50%-3rem)]" />
-                  </div>
-                ))}
               </div>
             </div>
           </div>

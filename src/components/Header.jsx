@@ -7,7 +7,6 @@ const getNavItems = (lang) => [
   { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
   { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
   { label: "Blog", href: "/blog", type: "link" },
-  { label: lang === "pt" ? "Logística" : "Logistics", href: lang === "pt" ? "/logistica" : "/logistics", type: "link" },
   { label: lang === "pt" ? "Contato" : "Contact", href: lang === "pt" ? "/contato" : "/contact", type: "link" },
 ];
 

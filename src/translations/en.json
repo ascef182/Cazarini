@@ -17,12 +17,13 @@
     "ctaVarieties": "View Varieties",
     "trusted": "Trusted by the world's biggest brands",
     "companiesTrust": "Big companies that work with us and deeply trust our services",
+    "presentOnAllContinents": "Present on all continents",
     "drivingTrade": "Driving Global Coffee Trade",
     "exportingPremium": "Exporting Premium-",
     "exportingGrade": "Grade Coffee Worldwide"
   },
   "stats": {
-    "title": "Provide the best service a reference in coffee trading",
+    "title": "Cazarini Trading Company excels in risk management, international sales, and domestic procurement, maintaining a meticulous focus on every detail until contract fulfillment—always minimizing risk and proactively addressing any challenges that may arise.",
     "description": "Cazarini Trading Company excels in risk management, international sales, and domestic procurement, maintaining a meticulous focus on every detail until contract fulfillment—always minimizing risk and proactively addressing any challenges that may arise.",
     "bagsDelivered": "Bags delivered with success",
     "companiesTrust": "Big companies that work with us and deeply trust our services",
@@ -33,7 +34,7 @@
   },
   "varieties": {
     "title": "Green Coffees We Trade",
-    "description": "Explore our selection of Brazilian and Colombia coffees, carefully sourced and graded to meet international standards.",
+    "description": "Explore our selection of Brazilian coffees, carefully sourced and graded to meet international standards.",
     "filterAll": "All",
     "filterFineCup": "Fine Cup",
     "filterGoodCup": "Good Cup",
@@ -199,7 +200,6 @@
     "city": "Varginha, Minas Gerais, MG",
     "country": "Brazil",
     "rights": "Cazarini Trading Company. All rights reserved.",
-    "logistics": "Logistics",
     "latestInsights": "Latest Insights"
   }
 }

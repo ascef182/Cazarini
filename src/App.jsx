@@ -10,7 +10,6 @@ const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Insights = lazy(() => import("./pages/Insights"));
 const Contact = lazy(() => import("./pages/Contact"));
-const Logistics = lazy(() => import("./pages/Logistics"));
 const Gallery = lazy(() => import("./pages/Gallery"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 const PrivacyPolicy = lazy(() => import("./pages/PrivacyPolicy"));
@@ -31,8 +30,6 @@ export const CoffeTrading = () => {
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/insights" element={<Insights />} />
-            <Route path="/logistics" element={<Logistics />} />
-            <Route path="/logistica" element={<Logistics />} />
             <Route path="/gallery" element={<Gallery />} />
             <Route path="/galeria" element={<Gallery />} />
             <Route path="/contact" element={<Contact />} />
