@@ -64,7 +64,7 @@ export const StatsSection = () => {
       className="relative overflow-hidden bg-white py-12 lg:py-16"
     >
       <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
-        <div className="flex justify-center">
+        <div className="flex justify-center mb-8">
           <MagicText 
             text={t("stats.title")}
             className="text-balance text-center text-3xl font-semibold leading-tight tracking-[-0.02em] text-black sm:text-4xl lg:text-[2.5rem]"
