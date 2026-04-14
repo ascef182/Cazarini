@@ -21,11 +21,9 @@ const varietyGallery = [
   { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: "Natural • Screen 17/18", image: "/photos/grade-cafe.jpg" },
   { id: 6, category: "fine-cup", title: "NATURAL NY 2/3 14/16", type: "FINE CUP", region: "Natural • Screen 14/16", image: "/photos/grade-cafe.jpg" },
   { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: "Natural Peaberries • Screen 9/10/11", image: "/photos/grade-cafe.jpg" },
-  { id: 18, category: "fine-cup", title: "SIMPLE RED", type: "FINE CUP", region: "Natural • Red Catuai", image: "/photos/grade-cafe.jpg" },
 
   // GOOD CUP
   { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: "Natural • Screen 17/18", image: "/photos/thiago-cafe.jpg" },
-  { id: 19, category: "good-cup", title: "17/18 VGC", type: "GOOD CUP", region: "Very Good Cup • Screen 17/18", image: "/photos/thiago-cafe.jpg" },
   { id: 9, category: "good-cup", title: "NATURAL NY 3/4 14/16", type: "GOOD CUP", region: "Natural • Screen 14/16", image: "/photos/thiago-cafe.jpg" },
   { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: "Natural Grinders • Screen 13UP", image: "/photos/thiago-cafe.jpg" },
   { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: "Natural Grinders • Screen 12UP", image: "/photos/thiago-cafe.jpg" },
@@ -38,7 +36,6 @@ const varietyGallery = [
   // CONILON
   { id: 15, category: "conilon", title: "CONILON 13UP", type: "CONILON", region: "Robusta • Screen 13UP", image: "/photos/experimento-cafe.jpg" },
   { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: "Robusta • Screen 14UP", image: "/photos/experimento-cafe.jpg" },
-  { id: 20, category: "conilon", title: "BAHIA CONILON 16UP", type: "CONILON", region: "Robusta • Bahia • Screen 16UP", image: "/photos/experimento-cafe.jpg" },
   { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: "Robusta • Screen 16UP", image: "/photos/experimento-cafe.jpg" },
 ];
 

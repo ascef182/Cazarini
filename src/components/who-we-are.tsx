@@ -99,20 +99,20 @@ export const WhoWeAre = () => {
   const content = {
     hero: {
       en: {
-        eyebrow: "Established in Varginha, MG • Since 2009",
-        title: "21 years trading",
+        eyebrow: "Established in Brazil",
+        title: "17 years trading",
         titleHighlight: "Brazilian coffee",
         titleEnd: "to global markets",
         subtitle:
-          "From the heart of the world's largest coffee trading hub, we've built a network spanning 5 continents, 140+ partners, and 500,000 bags annually.",
+          "From the heart of the world's largest coffee trading hub, we've built a network spanning all continents.",
       },
       pt: {
-        eyebrow: "Estabelecido em Varginha, MG • Desde 2009",
-        title: "21 anos negociando",
+        eyebrow: "Estabelecido no Brasil",
+        title: "17 anos negociando",
         titleHighlight: "café brasileiro",
         titleEnd: "para o mundo",
         subtitle:
-          "Do coração do maior polo de comércio de café do mundo, construímos uma rede que abrange 5 continentes, 140+ parceiros e 500.000 sacas anuais.",
+          "Do coração do maior polo de comércio de café do mundo, construímos uma rede que abrange todos os continentes",
       },
     },
     story: {
@@ -176,7 +176,7 @@ export const WhoWeAre = () => {
           {
             icon: Award,
             title: "Quality First",
-            text: "Only premium-grade Brazilian and Colombian coffees",
+            text: "Only premium-grade Brazilian coffees",
           },
         ],
         motivation:
@@ -234,15 +234,12 @@ export const WhoWeAre = () => {
     cta: {
       en: {
         title: "Ready to partner with us?",
-        subtitle:
-          "Join 140+ partners who trust Cazarini for premium Brazilian coffee.",
+    
         button: "Get in Touch",
       },
       pt: {
         title: "Pronto para ser nosso parceiro?",
-        subtitle:
-          "Junte-se a mais de 140 parceiros que confiam na Cazarini para café brasileiro premium.",
-        button: "Entre em Contato",
+              button: "Entre em Contato",
       },
     },
   };
@@ -257,8 +254,8 @@ export const WhoWeAre = () => {
         }
         description={
           lang === "en"
-            ? "Discover Cazarini Trading Company - 21+ years connecting Brazilian coffee excellence to global markets. 500K bags annually, 140+ partners across 5 continents."
-            : "Conheça a Cazarini Trading Company - 21+ anos conectando a excelência do café brasileiro aos mercados globais. 500K sacas anuais, 140+ parceiros em 5 continentes."
+            ? "Discover Cazarini Trading Company - 98% client retention, connecting Brazilian coffee excellence to global markets."
+            : "Conheça a Cazarini Trading Company - 98% de retenção de clientes, conectando a excelência do café brasileiro aos mercados globais."
         }
         keywords={
           lang === "en"
@@ -319,7 +316,7 @@ export const WhoWeAre = () => {
                 <div className="flex items-center gap-2 text-white/30">
                   <MapPin className="w-4 h-4" />
                   <span className="text-sm font-medium">
-                    Varginha, MG — Brazil
+                    Varginha, MG  
                   </span>
                 </div>
                 <div className="h-4 w-px bg-white/10" />
@@ -346,10 +343,10 @@ export const WhoWeAre = () => {
               {/* Year badge */}
               <div className="absolute bottom-8 right-8 bg-brand-950/80 backdrop-blur-sm border border-white/10 rounded-2xl px-6 py-4">
                 <p className="text-4xl font-bold text-white leading-none">
-                  21<span className="text-accent-green">+</span>
+                  98<span className="text-accent-green">%</span>
                 </p>
                 <p className="text-xs font-semibold uppercase tracking-[0.2em] text-white/40 mt-1">
-                  {lang === "en" ? "Years of Excellence" : "Anos de Excelência"}
+                  {lang === "en" ? "Client Retention" : "Retenção de Clientes"}
                 </p>
               </div>
             </div>

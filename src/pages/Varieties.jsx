@@ -30,11 +30,9 @@ const varietyGallery = [
   { id: 5, category: "fine-cup", title: "NATURAL NY 2/3 17/18", type: "FINE CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/grade-cafe.jpg" },
   { id: 6, category: "fine-cup", title: "NATURAL NY 2/3 14/16", type: "FINE CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/grade-cafe.jpg" },
   { id: 7, category: "fine-cup", title: "NATURAL PEABERRIES (MOKA) 9/10/11", type: "FINE CUP", region: { en: "Natural Peaberries • Screen 9/10/11", pt: "Peaberries Natural • Peneira 9/10/11" }, image: "/photos/grade-cafe.jpg" },
-  { id: 18, category: "fine-cup", title: "SIMPLE RED", type: "FINE CUP", region: { en: "Natural • Red Catuai", pt: "Natural • Catuai Vermelho" }, image: "/photos/grade-cafe.jpg" },
 
   // GOOD CUP
   { id: 8, category: "good-cup", title: "NATURAL NY 2/3 17/18", type: "GOOD CUP", region: { en: "Natural • Screen 17/18", pt: "Natural • Peneira 17/18" }, image: "/photos/thiago-cafe.jpg" },
-  { id: 19, category: "good-cup", title: "17/18 VGC", type: "GOOD CUP", region: { en: "Very Good Cup • Screen 17/18", pt: "Very Good Cup • Peneira 17/18" }, image: "/photos/thiago-cafe.jpg" },
   { id: 9, category: "good-cup", title: "NATURAL NY 3/4 14/16", type: "GOOD CUP", region: { en: "Natural • Screen 14/16", pt: "Natural • Peneira 14/16" }, image: "/photos/thiago-cafe.jpg" },
   { id: 10, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 13UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 13UP", pt: "Natural Grinders • Peneira 13UP" }, image: "/photos/thiago-cafe.jpg" },
   { id: 11, category: "good-cup", title: "NATURAL NY 5/6 GRINDERS 12UP", type: "GOOD CUP", region: { en: "Natural Grinders • Screen 12UP", pt: "Natural Grinders • Peneira 12UP" }, image: "/photos/thiago-cafe.jpg" },
@@ -47,7 +45,6 @@ const varietyGallery = [
   // CONILON
   { id: 15, category: "conilon", title: "CONILON 13UP", type: "CONILON", region: { en: "Robusta • Screen 13UP", pt: "Robusta • Peneira 13UP" }, image: "/photos/experimento-cafe.jpg" },
   { id: 16, category: "conilon", title: "CONILON 14UP", type: "CONILON", region: { en: "Robusta • Screen 14UP", pt: "Robusta • Peneira 14UP" }, image: "/photos/experimento-cafe.jpg" },
-  { id: 20, category: "conilon", title: "BAHIA CONILON 16UP", type: "CONILON", region: { en: "Robusta • Bahia • Screen 16UP", pt: "Robusta • Bahia • Peneira 16UP" }, image: "/photos/experimento-cafe.jpg" },
   { id: 17, category: "conilon", title: "CONILON 16UP", type: "CONILON", region: { en: "Robusta • Screen 16UP", pt: "Robusta • Peneira 16UP" }, image: "/photos/experimento-cafe.jpg" },
 ];
 
