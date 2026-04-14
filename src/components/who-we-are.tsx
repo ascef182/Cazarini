@@ -118,11 +118,11 @@ export const WhoWeAre = () => {
     story: {
       en: {
         label: "OUR STORY",
-        title: "Built from the ground up in the coffee capital of the world",
+        title: "Built from scratch in the coffee capital of the world",
         blocks: [
           {
             title: "The Beginning",
-            text: "Cazarini Trading Company was born in Varginha, Minas Gerais—home to the world's largest dry port for coffee exports and the epicenter of Brazilian coffee commerce. What started as a vision has become a global operation recognized across all continents.",
+            text: "Cazarini Trading Company was born in Varginha, Minas Gerais—home to the world's largest coffee hub and epicenter of Brazilian coffee commerce. What started as a vision has become a global operation recognized across all continents.",
           },
           {
             title: "Our Approach",
@@ -216,9 +216,9 @@ export const WhoWeAre = () => {
         label: "LEADERSHIP",
         name: "Thiago Marques Cazarini",
         role: "Founder & Head Coffee Trader",
-        bio: "With over 21 years of experience, I lead Cazarini Trading Company, an organization I built from the ground up in 2009, which is now recognized across all continents for its excellence in coffee trading. Cazarini Trading Company masters risk management, export sales, and domestic market acquisitions, always with a detailed eye until the fulfillment of every contract, minimizing risks with proactivity when resolving any eventualities.",
+        bio: "With over 21 years of experience, I lead Cazarini Trading Company, an organization I built from scratch in 2009, which is now recognized across all continents for its excellence in coffee trading. Cazarini Trading Company masters risk management, export sales, and domestic market acquisitions, always with a detailed eye until the fulfillment of every contract, minimizing risks with proactivity when resolving any eventualities.",
         quote:
-          "Every relationship in coffee is built on trust. We're not just moving bags—we're connecting dreams, livelihoods, and cultures across the globe.",
+          "Every relationship in coffee is built on trust, transparency. We're not just moving bags—we're connecting visions, strategies, solutions.",
         credentials: [],
       },
       pt: {
@@ -227,7 +227,7 @@ export const WhoWeAre = () => {
         role: "Fundador & Head Coffee Trader",
         bio: "Com mais de 21 anos de experiência, lidero a Cazarini Trading Company, uma organização que construí desde o início, em 2009, que hoje é reconhecida em todos os continentes pela excelência em comércio de café. A Cazarini Trading Company domina a gestão de riscos, vendas externas e aquisições no mercado interno, sempre com um olhar atento aos detalhes até o cumprimento de cada contrato, minimizando riscos, com pró atividade quando na solução de eventualidades.",
         quote:
-          "Cada relacionamento no café é construído sobre confiança. Não estamos apenas movendo sacas—estamos conectando sonhos, meios de vida e culturas ao redor do globo.",
+          "Cada relacionamento no café é construído sobre confiança, transparência. Não estamos apenas movendo sacas—estamos conectando visões, estratégias, soluções.",
         credentials: [],
       },
     },

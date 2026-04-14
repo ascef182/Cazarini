@@ -4,7 +4,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
-import { GlobeStickers } from "../components/ui/GlobeStickers";
+import Globe from "../components/ui/Globe";
 
 // Dynamic nav items that change based on language
 const getNavItems = (lang) => [
@@ -356,7 +356,7 @@ export const HeroSection = () => {
             {/* Figure 2 - Light Stat Card */}
             <div
               data-hero="stat-card"
-              className="absolute left-0 top-[278px] w-full rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:w-[261px]"
+              className="absolute left-0 top-[278px] w-full rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:w-[520px]"
             >
               <p className="text-sm leading-relaxed text-gray-500">
                 {t("hero.presentOnAllContinents")}
@@ -365,7 +365,7 @@ export const HeroSection = () => {
                 <div className="h-full w-3/4 rounded-full bg-brand-900" />
               </div>
               <div className="mt-4 flex justify-center">
-                <GlobeStickers size={160} speed={0.005} />
+                <Globe />
               </div>
             </div>
           </div>

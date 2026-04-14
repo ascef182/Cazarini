@@ -113,6 +113,7 @@ const certifications = [
 export const Varieties = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedVariety, setSelectedVariety] = useState(null);
+  const [cardsReady, setCardsReady] = useState(false);
   const { isPortuguese } = useLanguage();
   const lang = isPortuguese ? "pt" : "en";
   const pageRef = useRef(null);
@@ -156,96 +157,83 @@ export const Varieties = () => {
     return varietyGallery.filter((item) => item.category === activeFilter);
   }, [activeFilter]);
 
+  // Skeleton: mostra esqueleto quando o filtro muda, depois revela os cards
+  useEffect(() => {
+    const t1 = setTimeout(() => setCardsReady(false), 0);
+    const t2 = setTimeout(() => setCardsReady(true), 420);
+    return () => { clearTimeout(t1); clearTimeout(t2); };
+  }, [activeFilter]);
+
+  // Animar cards quando ficam prontos
+  useEffect(() => {
+    if (!cardsReady) return;
+    const cards = document.querySelectorAll("[data-animate='card']");
+    if (cards.length > 0) {
+      gsap.fromTo(
+        Array.from(cards),
+        { opacity: 0, y: 24 },
+        { opacity: 1, y: 0, duration: 0.45, stagger: 0.055, ease: "power2.out" }
+      );
+    }
+  }, [cardsReady]);
+
+  // Animações de scroll para as seções (onEnter — elementos só somem quando o scroll chega)
   useEffect(() => {
     const ctx = gsap.context(() => {
-      // Hero animations
-      gsap.from("[data-animate='hero-title']", { y: 40, opacity: 0, duration: 0.9, delay: 0.1 })
-      gsap.from("[data-animate='hero-subtitle']", { y: 30, opacity: 0, duration: 0.8, delay: 0.25 })
-      gsap.from("[data-animate='hero-stats']", { y: 20, opacity: 0, duration: 0.7, delay: 0.4 })
-
-      // Cards animation
-      gsap.utils.toArray("[data-animate='card']").forEach((card, index) => {
-        gsap.from(card, {
-          y: 40,
-          opacity: 0,
-          duration: 0.5,
-          delay: 0.05 * (index % 8),
-          scrollTrigger: { trigger: card, start: "top 92%" },
-        })
-      })
+      // Sourcing features
+      const sourcing = pageRef.current?.querySelectorAll("[data-animate='sourcing']");
+      if (sourcing?.length > 0) {
+        ScrollTrigger.create({
+          trigger: sourcing[0],
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            gsap.fromTo(
+              Array.from(sourcing),
+              { opacity: 0, y: 28 },
+              { opacity: 1, y: 0, duration: 0.55, stagger: 0.1, ease: "power2.out" }
+            );
+          },
+        });
+      }
 
       // Certifications
-      gsap.utils.toArray("[data-animate='cert']").forEach((cert, index) => {
-        gsap.from(cert, {
-          y: 30,
-          opacity: 0,
-          duration: 0.6,
-          delay: 0.1 * index,
-          scrollTrigger: { trigger: cert, start: "top 88%" },
-        })
-      })
-
-      // Counter animation
-      const counters = pageRef.current.querySelectorAll("[data-counter]");
-      counters.forEach((node) => {
-        const target = Number(node.getAttribute("data-target"));
-        const suffix = node.getAttribute("data-suffix") ?? "";
-        if (Number.isNaN(target)) return;
-        const state = { value: 0 };
-        gsap.to(state, {
-          value: target,
-          duration: 1.4,
-          ease: "power2.out",
-          scrollTrigger: { trigger: node, start: "top 80%", once: true },
-          onUpdate: () => {
-            node.textContent = `${Math.round(state.value)}${suffix}`;
+      const certs = pageRef.current?.querySelectorAll("[data-animate='cert']");
+      if (certs?.length > 0) {
+        ScrollTrigger.create({
+          trigger: certs[0],
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            gsap.fromTo(
+              Array.from(certs),
+              { opacity: 0, y: 28 },
+              { opacity: 1, y: 0, duration: 0.55, stagger: 0.08, ease: "power2.out" }
+            );
           },
         });
-      });
-
-      // Chart bars
-      const chartBars = pageRef.current.querySelectorAll("[data-chart-bar]");
-      chartBars.forEach((bar, index) => {
-        const targetHeight = bar.getAttribute("data-height");
-        gsap.fromTo(bar, { height: 0 }, {
-          height: targetHeight,
-          duration: 0.8,
-          delay: 0.15 * index,
-          ease: "power2.out",
-          scrollTrigger: { trigger: bar, start: "top 90%", once: true },
-        });
-      });
-
-      // Chart values
-      const chartValues = pageRef.current.querySelectorAll("[data-chart-value]");
-      chartValues.forEach((val, index) => {
-        const target = Number(val.getAttribute("data-target"));
-        if (Number.isNaN(target)) return;
-        const state = { value: 0 };
-        gsap.to(state, {
-          value: target,
-          duration: 1.0,
-          delay: 0.2 + (0.15 * index),
-          ease: "power2.out",
-          scrollTrigger: { trigger: val, start: "top 90%", once: true },
-          onUpdate: () => {
-            val.textContent = Math.round(state.value);
-          },
-        });
-      });
-
+      }
 
       // CTA
-      gsap.from("[data-animate='cta']", {
-        y: 40,
-        opacity: 0,
-        duration: 0.8,
-        scrollTrigger: { trigger: "[data-animate='cta']", start: "top 85%" },
-      })
-    }, pageRef)
+      const cta = pageRef.current?.querySelector("[data-animate='cta']");
+      if (cta) {
+        ScrollTrigger.create({
+          trigger: cta,
+          start: "top 85%",
+          once: true,
+          onEnter: () => {
+            gsap.fromTo(
+              cta,
+              { opacity: 0, y: 28 },
+              { opacity: 1, y: 0, duration: 0.6, ease: "power2.out" }
+            );
+          },
+        });
+      }
+    }, pageRef);
 
-    return () => ctx.revert()
-  }, [filteredVarieties])
+    return () => ctx.revert();
+  }, []);
 
   const content = {
     hero: {
@@ -396,7 +384,27 @@ export const Varieties = () => {
         <section className="bg-gray-50 py-12 lg:py-20">
           <div className="mx-auto max-w-[1440px] px-4 sm:px-6 lg:px-10">
             <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-              {filteredVarieties.map((variety) => {
+              {!cardsReady
+                ? Array.from({ length: Math.min(filteredVarieties.length, 6) }).map((_, i) => (
+                    <div key={i} className="flex flex-col bg-white rounded-3xl border border-gray-100 overflow-hidden shadow-sm">
+                      <div className="h-64 bg-gray-200 animate-pulse" />
+                      <div className="flex flex-col flex-1 p-6 gap-3">
+                        <div className="h-5 w-24 bg-gray-200 animate-pulse rounded-full" />
+                        <div className="h-6 bg-gray-200 animate-pulse rounded-lg" />
+                        <div className="h-4 w-3/4 bg-gray-200 animate-pulse rounded" />
+                        <div className="flex-1 space-y-2">
+                          <div className="h-4 bg-gray-100 animate-pulse rounded" />
+                          <div className="h-4 w-5/6 bg-gray-100 animate-pulse rounded" />
+                        </div>
+                        <div className="flex gap-2">
+                          <div className="h-6 w-20 bg-gray-100 animate-pulse rounded-full" />
+                          <div className="h-6 w-16 bg-gray-100 animate-pulse rounded-full" />
+                        </div>
+                        <div className="h-11 bg-gray-200 animate-pulse rounded-xl" />
+                      </div>
+                    </div>
+                  ))
+                : filteredVarieties.map((variety) => {
                 const tags = getVarietyTags(variety);
                 const desc = categoryDescriptions[variety.category];
                 return (
@@ -490,7 +498,7 @@ export const Varieties = () => {
               {sourcingFeatures.map((feature, index) => (
                 <div
                   key={index}
-                  data-animate="cert"
+                  data-animate="sourcing"
                   className="group text-center"
                 >
                   <div className="mx-auto mb-5 flex h-16 w-16 items-center justify-center rounded-2xl bg-accent-green/10 text-accent-green transition-all duration-300 group-hover:bg-accent-green group-hover:text-brand-900 group-hover:shadow-lg group-hover:shadow-accent-green/20">
