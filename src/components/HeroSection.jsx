@@ -81,6 +81,24 @@ export const HeroSection = () => {
         });
       });
 
+      // Progress bar animation
+      gsap.utils.toArray("[data-progress]").forEach((bar) => {
+        const target = bar.getAttribute("data-progress");
+        gsap.fromTo(
+          bar,
+          { width: "0%" },
+          {
+            width: `${target}%`,
+            duration: 1.5,
+            ease: "power3.out",
+            scrollTrigger: {
+              trigger: bar.closest("[data-hero='stat-card']"),
+              start: "top 85%",
+            },
+          }
+        );
+      });
+
       // Counter animation
       const counters = heroRef.current.querySelectorAll("[data-counter]");
       counters.forEach((node) => {
@@ -303,7 +321,7 @@ export const HeroSection = () => {
           </div>
         </header>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-start">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
           <div className="space-y-10">
             <div className="space-y-6">
               <p
@@ -351,32 +369,34 @@ export const HeroSection = () => {
 
           <div
             data-hero="media"
-            className="relative mt-8 min-h-[560px] lg:mt-0 lg:h-[540px] lg:min-h-0 lg:ml-20"
+            className="mt-8 grid grid-cols-1 gap-3 lg:mt-0 lg:ml-20 lg:h-[380px] lg:grid-cols-2 lg:grid-rows-[1.5fr_1fr] lg:gap-4"
           >
-            {/* Figure 1 - Ship Image (transparent background) */}
-            <div className="absolute left-0 top-0 z-10 h-[273px] w-full lg:h-[281px] lg:w-[303px]">
+            {/* Tile 1 — Navio (sem card, apenas a imagem) */}
+            <div className="relative lg:col-start-1 lg:row-start-1 lg:aspect-auto">
               <img
                 src="/photos/trend.png"
                 alt="Coffee container ship"
-                className="h-full w-full rounded-[32px] object-cover object-top"
+                className="h-full w-full rounded-[32px] object-contain object-center shadow-[0_12px_30px_rgba(1,2,5,0.08)]"
                 loading="lazy"
               />
             </div>
 
-            {/* Figure 2 - Light Stat Card */}
+            {/* Tile 2 — Stat banner compacto */}
             <div
               data-hero="stat-card"
-              className="absolute left-0 top-[278px] w-full rounded-[32px] border border-gray-100 bg-white p-6 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:left-[327px] lg:top-0 lg:w-[520px]"
+              className="flex flex-col gap-3 rounded-[32px] border border-gray-100 bg-white px-6 py-5 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:col-start-1 lg:row-start-2"
             >
               <p className="text-sm leading-relaxed text-gray-500">
                 {t("hero.presentOnAllContinents")}
               </p>
-              <div className="mt-3 h-2 rounded-full bg-gray-100">
-                <div className="h-full w-3/4 rounded-full bg-brand-900" />
+              <div className="h-2 w-full rounded-full bg-gray-100">
+                <div className="h-full rounded-full bg-brand-900" style={{ width: "0%" }} data-progress="100" />
               </div>
-              <div className="mt-4 flex justify-center">
-                <Globe />
-              </div>
+            </div>
+
+            {/* Tile 3 — Globe */}
+            <div className="relative flex aspect-square items-center justify-center rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:col-start-2 lg:row-span-2 lg:aspect-auto lg:h-full">
+              <Globe size={320} />
             </div>
           </div>
         </div>
