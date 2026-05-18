@@ -53,20 +53,20 @@ export const ServicesSection = () => {
                   loading="lazy"
                 />
                 <div className="absolute top-4 left-4 z-10 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-900 shadow-sm">
-                  {post.category}
+                  {isPortuguese && post.categoryPt ? post.categoryPt : post.category}
                 </div>
               </div>
               <div className="flex flex-1 flex-col gap-3 p-6">
                 <div className="flex items-center gap-2 text-xs text-gray-400 font-medium">
-                  <span>{post.date}</span>
+                  <span>{isPortuguese && post.datePt ? post.datePt : post.date}</span>
                   <span className="w-1 h-1 rounded-full bg-gray-300" />
                   <span>{post.author}</span>
                 </div>
                 <h3 className="text-sm font-semibold leading-snug text-brand-900 group-hover:text-accent-green transition-colors">
-                  {post.title}
+                  {isPortuguese && post.titlePt ? post.titlePt : post.title}
                 </h3>
                 <p className="text-sm leading-relaxed text-gray-500 line-clamp-3">
-                  {post.preview}
+                  {isPortuguese && post.previewPt ? post.previewPt : post.preview}
                 </p>
                 <span className="mt-auto text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all inline-flex items-center gap-2">
                   {lang === "en" ? "Read Article" : "Ler Artigo"}

@@ -3,9 +3,13 @@ export const blogPosts = [
     id: 1,
     slug: "brazil-2025-crop-market-outlook",
     category: "Market Update",
+    categoryPt: "Atualização de Mercado",
     date: "Jan 10, 2025",
+    datePt: "10 de Jan, 2025",
     title: "Brazil's 2025 Crop & Market Outlook",
+    titlePt: "Perspectivas para a Safra 2025 e o Mercado Brasileiro",
     preview: "Selling activity improved a bit but not in an abysmal way. Expectations is that for Arabica there is still 20-30% left of crop 25/26...",
+    previewPt: "A atividade de vendas melhorou um pouco, mas não de forma expressiva. A expectativa é que para o Arábica ainda restem 20-30% da safra 25/26...",
     content: `Speaking to and visiting multiple cooperatives and private exporters/warehouses during last week in Cerrado and South Minas, I've heard selling activity improved a bit but not in an abysmal way.
     
     It's clear to them all that producers have more coffee to sell in comparison to last years at this time of the year. Expectations is that for Arabica there is still 20-30% left of crop 25/26. Whereas this % was due at the end of November in the last years.
@@ -20,9 +24,13 @@ export const blogPosts = [
     id: 2,
     slug: "future-grading-3d-scanning-tech",
     category: "Technology",
+    categoryPt: "Tecnologia",
     date: "Jan 08, 2025",
+    datePt: "08 de Jan, 2025",
     title: "The Future of Grading: 3D Scanning Tech",
+    titlePt: "O Futuro da Classificação: Tecnologia de Escaneamento 3D",
     preview: "Today we were presented the innovative grading machine from @agrivero.ai. Their 3D beans scan offers no mistake...",
+    previewPt: "Hoje fomos apresentados à inovadora máquina de classificação da @agrivero.ai. O escaneamento 3D dos grãos não oferece margem para erros...",
     content: `Today we were presented the innovative grading machine from @agrivero.ai. They have been working on it in the last 4 years.
     
     Their 3D beans scan, scanning ALL BEANS of the sample presented, offers no mistake for those wanting to level up blending, give producers a right grading sheet, settle disputes and even teach a team.
@@ -35,9 +43,13 @@ export const blogPosts = [
     id: 3,
     slug: "global-consumption-insights-us-japan-uk",
     category: "Global Trade",
+    categoryPt: "Comércio Global",
     date: "Dec 15, 2024",
+    datePt: "15 de Dez, 2024",
     title: "Global Consumption Insights: US, Japan, UK",
+    titlePt: "Insights sobre Consumo Global: EUA, Japão, Reino Unido",
     preview: "Over the past two weeks, I visited the United States, Japan, and the United Kingdom. The general narrative is consistent...",
+    previewPt: "Nas últimas duas semanas, visitei os Estados Unidos, Japão e Reino Unido. A narrativa geral é consistente...",
     content: `Over the past two weeks, I visited the United States, Japan, and the United Kingdom. MAXIMIZING PROFITABILITY WITH THE RIGHT COFFEE BROKERAGE PARTNER.
     
     The general narrative is consistent across regions: consumption has not shown a sharp decline, and some even suggest it may be slightly increasing on a global scale.

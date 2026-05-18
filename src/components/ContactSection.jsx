@@ -82,7 +82,7 @@ const getContactSchema = (lang, role) => {
   return z.object({
     ...base,
     buyerType: z.enum(
-      ["individual", "cooperative", "company", "trader", "exporter"],
+      ["individual", "cooperative", "company", "trader", "exporter", "producer"],
       {
         required_error:
           lang === "en" ? "Please select a type" : "Selecione um tipo",
@@ -111,7 +111,7 @@ const content = {
   en: {
     connectTitle: "Let's Build Something Together",
     connectSubtitle: "From farm to port, we're your trusted partner in Brazilian coffee trading.",
-    role: { label: "I AM A...", buyer: "Coffee Buyer", buyerDesc: "I want to source and purchase green coffee", producer: "Coffee Producer", producerDesc: "I want to sell my coffee production" },
+    role: { label: "I AM A...", buyer: "Coffee Buyer", buyerDesc: "I want to source and purchase green coffee", producer: "Coffee Seller", producerDesc: "I want to sell coffee" },
     title: "Send us a message",
     name: "Full Name",
     namePh: "John Doe",
@@ -140,7 +140,7 @@ const content = {
     message: "Message",
     messagePh: "How can we help you with your coffee trading needs?",
     messageBuyerPh: "Tell us about your sourcing needs, preferred origins, and quality specifications...",
-    messageProducerPh: "Tell us about your farm, production capacity, and what makes your coffee unique...",
+    messageProducerPh: "Tell us about your farm, cooperative, or the coffee you have available...",
     submit: "Send Message",
     submitting: "Sending...",
     success: "Message sent successfully! We'll be in touch soon.",
@@ -158,11 +158,12 @@ const content = {
     fairtrade: "Fair Trade",
     fourC: "4C",
     sca: "SCA 80+",
+    sellerProducer: "Producer",
   },
   pt: {
     connectTitle: "Vamos Construir Juntos",
     connectSubtitle: "Da fazenda ao porto, somos seu parceiro de confiança no comércio de café brasileiro.",
-    role: { label: "EU SOU...", buyer: "Comprador de Café", buyerDesc: "Quero comprar café verde", producer: "Produtor de Café", producerDesc: "Quero vender minha produção de café" },
+    role: { label: "EU SOU...", buyer: "Comprador de Café", buyerDesc: "Quero comprar café verde", producer: "Vendedor de Café", producerDesc: "Quero vender café" },
     title: "Envie uma mensagem",
     name: "Nome Completo",
     namePh: "João Silva",
@@ -191,7 +192,7 @@ const content = {
     message: "Mensagem",
     messagePh: "Como podemos ajudá-lo com suas necessidades de comércio de café?",
     messageBuyerPh: "Conte-nos sobre suas necessidades de sourcing, origens preferidas e especificações de qualidade...",
-    messageProducerPh: "Conte-nos sobre sua fazenda, capacidade produtiva e o que torna seu café especial...",
+    messageProducerPh: "Conte-nos sobre sua fazenda, cooperativa ou o café que você tem disponível...",
     submit: "Enviar Mensagem",
     submitting: "Enviando...",
     success: "Mensagem enviada com sucesso! Entraremos em contato em breve.",
@@ -209,6 +210,7 @@ const content = {
     fairtrade: "Fair Trade",
     fourC: "4C",
     sca: "SCA 80+",
+    sellerProducer: "Produtor",
   },
 };
 
@@ -534,6 +536,21 @@ export default function ContactSection() {
               {/* ── PRODUCER-SPECIFIC FIELDS ── */}
               {selectedRole === "producer" && (
                 <>
+                  {/* Organization Type */}
+                  <div className="space-y-2">
+                    <label className={labelClass}>{f.buyerType}</label>
+                    <select {...form.register("buyerType")} className={inputClass}>
+                      <option value="">{f.selectPh}</option>
+                      <option value="producer">{f.sellerProducer}</option>
+                      <option value="cooperative">{f.cooperative}</option>
+                      <option value="exporter">{f.exporter}</option>
+                      <option value="trader">{f.trader}</option>
+                    </select>
+                    {form.formState.errors.buyerType && (
+                      <p className="text-xs text-red-500">{form.formState.errors.buyerType.message}</p>
+                    )}
+                  </div>
+
                   <div className="space-y-2">
                     <label className={labelClass}>{f.region}</label>
                     <input

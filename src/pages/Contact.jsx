@@ -93,7 +93,7 @@ const getContactSchema = (lang, role) => {
   return z.object({
     ...base,
     buyerType: z.enum(
-      ["individual", "cooperative", "company", "trader", "exporter"],
+      ["individual", "cooperative", "company", "trader", "exporter", "producer"],
       {
         required_error:
           lang === "en" ? "Please select a type" : "Selecione um tipo",
@@ -224,15 +224,15 @@ export const Contact = () => {
         label: "I AM A...",
         buyer: "Coffee Buyer",
         buyerDesc: "I want to source and purchase green coffee",
-        producer: "Coffee Producer",
-        producerDesc: "I want to sell my coffee production",
+        producer: "Coffee Seller",
+        producerDesc: "I want to sell coffee",
       },
       pt: {
         label: "EU SOU...",
         buyer: "Comprador de Café",
         buyerDesc: "Quero comprar café verde",
-        producer: "Produtor de Café",
-        producerDesc: "Quero vender minha produção de café",
+        producer: "Vendedor de Café",
+        producerDesc: "Quero vender café",
       },
     },
     form: {
@@ -267,7 +267,7 @@ export const Contact = () => {
         messageBuyerPh:
           "Tell us about your sourcing needs, preferred origins, and quality specifications...",
         messageProducerPh:
-          "Tell us about your farm, production capacity, and what makes your coffee unique...",
+          "Tell us about your farm, cooperative, or the coffee you have available...",
         submit: "Send Message",
         submitting: "Sending...",
         success: "Message sent successfully! We'll be in touch soon.",
@@ -287,6 +287,7 @@ export const Contact = () => {
         fairtrade: "Fair Trade",
         fourC: "4C",
         sca: "SCA 80+",
+        sellerProducer: "Producer",
       },
       pt: {
         title: "Envie uma mensagem",
@@ -320,7 +321,7 @@ export const Contact = () => {
         messageBuyerPh:
           "Conte-nos sobre suas necessidades de sourcing, origens preferidas e especificações de qualidade...",
         messageProducerPh:
-          "Conte-nos sobre sua fazenda, capacidade produtiva e o que torna seu café especial...",
+          "Conte-nos sobre sua fazenda, cooperativa ou o café que você tem disponível...",
         submit: "Enviar Mensagem",
         submitting: "Enviando...",
         success:
@@ -341,6 +342,7 @@ export const Contact = () => {
         fairtrade: "Fair Trade",
         fourC: "4C",
         sca: "SCA 80+",
+        sellerProducer: "Produtor",
       },
     },
     info: {
@@ -711,6 +713,28 @@ export const Contact = () => {
                 {/* ── PRODUCER-SPECIFIC FIELDS ── */}
                 {selectedRole === "producer" && (
                   <>
+                    {/* Organization Type */}
+                    <div className="space-y-2">
+                      <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">
+                        {f.buyerType}
+                      </label>
+                      <select
+                        {...form.register("buyerType")}
+                        className="w-full bg-gray-50 border-none rounded-xl focus:ring-2 focus:ring-accent-green py-4 px-5 transition-all outline-none text-sm"
+                      >
+                        <option value="">{f.selectPh}</option>
+                        <option value="producer">{f.sellerProducer}</option>
+                        <option value="cooperative">{f.cooperative}</option>
+                        <option value="exporter">{f.exporter}</option>
+                        <option value="trader">{f.trader}</option>
+                      </select>
+                      {form.formState.errors.buyerType && (
+                        <p className="text-xs text-red-500">
+                          {form.formState.errors.buyerType.message}
+                        </p>
+                      )}
+                    </div>
+
                     {/* Region */}
                     <div className="space-y-2">
                       <label className="text-sm font-semibold text-gray-500 uppercase tracking-wider">

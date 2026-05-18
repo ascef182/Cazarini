@@ -372,11 +372,11 @@ export const HeroSection = () => {
             className="mt-8 grid grid-cols-1 gap-3 lg:mt-0 lg:ml-20 lg:h-[380px] lg:grid-cols-2 lg:grid-rows-[1.5fr_1fr] lg:gap-4"
           >
             {/* Tile 1 — Navio (sem card, apenas a imagem) */}
-            <div className="relative lg:col-start-1 lg:row-start-1 lg:aspect-auto">
+            <div className="relative aspect-[3/2] lg:col-start-1 lg:row-start-1 lg:aspect-auto">
               <img
                 src="/photos/trend.png"
                 alt="Coffee container ship"
-                className="h-full w-full rounded-[32px] object-contain object-center shadow-[0_12px_30px_rgba(1,2,5,0.08)]"
+                className="h-full w-full rounded-[32px] object-cover object-[center_right] shadow-[0_12px_30px_rgba(1,2,5,0.08)]"
                 loading="lazy"
               />
             </div>
