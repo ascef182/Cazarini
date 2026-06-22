@@ -1,36 +1,47 @@
 import React, { useState, useEffect, useCallback } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
+import { getAlternatePath } from "../utils/localeRoutes";
 
 const getNavItems = (lang) => [
   { label: lang === "pt" ? "Início" : "Home", href: "/", type: "link" },
   { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
   { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
-  { label: "Blog", href: "/blog", type: "link" },
+  { label: "Blog", href: lang === "pt" ? "/blog/pt-br" : "/blog", type: "link" },
   { label: lang === "pt" ? "Contato" : "Contact", href: lang === "pt" ? "/contato" : "/contact", type: "link" },
 ];
 
-export const Header = ({ variant = "light" }) => {
+export const Header = ({ variant = "light", navMarker }) => {
   const [isMobileNavOpen, setIsMobileNavOpen] = useState(false);
   const [isLanguageOpen, setIsLanguageOpen] = useState(false);
   const { language, setLanguage, isPortuguese } = useLanguage();
   const currentLanguage = language === "pt-br" ? "pt" : "en";
   const lang = isPortuguese ? "pt" : "en";
   const location = useLocation();
+  const navigate = useNavigate();
   const navItems = getNavItems(lang);
   const { t } = useTranslation();
 
   const toggleLanguage = (newLang) => {
-    setLanguage(newLang === "pt" ? "pt-br" : "en");
+    const targetLang = newLang === "pt" ? "pt-br" : "en";
+    const altPath = getAlternatePath(location.pathname, targetLang);
+    if (altPath !== location.pathname) {
+      navigate(altPath);
+    } else {
+      setLanguage(targetLang);
+    }
     setIsLanguageOpen(false);
   };
 
-  // Close mobile menu on route change
-  useEffect(() => {
+  // Close mobile menu on route change. Adjusting state during render (rather
+  // than in an effect) avoids a synchronous setState-in-effect cascade.
+  const [prevPathname, setPrevPathname] = useState(location.pathname);
+  if (location.pathname !== prevPathname) {
+    setPrevPathname(location.pathname);
     setIsMobileNavOpen(false);
     setIsLanguageOpen(false);
-  }, [location.pathname]);
+  }
 
   // Close on Escape key + lock body scroll
   const handleEscape = useCallback((e) => {
@@ -82,6 +93,7 @@ export const Header = ({ variant = "light" }) => {
   return (
     <>
       <header
+        data-hero={navMarker}
         className={`sticky top-3 z-50 flex items-center justify-between gap-4 rounded-pill border px-4 py-2.5 sm:px-5 ${headerClasses}`}
       >
         <div className="flex items-center gap-6">

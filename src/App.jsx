@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { LanguageRouteSync } from "./components/LanguageRouteSync";
 
 const Home = lazy(() => import("./pages/Home"));
 const WhoWeAre = lazy(() =>
@@ -20,6 +21,7 @@ export const CoffeTrading = () => {
   return (
     <Router>
       <div data-color-mode="SDS-light" className="flex w-full flex-col bg-white">
+        <LanguageRouteSync />
         <Suspense fallback={null}>
           <Routes>
             <Route path="/" element={<Home />} />
@@ -27,6 +29,8 @@ export const CoffeTrading = () => {
             <Route path="/quem-somos" element={<WhoWeAre />} />
             <Route path="/varieties" element={<Varieties />} />
             <Route path="/variedades" element={<Varieties />} />
+            <Route path="/blog/pt-br" element={<Blog />} />
+            <Route path="/blog/pt-br/:slug" element={<BlogPost />} />
             <Route path="/blog" element={<Blog />} />
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/insights" element={<Insights />} />

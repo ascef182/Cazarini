@@ -1,23 +1,8 @@
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import { getAlternates } from "../utils/localeRoutes";
 
 const SITE_URL = "https://www.cazarini.com";
-
-// Bilingual route pairs, used to compute hreflang alternate links per page.
-const ROUTE_ALTERNATES = {
-  "/who-we-are": { en: "/who-we-are", pt: "/quem-somos" },
-  "/quem-somos": { en: "/who-we-are", pt: "/quem-somos" },
-  "/varieties": { en: "/varieties", pt: "/variedades" },
-  "/variedades": { en: "/varieties", pt: "/variedades" },
-  "/gallery": { en: "/gallery", pt: "/galeria" },
-  "/galeria": { en: "/gallery", pt: "/galeria" },
-  "/contact": { en: "/contact", pt: "/contato" },
-  "/contato": { en: "/contact", pt: "/contato" },
-  "/privacy-policy": { en: "/privacy-policy", pt: "/politica-de-privacidade" },
-  "/politica-de-privacidade": { en: "/privacy-policy", pt: "/politica-de-privacidade" },
-  "/email-policy": { en: "/email-policy", pt: "/politica-de-email" },
-  "/politica-de-email": { en: "/email-policy", pt: "/politica-de-email" },
-};
 
 export const SEO = ({ title, description, keywords, ogImage = '', canonical = '', jsonLd = null }) => {
   const location = useLocation();
@@ -103,7 +88,7 @@ export const SEO = ({ title, description, keywords, ogImage = '', canonical = ''
     linkCanonical.href = canonical || `${SITE_URL}${location.pathname}`;
 
     // Update hreflang alternate links (en / pt-BR / x-default)
-    const alternates = ROUTE_ALTERNATES[location.pathname] || { en: location.pathname, pt: location.pathname };
+    const alternates = getAlternates(location.pathname) || { en: location.pathname, pt: location.pathname };
     const hreflangLinks = [
       { hreflang: 'en', href: `${SITE_URL}${alternates.en}` },
       { hreflang: 'pt-BR', href: `${SITE_URL}${alternates.pt}` },
