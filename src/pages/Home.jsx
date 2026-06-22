@@ -9,10 +9,47 @@ import { TestimonialsSection } from "../components/TestimonialsSection";
 import { Footer } from "../components/Footer";
 import { SEO } from "../components/SEO";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
+
+const SITE_URL = "https://www.cazarini.com";
 
 export const Home = () => {
   const { isPortuguese } = useLanguage();
   const lang = isPortuguese ? "pt" : "en";
+  const { t } = useTranslation();
+
+  const faqItems = t("faq.items") || [];
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        name: "Cazarini Trading Company",
+        url: SITE_URL,
+        logo: `${SITE_URL}/photos/Logomarca-Cazarini-12.09.13.svg`,
+        email: "trading@cazarini.com",
+        address: {
+          "@type": "PostalAddress",
+          streetAddress: "Alameda do Café, 317 - Industrial Reinaldo Foresti",
+          addressLocality: "Varginha",
+          addressRegion: "MG",
+          addressCountry: "BR",
+        },
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: faqItems.map((item) => ({
+          "@type": "Question",
+          name: item.question,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: item.answer,
+          },
+        })),
+      },
+    ],
+  };
 
   return (
     <>
@@ -32,6 +69,7 @@ export const Home = () => {
             ? "coffee trading, coffee broker, brazilian coffee, coffee export, coffee brokerage, premium coffee, arabica, robusta"
             : "trading café, corretor café, café brasileiro, exportação café, corretagem café, café premium, arábica, robusta"
         }
+        jsonLd={jsonLd}
       />
 
       <HeroSection />
