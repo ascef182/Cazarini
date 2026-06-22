@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 import { Header } from "../components/Header";
 import { SEO } from "../components/SEO";
 import { Footer } from "../components/Footer";
@@ -116,6 +117,7 @@ export const Varieties = () => {
   const [cardsReady, setCardsReady] = useState(false);
   const { isPortuguese } = useLanguage();
   const lang = isPortuguese ? "pt" : "en";
+  const { t } = useTranslation();
   const pageRef = useRef(null);
   const modalRef = useRef(null);
 
@@ -715,7 +717,7 @@ export const Varieties = () => {
                     to="/contact"
                     className="inline-flex items-center gap-3 w-full justify-center rounded-pill bg-accent-green px-8 py-4 text-base font-semibold text-brand-900 transition-all hover:bg-white hover:scale-[1.02] shadow-lg shadow-accent-green/20"
                   >
-                    {lang === "en" ? "Request Quote" : "Solicitar Cotação"}
+                    {t("hero.ctaSchedule")}
                     <ArrowRight className="w-5 h-5" />
                   </Link>
                 </div>

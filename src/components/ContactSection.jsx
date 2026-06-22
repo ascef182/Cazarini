@@ -144,6 +144,7 @@ const content = {
     submit: "Send Message",
     submitting: "Sending...",
     success: "Message sent successfully! We'll be in touch soon.",
+    error: "Error sending message. Please try again.",
     agreement: "By submitting, you agree to our privacy policy and terms of service.",
     region: "Growing Region",
     regionPh: "e.g. Cerrado Mineiro, Mogiana",
@@ -196,6 +197,7 @@ const content = {
     submit: "Enviar Mensagem",
     submitting: "Enviando...",
     success: "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    error: "Erro ao enviar mensagem. Por favor, tente novamente.",
     agreement: "Ao enviar, você concorda com nossa política de privacidade e termos de serviço.",
     region: "Região de Cultivo",
     regionPh: "ex. Cerrado Mineiro, Mogiana",
@@ -396,7 +398,7 @@ export default function ContactSection() {
 
             {submitStatus === "error" && (
               <div className="rounded-xl bg-red-50 border border-red-200 p-4 text-sm text-red-800 mb-6">
-                Error sending message. Please try again.
+                {f.error}
               </div>
             )}
 

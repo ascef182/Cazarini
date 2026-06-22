@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 
 const getNavItems = (lang) => [
   { label: lang === "pt" ? "Início" : "Home", href: "/", type: "link" },
@@ -18,6 +19,7 @@ export const Header = ({ variant = "light" }) => {
   const lang = isPortuguese ? "pt" : "en";
   const location = useLocation();
   const navItems = getNavItems(lang);
+  const { t } = useTranslation();
 
   const toggleLanguage = (newLang) => {
     setLanguage(newLang === "pt" ? "pt-br" : "en");
@@ -120,7 +122,7 @@ export const Header = ({ variant = "light" }) => {
             className={`relative hidden items-center gap-1 overflow-hidden rounded-pill border px-6 py-2 text-sm font-semibold shadow-sm transition duration-300 ease-soft-spring md:inline-flex ${buttonClasses}`}
           >
             <span className="relative z-10 flex items-center gap-2">
-              <span>{lang === "pt" ? "Solicitar Cotação" : "Request a Quote"}</span>
+              <span>{t("hero.ctaSchedule")}</span>
               <span className={`inline-flex h-6 w-6 items-center justify-center rounded-full ${isDark ? "bg-white text-brand-900" : "bg-white text-brand-900"}`}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
@@ -207,7 +209,7 @@ export const Header = ({ variant = "light" }) => {
             type="button"
             className={`relative inline-flex h-11 w-11 items-center justify-center rounded-full border md:hidden ${isDark ? "border-white/20 bg-white/10 text-white" : "border-gray-200 bg-white text-brand-900"}`}
             onClick={() => setIsMobileNavOpen((open) => !open)}
-            aria-label={isMobileNavOpen ? "Close navigation" : "Open navigation"}
+            aria-label={isMobileNavOpen ? t("nav.closeMenu") : t("nav.openMenu")}
             aria-expanded={isMobileNavOpen}
           >
             <div className="flex h-4 w-5 flex-col items-center justify-center">
@@ -244,7 +246,7 @@ export const Header = ({ variant = "light" }) => {
               <button
                 type="button"
                 onClick={() => setIsMobileNavOpen(false)}
-                aria-label="Close menu"
+                aria-label={t("nav.closeMenu")}
                 className={`flex h-9 w-9 items-center justify-center rounded-full transition-colors ${
                   isDark ? "bg-white/10 text-white hover:bg-white/20" : "bg-gray-100 text-brand-900 hover:bg-gray-200"
                 }`}
@@ -285,7 +287,7 @@ export const Header = ({ variant = "light" }) => {
                 className={`w-full rounded-2xl border px-4 py-3.5 text-center text-sm font-semibold transition ${buttonClasses}`}
                 onClick={() => setIsMobileNavOpen(false)}
               >
-                {lang === "pt" ? "Solicitar Cotação" : "Request a Quote"}
+                {t("hero.ctaSchedule")}
               </Link>
 
               {/* Language toggle — clean inline buttons */}
