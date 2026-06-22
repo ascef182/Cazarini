@@ -1,11 +1,16 @@
 {
+  "common": {
+    "readArticle": "Ler Artigo"
+  },
   "nav": {
     "about": "Sobre",
     "varieties": "Variedades",
     "blog": "Blog",
     "location": "Localização",
     "contact": "Contato",
-    "scheduleCall": "Solicitar Cotação"
+    "scheduleCall": "Solicitar Cotação",
+    "openMenu": "Abrir navegação",
+    "closeMenu": "Fechar menu"
   },
   "hero": {
     "tagline": "Empresa de Trading de Café • desde 2009",
@@ -18,6 +23,7 @@
     "trusted": "Confiado pelas maiores marcas do mundo",
     "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
     "presentOnAllContinents": "Presente em todos os continentes",
+    "globalReach": "Mundial",
     "drivingTrade": "Impulsionando o Comércio Global de Café",
     "exportingPremium": "Exportando Café de Qualidade",
     "exportingGrade": "Premium para o Mundo Todo"

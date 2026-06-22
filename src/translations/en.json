@@ -1,11 +1,16 @@
 {
+  "common": {
+    "readArticle": "Read Article"
+  },
   "nav": {
     "about": "About",
     "varieties": "Varieties",
     "blog": "Blog",
     "location": "Location",
     "contact": "Contact",
-    "scheduleCall": "Request a Quote"
+    "scheduleCall": "Request a Quote",
+    "openMenu": "Open navigation",
+    "closeMenu": "Close menu"
   },
   "hero": {
     "tagline": "Coffee Trading Company • since 2009",
@@ -18,6 +23,7 @@
     "trusted": "Trusted by the world's biggest brands",
     "companiesTrust": "Big companies that work with us and deeply trust our services",
     "presentOnAllContinents": "Present on all continents",
+    "globalReach": "Worldwide",
     "drivingTrade": "Driving Global Coffee Trade",
     "exportingPremium": "Exporting Premium-",
     "exportingGrade": "Grade Coffee Worldwide"
