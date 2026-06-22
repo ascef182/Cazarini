@@ -9,7 +9,6 @@ import { ArrowRight } from "lucide-react";
 export const ServicesSection = () => {
   const { t } = useTranslation();
   const { isPortuguese } = useLanguage();
-  const lang = isPortuguese ? "pt" : "en";
   useGsapFadeIn("[data-service-card]", { stagger: 0.1 });
 
   // Show the 3 most recent blog posts
@@ -69,7 +68,7 @@ export const ServicesSection = () => {
                   {isPortuguese && post.previewPt ? post.previewPt : post.preview}
                 </p>
                 <span className="mt-auto text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all inline-flex items-center gap-2">
-                  {lang === "en" ? "Read Article" : "Ler Artigo"}
+                  {t("common.readArticle")}
                   <ArrowRight className="w-3 h-3" />
                 </span>
               </div>

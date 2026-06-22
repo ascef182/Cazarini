@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SEO } from "../components/SEO";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { blogPosts } from "../data/blogPosts";
@@ -14,6 +15,7 @@ gsap.registerPlugin(ScrollTrigger);
 const Blog = () => {
     const { isPortuguese } = useLanguage();
     const lang = isPortuguese ? "pt" : "en";
+    const { t } = useTranslation();
     const containerRef = useRef(null);
     const [filter, setFilter] = useState("All");
 
@@ -178,7 +180,7 @@ const Blog = () => {
                                             {post.preview}
                                         </p>
                                         <span className="text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all inline-flex items-center gap-2">
-                                            {lang === "en" ? "Read Article" : "Ler Artigo"}
+                                            {t("common.readArticle")}
                                             <ArrowRight className="w-3 h-3" />
                                         </span>
                                     </div>

@@ -4,6 +4,7 @@ import { Header } from "../components/Header";
 import { Footer } from "../components/Footer";
 import { SEO } from "../components/SEO";
 import { useLanguage } from "../context/LanguageContext";
+import { useTranslation } from "../hooks/useTranslation";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { blogPosts } from "../data/blogPosts";
@@ -16,6 +17,7 @@ const BlogPost = () => {
     const navigate = useNavigate();
     const { isPortuguese } = useLanguage();
     const lang = isPortuguese ? "pt" : "en";
+    const { t } = useTranslation();
     const pageRef = useRef(null);
 
     const post = blogPosts.find(p => p.slug === slug);
@@ -385,7 +387,7 @@ const BlogPost = () => {
                                             {rPost.title}
                                         </h3>
                                         <span className="text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all">
-                                            {lang === "en" ? "Read Article" : "Ler Artigo"}
+                                            {t("common.readArticle")}
                                         </span>
                                     </div>
                                 </Link>
