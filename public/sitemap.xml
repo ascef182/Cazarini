@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.cazarini.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/who-we-are</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/who-we-are"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/quem-somos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/quem-somos</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/who-we-are"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/quem-somos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/varieties</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/varieties"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/variedades"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/variedades</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/varieties"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/variedades"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/insights</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/gallery</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/galeria"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/galeria</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/galeria"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/contato"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/contato</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/contato"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-privacidade"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/politica-de-privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-privacidade"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/email-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/email-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-email"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/politica-de-email</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/email-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-email"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/copyright</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>
