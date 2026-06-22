@@ -7,6 +7,7 @@ import { MapPin, Award, TrendingUp, Globe2, ShieldCheck } from "lucide-react";
 import { Header } from "./Header";
 import { SEO } from "./SEO";
 import { Footer } from "./Footer";
+import TeamCarousel from "./TeamCarousel";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -231,10 +232,66 @@ export const WhoWeAre = () => {
         credentials: [],
       },
     },
+    team: {
+      en: {
+        label: "OUR TEAM",
+        title: "The logistics behind every shipment",
+        subtitle:
+          "Two specialists keeping every bag in motion — across origins, deadlines and partners around the world.",
+        duoPhoto: "/photos/team/PamelaELucimara.jpg",
+        duoPhotoAlt: "/photos/team/pamelaElucimara2.jpg",
+        departmentTag: "Logistics Department",
+        members: [
+          {
+            name: "Pâmela Benetório",
+            role: "Logistics Coordinator",
+            photo: "/photos/team/pamela1.jpg",
+            photoAlt: "/photos/team/pamela2.jpg",
+            quote: "Logistics is taking care of the details the client never sees.",
+            bio: "Tracks each shipment from warehouse to port departure — making sure the right coffee reaches the right container on the agreed day.",
+          },
+          {
+            name: "Lucimara Montovani",
+            role: "Logistics Coordinator",
+            photo: "/photos/team/lucimara1.jpg",
+            photoAlt: "/photos/team/lucimara2.jpg",
+            quote: "Trust is built one delivered deadline at a time.",
+            bio: "Owns customs documentation and deadline compliance for every operation. Every form in place is one less border between the coffee and its destination.",
+          },
+        ],
+      },
+      pt: {
+        label: "NOSSA EQUIPE",
+        title: "A logística por trás de cada embarque",
+        subtitle:
+          "Duas profissionais que mantêm cada saca em movimento — entre origens, prazos e parceiros ao redor do mundo.",
+        duoPhoto: "/photos/team/PamelaELucimara.jpg",
+        duoPhotoAlt: "/photos/team/pamelaElucimara2.jpg",
+        departmentTag: "Departamento de Logística",
+        members: [
+          {
+            name: "Pâmela Benetório",
+            role: "Coordenadora de Logística",
+            photo: "/photos/team/pamela1.jpg",
+            photoAlt: "/photos/team/pamela2.jpg",
+            quote: "Logística é cuidar do detalhe que o cliente não vê.",
+            bio: "Acompanha cada embarque do armazém até a saída do porto — garantindo que o café certo chega no contêiner certo, no dia combinado.",
+          },
+          {
+            name: "Lucimara Montovani",
+            role: "Coordenadora de Logística",
+            photo: "/photos/team/lucimara1.jpg",
+            photoAlt: "/photos/team/lucimara2.jpg",
+            quote: "Confiança se constrói no prazo cumprido.",
+            bio: "Conduz a documentação aduaneira e o cumprimento de prazos de cada operação. Cada papel no lugar certo é uma fronteira a menos no caminho do café.",
+          },
+        ],
+      },
+    },
     cta: {
       en: {
         title: "Ready to partner with us?",
-    
+
         button: "Get in Touch",
       },
       pt: {
@@ -434,7 +491,7 @@ export const WhoWeAre = () => {
               >
                 <div className="relative aspect-[3/4] rounded-[32px] overflow-hidden shadow-2xl">
                   <img
-                    src="/photos/thiago-conteiner.jfif"
+                    src="/photos/team/thiagocazarini.jpeg"
                     alt="Thiago Cazarini"
                     className="w-full h-full object-cover"
                   />
@@ -487,6 +544,11 @@ export const WhoWeAre = () => {
             </div>
           </div>
         </section>
+
+        {/* ═══════════════════════════════════════════════════════════════════
+            TEAM SECTION — carousel of 5 design options for the client to browse
+        ═══════════════════════════════════════════════════════════════════ */}
+        <TeamCarousel content={content} lang={lang} />
 
         {/* ═══════════════════════════════════════════════════════════════════
             CTA SECTION - Green inner with dark outer
