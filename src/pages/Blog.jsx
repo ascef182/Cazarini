@@ -9,6 +9,7 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { blogPosts } from "../data/blogPosts";
 import { ArrowRight } from "lucide-react";
+import { BLOG_PT_PREFIX } from "../utils/localeRoutes";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -53,12 +54,13 @@ const Blog = () => {
         };
     }, [filter]);
 
-    // Get unique categories
-    const categories = ["All", ...new Set(blogPosts.map(post => post.category))];
+    // Get unique categories (in the active language)
+    const categoryFor = (post) => (isPortuguese && post.categoryPt ? post.categoryPt : post.category);
+    const categories = ["All", ...new Set(blogPosts.map(categoryFor))];
 
     const filteredPosts = filter === "All"
         ? blogPosts
-        : blogPosts.filter(post => post.category === filter);
+        : blogPosts.filter(post => categoryFor(post) === filter);
 
     return (
         <>
@@ -129,7 +131,7 @@ const Blog = () => {
                                                 : "bg-gray-100 text-gray-600 hover:border-brand-900 hover:text-brand-900"
                                         }`}
                                     >
-                                        {cat}
+                                        {cat === "All" ? (lang === "en" ? "All" : "Todos") : cat}
                                     </button>
                                 ))}
                             </div>
@@ -150,7 +152,7 @@ const Blog = () => {
                         <div className="blog-grid grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                             {filteredPosts.map((post) => (
                                 <Link
-                                    to={`/blog/${post.slug}`}
+                                    to={`${isPortuguese ? BLOG_PT_PREFIX : "/blog"}/${post.slug}`}
                                     key={post.id}
                                     data-animate="blog-card"
                                     className="bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl hover:-translate-y-1 transition-all duration-300 group flex flex-col h-full"
@@ -158,26 +160,26 @@ const Blog = () => {
                                     <div className="h-60 overflow-hidden relative shrink-0">
                                         <img
                                             src={post.image}
-                                            alt={post.title}
+                                            alt={isPortuguese && post.titlePt ? post.titlePt : post.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                                         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-900 shadow-sm">
-                                            {post.category}
+                                            {categoryFor(post)}
                                         </div>
                                     </div>
                                     <div className="p-7 flex flex-col flex-1">
                                         <div className="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
-                                            <span>{post.date}</span>
+                                            <span>{isPortuguese && post.datePt ? post.datePt : post.date}</span>
                                             <span className="w-1 h-1 rounded-full bg-gray-300" />
                                             <span>{post.author}</span>
                                         </div>
                                         <h3 className="text-xl font-bold text-brand-900 mb-3 leading-tight group-hover:text-accent-green transition-colors">
-                                            {post.title}
+                                            {isPortuguese && post.titlePt ? post.titlePt : post.title}
                                         </h3>
                                         <p className="text-gray-500 mb-6 line-clamp-3 text-sm leading-relaxed flex-1">
-                                            {post.preview}
+                                            {isPortuguese && post.previewPt ? post.previewPt : post.preview}
                                         </p>
                                         <span className="text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all inline-flex items-center gap-2">
                                             {t("common.readArticle")}

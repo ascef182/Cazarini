@@ -5,6 +5,7 @@ import { useTranslation } from "../hooks/useTranslation";
 import { useLanguage } from "../context/LanguageContext";
 import { blogPosts } from "../data/blogPosts";
 import { ArrowRight } from "lucide-react";
+import { BLOG_PT_PREFIX } from "../utils/localeRoutes";
 
 export const ServicesSection = () => {
   const { t } = useTranslation();
@@ -28,7 +29,7 @@ export const ServicesSection = () => {
           </div>
           <div className="flex justify-start lg:justify-end">
             <Link
-              to="/blog"
+              to={isPortuguese ? BLOG_PT_PREFIX : "/blog"}
               className="pill-button rounded-pill border border-brand-900 bg-white text-brand-900 hover:bg-brand-900 hover:text-white"
             >
               {t("services.seeMore")}
@@ -39,7 +40,7 @@ export const ServicesSection = () => {
         <div className="grid gap-6 lg:grid-cols-3">
           {recentPosts.map((post) => (
             <Link
-              to={`/blog/${post.slug}`}
+              to={`${isPortuguese ? BLOG_PT_PREFIX : "/blog"}/${post.slug}`}
               key={post.id}
               data-service-card
               className="group flex h-full flex-col overflow-hidden rounded-[24px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] transition hover:-translate-y-1 hover:shadow-[0_18px_45px_rgba(1,2,5,0.14)]"
@@ -47,7 +48,7 @@ export const ServicesSection = () => {
               <div className="relative h-56 overflow-hidden">
                 <img
                   src={post.image}
-                  alt={post.title}
+                  alt={isPortuguese && post.titlePt ? post.titlePt : post.title}
                   className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                   loading="lazy"
                 />

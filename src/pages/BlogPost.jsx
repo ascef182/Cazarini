@@ -9,6 +9,8 @@ import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { blogPosts } from "../data/blogPosts";
 import { ArrowLeft, ArrowRight, Clock, Calendar, User, Linkedin, Twitter, Facebook, Share2 } from "lucide-react";
+import { BLOG_PT_PREFIX } from "../utils/localeRoutes";
+import { buildBlogPostingJsonLd } from "../utils/seoSchemas";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -26,23 +28,9 @@ const BlogPost = () => {
         if (!post) navigate("/blog");
     }, [post, navigate]);
 
-    if (!post) return null;
-
-    // Estimate reading time
-    const wordCount = post.content.split(/\s+/).length;
-    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
-
-    // Get related articles (same category or random, excluding current)
-    const relatedPosts = blogPosts
-        .filter(p => p.id !== post.id)
-        .sort((a, b) => (a.category === post.category ? -1 : 1))
-        .slice(0, 3);
-
-    // Get previous and next posts
-    const currentIndex = blogPosts.findIndex(p => p.id === post.id);
-    const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
-    const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
-
+    // GSAP entrance animations + scroll reset. Declared before the `!post`
+    // early return (Rules of Hooks) — it only targets DOM selectors and
+    // doesn't depend on post fields, so it's a no-op when nothing rendered.
     useEffect(() => {
         window.scrollTo(0, 0);
 
@@ -92,19 +80,45 @@ const BlogPost = () => {
             ctx.revert();
             clearTimeout(timer);
         };
-    }, [slug]);
+    }, [slug, isPortuguese]);
+
+    if (!post) return null;
+
+    const activeContent = isPortuguese && post.contentPt ? post.contentPt : post.content;
+    const activeTitle = isPortuguese && post.titlePt ? post.titlePt : post.title;
+    const activeCategory = isPortuguese && post.categoryPt ? post.categoryPt : post.category;
+    const activeDate = isPortuguese && post.datePt ? post.datePt : post.date;
+    const activePreview = isPortuguese && post.previewPt ? post.previewPt : post.preview;
+    const blogBasePath = isPortuguese ? BLOG_PT_PREFIX : "/blog";
+    const postPath = (p) => `${blogBasePath}/${p.slug}`;
+
+    // Estimate reading time
+    const wordCount = activeContent.split(/\s+/).length;
+    const readingTime = Math.max(1, Math.ceil(wordCount / 200));
+
+    // Get related articles (same category or random, excluding current)
+    const relatedPosts = blogPosts
+        .filter(p => p.id !== post.id)
+        .sort((a) => (a.category === post.category ? -1 : 1))
+        .slice(0, 3);
+
+    // Get previous and next posts
+    const currentIndex = blogPosts.findIndex(p => p.id === post.id);
+    const prevPost = currentIndex > 0 ? blogPosts[currentIndex - 1] : null;
+    const nextPost = currentIndex < blogPosts.length - 1 ? blogPosts[currentIndex + 1] : null;
 
     // Split content into paragraphs, filtering empty ones
-    const paragraphs = post.content.split('\n').map(p => p.trim()).filter(p => p.length > 0);
+    const paragraphs = activeContent.split('\n').map(p => p.trim()).filter(p => p.length > 0);
 
     const shareUrl = typeof window !== 'undefined' ? window.location.href : '';
 
     return (
         <>
             <SEO
-                title={`${post.title} - Cazarini Coffee`}
-                description={post.preview}
-                image={post.image}
+                title={`${activeTitle} - Cazarini Coffee`}
+                description={activePreview}
+                ogImage={post.image}
+                jsonLd={buildBlogPostingJsonLd(post, isPortuguese)}
             />
 
             <div ref={pageRef} className="bg-white min-h-screen">
@@ -130,7 +144,7 @@ const BlogPost = () => {
                                 {/* Back + Category */}
                                 <div data-animate="hero-eyebrow" className="flex items-center gap-4 flex-wrap">
                                     <Link
-                                        to="/blog"
+                                        to={blogBasePath}
                                         className="inline-flex items-center gap-2 text-sm font-semibold text-white/60 hover:text-accent-green transition-colors group"
                                     >
                                         <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
@@ -138,7 +152,7 @@ const BlogPost = () => {
                                     </Link>
                                     <span className="w-px h-4 bg-white/20" />
                                     <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-accent-green/20 border border-accent-green/30 text-xs font-bold text-accent-green uppercase tracking-wider">
-                                        {post.category}
+                                        {activeCategory}
                                     </span>
                                 </div>
 
@@ -147,7 +161,7 @@ const BlogPost = () => {
                                     data-animate="hero-title"
                                     className="text-4xl font-editorial italic leading-[1.08] tracking-[-0.02em] text-white sm:text-5xl lg:text-6xl xl:text-7xl"
                                 >
-                                    {post.title}
+                                    {activeTitle}
                                 </h1>
 
                                 {/* Meta info */}
@@ -171,11 +185,11 @@ const BlogPost = () => {
                                     <div className="flex items-center gap-5 text-sm text-white/50">
                                         <span className="flex items-center gap-1.5">
                                             <Calendar className="w-3.5 h-3.5" />
-                                            {post.date}
+                                            {activeDate}
                                         </span>
                                         <span className="flex items-center gap-1.5">
                                             <Clock className="w-3.5 h-3.5" />
-                                            {readingTime} min read
+                                            {lang === "en" ? `${readingTime} min read` : `${readingTime} min de leitura`}
                                         </span>
                                     </div>
                                 </div>
@@ -213,7 +227,7 @@ const BlogPost = () => {
                                     </h4>
                                     <div className="flex gap-2 flex-wrap">
                                         <span className="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-600 hover:bg-accent-green/10 hover:text-brand-900 transition-colors cursor-pointer font-medium">
-                                            {post.category}
+                                            {activeCategory}
                                         </span>
                                         <span className="px-4 py-2 bg-gray-50 rounded-full text-sm text-gray-600 hover:bg-accent-green/10 hover:text-brand-900 transition-colors cursor-pointer font-medium">
                                             Coffee Trade
@@ -231,7 +245,7 @@ const BlogPost = () => {
                                 <div className="mt-12 grid sm:grid-cols-2 gap-4">
                                     {prevPost ? (
                                         <Link
-                                            to={`/blog/${prevPost.slug}`}
+                                            to={postPath(prevPost)}
                                             className="group flex flex-col p-6 rounded-2xl border border-gray-100 hover:border-accent-green/30 hover:shadow-lg transition-all"
                                         >
                                             <span className="text-xs text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1">
@@ -239,13 +253,13 @@ const BlogPost = () => {
                                                 {lang === "en" ? "Previous" : "Anterior"}
                                             </span>
                                             <span className="text-sm font-bold text-brand-900 group-hover:text-accent-green transition-colors line-clamp-2">
-                                                {prevPost.title}
+                                                {isPortuguese && prevPost.titlePt ? prevPost.titlePt : prevPost.title}
                                             </span>
                                         </Link>
                                     ) : <div />}
                                     {nextPost && (
                                         <Link
-                                            to={`/blog/${nextPost.slug}`}
+                                            to={postPath(nextPost)}
                                             className="group flex flex-col p-6 rounded-2xl border border-gray-100 hover:border-accent-green/30 hover:shadow-lg transition-all text-right"
                                         >
                                             <span className="text-xs text-gray-400 uppercase tracking-wider mb-2 flex items-center gap-1 justify-end">
@@ -253,7 +267,7 @@ const BlogPost = () => {
                                                 <ArrowRight className="w-3 h-3" />
                                             </span>
                                             <span className="text-sm font-bold text-brand-900 group-hover:text-accent-green transition-colors line-clamp-2">
-                                                {nextPost.title}
+                                                {isPortuguese && nextPost.titlePt ? nextPost.titlePt : nextPost.title}
                                             </span>
                                         </Link>
                                     )}
@@ -300,7 +314,7 @@ const BlogPost = () => {
                                             <Linkedin className="w-5 h-5" />
                                         </a>
                                         <a
-                                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(post.title)}`}
+                                            href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(shareUrl)}&text=${encodeURIComponent(activeTitle)}`}
                                             target="_blank"
                                             rel="noopener noreferrer"
                                             className="flex items-center justify-center w-11 h-11 rounded-xl bg-gray-50 text-gray-500 hover:bg-[#1DA1F2] hover:text-white transition-all"
@@ -326,11 +340,11 @@ const BlogPost = () => {
                                     <div className="space-y-3">
                                         <div className="flex justify-between items-center py-2 border-b border-white/10">
                                             <span className="text-sm text-white/50">{lang === "en" ? "Category" : "Categoria"}</span>
-                                            <span className="text-sm font-semibold">{post.category}</span>
+                                            <span className="text-sm font-semibold">{activeCategory}</span>
                                         </div>
                                         <div className="flex justify-between items-center py-2 border-b border-white/10">
                                             <span className="text-sm text-white/50">{lang === "en" ? "Published" : "Publicado"}</span>
-                                            <span className="text-sm font-semibold">{post.date}</span>
+                                            <span className="text-sm font-semibold">{activeDate}</span>
                                         </div>
                                         <div className="flex justify-between items-center py-2">
                                             <span className="text-sm text-white/50">{lang === "en" ? "Read Time" : "Leitura"}</span>
@@ -360,7 +374,7 @@ const BlogPost = () => {
                         <div className="related-grid grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                             {relatedPosts.map((rPost) => (
                                 <Link
-                                    to={`/blog/${rPost.slug}`}
+                                    to={postPath(rPost)}
                                     key={rPost.id}
                                     data-animate="related-card"
                                     className="group bg-white rounded-[24px] overflow-hidden border border-gray-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col h-full hover:-translate-y-1"
@@ -368,23 +382,23 @@ const BlogPost = () => {
                                     <div className="h-56 overflow-hidden relative shrink-0">
                                         <img
                                             src={rPost.image}
-                                            alt={rPost.title}
+                                            alt={isPortuguese && rPost.titlePt ? rPost.titlePt : rPost.title}
                                             className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
                                             loading="lazy"
                                         />
                                         <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                                         <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm px-3 py-1 rounded-full text-[10px] font-bold uppercase tracking-widest text-brand-900 shadow-sm">
-                                            {rPost.category}
+                                            {isPortuguese && rPost.categoryPt ? rPost.categoryPt : rPost.category}
                                         </div>
                                     </div>
                                     <div className="p-7 flex flex-col flex-1">
                                         <div className="flex items-center gap-2 text-xs text-gray-400 mb-3 font-medium">
-                                            <span>{rPost.date}</span>
+                                            <span>{isPortuguese && rPost.datePt ? rPost.datePt : rPost.date}</span>
                                             <span className="w-1 h-1 rounded-full bg-gray-300" />
                                             <span>{rPost.author}</span>
                                         </div>
                                         <h3 className="text-lg font-bold text-brand-900 mb-3 leading-tight group-hover:text-accent-green transition-colors flex-1">
-                                            {rPost.title}
+                                            {isPortuguese && rPost.titlePt ? rPost.titlePt : rPost.title}
                                         </h3>
                                         <span className="text-brand-900 font-bold text-xs uppercase tracking-widest border-b border-brand-900/20 pb-1 self-start group-hover:border-accent-green transition-all">
                                             {t("common.readArticle")}
