@@ -1,0 +1,23 @@
+# Cazarini Coffee Trading
+
+> Coffee brokerage firm connecting Brazilian coffee producers, exporters, and global buyers since 2009. Based in Varginha, Minas Gerais.
+
+## Company
+
+- [Who We Are](https://www.cazarini.com/who-we-are) / [Quem Somos](https://www.cazarini.com/quem-somos)
+- [Contact](https://www.cazarini.com/contact) / [Contato](https://www.cazarini.com/contato)
+
+## Products
+
+- [Coffee Varieties](https://www.cazarini.com/varieties) / [Variedades](https://www.cazarini.com/variedades)
+
+## Blog
+
+Market insights, harvest reports, sustainability certifications, logistics guides, and trade analysis on Brazilian coffee.
+
+- [Blog (English)](https://www.cazarini.com/blog)
+- [Blog (Português)](https://www.cazarini.com/blog/pt-br)
+
+## Media
+
+- [Gallery](https://www.cazarini.com/gallery) / [Galeria](https://www.cazarini.com/galeria)
