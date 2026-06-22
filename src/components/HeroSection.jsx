@@ -5,6 +5,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useLanguage } from "../context/LanguageContext";
 import { useTranslation } from "../hooks/useTranslation";
 import Globe from "../components/ui/Globe";
+import { Globe2, Ship } from "lucide-react";
 
 // Dynamic nav items that change based on language
 const getNavItems = (lang) => [
@@ -81,71 +82,6 @@ export const HeroSection = () => {
         });
       });
 
-      // Progress bar animation
-      gsap.utils.toArray("[data-progress]").forEach((bar) => {
-        const target = bar.getAttribute("data-progress");
-        gsap.fromTo(
-          bar,
-          { width: "0%" },
-          {
-            width: `${target}%`,
-            duration: 1.5,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: bar.closest("[data-hero='stat-card']"),
-              start: "top 85%",
-            },
-          }
-        );
-      });
-
-      // Counter animation
-      const counters = heroRef.current.querySelectorAll("[data-counter]");
-      counters.forEach((node) => {
-        const target = Number(node.getAttribute("data-target"));
-        const suffix = node.getAttribute("data-suffix") ?? "";
-        if (Number.isNaN(target)) return;
-
-        const state = { value: 0 };
-        gsap.to(state, {
-          value: target,
-          duration: 1.4,
-          ease: "power2.out",
-          scrollTrigger: {
-            trigger: node,
-            start: "top 80%",
-            once: true,
-          },
-          onUpdate: () => {
-            const current = state.value;
-            node.textContent =
-              target % 1 === 0
-                ? `${Math.round(current)}${suffix}`
-                : `${current.toFixed(1)}${suffix}`;
-          },
-        });
-      });
-
-      // Chart bars animation
-      const chartBars = heroRef.current.querySelectorAll("[data-chart-bar]");
-      chartBars.forEach((bar, index) => {
-        const targetHeight = bar.getAttribute("data-height");
-        gsap.fromTo(
-          bar,
-          { height: 0 },
-          {
-            height: targetHeight,
-            duration: 0.8,
-            delay: 0.15 * index,
-            ease: "power2.out",
-            scrollTrigger: {
-              trigger: bar,
-              start: "top 90%",
-              once: true,
-            },
-          }
-        );
-      });
     }, heroRef);
 
     return () => ctx.revert();
@@ -214,7 +150,7 @@ export const HeroSection = () => {
               className="relative hidden items-center gap-1 overflow-hidden rounded-pill border border-brand-900 bg-brand-900 px-6 py-2 text-sm font-semibold text-white shadow-sm shadow-brand-900/10 transition duration-300 ease-soft-spring hover:border-brand-900 hover:bg-white hover:text-brand-900 md:inline-flex"
             >
               <span className="relative z-10 flex items-center gap-2">
-                <span>{currentLanguage === "pt" ? "Solicitar Cotação" : "Request a Quote"}</span>
+                <span>{t("hero.ctaSchedule")}</span>
                 <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-white text-brand-900">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -302,7 +238,7 @@ export const HeroSection = () => {
               type="button"
               className="relative inline-flex h-11 w-11 items-center justify-center rounded-full border border-gray-200 bg-white text-brand-900 md:hidden"
               onClick={() => setIsMobileNavOpen((open) => !open)}
-              aria-label={isMobileNavOpen ? "Close navigation" : "Open navigation"}
+              aria-label={isMobileNavOpen ? t("nav.closeMenu") : t("nav.openMenu")}
               aria-expanded={isMobileNavOpen}
             >
               <div className="flex h-4 w-5 flex-col items-center justify-center">
@@ -321,7 +257,7 @@ export const HeroSection = () => {
           </div>
         </header>
 
-        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)]">
+        <div className="grid gap-10 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:items-center">
           <div className="space-y-10">
             <div className="space-y-6">
               <p
@@ -363,40 +299,46 @@ export const HeroSection = () => {
                 </span>
               </Link>
             </div>
-
-            
           </div>
 
           <div
             data-hero="media"
-            className="mt-8 grid grid-cols-1 gap-3 lg:mt-0 lg:ml-20 lg:h-[380px] lg:grid-cols-2 lg:grid-rows-[1.5fr_1fr] lg:gap-4"
+            className="relative mt-10 h-[400px] sm:h-[460px] lg:mt-0 lg:ml-12 lg:h-[520px]"
           >
-            {/* Tile 1 — Navio (sem card, apenas a imagem) */}
-            <div className="relative aspect-[3/2] lg:col-start-1 lg:row-start-1 lg:aspect-auto">
+            {/* Ship image */}
+            <div className="absolute inset-x-5 top-2 bottom-10 overflow-hidden rounded-[28px] shadow-[0_12px_30px_rgba(1,2,5,0.08)] sm:bottom-12 lg:inset-x-6 lg:rounded-[32px]">
               <img
-                src="/photos/trend.png"
+                src="/photos/trend.jpg"
                 alt="Coffee container ship"
-                className="h-full w-full rounded-[32px] object-cover object-[center_right] shadow-[0_12px_30px_rgba(1,2,5,0.08)]"
+                className="h-full w-full object-cover"
                 loading="lazy"
               />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent" />
+              <span className="absolute left-5 top-5 inline-flex items-center gap-1.5 rounded-full border border-accent-green/30 bg-accent-green/10 px-3 py-1 text-xs font-medium text-accent-green backdrop-blur-md lg:left-6 lg:top-6">
+                <Ship size={13} /> {t("hero.presentOnAllContinents")}
+              </span>
             </div>
 
-            {/* Tile 2 — Stat banner compacto */}
+            {/* Globe disc — bottom-left overlap */}
+            <div className="absolute bottom-0 left-0 flex h-32 w-32 items-center justify-center overflow-hidden rounded-full border-4 border-gray-200 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] sm:h-40 sm:w-40 lg:h-44 lg:w-44">
+              <Globe size={180} />
+            </div>
+
+            {/* Merged stat + caption card — top-right overlap */}
             <div
               data-hero="stat-card"
-              className="flex flex-col gap-3 rounded-[32px] border border-gray-100 bg-white px-6 py-5 text-brand-900 shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:col-start-1 lg:row-start-2"
+              className="absolute right-0 top-6 w-36 rounded-[28px] border border-gray-200 bg-white p-3 shadow-[0_12px_30px_rgba(1,2,5,0.08)] sm:w-40 sm:p-4 lg:top-8 lg:w-44 lg:rounded-[32px]"
             >
-              <p className="text-sm leading-relaxed text-gray-500">
-                {t("hero.presentOnAllContinents")}
-              </p>
-              <div className="h-2 w-full rounded-full bg-gray-100">
-                <div className="h-full rounded-full bg-brand-900" style={{ width: "0%" }} data-progress="100" />
+              <div className="flex items-center gap-2">
+                <Globe2 size={16} className="text-accent-green" />
+                <p className="text-xs font-semibold uppercase tracking-wider text-accent-green">
+                  {t("hero.globalReach")}
+                </p>
               </div>
-            </div>
-
-            {/* Tile 3 — Globe */}
-            <div className="relative flex aspect-square items-center justify-center rounded-[32px] border border-gray-100 bg-white shadow-[0_12px_30px_rgba(1,2,5,0.08)] lg:col-start-2 lg:row-span-2 lg:aspect-auto lg:h-full">
-              <Globe size={320} />
+              <p className="mt-1 text-xl font-bold text-brand-900 lg:text-2xl">
+                8M<span className="text-accent-green">+</span>
+              </p>
+              <p className="mt-1 text-xs text-gray-500">{t("hero.subtitleSecond")}</p>
             </div>
           </div>
         </div>
@@ -418,7 +360,7 @@ export const HeroSection = () => {
               <button
                 type="button"
                 onClick={() => setIsMobileNavOpen(false)}
-                aria-label="Close menu"
+                aria-label={t("nav.closeMenu")}
                 className="flex h-9 w-9 items-center justify-center rounded-full bg-gray-100 text-brand-900 hover:bg-gray-200 transition-colors"
               >
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="h-4 w-4">
@@ -457,7 +399,7 @@ export const HeroSection = () => {
                 className="w-full rounded-2xl border border-brand-900 bg-brand-900 px-4 py-3.5 text-center text-sm font-semibold text-white transition hover:bg-white hover:text-brand-900"
                 onClick={() => setIsMobileNavOpen(false)}
               >
-                {currentLanguage === "pt" ? "Solicitar Cotação" : "Request a Quote"}
+                {t("hero.ctaSchedule")}
               </Link>
 
               {/* Language toggle — clean inline buttons */}
