@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import TeamMemberModal from "./TeamMemberModal";
 
 interface Member {
   name: string;
@@ -16,6 +17,8 @@ interface TeamSectionAProps {
 
 const TeamSectionA: React.FC<TeamSectionAProps> = ({ content, lang }) => {
   const data = content.team[lang];
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const readMoreLabel = lang === "pt" ? "Ler mais" : "Read more";
 
   return (
     <section className="relative h-full overflow-hidden bg-white">
@@ -39,10 +42,10 @@ const TeamSectionA: React.FC<TeamSectionAProps> = ({ content, lang }) => {
             <div
               key={member.name}
               data-animate="fade-up"
-              className="group relative"
+              className="group relative rounded-[20px] sm:rounded-[28px] lg:rounded-[32px] overflow-hidden bg-white border border-gray-100 shadow-sm sm:shadow-md"
               style={{ animationDelay: `${idx * 0.1}s` }}
             >
-              <div className="relative aspect-[4/3] rounded-[32px] overflow-hidden shadow-2xl transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-[0_30px_60px_rgba(1,2,5,0.18)]">
+              <div className="relative aspect-[3/4] sm:aspect-[4/3] overflow-hidden transition-all duration-500 group-hover:-translate-y-2">
                 <img
                   src={member.photo}
                   alt={member.name}
@@ -53,7 +56,7 @@ const TeamSectionA: React.FC<TeamSectionAProps> = ({ content, lang }) => {
                 <div className="absolute inset-0 bg-gradient-to-t from-brand-950/85 via-brand-950/30 to-transparent" />
 
                 {/* Accent border on hover */}
-                <div className="absolute inset-0 rounded-[32px] border-2 border-transparent group-hover:border-accent-green/60 transition-colors duration-500 pointer-events-none" />
+                <div className="absolute inset-0 border-2 border-transparent group-hover:border-accent-green/60 transition-colors duration-500 pointer-events-none" />
 
                 {/* Name overlay */}
                 <div className="absolute bottom-0 left-0 right-0 p-3 sm:p-4 lg:p-6">
@@ -65,10 +68,25 @@ const TeamSectionA: React.FC<TeamSectionAProps> = ({ content, lang }) => {
                   </h3>
                 </div>
               </div>
+
+              <div className="px-3 py-2.5 sm:px-4 sm:py-3 lg:px-5 lg:py-4">
+                <p className="text-[10px] sm:text-xs lg:text-sm text-gray-600 leading-snug sm:leading-relaxed line-clamp-3 lg:line-clamp-4">
+                  {member.bio}
+                </p>
+                <button
+                  type="button"
+                  onClick={() => setSelectedMember(member)}
+                  className="mt-1 text-[10px] sm:text-xs font-semibold text-accent-green hover:underline"
+                >
+                  {readMoreLabel}
+                </button>
+              </div>
             </div>
           ))}
         </div>
       </div>
+
+      <TeamMemberModal member={selectedMember} onClose={() => setSelectedMember(null)} />
     </section>
   );
 };

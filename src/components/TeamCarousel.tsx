@@ -53,7 +53,7 @@ const TeamCarousel: React.FC<TeamCarouselProps> = ({ content, lang }) => {
 
       <div
         ref={carouselRef}
-        className="flex h-[560px] overflow-x-auto scroll-smooth scrollbar-hide sm:h-[580px] lg:h-[620px]"
+        className="flex h-[560px] overflow-x-auto scroll-smooth scrollbar-hide sm:h-[740px] lg:h-[820px]"
         style={{ scrollSnapType: "x mandatory" }}
       >
         {SLIDES.map(({ name, Component }) => (

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import TeamMemberModal from "./TeamMemberModal";
 
 interface Member {
   name: string;
@@ -16,6 +17,8 @@ interface TeamSectionEProps {
 
 const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
   const data = content.team[lang];
+  const [selectedMember, setSelectedMember] = useState<Member | null>(null);
+  const readMoreLabel = lang === "pt" ? "Ler mais" : "Read more";
 
   return (
     <section className="relative h-full overflow-hidden bg-brand-900">
@@ -25,7 +28,7 @@ const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
         className="pointer-events-none absolute top-0 left-1/2 -translate-x-1/2 w-px h-24 bg-gradient-to-b from-accent-green to-transparent"
       />
 
-      <div className="mx-auto flex h-full max-w-[1440px] flex-col justify-center px-4 sm:px-6 lg:px-10">
+      <div className="mx-auto flex h-full max-w-[1440px] flex-col justify-center px-4 py-2 sm:px-6 sm:py-8 lg:px-10 lg:py-10">
         {/* Heading */}
         <div data-animate="fade-up" className="mb-3 sm:mb-6 lg:mb-8 text-center max-w-3xl mx-auto">
           <div className="inline-flex items-center gap-2 rounded-full border border-accent-green/30 bg-accent-green/5 px-2 py-1 sm:px-4 sm:py-1.5 mb-1.5 sm:mb-4">
@@ -37,7 +40,7 @@ const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
           <h2 className="text-balance text-xl sm:text-4xl font-editorial italic leading-tight text-white md:text-5xl lg:text-[3.25rem] tracking-tight mb-1.5 sm:mb-6">
             {data.title}
           </h2>
-          <p className="hidden sm:block text-lg text-white/60 leading-relaxed">
+          <p className="text-[10px] sm:text-lg text-white/60 leading-relaxed line-clamp-2 sm:line-clamp-none">
             {data.subtitle}
           </p>
         </div>
@@ -52,7 +55,7 @@ const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
               style={{ animationDelay: `${idx * 0.12}s` }}
             >
               {/* Photo */}
-              <div className="relative aspect-[16/9] overflow-hidden">
+              <div className="relative aspect-square sm:aspect-[16/9] overflow-hidden">
                 <img
                   src={member.photo}
                   alt={member.name}
@@ -69,16 +72,23 @@ const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
               </div>
 
               {/* Content */}
-              <div className="p-1.5 sm:p-4 lg:p-5">
-                <p className="text-[8px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-accent-green mb-0.5 sm:mb-2">
+              <div className="p-2 sm:p-4 lg:p-5">
+                <p className="text-[9px] sm:text-[11px] font-semibold uppercase tracking-[0.15em] sm:tracking-[0.3em] text-accent-green mb-0.5 sm:mb-2">
                   {member.role}
                 </p>
-                <h3 className="text-[11px] sm:text-xl lg:text-2xl font-semibold text-white mb-0.5 sm:mb-2 leading-tight truncate">
+                <h3 className="text-xs sm:text-xl lg:text-2xl font-semibold text-white mb-0.5 sm:mb-2 leading-tight truncate">
                   {member.name}
                 </h3>
-                <p className="hidden sm:block text-sm lg:text-base text-white/70 leading-relaxed mb-3 line-clamp-3">
+                <p className="text-[9px] sm:text-sm lg:text-base text-white/70 leading-relaxed mb-0.5 sm:mb-3 line-clamp-3">
                   {member.bio}
                 </p>
+                <button
+                  type="button"
+                  onClick={() => setSelectedMember(member)}
+                  className="sm:hidden text-[9px] font-semibold text-accent-green hover:underline"
+                >
+                  {readMoreLabel}
+                </button>
 
                 <blockquote className="hidden sm:block relative pl-4 border-l-2 border-accent-green/60 italic text-white/80 text-sm line-clamp-2">
                   "{member.quote}"
@@ -88,6 +98,8 @@ const TeamSectionE: React.FC<TeamSectionEProps> = ({ content, lang }) => {
           ))}
         </div>
       </div>
+
+      <TeamMemberModal member={selectedMember} onClose={() => setSelectedMember(null)} />
     </section>
   );
 };
