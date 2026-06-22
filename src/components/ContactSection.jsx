@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { z } from "zod";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useLanguage } from "../context/LanguageContext";
 import { ShoppingCart, Wheat, Send } from "lucide-react";
+import { trackEvent } from "../utils/analytics";
 
 const getContactSchema = (lang, role) => {
   const base = {
@@ -224,6 +225,7 @@ export default function ContactSection() {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState(null);
   const [activeRole, setActiveRole] = useState(null);
+  const honeypotRef = useRef(null);
 
   const contactSchema = getContactSchema(lang, activeRole);
 
@@ -262,6 +264,10 @@ export default function ContactSection() {
   };
 
   const onSubmit = async (data) => {
+    // Honeypot: a real visitor never sees or fills this field. If it's
+    // populated, silently drop the submission instead of hitting the network.
+    if (honeypotRef.current?.value) return;
+
     setIsSubmitting(true);
     setSubmitStatus(null);
 
@@ -274,11 +280,13 @@ export default function ContactSection() {
           coffeeType: data.coffeeType.join(", "),
           certifications: (data.certifications || []).join(", "),
           _subject: `New ${data.role} Lead: ${data.name} - ${data.company}`,
+          _gotcha: honeypotRef.current?.value || "",
         }),
       });
 
       if (response.ok) {
         setSubmitStatus("success");
+        trackEvent("generate_lead", { form: "home_inline", role: data.role });
         form.reset();
         setActiveRole(null);
         setTimeout(() => setSubmitStatus(null), 5000);
@@ -403,6 +411,16 @@ export default function ContactSection() {
             )}
 
             <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
+              {/* Honeypot — hidden from real visitors, catches bots that fill every field */}
+              <input
+                ref={honeypotRef}
+                type="text"
+                name="_gotcha"
+                tabIndex={-1}
+                autoComplete="off"
+                aria-hidden="true"
+                className="absolute left-[-9999px] top-auto h-0 w-0 overflow-hidden"
+              />
               {/* Name + Email */}
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-2">
