@@ -542,6 +542,8 @@ export const Contact = () => {
                 onSubmit={form.handleSubmit(onSubmit)}
                 className="space-y-6"
               >
+                {selectedRole ? (
+                  <>
                 {/* Honeypot — hidden from real visitors, catches bots that fill every field */}
                 <input
                   ref={honeypotRef}
@@ -952,6 +954,12 @@ export const Contact = () => {
                 <p className="text-xs text-center text-gray-400">
                   {f.agreement}
                 </p>
+                  </>
+                ) : (
+                  <p className="text-center text-gray-400 text-sm py-8">
+                    {lang === "en" ? "Select an option above to get started" : "Selecione uma opção acima para começar"}
+                  </p>
+                )}
               </form>
             </div>
 

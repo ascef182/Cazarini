@@ -115,4 +115,4 @@ This is commercial work built for Cazarini Trading Company — the code here is 
 
 ## Author
 
-Built by [Pâmela Ascef Cazarini](https://www.linkedin.com/in/pamelaascefcazarini/).
+Built by [Pâm Ascef Cazarini](https://www.linkedin.com/in/pamelaascefcazarini/).
