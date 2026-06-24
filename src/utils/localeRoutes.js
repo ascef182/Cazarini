@@ -8,7 +8,7 @@ export const BLOG_PT_PREFIX = "/blog/pt-br";
 // pointing at the same { en, pt } pair object.
 const PAIRS = [
   ["/who-we-are", "/quem-somos"],
-  ["/varieties", "/variedades"],
+  ["/qualities", "/qualidades"],
   ["/gallery", "/galeria"],
   ["/contact", "/contato"],
   ["/privacy-policy", "/politica-de-privacidade"],

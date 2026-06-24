@@ -96,8 +96,8 @@ export const Footer = () => {
                   </Link>
                 </li>
                 <li>
-                  <Link to="/#variedades" className="hover:text-brand-900">
-                    {t("footer.varieties")}
+                  <Link to="/#qualidades" className="hover:text-brand-900">
+                    {t("footer.qualities")}
                   </Link>
                 </li>
                 <li>

@@ -7,7 +7,7 @@ import { MapPin, Award, TrendingUp, Globe2, ShieldCheck } from "lucide-react";
 import { Header } from "./Header";
 import { SEO } from "./SEO";
 import { Footer } from "./Footer";
-import TeamCarousel from "./TeamCarousel";
+import TeamSectionC from "./TeamSectionC";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -177,7 +177,7 @@ export const WhoWeAre = () => {
           {
             icon: Award,
             title: "Quality First",
-            text: "Only premium-grade Brazilian coffees",
+            text: "Only high-grade Brazilian coffees",
           },
         ],
         motivation:
@@ -207,7 +207,7 @@ export const WhoWeAre = () => {
           {
             icon: Award,
             title: "Qualidade Primeiro",
-            text: "Apenas cafés premium brasileiros e colombianos",
+            text: "Apenas cafés de alta qualidade brasileiros e colombianos",
           },
         ],
       },
@@ -247,7 +247,7 @@ export const WhoWeAre = () => {
             role: "Logistics Coordinator",
             photo: "/photos/team/pamela1.jpg",
             photoAlt: "/photos/team/pamela2.jpg",
-            quote: "Logistics is taking care of the details the client never sees.",
+            quote: "Logistics is taking care of the details the clients might miss",
             bio: "Tracks each shipment from warehouse to port departure — making sure the right coffee reaches the right container on the agreed day.",
           },
           {
@@ -274,7 +274,7 @@ export const WhoWeAre = () => {
             role: "Coordenadora de Logística",
             photo: "/photos/team/pamela1.jpg",
             photoAlt: "/photos/team/pamela2.jpg",
-            quote: "Logística é cuidar do detalhe que o cliente não vê.",
+            quote: "Logística é cuidar dos detalhes que os clientes podem deixar passar",
             bio: "Acompanha cada embarque do armazém até a saída do porto — garantindo que o café certo chega no contêiner certo, no dia combinado.",
           },
           {
@@ -546,9 +546,9 @@ export const WhoWeAre = () => {
         </section>
 
         {/* ═══════════════════════════════════════════════════════════════════
-            TEAM SECTION — carousel of 5 design options for the client to browse
+            TEAM SECTION — Circular Portraits
         ═══════════════════════════════════════════════════════════════════ */}
-        <TeamCarousel content={content} lang={lang} />
+        <TeamSectionC content={content} lang={lang} />
 
         {/* ═══════════════════════════════════════════════════════════════════
             CTA SECTION - Green inner with dark outer
@@ -577,10 +577,10 @@ export const WhoWeAre = () => {
                     {content.cta[lang].button}
                   </Link>
                   <Link
-                    to={lang === "en" ? "/varieties" : "/variedades"}
+                    to={lang === "en" ? "/qualities" : "/qualidades"}
                     className="rounded-2xl border border-brand-900/20 bg-white/10 backdrop-blur-md text-brand-900 px-12 py-5 font-bold uppercase tracking-widest text-sm hover:bg-white/20 hover:scale-105 transition-all shadow-lg"
                   >
-                    {lang === "en" ? "View Varieties" : "Ver Variedades"}
+                    {lang === "en" ? "View Qualities" : "Ver Qualidades"}
                   </Link>
                 </div>
               </div>

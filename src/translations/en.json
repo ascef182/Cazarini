@@ -4,7 +4,7 @@
   },
   "nav": {
     "about": "About",
-    "varieties": "Varieties",
+    "qualities": "Qualities",
     "blog": "Blog",
     "location": "Location",
     "contact": "Contact",
@@ -19,13 +19,13 @@
     "subtitle": "Helping coffee beans travel the world —",
     "subtitleSecond": "from farm to roastery",
     "ctaSchedule": "Request a Quote",
-    "ctaVarieties": "View Varieties",
+    "ctaVarieties": "View Qualities",
     "trusted": "Trusted by the world's biggest brands",
     "companiesTrust": "Big companies that work with us and deeply trust our services",
     "presentOnAllContinents": "Present on all continents",
     "globalReach": "Worldwide",
     "drivingTrade": "Driving Global Coffee Trade",
-    "exportingPremium": "Exporting Premium-",
+    "exportingPremium": "Exporting High-",
     "exportingGrade": "Grade Coffee Worldwide"
   },
   "stats": {
@@ -34,11 +34,11 @@
     "bagsDelivered": "Bags delivered with success",
     "companiesTrust": "Big companies that work with us and deeply trust our services",
     "drivingTrade": "Driving Global Coffee Trade",
-    "exportingPremium": "Exporting Premium-",
+    "exportingPremium": "Exporting High-",
     "exportingGrade": "Grade Coffee Worldwide",
     "whoWeAre": "WHO WE ARE"
   },
-  "varieties": {
+  "qualities": {
     "title": "Green Coffees We Trade",
     "description": "Explore our selection of Brazilian coffees, carefully sourced and graded to meet international standards.",
     "filterAll": "All",
@@ -47,8 +47,8 @@
     "filterRioMinas": "Rio Minas",
     "filterConilon": "Conilon",
     "showing": "Showing",
-    "variety": "variety",
-    "varieties": "varieties",
+    "quality": "quality",
+    "qualities": "qualities",
     "previous": "Previous",
     "next": "Next",
     "seeAll": "See All"
@@ -191,7 +191,7 @@
     "description": "Since 2009 we have been providing our clients with our expertise, sourcing top quality coffee, ensuring trusted services and reliable information.",
     "navigation": "Navigation",
     "about": "About",
-    "varieties": "Varieties",
+    "qualities": "Qualities",
     "services": "Services",
     "location": "Location",
     "contact": "Contact",

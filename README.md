@@ -14,7 +14,7 @@ Marketing and lead-generation website for Cazarini Trading Company, a Brazilian 
 
 ## Features
 
-- **Real bilingual routing, not a client-side toggle.** Every page has its own URL per language (`/varieties` ↔ `/variedades`, `/blog/:slug` ↔ `/blog/pt-br/:slug`, ...), and the language shown is derived from the URL itself — so a cold visit (no cookies, any search engine or AI crawler) renders the correct language deterministically, and `hreflang` tags point at real, working alternates instead of lying about a client-only preference.
+- **Real bilingual routing, not a client-side toggle.** Every page has its own URL per language (`/qualities` ↔ `/qualidades`, `/blog/:slug` ↔ `/blog/pt-br/:slug`, ...), and the language shown is derived from the URL itself — so a cold visit (no cookies, any search engine or AI crawler) renders the correct language deterministically, and `hreflang` tags point at real, working alternates instead of lying about a client-only preference.
 - **A working lead funnel.** The contact form (with a buyer/producer-specific schema validated by Zod) posts to Formspree, which emails the sales inbox directly — backed by a honeypot field to silently drop bot submissions.
 - **SEO/GEO hardening**: per-route Open Graph/Twitter tags, JSON-LD (`Organization`, `FAQPage`, `BlogPosting`), a hand-maintained `sitemap.xml` covering every bilingual URL pair, and a `robots.txt`/`llms.txt` that explicitly welcome AI answer-engine crawlers (GPTBot, ClaudeBot, PerplexityBot, Google-Extended).
 - **GSAP-driven motion** throughout (entrance timelines, scroll-triggered reveals) without sacrificing first-load correctness.
@@ -58,7 +58,7 @@ npm run test:watch   # run the test suite in watch mode
 ```
 src/
   components/        # shared/reusable sections (Hero, Header, Footer, Stats, FAQ, ...)
-  pages/             # route-level pages (Home, Varieties, Blog, Contact, legal pages, ...)
+  pages/             # route-level pages (Home, Qualities, Blog, Contact, legal pages, ...)
   translations/      # en.json / pt-br.json — all user-facing copy
   context/           # LanguageContext (current language + the t() translation function)
   hooks/             # useTranslation, useGsapFadeIn, etc.

@@ -218,13 +218,13 @@ export const Contact = () => {
         title: "Get in touch with our",
         highlight: "coffee experts",
         subtitle:
-          "Whether you're looking to source premium beans or want to sell your production to global markets, our team is ready to assist you.",
+          "Whether you're looking to source quality beans or want to sell your production to global markets, our team is ready to assist you.",
       },
       pt: {
         title: "Entre em contato com nossos",
         highlight: "especialistas em café",
         subtitle:
-          "Seja para comprar grãos premium ou vender sua produção para mercados globais, nossa equipe está pronta para ajudá-lo.",
+          "Seja para comprar grãos selecionados ou vender sua produção para mercados globais, nossa equipe está pronta para ajudá-lo.",
       },
     },
     role: {
@@ -429,8 +429,8 @@ export const Contact = () => {
         }
         description={
           lang === "en"
-            ? "Contact Cazarini Trading Company. Get in touch with our coffee experts for sourcing, trading, or selling premium Brazilian coffee."
-            : "Entre em contato com a Cazarini Trading Company. Fale com nossos especialistas para compra, trading ou venda de café brasileiro premium."
+            ? "Contact Cazarini Trading Company. Get in touch with our coffee experts for sourcing, trading, or selling Brazilian coffee."
+            : "Entre em contato com a Cazarini Trading Company. Fale com nossos especialistas para compra, trading ou venda de café brasileiro."
         }
         keywords={
           lang === "en"

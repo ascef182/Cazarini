@@ -104,7 +104,7 @@ export const HeroSection = () => {
                 {t("hero.ctaSchedule")} <span aria-hidden>&rarr;</span>
               </Link>
               <Link
-                to={lang === "pt" ? "/variedades" : "/varieties"}
+                to={lang === "pt" ? "/qualidades" : "/qualities"}
                 className="group relative flex items-center gap-2 text-brand-900"
               >
                 <span className="relative">

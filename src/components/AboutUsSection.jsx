@@ -99,7 +99,7 @@ export const AboutUsSection = () => {
 
   return (
     <section
-      id="variedades"
+      id="qualidades"
       className="py-section-y text-white"
       style={{ backgroundColor: "#020609" }}
     >
@@ -108,18 +108,18 @@ export const AboutUsSection = () => {
         <div className="grid gap-6 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.4fr)] lg:items-end">
           <div className="space-y-5">
             <h2 className="text-3xl font-semibold leading-tight tracking-[-0.02em] sm:text-4xl lg:text-[2.5rem]">
-              {t("varieties.title")}
+              {t("qualities.title")}
             </h2>
             <p className="text-white/70 text-lg max-w-xl">
-              {t("varieties.description")}
+              {t("qualities.description")}
             </p>
           </div>
           <div className="flex justify-start lg:justify-end">
             <Link
-              to={isPortuguese ? "/variedades" : "/varieties"}
+              to={isPortuguese ? "/qualidades" : "/qualities"}
               className="pill-button rounded-pill border border-white/30 bg-transparent text-white hover:bg-white hover:text-brand-900 px-6 py-2.5 text-sm font-semibold uppercase tracking-wider rounded-full transition-all duration-200 hover:scale-105 inline-block"
             >
-              {t("varieties.seeAll") || "See All"}
+              {t("qualities.seeAll") || "See All"}
             </Link>
           </div>
         </div>
@@ -150,8 +150,8 @@ export const AboutUsSection = () => {
 
         {/* Contador de resultados */}
         <div className="text-white/60 text-sm">
-          {t("varieties.showing")} {filteredVarieties.length}{" "}
-          {filteredVarieties.length === 1 ? t("varieties.variety") : t("varieties.varieties")}
+          {t("qualities.showing")} {filteredVarieties.length}{" "}
+          {filteredVarieties.length === 1 ? t("qualities.quality") : t("qualities.qualities")}
         </div>
       </div>
 
@@ -162,7 +162,7 @@ export const AboutUsSection = () => {
             ref={carouselRef}
             className="flex gap-6 overflow-x-auto scroll-smooth pb-4 pt-2 hide-scrollbar"
             style={{ scrollSnapType: "x mandatory" }}
-            aria-label="Coffee varieties available"
+            aria-label="Coffee qualities available"
           >
             {filteredVarieties.map((variety, index) => (
               <article
@@ -215,7 +215,7 @@ export const AboutUsSection = () => {
               onClick={() => scrollCarousel("prev")}
               className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
             >
-              ← {t("varieties.previous")}
+              ← {t("qualities.previous")}
             </button>
             <button
               type="button"
@@ -223,7 +223,7 @@ export const AboutUsSection = () => {
               onClick={() => scrollCarousel("next")}
               className="rounded-full border border-white/30 px-6 py-2.5 text-sm font-semibold text-white/80 transition-all hover:text-white hover:border-white hover:scale-105"
             >
-              {t("varieties.next")} →
+              {t("qualities.next")} →
             </button>
         </div>
       </div>

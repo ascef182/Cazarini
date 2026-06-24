@@ -18,7 +18,7 @@ const TeamSectionC: React.FC<TeamSectionCProps> = ({ content, lang }) => {
   const data = content.team[lang];
 
   return (
-    <section className="relative h-full overflow-hidden bg-brand-950">
+    <section className="relative min-h-[600px] overflow-hidden bg-brand-950 py-20 lg:py-28">
       {/* Subtle grain texture */}
       <div
         aria-hidden
@@ -36,7 +36,7 @@ const TeamSectionC: React.FC<TeamSectionCProps> = ({ content, lang }) => {
         className="pointer-events-none absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] rounded-full bg-accent-green/10 blur-[120px]"
       />
 
-      <div className="relative mx-auto flex h-full max-w-[1440px] flex-col justify-center px-4 sm:px-6 lg:px-10">
+      <div className="relative mx-auto flex max-w-[1440px] flex-col justify-center px-4 sm:px-6 lg:px-10">
         {/* Heading */}
         <div data-animate="fade-up" className="mb-3 sm:mb-6 lg:mb-8 text-center">
           <p className="text-[10px] sm:text-xs font-semibold uppercase tracking-[0.25em] sm:tracking-[0.35em] text-accent-green mb-2 sm:mb-4">
@@ -45,7 +45,7 @@ const TeamSectionC: React.FC<TeamSectionCProps> = ({ content, lang }) => {
           <h2 className="text-balance text-xl sm:text-4xl font-editorial italic leading-tight text-white md:text-5xl lg:text-[3.25rem] tracking-tight mb-2 sm:mb-6">
             {data.title}
           </h2>
-          <p className="text-xs sm:text-lg text-white/60 max-w-2xl mx-auto line-clamp-2 sm:line-clamp-none">
+          <p className="text-xs sm:text-lg text-white/60 max-w-2xl mx-auto">
             {data.subtitle}
           </p>
         </div>

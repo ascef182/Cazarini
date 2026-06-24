@@ -4,7 +4,7 @@
   },
   "nav": {
     "about": "Sobre",
-    "varieties": "Variedades",
+    "qualities": "Qualidades",
     "blog": "Blog",
     "location": "Localização",
     "contact": "Contato",
@@ -19,14 +19,14 @@
     "subtitle": "Ajudando os grãos de café a viajar pelo mundo —",
     "subtitleSecond": "da fazenda à torrefação",
     "ctaSchedule": "Solicitar Cotação",
-    "ctaVarieties": "Ver Variedades",
+    "ctaVarieties": "Ver Qualidades",
     "trusted": "Confiado pelas maiores marcas do mundo",
     "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
     "presentOnAllContinents": "Presente em todos os continentes",
     "globalReach": "Mundial",
     "drivingTrade": "Impulsionando o Comércio Global de Café",
-    "exportingPremium": "Exportando Café de Qualidade",
-    "exportingGrade": "Premium para o Mundo Todo"
+    "exportingPremium": "Exportando Café de",
+    "exportingGrade": "Alta Qualidade para o Mundo Todo"
   },
   "stats": {
     "title": "A Cazarini Trading Company se destaca na gestão de riscos, vendas internacionais e aquisição doméstica, mantendo um foco meticuloso em cada detalhe até o cumprimento do contrato—sempre minimizando riscos e abordando proativamente quaisquer desafios que possam surgir.",
@@ -34,11 +34,11 @@
     "bagsDelivered": "Sacas entregues com sucesso",
     "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
     "drivingTrade": "Impulsionando o Comércio Global de Café",
-    "exportingPremium": "Exportando Café de",
-    "exportingGrade": "Qualidade Premium Mundial",
+    "exportingPremium": "Exportando Café de Alta",
+    "exportingGrade": "Qualidade Mundial",
     "whoWeAre": "QUEM SOMOS"
   },
-  "varieties": {
+  "qualities": {
     "title": "Cafés Verdes que Negociamos",
     "description": "Explore nossa seleção de cafés brasileiros, cuidadosamente selecionados e classificados para atender aos padrões internacionais.",
     "filterAll": "Todos",
@@ -47,8 +47,8 @@
     "filterRioMinas": "Rio Minas",
     "filterConilon": "Conilon",
     "showing": "Mostrando",
-    "variety": "variedade",
-    "varieties": "variedades",
+    "quality": "qualidade",
+    "qualities": "qualidades",
     "previous": "Anterior",
     "next": "Próximo",
     "seeAll": "Ver Todas"
@@ -191,7 +191,7 @@
     "description": "Desde 2009 temos fornecido aos nossos clientes nossa expertise, fornecendo café de alta qualidade, garantindo serviços confiáveis e informações confiáveis.",
     "navigation": "Navegação",
     "about": "Sobre",
-    "varieties": "Variedades",
+    "qualities": "Qualidades",
     "services": "Serviços",
     "location": "Localização",
     "contact": "Contato",

@@ -27,16 +27,16 @@
   </url>
 
   <url>
-    <loc>https://www.cazarini.com/varieties</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/varieties"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/variedades"/>
+    <loc>https://www.cazarini.com/qualities</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/qualities"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/qualidades"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.cazarini.com/variedades</loc>
-    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/varieties"/>
-    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/variedades"/>
+    <loc>https://www.cazarini.com/qualidades</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/qualities"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/qualidades"/>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>

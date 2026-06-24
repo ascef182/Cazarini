@@ -61,13 +61,13 @@ export const Home = () => {
         }
         description={
           lang === "en"
-            ? "Leading coffee brokerage connecting producers, exporters & buyers worldwide. 920+ bags delivered, 250+ trusted partners. Specializing in premium Brazilian coffee."
-            : "Líder em corretagem de café conectando produtores, exportadores e compradores mundialmente. 920+ sacas entregues, 250+ parceiros confiáveis. Especializado em café brasileiro premium."
+            ? "Leading coffee brokerage connecting producers, exporters & buyers worldwide. 920+ bags delivered, 250+ trusted partners. Specializing in Brazilian coffee."
+            : "Líder em corretagem de café conectando produtores, exportadores e compradores mundialmente. 920+ sacas entregues, 250+ parceiros confiáveis. Especializado em café brasileiro."
         }
         keywords={
           lang === "en"
-            ? "coffee trading, coffee broker, brazilian coffee, coffee export, coffee brokerage, premium coffee, arabica, robusta"
-            : "trading café, corretor café, café brasileiro, exportação café, corretagem café, café premium, arábica, robusta"
+            ? "coffee trading, coffee broker, brazilian coffee, coffee export, coffee brokerage, arabica, robusta"
+            : "trading café, corretor café, café brasileiro, exportação café, corretagem café, arábica, robusta"
         }
         jsonLd={jsonLd}
       />

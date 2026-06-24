@@ -228,7 +228,7 @@ const galleryPhotos = [
     category: "logistics",
     src: "/photos/brasilemsemenetes.jfif",
     title: { en: "Brazilian Origin — Ready to Ship", pt: "Origem Brasil — Pronto para Embarcar" },
-    description: { en: "Premium lots prepared for international shipping", pt: "Lotes premium preparados para embarque internacional" },
+    description: { en: "Lots prepared for international shipping", pt: "Lotes preparados para embarque internacional" },
     aspect: "landscape",
   },
 ];

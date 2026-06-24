@@ -7,7 +7,7 @@ import { getAlternatePath } from "../utils/localeRoutes";
 const getNavItems = (lang) => [
   { label: lang === "pt" ? "Início" : "Home", href: "/", type: "link" },
   { label: lang === "pt" ? "Sobre" : "About", href: lang === "pt" ? "/quem-somos" : "/who-we-are", type: "link" },
-  { label: lang === "pt" ? "Variedades" : "Varieties", href: lang === "pt" ? "/variedades" : "/varieties", type: "link" },
+  { label: lang === "pt" ? "Qualidades" : "Qualities", href: lang === "pt" ? "/qualidades" : "/qualities", type: "link" },
   { label: "Blog", href: lang === "pt" ? "/blog/pt-br" : "/blog", type: "link" },
   { label: lang === "pt" ? "Contato" : "Contact", href: lang === "pt" ? "/contato" : "/contact", type: "link" },
 ];

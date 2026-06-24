@@ -12,7 +12,7 @@ import { ArrowRight, X, Coffee, Leaf, Shield, Globe2, Award, CheckCircle2, Hands
 gsap.registerPlugin(ScrollTrigger);
 
 const filterButtons = [
-  { id: "all", label: { en: "All Varieties", pt: "Todas Variedades" } },
+  { id: "all", label: { en: "All Qualities", pt: "Todas Qualidades" } },
   { id: "fine-cup", label: { en: "Fine Cup", pt: "Fine Cup" } },
   { id: "good-cup", label: { en: "Good Cup", pt: "Good Cup" } },
   { id: "rio-minas", label: { en: "Rio Minas", pt: "Rio Minas" } },
@@ -51,8 +51,8 @@ const varietyGallery = [
 
 const categoryDescriptions = {
   "fine-cup": {
-    en: "Premium grade with exceptional cup quality. Sourced from select farms in Minas Gerais.",
-    pt: "Grau premium com qualidade excepcional de xícara. Proveniente de fazendas selecionadas em Minas Gerais.",
+    en: "High grade with exceptional cup quality. Sourced from select farms in Minas Gerais.",
+    pt: "Grau superior com qualidade excepcional de xícara. Proveniente de fazendas selecionadas em Minas Gerais.",
   },
   "good-cup": {
     en: "Reliable quality ideal for commercial blends. Consistent profile from trusted producers.",
@@ -111,7 +111,7 @@ const certifications = [
   { id: "organic", name: "Organic", fullName: { en: "Fair Trade Organic", pt: "Orgânico Fair Trade" }, description: { en: "Organic and Fair Trade certified production.", pt: "Produção certificada Orgânica e Fair Trade." }, icon: Leaf, color: "bg-emerald-500" },
 ];
 
-export const Varieties = () => {
+export const Qualities = () => {
   const [activeFilter, setActiveFilter] = useState("all");
   const [selectedVariety, setSelectedVariety] = useState(null);
   const [cardsReady, setCardsReady] = useState(false);
@@ -241,12 +241,12 @@ export const Varieties = () => {
     hero: {
       en: {
         eyebrow: "GREEN COFFEE",
-        title: "Green Coffee   Varieties",
+        title: "Green Coffee   Qualities",
         subtitle: "From Fine Cup to Conilon, discover our carefully sourced and graded coffees that meet the highest international standards.",
       },
       pt: {
         eyebrow: "CAFÉ VERDE",
-        title: "Variedades de Café Verde",
+        title: "Qualidades de Café Verde",
         subtitle: "De Fine Cup a Conilon, descubra nossos cafés cuidadosamente selecionados e classificados que atendem aos mais altos padrões internacionais.",
       },
     },
@@ -287,19 +287,19 @@ export const Varieties = () => {
       },
     },
     showing: { en: "Showing", pt: "Mostrando" },
-    varieties: { en: "varieties", pt: "variedades" },
+    qualities: { en: "qualities", pt: "qualidades" },
   };
 
   return (
     <>
       <SEO
-        title={lang === "en" ? "Coffee Varieties - Cazarini Coffee Trading" : "Variedades de Café - Cazarini Trading"}
+        title={lang === "en" ? "Coffee Qualities - Cazarini Coffee Trading" : "Qualidades de Café - Cazarini Trading"}
         description={lang === "en"
-          ? "Browse 17+ premium Brazilian coffee varieties. Fine Cup, Good Cup, Rio Minas, and Conilon. RFA, 4C, EUDR, and Fair Trade certified options available."
-          : "Navegue por mais de 17 variedades premium de café brasileiro. Fine Cup, Good Cup, Rio Minas e Conilon. Opções certificadas RFA, 4C, EUDR e Fair Trade disponíveis."}
+          ? "Browse 17+ Brazilian coffee qualities. Fine Cup, Good Cup, Rio Minas, and Conilon. RFA, 4C, EUDR, and Fair Trade certified options available."
+          : "Navegue por mais de 17 qualidades de café brasileiro. Fine Cup, Good Cup, Rio Minas e Conilon. Opções certificadas RFA, 4C, EUDR e Fair Trade disponíveis."}
         keywords={lang === "en"
-          ? "coffee varieties, brazilian coffee, arabica, robusta, fine cup, good cup, rio minas, conilon, coffee certifications"
-          : "variedades café, café brasileiro, arábica, robusta, fine cup, good cup, rio minas, conilon, certificações café"}
+          ? "coffee qualities, brazilian coffee, arabica, robusta, fine cup, good cup, rio minas, conilon, coffee certifications"
+          : "qualidades café, café brasileiro, arábica, robusta, fine cup, good cup, rio minas, conilon, certificações café"}
       />
 
       <div ref={pageRef} className="bg-white min-h-screen">
@@ -311,7 +311,7 @@ export const Varieties = () => {
           <div className="absolute inset-0">
             <img
               src="/photos/Different Ways to Process Coffee and Why It Matters.jfif"
-              alt="Premium Brazilian Coffee"
+              alt="Brazilian Coffee"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-r from-brand-950 via-brand-950/85 to-brand-950/60" />
@@ -374,7 +374,7 @@ export const Varieties = () => {
                 })}
               </div>
               <p className="text-sm text-gray-500">
-                {content.showing[lang]} <span className="text-brand-900 font-semibold">{filteredVarieties.length}</span> {content.varieties[lang]}
+                {content.showing[lang]} <span className="text-brand-900 font-semibold">{filteredVarieties.length}</span> {content.qualities[lang]}
               </p>
             </div>
           </div>
@@ -708,8 +708,8 @@ export const Varieties = () => {
                   {/* Description */}
                   <p className="text-sm text-white/60 leading-relaxed">
                     {lang === "en"
-                      ? "Premium Brazilian coffee carefully sourced from select farms in Minas Gerais. Available with full traceability and international quality certifications. Contact us for current pricing, availability, and sample requests."
-                      : "Café brasileiro premium cuidadosamente selecionado de fazendas selecionadas em Minas Gerais. Disponível com rastreabilidade total e certificações internacionais de qualidade. Entre em contato para preços atuais, disponibilidade e solicitações de amostras."}
+                      ? "Brazilian coffee carefully sourced from select farms in Minas Gerais. Available with full traceability and international quality certifications. Contact us for current pricing, availability, and sample requests."
+                      : "Café brasileiro cuidadosamente selecionado de fazendas selecionadas em Minas Gerais. Disponível com rastreabilidade total e certificações internacionais de qualidade. Entre em contato para preços atuais, disponibilidade e solicitações de amostras."}
                   </p>
 
                   {/* CTA */}
@@ -730,4 +730,4 @@ export const Varieties = () => {
   );
 };
 
-export default Varieties;
+export default Qualities;

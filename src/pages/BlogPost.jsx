@@ -427,8 +427,8 @@ const BlogPost = () => {
                                 </h2>
                                 <p className="text-xl text-brand-900/60 max-w-2xl mx-auto mb-10">
                                     {lang === "en"
-                                        ? "Get direct access to premium Brazilian coffee. Contact our team for pricing, samples, and availability."
-                                        : "Tenha acesso direto ao café premium brasileiro. Entre em contato para preços, amostras e disponibilidade."}
+                                        ? "Get direct access to Brazilian coffee. Contact our team for pricing, samples, and availability."
+                                        : "Tenha acesso direto ao café brasileiro. Entre em contato para preços, amostras e disponibilidade."}
                                 </p>
                                 <Link
                                     to="/contact"

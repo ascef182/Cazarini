@@ -6,7 +6,7 @@ const Home = lazy(() => import("./pages/Home"));
 const WhoWeAre = lazy(() =>
   import("./components/who-we-are").then((m) => ({ default: m.WhoWeAre }))
 );
-const Varieties = lazy(() => import("./pages/Varieties"));
+const Qualities = lazy(() => import("./pages/Qualities"));
 const Blog = lazy(() => import("./pages/Blog"));
 const BlogPost = lazy(() => import("./pages/BlogPost"));
 const Insights = lazy(() => import("./pages/Insights"));
@@ -27,8 +27,8 @@ export const CoffeTrading = () => {
             <Route path="/" element={<Home />} />
             <Route path="/who-we-are" element={<WhoWeAre />} />
             <Route path="/quem-somos" element={<WhoWeAre />} />
-            <Route path="/varieties" element={<Varieties />} />
-            <Route path="/variedades" element={<Varieties />} />
+            <Route path="/qualities" element={<Qualities />} />
+            <Route path="/qualidades" element={<Qualities />} />
             <Route path="/blog/pt-br" element={<Blog />} />
             <Route path="/blog/pt-br/:slug" element={<BlogPost />} />
             <Route path="/blog" element={<Blog />} />
