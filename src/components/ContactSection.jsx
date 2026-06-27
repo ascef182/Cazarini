@@ -272,7 +272,8 @@ export default function ContactSection() {
     setSubmitStatus(null);
 
     try {
-      const FORMSPREE_URL = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`;
+      const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID ?? "xyzplwpb";
+      const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
       const response = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },

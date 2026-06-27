@@ -61,7 +61,8 @@ describe("ContactSection", () => {
       expect(screen.getByText(/Message sent successfully/i)).toBeInTheDocument();
     });
 
-    const FORMSPREE_URL = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`;
+    const FORMSPREE_ID = import.meta.env.VITE_FORMSPREE_ID ?? "xyzplwpb";
+    const FORMSPREE_URL = `https://formspree.io/f/${FORMSPREE_ID}`;
     expect(fetchMock).toHaveBeenCalledWith(
       FORMSPREE_URL,
       expect.objectContaining({ method: "POST" })
