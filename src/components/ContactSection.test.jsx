@@ -61,8 +61,9 @@ describe("ContactSection", () => {
       expect(screen.getByText(/Message sent successfully/i)).toBeInTheDocument();
     });
 
+    const FORMSPREE_URL = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`;
     expect(fetchMock).toHaveBeenCalledWith(
-      "https://formspree.io/f/xyzplwpb",
+      FORMSPREE_URL,
       expect.objectContaining({ method: "POST" })
     );
   });

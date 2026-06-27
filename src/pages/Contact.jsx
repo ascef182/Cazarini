@@ -173,7 +173,8 @@ export const Contact = () => {
     setSubmitStatus(null);
 
     try {
-      const response = await fetch("https://formspree.io/f/xyzplwpb", {
+      const FORMSPREE_URL = `https://formspree.io/f/${import.meta.env.VITE_FORMSPREE_ID}`;
+      const response = await fetch(FORMSPREE_URL, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
