@@ -1,6 +1,6 @@
 # Cazarini Coffee Trading
 
-**🔗 Live site: [cazarini.vercel.app](https://cazarini.vercel.app/)**
+**🔗 Live site: [cazarini.com](https://cazarini.com/)**
 
 Marketing and lead-generation website for Cazarini Trading Company, a Brazilian coffee brokerage based in Varginha, Minas Gerais, connecting coffee producers, exporters, and buyers worldwide. Fully bilingual (English / Portuguese) — including a dedicated, crawlable URL per language for every page and every blog post — built with React, Vite, and Tailwind CSS.
 
