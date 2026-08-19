@@ -294,10 +294,12 @@ export default async function handler(req, res) {
       ? client.batchRunReports({
           property,
           requests: [
-            // 10: totals comparison (current vs previous period)
+            // 10: totals comparison (current vs previous period). GA4 tags
+            // each row with an implicit "dateRange" dimension whenever a
+            // request has 2+ dateRanges — declaring it explicitly here is
+            // rejected by the API ("Field dateRange is not a dimension").
             {
               dateRanges: [dateRange, previousRange],
-              dimensions: [{ name: "dateRange" }],
               metrics: [
                 { name: "sessions" },
                 { name: "totalUsers" },
@@ -306,10 +308,10 @@ export default async function handler(req, res) {
                 { name: "averageSessionDuration" },
               ],
             },
-            // 11: generate_lead comparison (current vs previous period)
+            // 11: generate_lead comparison (current vs previous period) —
+            // same implicit "dateRange" tagging as request 10 above.
             {
               dateRanges: [dateRange, previousRange],
-              dimensions: [{ name: "dateRange" }],
               metrics: [{ name: "eventCount" }],
               dimensionFilter: {
                 filter: {
