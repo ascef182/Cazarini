@@ -1,3 +1,6 @@
+// Lives outside api/ on purpose: Vercel treats every file under api/ as a
+// serverless function to deploy, so a test file there would've shipped as a
+// broken public endpoint (no default-export handler).
 import { describe, it, expect } from "vitest";
 import {
   isValidGa4Date,
@@ -5,7 +8,7 @@ import {
   resolveDateRange,
   computePreviousRange,
   percentChange,
-} from "./analytics-report.js";
+} from "../../api/analytics-report.js";
 
 describe("isValidGa4Date", () => {
   it("accepts relative expressions and ISO dates", () => {
