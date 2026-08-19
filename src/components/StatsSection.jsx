@@ -1,0 +1,150 @@
+import React, { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
+import gsap from "gsap";
+import { ScrollTrigger } from "gsap/ScrollTrigger";
+import { useTranslation } from "../hooks/useTranslation";
+import { useLanguage } from "../context/LanguageContext";
+import { MagicText } from "./ui/MagicText";
+
+gsap.registerPlugin(ScrollTrigger);
+
+export const StatsSection = () => {
+  const statsRef = useRef(null);
+  const { t } = useTranslation();
+  const { isPortuguese } = useLanguage();
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const root = statsRef.current;
+    if (!root) return;
+
+    const counters = root.querySelectorAll("[data-counter]");
+    const tweens = [];
+
+    counters.forEach((node) => {
+      const target = Number(node.getAttribute("data-target"));
+      const suffix = node.getAttribute("data-suffix") ?? "";
+      if (Number.isNaN(target)) return;
+
+      const state = { value: 0 };
+
+      const tween = gsap.to(state, {
+        value: target,
+        duration: 1.4,
+        ease: "power2.out",
+        scrollTrigger: {
+          trigger: node,
+          start: "top 80%",
+          once: true,
+        },
+        onUpdate: () => {
+          const current = state.value;
+          node.textContent =
+            target % 1 === 0
+              ? `${Math.round(current)}${suffix}`
+              : `${current.toFixed(1)}${suffix}`;
+        },
+      });
+
+      tweens.push(tween);
+    });
+
+    return () => {
+      tweens.forEach((tween) => {
+        if (tween.scrollTrigger) tween.scrollTrigger.kill();
+        tween.kill();
+      });
+    };
+  }, []);
+
+  return (
+    <section
+      id="metricas"
+      ref={statsRef}
+      className="relative overflow-hidden bg-white py-12 lg:py-16"
+    >
+      <div className="relative mx-auto flex w-full max-w-[1440px] flex-col gap-12 px-4 sm:px-6 lg:px-10">
+        <div className="flex justify-center mb-8">
+          <MagicText 
+            text={t("stats.title")}
+            className="text-balance text-center text-3xl font-semibold leading-tight tracking-[-0.02em] text-black sm:text-4xl lg:text-[2.5rem]"
+          />
+        </div>
+      </div>
+
+      <div className="mx-auto flex w-full max-w-[1280px] flex-col gap-6 lg:flex-row lg:h-[320px] px-4 sm:px-6 lg:px-10">
+        {/* ---------- CARD 1 - 920+ ---------- */}
+        <div className="relative w-full lg:w-[438px] h-[320px] rounded-3xl overflow-hidden bg-black flex-shrink-0">
+          {/* Brilho suave e curvas fluidas */}
+          <div
+            className="absolute inset-0 opacity-20"
+            style={{
+              background:
+                "radial-gradient(circle at 30% 30%, rgba(255,255,255,0.15) 0%, transparent 60%)",
+            }}
+          />
+
+          {/* Conteúdo */}
+          <div className="relative z-10 p-10">
+            <h2 className="text-white text-6xl font-bold leading-none mb-3">
+              <span data-counter data-target="8" data-suffix="M+">
+                8M+
+              </span>
+            </h2>
+            <p className="text-white/70 text-base">
+              {t("stats.bagsDelivered")}
+            </p>
+          </div>
+
+          {/* Grãos de café - distribuídos horizontalmente pela base do card */}
+          <div className="absolute bottom-6 left-8 right-8 flex justify-between items-center">
+            {[...Array(6)].map((_, i) => (
+              <img
+                key={i}
+                src="/photos/grão.png"
+                alt="coffee bean"
+                className="w-10 h-12 object-contain"
+              />
+            ))}
+          </div>
+        </div>
+
+        {/* ---------- CARD 2 - WHO WE ARE ---------- */}
+        <div className="relative rounded-[28px] shadow-[0_12px_30px_rgba(1,2,5,0.08)] w-full lg:flex-1 h-[320px] overflow-hidden">
+          {/* imagem de fundo */}
+          <img
+            src="/photos/bandeira-cazarini.jpg"
+            alt="WHO WE ARE"
+            className="absolute inset-0 h-full w-full object-cover"
+            style={{ opacity: 0.7 }}
+            loading="lazy"
+          />
+
+          {/* gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-t from-brand-900/60 via-brand-900/20 to-transparent" />
+
+          {/* título central */}
+          <div className="absolute inset-0 flex items-center justify-center px-6">
+            <h3 className="text-center text-3xl font-semibold tracking-[0.2em] text-white">
+              {t("stats.whoWeAre")}
+            </h3>
+          </div>
+
+          {/* Botão Play - navega para Who We Are */}
+          <button
+            className="absolute bottom-4 right-4 w-20 h-20 rounded-full bg-[#B4F34C] flex items-center justify-center shadow-2xl hover:bg-[#A0E338] transition-all z-50 hover:scale-105"
+            onClick={() => navigate(isPortuguese ? "/quem-somos" : "/who-we-are")}
+          >
+            <svg
+              className="w-8 h-8 text-black ml-1"
+              fill="currentColor"
+              viewBox="0 0 24 24"
+            >
+              <path d="M8 5v14l11-7z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </section>
+  );
+};

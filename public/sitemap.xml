@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://www.cazarini.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/"/>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/who-we-are</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/who-we-are"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/quem-somos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/quem-somos</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/who-we-are"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/quem-somos"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/qualities</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/qualities"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/qualidades"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/qualidades</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/qualities"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/qualidades"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog"/>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/brazil-2025-crop-market-outlook</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/brazil-2025-crop-market-outlook"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/brazil-2025-crop-market-outlook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/brazil-2025-crop-market-outlook"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/brazil-2025-crop-market-outlook</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/brazil-2025-crop-market-outlook"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/brazil-2025-crop-market-outlook"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/brazil-2025-crop-market-outlook"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/future-grading-3d-scanning-tech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/future-grading-3d-scanning-tech"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/future-grading-3d-scanning-tech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/future-grading-3d-scanning-tech"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/future-grading-3d-scanning-tech</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/future-grading-3d-scanning-tech"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/future-grading-3d-scanning-tech"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/future-grading-3d-scanning-tech"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/global-consumption-insights-us-japan-uk</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/global-consumption-insights-us-japan-uk"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/global-consumption-insights-us-japan-uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/global-consumption-insights-us-japan-uk"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/global-consumption-insights-us-japan-uk</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/global-consumption-insights-us-japan-uk"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/global-consumption-insights-us-japan-uk"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/global-consumption-insights-us-japan-uk"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/january-export-pace-exchange-rates</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/january-export-pace-exchange-rates"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/january-export-pace-exchange-rates"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/january-export-pace-exchange-rates"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/january-export-pace-exchange-rates</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/january-export-pace-exchange-rates"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/january-export-pace-exchange-rates"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/january-export-pace-exchange-rates"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/when-do-producers-sell</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/when-do-producers-sell"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/when-do-producers-sell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/when-do-producers-sell"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/when-do-producers-sell</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/when-do-producers-sell"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/when-do-producers-sell"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/when-do-producers-sell"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/2024-market-wrap-up</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/2024-market-wrap-up"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/2024-market-wrap-up"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/2024-market-wrap-up"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/2024-market-wrap-up</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/2024-market-wrap-up"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/2024-market-wrap-up"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/2024-market-wrap-up"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/specialty-coffee-what-sets-it-apart</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/specialty-coffee-what-sets-it-apart"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/specialty-coffee-what-sets-it-apart"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/specialty-coffee-what-sets-it-apart"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/specialty-coffee-what-sets-it-apart</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/specialty-coffee-what-sets-it-apart"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/specialty-coffee-what-sets-it-apart"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/specialty-coffee-what-sets-it-apart"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/sustainability-certifications-navigating-the-landscape</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/sustainability-certifications-navigating-the-landscape"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/sustainability-certifications-navigating-the-landscape"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/sustainability-certifications-navigating-the-landscape"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/sustainability-certifications-navigating-the-landscape</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/sustainability-certifications-navigating-the-landscape"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/sustainability-certifications-navigating-the-landscape"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/sustainability-certifications-navigating-the-landscape"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/climate-impact-on-brazilian-coffee-2025</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/climate-impact-on-brazilian-coffee-2025"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/climate-impact-on-brazilian-coffee-2025"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/climate-impact-on-brazilian-coffee-2025"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/climate-impact-on-brazilian-coffee-2025</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/climate-impact-on-brazilian-coffee-2025"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/climate-impact-on-brazilian-coffee-2025"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/climate-impact-on-brazilian-coffee-2025"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/robusta-vs-arabica-shifting-dynamics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/robusta-vs-arabica-shifting-dynamics"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/robusta-vs-arabica-shifting-dynamics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/robusta-vs-arabica-shifting-dynamics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/robusta-vs-arabica-shifting-dynamics</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/robusta-vs-arabica-shifting-dynamics"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/robusta-vs-arabica-shifting-dynamics"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/robusta-vs-arabica-shifting-dynamics"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/port-of-santos-coffee-logistics-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/port-of-santos-coffee-logistics-guide"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/port-of-santos-coffee-logistics-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/port-of-santos-coffee-logistics-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/port-of-santos-coffee-logistics-guide</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/port-of-santos-coffee-logistics-guide"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/port-of-santos-coffee-logistics-guide"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/port-of-santos-coffee-logistics-guide"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/blog/coffee-processing-methods-and-flavor-impact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/coffee-processing-methods-and-flavor-impact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/coffee-processing-methods-and-flavor-impact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/coffee-processing-methods-and-flavor-impact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/blog/pt-br/coffee-processing-methods-and-flavor-impact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/blog/coffee-processing-methods-and-flavor-impact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/blog/pt-br/coffee-processing-methods-and-flavor-impact"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.cazarini.com/blog/coffee-processing-methods-and-flavor-impact"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/insights</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.6</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/gallery</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/galeria"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/galeria</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/gallery"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/galeria"/>
+    <changefreq>monthly</changefreq>
+    <priority>0.5</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/contato"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/contato</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/contato"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/privacy-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-privacidade"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/politica-de-privacidade</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/privacy-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-privacidade"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/email-policy</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/email-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-email"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+  <url>
+    <loc>https://www.cazarini.com/politica-de-email</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.cazarini.com/email-policy"/>
+    <xhtml:link rel="alternate" hreflang="pt-BR" href="https://www.cazarini.com/politica-de-email"/>
+    <changefreq>yearly</changefreq>
+    <priority>0.3</priority>
+  </url>
+
+  <url>
+    <loc>https://www.cazarini.com/copyright</loc>
+    <changefreq>yearly</changefreq>
+    <priority>0.2</priority>
+  </url>
+
+</urlset>

@@ -1,0 +1,224 @@
+{
+  "common": {
+    "readArticle": "Ler Artigo"
+  },
+  "nav": {
+    "about": "Sobre",
+    "qualities": "Qualidades",
+    "blog": "Blog",
+    "location": "Localização",
+    "contact": "Contato",
+    "scheduleCall": "Solicitar Cotação",
+    "openMenu": "Abrir navegação",
+    "closeMenu": "Fechar menu"
+  },
+  "hero": {
+    "tagline": "Empresa de Trading de Café • desde 2009",
+    "title": "24 horas por dia",
+    "titleHighlight": "Corretores de café",
+    "subtitle": "Ajudando os grãos de café a viajar pelo mundo —",
+    "subtitleSecond": "da fazenda à torrefação",
+    "ctaSchedule": "Solicitar Cotação",
+    "ctaVarieties": "Ver Qualidades",
+    "trusted": "Confiado pelas maiores marcas do mundo",
+    "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
+    "presentOnAllContinents": "Presente em todos os continentes",
+    "globalReach": "Mundial",
+    "drivingTrade": "Impulsionando o Comércio Global de Café",
+    "exportingPremium": "Exportando Café de",
+    "exportingGrade": "Alta Qualidade para o Mundo Todo"
+  },
+  "stats": {
+    "title": "A Cazarini Trading Company se destaca na gestão de riscos, vendas internacionais e aquisição doméstica, mantendo um foco meticuloso em cada detalhe até o cumprimento do contrato—sempre minimizando riscos e abordando proativamente quaisquer desafios que possam surgir.",
+    "description": "A Cazarini Trading Company se destaca na gestão de riscos, vendas internacionais e aquisição doméstica, mantendo um foco meticuloso em cada detalhe até o cumprimento do contrato—sempre minimizando riscos e abordando proativamente quaisquer desafios que possam surgir.",
+    "bagsDelivered": "Sacas entregues com sucesso",
+    "companiesTrust": "grandes empresas que trabalham conosco e confiam profundamente em nós",
+    "drivingTrade": "Impulsionando o Comércio Global de Café",
+    "exportingPremium": "Exportando Café de Alta",
+    "exportingGrade": "Qualidade Mundial",
+    "whoWeAre": "QUEM SOMOS"
+  },
+  "qualities": {
+    "title": "Cafés Verdes que Negociamos",
+    "description": "Explore nossa seleção de cafés brasileiros, cuidadosamente selecionados e classificados para atender aos padrões internacionais.",
+    "filterAll": "Todos",
+    "filterFineCup": "Fine Cup",
+    "filterGoodCup": "Good Cup",
+    "filterRioMinas": "Rio Minas",
+    "filterConilon": "Conilon",
+    "showing": "Mostrando",
+    "quality": "qualidade",
+    "qualities": "qualidades",
+    "previous": "Anterior",
+    "next": "Próximo",
+    "seeAll": "Ver Todas"
+  },
+  "testimonials": {
+    "title": "Depoimentos de clientes líderes do setor",
+    "description": "Nossos clientes destacam nossa expertise, transparência e dedicação em entregar resultados excepcionais. Seus depoimentos refletem nosso compromisso com a excelência.",
+    "items": [
+      {
+        "quote": "Tenho o prazer de recomendar Thiago Cazarini, um especialista de destaque no mercado de café brasileiro. Seu profundo conhecimento e insights tiveram um impacto significativo na indústria, e sua disposição em compartilhar informações o destaca como um verdadeiro líder de pensamento. O popular relatório semanal de Thiago é um testemunho de sua expertise, fornecendo análises e atualizações valiosas que são altamente consideradas por profissionais de todo o mercado.",
+        "name": "Dave Behrends",
+        "title": "Sócio-Gerente e Diretor de Trading"
+      },
+      {
+        "quote": "Thiago é um corretor de commodities confiável e perspicaz que não apenas lida com transações, mas também fornece informações valiosas sobre o mercado, ele tem uma leitura muito boa do mercado de café brasileiro, ele traz uma compreensão profunda da dinâmica do mercado para seu papel atual como corretor. Thiago não está apenas focado em taxas de corretagem; ele está dedicado a oferecer aos clientes insights abrangentes de mercado que ajudam a informar suas decisões de negociação. Sua abordagem disciplinada, aprimorada através de um compromisso com o esporte, garante que ele permaneça focado e estratégico, fornecendo aos clientes tanto consultoria especializada quanto serviço excepcional.",
+        "name": "Carlos Santana Jr",
+        "title": "Diretor Comercial do Grupo Ecom (Brasil)"
+      },
+      {
+        "quote": "Thiago Cazarini é um brilhante corretor de café verde no Brasil. Seu profundo conhecimento do mercado e compartilhamento contínuo de informações importantes é sempre muito útil.",
+        "name": "Felipe Feijó",
+        "title": "Gerente Nacional - Starbucks Farmer Support Center Brasil"
+      }
+    ]
+  },
+  "faq": {
+    "title": "Perguntas Frequentes",
+    "titleShort": "Perguntas Frequentes",
+    "description": "Saiba mais sobre nossos serviços de corretagem, expertise de mercado e como apoiamos o sucesso do seu negócio de café.",
+    "moreQuestions": "Mais Perguntas",
+    "contactUs": "Entre em Contato",
+    "items": [
+      {
+        "question": "O que um Corretor de Café realmente faz?",
+        "answer": "Um corretor de café conecta produtores, exportadores e compradores de café para facilitar transações transparentes, eficientes e seguras. Ao atuar como intermediários, os corretores ajudam a negociar contratos, garantir padrões de qualidade e gerenciar logística. Eles atuam como intermediários para garantir os melhores preços e reduzir riscos operacionais."
+      },
+      {
+        "question": "Como trabalhar com um Corretor de Café pode beneficiar meu negócio de café?",
+        "answer": "Trabalhar com um corretor de café fornece acesso a uma rede mais ampla de compradores e vendedores, inteligência de mercado especializada e negociação de contratos simplificada. Os corretores ajudam você a garantir melhores preços, reduzir riscos e economizar tempo ao lidar com logística e documentação complexas."
+      },
+      {
+        "question": "Quais fatores influenciam os preços do café no mercado global?",
+        "answer": "Os preços do café são influenciados pela dinâmica de oferta e demanda, condições climáticas que afetam as colheitas, flutuações cambiais, eventos geopolíticos e tendências do mercado de commodities. Os corretores monitoram esses fatores para fornecer aos clientes insights oportunos e conselhos estratégicos."
+      },
+      {
+        "question": "Qual é a diferença entre um Corretor de Café e um Trader de Café?",
+        "answer": "Um corretor de café facilita transações entre compradores e vendedores sem tomar posse do café, ganhando uma comissão. Um trader de café, por outro lado, compra e vende café em sua própria conta, assumindo risco de estoque e visando lucrar com movimentos de preços."
+      },
+      {
+        "question": "Onde fica localizada a Cazarini Trading Company?",
+        "answer": "A Cazarini Trading Company está sediada em Varginha, Minas Gerais — coração da maior região produtora de café do Brasil — e atua a partir de lá desde 2009."
+      },
+      {
+        "question": "Quantos anos de experiência a Cazarini tem no mercado de café?",
+        "answer": "A Cazarini Trading Company negocia café brasileiro desde 2009, e o fundador Thiago Cazarini traz mais de 21 anos de experiência prática no mercado de café."
+      },
+      {
+        "question": "Quais variedades de café e certificações a Cazarini oferece?",
+        "answer": "Negociamos cafés brasileiros Fine Cup, Good Cup, Rio Minas e Conilon (Robusta), disponíveis com certificações RFA, 4C, EUDR e Fair Trade, provenientes de mais de 250 fazendas parceiras em Minas Gerais."
+      }
+    ]
+  },
+  "services": {
+    "title": "Últimos Insights do Mercado",
+    "description": "Somos uma empresa líder em corretagem de café conectando produtores, exportadores e compradores em todo o mundo. Nossa missão é ajudar os clientes a navegar pelos mercados globais, otimizar preços e fortalecer sua estratégia de comércio de café.",
+    "seeMore": "Ver mais",
+    "trustedBy": "Confiado por",
+    "articles": [
+      {
+        "id": 1,
+        "accent": "bg-accent-blue",
+        "meta": "5 min de leitura",
+        "title": "Como um Corretor de Café Pode Impulsionar Seu Negócio",
+        "description": "Conectamos seu café diretamente com compradores e exportadores confiáveis, garantindo precificação, aprovações e execução rápidas.",
+        "image": "/photos/experimento-cafe.jpg"
+      },
+      {
+        "id": 2,
+        "accent": "bg-accent-orange",
+        "meta": "5 min de leitura",
+        "title": "As Últimas Tendências de Mercado no Comércio Global de Café",
+        "description": "Da demanda por café especial aos impactos climáticos na colheita, analisamos os principais impulsionadores que moldam o comércio global de café hoje.",
+        "image": "/photos/seca-do-cafe.jpg"
+      },
+      {
+        "id": 3,
+        "accent": "bg-accent-purple",
+        "meta": "5 min de leitura",
+        "title": "Maximizando a Lucratividade com o Parceiro de Corretagem de Café Certo",
+        "description": "Descubra como parcerias estratégicas de corretagem fornecem alavancagem, inteligência de mercado e poder de negociação para impulsionar melhores margens.",
+        "image": "/photos/ciclo-cafe.jpg"
+      }
+    ]
+  },
+  "contact": {
+    "ready": "Pronto para trabalhar conosco?",
+    "getStarted": "Começar",
+    "connectTitle": "Conecte-se conosco",
+    "connectSubtitle": "Especialistas em café de qualidade para o mercado global",
+    "formTitle": "Solicite uma Cotação",
+    "formDescription": "Preencha os dados abaixo e nossa equipe entrará em contato",
+    "name": "Nome Completo",
+    "company": "Empresa / Fazenda",
+    "email": "Email",
+    "phone": "Telefone / WhatsApp",
+    "buyerType": "Tipo de Comprador",
+    "volume": "Volume Aproximado",
+    "unit": "Unidade",
+    "coffeeType": "Tipo de Café de Interesse",
+    "frequency": "Frequência de Compra",
+    "message": "Detalhes Adicionais",
+    "submit": "Enviar Solicitação",
+    "submitting": "Enviando...",
+    "successMessage": "Mensagem enviada com sucesso! Entraremos em contato em breve.",
+    "errorMessage": "Erro ao enviar mensagem. Por favor, tente novamente.",
+    "agreement": "Ao enviar, você concorda em ser contatado por nossa equipe comercial",
+    "selectPlaceholder": "Selecione...",
+    "buyerIndividual": "Pessoa Física",
+    "buyerCooperative": "Cooperativa",
+    "buyerCompany": "Empresa / Torrefação",
+    "buyerTrader": "Trading Company",
+    "buyerExporter": "Exportador",
+    "unitBags": "Sacas (60kg)",
+    "unitContainers": "Containers",
+    "coffeeArabica": "Arábica",
+    "coffeeRobusta": "Robusta / Conilon",
+    "coffeeSpecialty": "Especial (80+)",
+    "coffeeOrganic": "Orgânico",
+    "freqMonthly": "Mensal",
+    "freqQuarterly": "Trimestral",
+    "freqBiannual": "Semestral",
+    "freqAnnual": "Anual",
+    "freqSpot": "Spot (compra única)",
+    "namePlaceholder": "Seu nome",
+    "companyPlaceholder": "Nome da empresa",
+    "emailPlaceholder": "seu@email.com",
+    "phonePlaceholder": "+55 (11) 99999-9999",
+    "messagePlaceholder": "Conte-nos mais sobre suas necessidades, especificações técnicas, destino de entrega, etc...",
+    "required": "*",
+    "errorName": "Por favor, insira seu nome completo",
+    "errorCompany": "Por favor, insira o nome da empresa/fazenda",
+    "errorEmail": "Por favor, insira um email válido",
+    "errorPhone": "Por favor, insira um telefone válido",
+    "errorBuyerType": "Por favor, selecione o tipo de comprador",
+    "errorVolume": "Por favor, selecione o volume",
+    "errorUnit": "Por favor, selecione a unidade",
+    "errorCoffeeType": "Selecione pelo menos um tipo de café",
+    "errorFrequency": "Por favor, selecione a frequência",
+    "errorMessage": "Por favor, forneça mais detalhes sobre sua necessidade"
+  },
+  "footer": {
+    "description": "Desde 2009 temos fornecido aos nossos clientes nossa expertise, fornecendo café de alta qualidade, garantindo serviços confiáveis e informações confiáveis.",
+    "navigation": "Navegação",
+    "about": "Sobre",
+    "qualities": "Qualidades",
+    "services": "Serviços",
+    "location": "Localização",
+    "contact": "Contato",
+    "licence": "Licença",
+    "privacyPolicy": "Política de Privacidade",
+    "copyright": "Direitos Autorais",
+    "emailPolicy": "Política de Email",
+    "contactTitle": "Contato",
+    "phone": "+55 35 98416-0810",
+    "email": "trading@cazarini.com",
+    "address": "Rua do Comércio do Café, 77",
+    "city": "Varginha, Minas Gerais, MG",
+    "country": "Brasil",
+    "rights": "Cazarini Trading Company. Todos os direitos reservados.",
+    "latestInsights": "Últimos Insights"
+  }
+}
+
