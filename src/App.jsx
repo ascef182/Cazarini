@@ -1,5 +1,6 @@
 import React, { Suspense, lazy } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { Analytics } from "@vercel/analytics/react";
 import { LanguageRouteSync } from "./components/LanguageRouteSync";
 
 const Home = lazy(() => import("./pages/Home"));
@@ -48,6 +49,7 @@ export const CoffeTrading = () => {
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
+        <Analytics />
       </div>
     </Router>
   );
